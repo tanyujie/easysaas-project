@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.security.service;
+package org.easymis.easysaas.core.security.service;
 
 
 import java.time.LocalDate;
@@ -8,10 +8,10 @@ import java.util.Random;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
-import org.easymis.easycrm.core.security.RegexConstant;
-import org.easymis.easycrm.core.security.RestResult;
-import org.easymis.easycrm.core.security.userdetail.User;
-import org.easymis.easycrm.core.utils.MD5Util;
+import org.easymis.easysaas.core.security.RegexConstant;
+import org.easymis.easysaas.core.security.RestResult;
+import org.easymis.easysaas.core.security.userdetail.User;
+import org.easymis.easysaas.core.utils.MD5Util;
 
 public interface UserService {
 

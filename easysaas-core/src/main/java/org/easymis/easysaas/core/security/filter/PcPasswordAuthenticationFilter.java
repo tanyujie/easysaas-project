@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.security.filter;
+package org.easymis.easysaas.core.security.filter;
 
 
 import java.io.IOException;
@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.easymis.easycrm.core.utils.MD5Util;
+import org.easymis.easysaas.core.utils.MD5Util;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;

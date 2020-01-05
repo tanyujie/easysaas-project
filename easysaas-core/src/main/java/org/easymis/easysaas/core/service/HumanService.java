@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.service;
+package org.easymis.easysaas.core.service;
 
 public interface HumanService {
 

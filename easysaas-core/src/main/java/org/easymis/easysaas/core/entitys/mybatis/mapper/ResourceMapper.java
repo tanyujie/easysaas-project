@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.entitys.mybatis.mapper;
+package org.easymis.easysaas.core.entitys.mybatis.mapper;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.easymis.easycrm.core.security.userdetail.Resource;
+import org.easymis.easysaas.core.security.userdetail.Resource;
 @Mapper
 public interface ResourceMapper {
 	 @Select("select * from easymis_Resource t WHERE t.org_id = #{orgId}")  

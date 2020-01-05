@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.security;
+package org.easymis.easysaas.core.security;
 
 /**
  * 返回结果常量定义

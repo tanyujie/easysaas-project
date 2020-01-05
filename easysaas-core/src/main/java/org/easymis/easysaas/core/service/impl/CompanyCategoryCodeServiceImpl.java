@@ -1,7 +1,7 @@
-package org.easymis.easycrm.core.service.impl;
+package org.easymis.easysaas.core.service.impl;
 
-import org.easymis.easycrm.core.entitys.mybatis.dto.CompanyCategoryCode;
-import org.easymis.easycrm.core.service.CompanyCategoryCodeService;
+import org.easymis.easysaas.core.entitys.mybatis.dto.CompanyCategoryCode;
+import org.easymis.easysaas.core.service.CompanyCategoryCodeService;
 import org.springframework.stereotype.Service;
 @Service
 public class CompanyCategoryCodeServiceImpl implements CompanyCategoryCodeService {

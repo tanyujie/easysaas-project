@@ -1,17 +1,17 @@
-package org.easymis.easycrm.core.security.provider;
+package org.easymis.easysaas.core.security.provider;
 
 import java.util.Collection;
 import java.util.Objects;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.easymis.easycrm.core.cache.RedisPrefixConstant;
-import org.easymis.easycrm.core.cache.RedisUtils;
-import org.easymis.easycrm.core.security.check.LoginWrongChecker;
-import org.easymis.easycrm.core.security.service.PcPasswordUserDetailService;
-import org.easymis.easycrm.core.security.service.UserService;
-import org.easymis.easycrm.core.security.userdetail.SecurityUserDetails;
-import org.easymis.easycrm.core.security.userdetail.User;
+import org.easymis.easysaas.core.cache.RedisPrefixConstant;
+import org.easymis.easysaas.core.cache.RedisUtils;
+import org.easymis.easysaas.core.security.check.LoginWrongChecker;
+import org.easymis.easysaas.core.security.service.PcPasswordUserDetailService;
+import org.easymis.easysaas.core.security.service.UserService;
+import org.easymis.easysaas.core.security.userdetail.SecurityUserDetails;
+import org.easymis.easysaas.core.security.userdetail.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.data.redis.core.RedisTemplate;

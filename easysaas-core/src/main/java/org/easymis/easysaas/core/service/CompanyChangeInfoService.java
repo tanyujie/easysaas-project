@@ -1,6 +1,6 @@
-package org.easymis.easycrm.core.service;
+package org.easymis.easysaas.core.service;
 
-import org.easymis.easycrm.core.entitys.mybatis.vo.CompanyChangeVo;
+import org.easymis.easysaas.core.entitys.mybatis.vo.CompanyChangeVo;
 
 import com.github.pagehelper.Page;
 

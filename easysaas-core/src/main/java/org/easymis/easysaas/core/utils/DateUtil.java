@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.utils;
+package org.easymis.easysaas.core.utils;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;

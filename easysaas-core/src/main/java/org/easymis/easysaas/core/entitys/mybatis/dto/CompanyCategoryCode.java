@@ -1,8 +1,8 @@
-package org.easymis.easycrm.core.entitys.mybatis.dto;
+package org.easymis.easysaas.core.entitys.mybatis.dto;
 
 import java.io.Serializable;
 
-import org.easymis.easycrm.core.utils.json.SeventeenTableJsonSerializer;
+import org.easymis.easysaas.core.utils.json.SeventeenTableJsonSerializer;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 

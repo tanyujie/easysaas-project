@@ -1,14 +1,14 @@
-package org.easymis.easycrm.core.security.service;
+package org.easymis.easysaas.core.security.service;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-import org.easymis.easycrm.core.security.RegexConstant;
-import org.easymis.easycrm.core.security.check.AccountStatusUserDetailsChecker;
-import org.easymis.easycrm.core.security.userdetail.ExpireDateGrantedAuthority;
-import org.easymis.easycrm.core.security.userdetail.SecurityUserDetails;
-import org.easymis.easycrm.core.security.userdetail.User;
+import org.easymis.easysaas.core.security.RegexConstant;
+import org.easymis.easysaas.core.security.check.AccountStatusUserDetailsChecker;
+import org.easymis.easysaas.core.security.userdetail.ExpireDateGrantedAuthority;
+import org.easymis.easysaas.core.security.userdetail.SecurityUserDetails;
+import org.easymis.easysaas.core.security.userdetail.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

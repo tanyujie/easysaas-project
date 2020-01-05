@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.controller;
+package org.easymis.easysaas.core.controller;
 
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -8,16 +8,16 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang3.StringUtils;
-import org.easymis.easycrm.core.entitys.mybatis.dto.Company;
-import org.easymis.easycrm.core.entitys.mybatis.dto.CompanyCategory;
-import org.easymis.easycrm.core.entitys.mybatis.dto.CompanyCategoryCode;
-import org.easymis.easycrm.core.entitys.mybatis.dto.CompanyLogo;
-import org.easymis.easycrm.core.entitys.mybatis.vo.CompanyAllInfoOutputVo;
-import org.easymis.easycrm.core.service.CompanyCategoryCodeService;
-import org.easymis.easycrm.core.service.CompanyCategoryService;
-import org.easymis.easycrm.core.service.CompanyLogoService;
-import org.easymis.easycrm.core.service.CompanyService;
-import org.easymis.easycrm.core.utils.web.RestfulMessage;
+import org.easymis.easysaas.core.entitys.mybatis.dto.Company;
+import org.easymis.easysaas.core.entitys.mybatis.dto.CompanyCategory;
+import org.easymis.easysaas.core.entitys.mybatis.dto.CompanyCategoryCode;
+import org.easymis.easysaas.core.entitys.mybatis.dto.CompanyLogo;
+import org.easymis.easysaas.core.entitys.mybatis.vo.CompanyAllInfoOutputVo;
+import org.easymis.easysaas.core.service.CompanyCategoryCodeService;
+import org.easymis.easysaas.core.service.CompanyCategoryService;
+import org.easymis.easysaas.core.service.CompanyLogoService;
+import org.easymis.easysaas.core.service.CompanyService;
+import org.easymis.easysaas.core.utils.web.RestfulMessage;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

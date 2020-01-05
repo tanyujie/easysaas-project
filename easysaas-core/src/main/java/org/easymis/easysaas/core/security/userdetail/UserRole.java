@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.security.userdetail;
+package org.easymis.easysaas.core.security.userdetail;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;

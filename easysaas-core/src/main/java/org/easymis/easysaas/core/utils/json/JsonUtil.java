@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.utils.json;
+package org.easymis.easysaas.core.utils.json;
 
 import java.util.ArrayList;
 import java.util.List;

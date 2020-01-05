@@ -1,13 +1,13 @@
-package org.easymis.easycrm.core.security.access;
+package org.easymis.easysaas.core.security.access;
 
 import java.util.Collection;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.easymis.easycrm.core.security.exception.NotVipException;
-import org.easymis.easycrm.core.security.userdetail.ExpireDateGrantedAuthority;
-import org.easymis.easycrm.core.security.userdetail.SecurityUserDetails;
+import org.easymis.easysaas.core.security.exception.NotVipException;
+import org.easymis.easysaas.core.security.userdetail.ExpireDateGrantedAuthority;
+import org.easymis.easysaas.core.security.userdetail.SecurityUserDetails;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;

@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.config;
+package org.easymis.easysaas.core.config;
 
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.annotation.Bean;

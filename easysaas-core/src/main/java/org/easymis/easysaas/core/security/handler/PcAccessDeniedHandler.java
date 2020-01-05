@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.security.handler;
+package org.easymis.easysaas.core.security.handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,9 +7,9 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.easymis.easycrm.core.security.RestResult;
-import org.easymis.easycrm.core.security.ResultCode;
-import org.easymis.easycrm.core.security.exception.NotVipException;
+import org.easymis.easysaas.core.security.RestResult;
+import org.easymis.easysaas.core.security.ResultCode;
+import org.easymis.easysaas.core.security.exception.NotVipException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 

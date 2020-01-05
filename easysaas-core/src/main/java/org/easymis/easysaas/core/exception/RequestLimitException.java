@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.exception;
+package org.easymis.easysaas.core.exception;
 
 public class RequestLimitException extends Exception {
     private static final long serialVersionUID = 1364225358754654702L;

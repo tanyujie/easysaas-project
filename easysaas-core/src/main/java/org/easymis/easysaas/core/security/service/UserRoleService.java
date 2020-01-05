@@ -1,9 +1,9 @@
-package org.easymis.easycrm.core.security.service;
+package org.easymis.easysaas.core.security.service;
 
 import java.util.List;
 
-import org.easymis.easycrm.core.security.userdetail.ExpireDateGrantedAuthority;
-import org.easymis.easycrm.core.security.userdetail.UserRole;
+import org.easymis.easysaas.core.security.userdetail.ExpireDateGrantedAuthority;
+import org.easymis.easysaas.core.security.userdetail.UserRole;
 
 /**
  * <p>

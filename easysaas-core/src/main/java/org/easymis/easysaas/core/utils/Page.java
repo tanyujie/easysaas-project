@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.utils;
+package org.easymis.easysaas.core.utils;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

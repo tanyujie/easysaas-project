@@ -1,6 +1,6 @@
-package org.easymis.easycrm.core.service;
+package org.easymis.easysaas.core.service;
 
-import org.easymis.easycrm.core.entitys.mybatis.dto.CompanyCategoryCode;
+import org.easymis.easysaas.core.entitys.mybatis.dto.CompanyCategoryCode;
 
 public interface CompanyCategoryCodeService {
 	CompanyCategoryCode findByCategoryCode(String categoryCode);

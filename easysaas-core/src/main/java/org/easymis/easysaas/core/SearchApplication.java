@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core;
+package org.easymis.easysaas.core;
 
 
 

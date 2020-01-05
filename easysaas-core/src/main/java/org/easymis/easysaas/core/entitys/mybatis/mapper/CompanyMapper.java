@@ -1,11 +1,11 @@
-package org.easymis.easycrm.core.entitys.mybatis.mapper;
+package org.easymis.easysaas.core.entitys.mybatis.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.easymis.easycrm.core.entitys.mybatis.dto.Company;
+import org.easymis.easysaas.core.entitys.mybatis.dto.Company;
 @Mapper
 public interface CompanyMapper {
 	@Select("select * from company t WHERE t.id = #{companyId}")

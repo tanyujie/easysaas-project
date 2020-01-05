@@ -1,10 +1,10 @@
-package org.easymis.easycrm.core.task;
+package org.easymis.easysaas.core.task;
 
 import java.io.IOException;
 import java.util.Date;
 
-import org.easymis.easycrm.core.socket.SocketOrderMessage;
-import org.easymis.easycrm.core.socket.WebSocketServer;
+import org.easymis.easysaas.core.socket.SocketOrderMessage;
+import org.easymis.easysaas.core.socket.WebSocketServer;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;

@@ -1,13 +1,13 @@
-package org.easymis.easycrm.core.security.repository;
+package org.easymis.easysaas.core.security.repository;
 
 
 import java.util.Objects;
 
-import org.easymis.easycrm.core.security.exception.PrincipalNotFundException;
-import org.easymis.easycrm.core.security.exception.UnknownPrincipalException;
-import org.easymis.easycrm.core.security.userdetail.ExpireDateGrantedAuthority;
-import org.easymis.easycrm.core.security.userdetail.Permit;
-import org.easymis.easycrm.core.security.userdetail.SecurityUserDetails;
+import org.easymis.easysaas.core.security.exception.PrincipalNotFundException;
+import org.easymis.easysaas.core.security.exception.UnknownPrincipalException;
+import org.easymis.easysaas.core.security.userdetail.ExpireDateGrantedAuthority;
+import org.easymis.easysaas.core.security.userdetail.Permit;
+import org.easymis.easysaas.core.security.userdetail.SecurityUserDetails;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 public interface IdentityRepository {

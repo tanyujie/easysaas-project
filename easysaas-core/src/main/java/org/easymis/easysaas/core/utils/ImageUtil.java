@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.utils;
+package org.easymis.easysaas.core.utils;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

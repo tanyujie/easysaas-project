@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.config;
+package org.easymis.easysaas.core.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

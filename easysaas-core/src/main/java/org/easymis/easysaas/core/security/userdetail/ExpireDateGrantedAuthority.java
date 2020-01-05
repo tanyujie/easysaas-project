@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.security.userdetail;
+package org.easymis.easysaas.core.security.userdetail;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.SpringSecurityCoreVersion;

@@ -1,16 +1,16 @@
-package org.easymis.easycrm.core.security.service.impl;
+package org.easymis.easysaas.core.security.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import org.easymis.easycrm.core.entitys.mybatis.mapper.UserRoleMapper;
-import org.easymis.easycrm.core.security.service.RoleService;
-import org.easymis.easycrm.core.security.service.UserRoleService;
-import org.easymis.easycrm.core.security.userdetail.ExpireDateGrantedAuthority;
-import org.easymis.easycrm.core.security.userdetail.Role;
-import org.easymis.easycrm.core.security.userdetail.UserRole;
+import org.easymis.easysaas.core.entitys.mybatis.mapper.UserRoleMapper;
+import org.easymis.easysaas.core.security.service.RoleService;
+import org.easymis.easysaas.core.security.service.UserRoleService;
+import org.easymis.easysaas.core.security.userdetail.ExpireDateGrantedAuthority;
+import org.easymis.easysaas.core.security.userdetail.Role;
+import org.easymis.easysaas.core.security.userdetail.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service

@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.cache;
+package org.easymis.easysaas.core.cache;
 
 public class RedisUtils {
 

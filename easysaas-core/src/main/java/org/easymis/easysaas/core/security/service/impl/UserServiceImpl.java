@@ -1,12 +1,12 @@
-package org.easymis.easycrm.core.security.service.impl;
+package org.easymis.easysaas.core.security.service.impl;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
-import org.easymis.easycrm.core.entitys.mybatis.mapper.UserMapper;
-import org.easymis.easycrm.core.security.RestResult;
-import org.easymis.easycrm.core.security.service.UserService;
-import org.easymis.easycrm.core.security.userdetail.User;
+import org.easymis.easysaas.core.entitys.mybatis.mapper.UserMapper;
+import org.easymis.easysaas.core.security.RestResult;
+import org.easymis.easysaas.core.security.service.UserService;
+import org.easymis.easysaas.core.security.userdetail.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service

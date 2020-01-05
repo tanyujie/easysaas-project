@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.datasource;
+package org.easymis.easysaas.core.datasource;
 /**
  * 动态数据源的上下文 threadlocal
  * @ClassName JdbcContextHolder

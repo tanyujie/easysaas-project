@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.config;
+package org.easymis.easysaas.core.config;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

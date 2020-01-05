@@ -1,8 +1,8 @@
-package org.easymis.easycrm.core.security.service.impl;
+package org.easymis.easysaas.core.security.service.impl;
 
-import org.easymis.easycrm.core.entitys.mybatis.mapper.ResourceMapper;
-import org.easymis.easycrm.core.security.service.ResourceService;
-import org.easymis.easycrm.core.security.userdetail.Resource;
+import org.easymis.easysaas.core.entitys.mybatis.mapper.ResourceMapper;
+import org.easymis.easysaas.core.security.service.ResourceService;
+import org.easymis.easysaas.core.security.userdetail.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service

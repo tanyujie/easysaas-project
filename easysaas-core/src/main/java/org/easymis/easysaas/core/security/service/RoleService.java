@@ -1,8 +1,8 @@
-package org.easymis.easycrm.core.security.service;
+package org.easymis.easysaas.core.security.service;
 
 import java.util.List;
 
-import org.easymis.easycrm.core.security.userdetail.Role;
+import org.easymis.easysaas.core.security.userdetail.Role;
 
 /**
  * <p>

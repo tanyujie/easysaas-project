@@ -1,8 +1,8 @@
-package org.easymis.easycrm.core.service.impl;
+package org.easymis.easysaas.core.service.impl;
 
-import org.easymis.easycrm.core.entitys.mybatis.dto.Company;
-import org.easymis.easycrm.core.entitys.mybatis.mapper.CompanyMapper;
-import org.easymis.easycrm.core.service.CompanyService;
+import org.easymis.easysaas.core.entitys.mybatis.dto.Company;
+import org.easymis.easysaas.core.entitys.mybatis.mapper.CompanyMapper;
+import org.easymis.easysaas.core.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service

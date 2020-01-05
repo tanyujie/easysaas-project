@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.utils.web;
+package org.easymis.easysaas.core.utils.web;
 
 import java.util.List;
 

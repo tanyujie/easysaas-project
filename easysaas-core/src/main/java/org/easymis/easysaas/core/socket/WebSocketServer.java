@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.socket;
+package org.easymis.easysaas.core.socket;
 
 import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArraySet;

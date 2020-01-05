@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.advice;
+package org.easymis.easysaas.core.advice;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -6,12 +6,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.easymis.easycrm.core.security.RestResult;
-import org.easymis.easycrm.core.security.ResultCode;
-import org.easymis.easycrm.core.security.exception.HasUpperLimitException;
-import org.easymis.easycrm.core.security.exception.NotLoginException;
-import org.easymis.easycrm.core.security.exception.NotVipException;
-import org.easymis.easycrm.core.security.exception.UnknownPrincipalException;
+import org.easymis.easysaas.core.security.RestResult;
+import org.easymis.easysaas.core.security.ResultCode;
+import org.easymis.easysaas.core.security.exception.HasUpperLimitException;
+import org.easymis.easysaas.core.security.exception.NotLoginException;
+import org.easymis.easysaas.core.security.exception.NotVipException;
+import org.easymis.easysaas.core.security.exception.UnknownPrincipalException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.ConversionNotSupportedException;

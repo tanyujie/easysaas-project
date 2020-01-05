@@ -1,10 +1,10 @@
-package org.easymis.easycrm.core.security.service.impl;
+package org.easymis.easysaas.core.security.service.impl;
 
 import java.util.List;
 
-import org.easymis.easycrm.core.entitys.mybatis.mapper.RoleResourceMapper;
-import org.easymis.easycrm.core.security.service.RoleResourceService;
-import org.easymis.easycrm.core.security.userdetail.RoleResource;
+import org.easymis.easysaas.core.entitys.mybatis.mapper.RoleResourceMapper;
+import org.easymis.easysaas.core.security.service.RoleResourceService;
+import org.easymis.easysaas.core.security.userdetail.RoleResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service

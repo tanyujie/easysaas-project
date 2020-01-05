@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.controller;
+package org.easymis.easysaas.core.controller;
 
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;

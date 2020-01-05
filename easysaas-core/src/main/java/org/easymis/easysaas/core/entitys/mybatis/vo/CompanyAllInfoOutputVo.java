@@ -1,9 +1,9 @@
-package org.easymis.easycrm.core.entitys.mybatis.vo;
+package org.easymis.easysaas.core.entitys.mybatis.vo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import org.easymis.easycrm.core.utils.json.SeventeenTableJsonSerializer;
+import org.easymis.easysaas.core.utils.json.SeventeenTableJsonSerializer;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 

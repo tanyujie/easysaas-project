@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.security.check;
+package org.easymis.easysaas.core.security.check;
 
 
 import org.springframework.context.support.MessageSourceAccessor;

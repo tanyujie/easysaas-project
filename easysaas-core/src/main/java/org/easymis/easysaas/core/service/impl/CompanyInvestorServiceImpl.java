@@ -1,9 +1,9 @@
-package org.easymis.easycrm.core.service.impl;
+package org.easymis.easysaas.core.service.impl;
 
 import java.util.List;
 
-import org.easymis.easycrm.core.entitys.mybatis.vo.CompanyInvestorVo;
-import org.easymis.easycrm.core.service.CompanyInvestorService;
+import org.easymis.easysaas.core.entitys.mybatis.vo.CompanyInvestorVo;
+import org.easymis.easysaas.core.service.CompanyInvestorService;
 import org.springframework.stereotype.Service;
 @Service
 public class CompanyInvestorServiceImpl implements CompanyInvestorService {

@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.utils;
+package org.easymis.easysaas.core.utils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.ui.ModelMap;

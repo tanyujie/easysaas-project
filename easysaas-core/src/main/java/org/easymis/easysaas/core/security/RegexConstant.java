@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.security;
+package org.easymis.easysaas.core.security;
 
 /**
  *

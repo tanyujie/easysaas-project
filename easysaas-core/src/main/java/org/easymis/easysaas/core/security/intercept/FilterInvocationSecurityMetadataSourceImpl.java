@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.security.intercept;
+package org.easymis.easysaas.core.security.intercept;
 
 
 import java.util.ArrayList;
@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import org.easymis.easycrm.core.security.service.ResourceService;
-import org.easymis.easycrm.core.security.service.RoleResourceService;
-import org.easymis.easycrm.core.security.service.RoleService;
-import org.easymis.easycrm.core.security.service.UserRoleService;
-import org.easymis.easycrm.core.security.userdetail.ExpireDateGrantedAuthority;
-import org.easymis.easycrm.core.security.userdetail.Resource;
-import org.easymis.easycrm.core.security.userdetail.Role;
-import org.easymis.easycrm.core.security.userdetail.RoleResource;
+import org.easymis.easysaas.core.security.service.ResourceService;
+import org.easymis.easysaas.core.security.service.RoleResourceService;
+import org.easymis.easysaas.core.security.service.RoleService;
+import org.easymis.easysaas.core.security.service.UserRoleService;
+import org.easymis.easysaas.core.security.userdetail.ExpireDateGrantedAuthority;
+import org.easymis.easysaas.core.security.userdetail.Resource;
+import org.easymis.easysaas.core.security.userdetail.Role;
+import org.easymis.easysaas.core.security.userdetail.RoleResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;

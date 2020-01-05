@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.task;
+package org.easymis.easysaas.core.task;
 
 import java.util.concurrent.Executor;
 

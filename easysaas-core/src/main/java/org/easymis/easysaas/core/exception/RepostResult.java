@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.exception;
+package org.easymis.easysaas.core.exception;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;

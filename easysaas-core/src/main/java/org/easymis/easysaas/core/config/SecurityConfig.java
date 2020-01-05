@@ -1,17 +1,17 @@
-package org.easymis.easycrm.core.config;
+package org.easymis.easysaas.core.config;
 
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import org.easymis.easycrm.core.security.access.AccessDecisionManagerImpl;
-import org.easymis.easycrm.core.security.filter.PcPasswordAuthenticationFilter;
-import org.easymis.easycrm.core.security.handler.AnonyAuthenticationEntryPoint;
-import org.easymis.easycrm.core.security.handler.LogoutSuccessHandler;
-import org.easymis.easycrm.core.security.handler.PcAccessDeniedHandler;
-import org.easymis.easycrm.core.security.handler.PcAuthenticationFailureHandler;
-import org.easymis.easycrm.core.security.handler.PcAuthenticationSuccessHandler;
-import org.easymis.easycrm.core.security.provider.PcAuthenticationProvider;
+import org.easymis.easysaas.core.security.access.AccessDecisionManagerImpl;
+import org.easymis.easysaas.core.security.filter.PcPasswordAuthenticationFilter;
+import org.easymis.easysaas.core.security.handler.AnonyAuthenticationEntryPoint;
+import org.easymis.easysaas.core.security.handler.LogoutSuccessHandler;
+import org.easymis.easysaas.core.security.handler.PcAccessDeniedHandler;
+import org.easymis.easysaas.core.security.handler.PcAuthenticationFailureHandler;
+import org.easymis.easysaas.core.security.handler.PcAuthenticationSuccessHandler;
+import org.easymis.easysaas.core.security.provider.PcAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

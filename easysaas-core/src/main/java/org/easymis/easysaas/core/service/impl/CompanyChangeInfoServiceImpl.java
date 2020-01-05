@@ -1,7 +1,7 @@
-package org.easymis.easycrm.core.service.impl;
+package org.easymis.easysaas.core.service.impl;
 
-import org.easymis.easycrm.core.entitys.mybatis.vo.CompanyChangeVo;
-import org.easymis.easycrm.core.service.CompanyChangeInfoService;
+import org.easymis.easysaas.core.entitys.mybatis.vo.CompanyChangeVo;
+import org.easymis.easysaas.core.service.CompanyChangeInfoService;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.Page;

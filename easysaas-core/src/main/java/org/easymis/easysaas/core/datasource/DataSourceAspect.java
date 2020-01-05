@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.datasource;
+package org.easymis.easysaas.core.datasource;
 
 import java.lang.reflect.Method;
 

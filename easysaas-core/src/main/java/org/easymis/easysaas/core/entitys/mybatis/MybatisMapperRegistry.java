@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.entitys.mybatis;
+package org.easymis.easysaas.core.entitys.mybatis;
 
 import org.apache.ibatis.binding.MapperRegistry;
 import org.apache.ibatis.session.Configuration;

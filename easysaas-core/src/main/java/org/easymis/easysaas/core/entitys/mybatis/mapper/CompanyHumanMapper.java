@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.entitys.mybatis.mapper;
+package org.easymis.easysaas.core.entitys.mybatis.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 

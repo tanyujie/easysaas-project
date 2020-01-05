@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.datasource;
+package org.easymis.easysaas.core.datasource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

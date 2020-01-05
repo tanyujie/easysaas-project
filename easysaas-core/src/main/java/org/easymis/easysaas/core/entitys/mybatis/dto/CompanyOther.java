@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.entitys.mybatis.dto;
+package org.easymis.easysaas.core.entitys.mybatis.dto;
 
 public class CompanyOther {
 

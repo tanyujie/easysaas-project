@@ -1,9 +1,9 @@
-package org.easymis.easycrm.core.controller;
+package org.easymis.easysaas.core.controller;
 
-import org.easymis.easycrm.core.service.CompanyInvestorService;
-import org.easymis.easycrm.core.service.CompanyService;
-import org.easymis.easycrm.core.service.CompanyStaffService;
-import org.easymis.easycrm.core.service.HumanService;
+import org.easymis.easysaas.core.service.CompanyInvestorService;
+import org.easymis.easysaas.core.service.CompanyService;
+import org.easymis.easysaas.core.service.CompanyStaffService;
+import org.easymis.easysaas.core.service.HumanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;

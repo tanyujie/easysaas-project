@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.entitys.mybatis.vo;
+package org.easymis.easysaas.core.entitys.mybatis.vo;
 
 public class CompanyStaffVo {
 

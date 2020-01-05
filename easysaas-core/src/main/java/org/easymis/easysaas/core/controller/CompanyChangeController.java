@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.controller;
+package org.easymis.easysaas.core.controller;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import org.easymis.easycrm.core.service.CompanyChangeInfoService;
-import org.easymis.easycrm.core.utils.web.RestfulMessage;
+import org.easymis.easysaas.core.service.CompanyChangeInfoService;
+import org.easymis.easysaas.core.utils.web.RestfulMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;

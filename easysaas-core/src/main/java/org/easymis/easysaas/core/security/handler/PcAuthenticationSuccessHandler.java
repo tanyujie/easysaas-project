@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.security.handler;
+package org.easymis.easysaas.core.security.handler;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -9,13 +9,13 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.easymis.easycrm.core.config.SpringContextUtils;
-import org.easymis.easycrm.core.security.RestResult;
-import org.easymis.easycrm.core.security.service.UserService;
-import org.easymis.easycrm.core.security.service.impl.UserServiceImpl;
-import org.easymis.easycrm.core.security.userdetail.SecurityUserDetails;
-import org.easymis.easycrm.core.security.userdetail.User;
-import org.easymis.easycrm.core.security.userdetail.UserVo;
+import org.easymis.easysaas.core.config.SpringContextUtils;
+import org.easymis.easysaas.core.security.RestResult;
+import org.easymis.easysaas.core.security.service.UserService;
+import org.easymis.easysaas.core.security.service.impl.UserServiceImpl;
+import org.easymis.easysaas.core.security.userdetail.SecurityUserDetails;
+import org.easymis.easysaas.core.security.userdetail.User;
+import org.easymis.easysaas.core.security.userdetail.UserVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;

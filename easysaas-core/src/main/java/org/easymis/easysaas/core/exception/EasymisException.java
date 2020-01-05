@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.exception;
+package org.easymis.easysaas.core.exception;
 
 /**
  * 自定义异常

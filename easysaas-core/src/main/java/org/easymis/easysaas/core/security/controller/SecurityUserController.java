@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.security.controller;
+package org.easymis.easysaas.core.security.controller;
 
 
 import java.util.Objects;
@@ -7,10 +7,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
-import org.easymis.easycrm.core.security.RegexConstant;
-import org.easymis.easycrm.core.security.RestResult;
-import org.easymis.easycrm.core.security.service.UserService;
-import org.easymis.easycrm.core.security.userdetail.User;
+import org.easymis.easysaas.core.security.RegexConstant;
+import org.easymis.easysaas.core.security.RestResult;
+import org.easymis.easysaas.core.security.service.UserService;
+import org.easymis.easysaas.core.security.userdetail.User;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;

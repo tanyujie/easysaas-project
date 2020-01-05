@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.security.exception;
+package org.easymis.easysaas.core.security.exception;
 
 
 import org.springframework.security.core.AuthenticationException;

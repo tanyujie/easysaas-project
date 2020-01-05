@@ -1,4 +1,4 @@
-package org.easymis.easycrm.core.controller;
+package org.easymis.easysaas.core.controller;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
