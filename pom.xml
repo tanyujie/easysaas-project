@@ -11,73 +11,67 @@
 	</parent>
 	<groupId>org.easymis.easysaas</groupId>
 	<artifactId>easysaas-project</artifactId>
+		<packaging>pom</packaging>
 	<name>easysaas-project</name>
 	<url>http://www.easymis.org</url>
     <properties>
-        <java.version>1.8</java.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-        <lombok.version>1.16.18</lombok.version>
-        <druid.version>1.1.9</druid.version>
-        <mybatis-spring-boot-starter.version>2.0.0</mybatis-spring-boot-starter.version>
-        <mybatis-plus-boot-starter.version>3.0.7</mybatis-plus-boot-starter.version>
-        <mybatis-plus-generator.version>3.0.7</mybatis-plus-generator.version>
-        <velocity-engine-core.version>2.0</velocity-engine-core.version>
-        <freemarker.version>2.3.23</freemarker.version>
-        <beetl.version>2.9.3</beetl.version>
-        <springfox-swagger.version>2.6.1</springfox-swagger.version>
-        <fastjson.version>1.2.9</fastjson.version>
-        <jest.version>5.3.3</jest.version>
-        <spring.cloud.version>Greenwich.SR1</spring.cloud.version>
-    </properties>
-	<packaging>pom</packaging>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<lombok.version>1.18.8</lombok.version>
+		<spring.cloud.version>Greenwich.SR1</spring.cloud.version>
+		<logback-encoder.version>4.11</logback-encoder.version>
+		<fastjson.version>1.2.38</fastjson.version>
+		<druid.version>1.1.4</druid.version>
+		<springfox-swagger.version>2.9.2</springfox-swagger.version>
+		<springfox-staticdocs.version>2.6.1</springfox-staticdocs.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>		
+		<spring.cloud.version>Greenwich.SR1</spring.cloud.version>
+	</properties>
 	<dependencyManagement>
-	<dependencies>
-	   <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring.cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <!-- logback 对接logstash进行日志推送 -->
-            <dependency>
-                <groupId>net.logstash.logback</groupId>
-                <artifactId>logstash-logback-encoder</artifactId>
-                <version>${logback-encoder.version}</version>
-            </dependency>
-
-	</dependencies>
-    </dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.9</version>
-        </dependency>
-
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring.cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>1.2.9</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+			</dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>3.9</version>
+            <version>3.12</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>3.9</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
-
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml</artifactId>
+		    <version>3.12</version>
+		</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<modules>
+		<module>easysaas-common</module>
+ 		<module>easysaas-core</module>
+ 		<module>easysaas-eureka</module>
+ 		<module>easysaas-gateway</module>
+		<module>easysaas-crm</module>
+		<module>easysaas-mobile</module>
+	</modules>
 
 	 <build>
         <plugins>
