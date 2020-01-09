@@ -14,8 +14,10 @@ import org.easymis.easysaas.common.cache.RedisUtils;
 import org.easymis.easysaas.common.sms.AliyunGetMobile;
 import org.easymis.easysaas.gateway.security.check.LoginWrongChecker;
 import org.easymis.easysaas.gateway.security.service.UserService;
+import org.easymis.easysaas.gateway.security.service.impl.JwtPasswordUserDetailService;
 import org.easymis.easysaas.gateway.security.userdetail.SecurityUserDetails;
 import org.easymis.easysaas.gateway.security.userdetail.User;
+import org.easymis.easysaas.gateway.security.utils.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -34,9 +36,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.aliyuncs.dypnsapi.model.v20170525.GetMobileResponse;
-
-import mobile.sharepanzer.companydata.security.service.JwtPasswordUserDetailService;
-import mobile.sharepanzer.companydata.security.utils.JwtTokenUtil;
 
 
 @Component

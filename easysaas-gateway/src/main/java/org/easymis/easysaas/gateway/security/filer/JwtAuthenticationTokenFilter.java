@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.easymis.easysaas.common.cache.RedisPrefixConstant;
 import org.easymis.easysaas.common.cache.RedisUtils;
 import org.easymis.easysaas.gateway.security.exception.TokenAuthenticationException;
+import org.easymis.easysaas.gateway.security.handler.JwtAuthenticationFailureHandler;
+import org.easymis.easysaas.gateway.security.utils.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -25,8 +27,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;
-import mobile.sharepanzer.companydata.security.handler.JwtAuthenticationFailureHandler;
-import mobile.sharepanzer.companydata.security.utils.JwtTokenUtil;
 
 @Component
 @Slf4j
