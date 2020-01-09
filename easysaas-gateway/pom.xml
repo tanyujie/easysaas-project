@@ -88,6 +88,16 @@
 		</dependency>
 
 		<!--elasticsearch -->
+				<!-- 切面 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+				<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 				<dependency>
 			<groupId>org.easymis.easysaas</groupId>
 			<artifactId>easysaas-common</artifactId>

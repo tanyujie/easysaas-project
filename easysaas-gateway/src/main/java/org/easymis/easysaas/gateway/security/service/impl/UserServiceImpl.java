@@ -15,6 +15,11 @@ import org.easymis.easysaas.common.sms.AliyunCommonRpc;
 import org.easymis.easysaas.common.sms.AliyunSmsResult;
 import org.easymis.easysaas.common.sms.SmsUtil;
 import org.easymis.easysaas.common.utils.NameBuilder;
+import org.easymis.easysaas.gateway.config.datasource.DataSourceType;
+import org.easymis.easysaas.gateway.config.datasource.EasymisDataSource;
+import org.easymis.easysaas.gateway.entitys.dto.SendSms;
+import org.easymis.easysaas.gateway.entitys.mybatis.mapper.SendSmsMapper;
+import org.easymis.easysaas.gateway.entitys.mybatis.mapper.UserMapper;
 import org.easymis.easysaas.gateway.security.check.LoginWrongChecker;
 import org.easymis.easysaas.gateway.security.service.UserService;
 import org.easymis.easysaas.gateway.security.userdetail.User;
@@ -24,11 +29,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import com.netflix.servo.annotations.DataSourceType;
-import com.sharepanzer.companydata.config.datasource.EasymisDataSource;
-import com.sharepanzer.companydata.core.entitys.mybatis.dto.SendSms;
-import com.sharepanzer.companydata.core.entitys.mybatis.mapper.SendSmsMapper;
-import com.sharepanzer.companydata.core.web.mapper.UserMapper;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired

@@ -2,14 +2,13 @@ package org.easymis.easysaas.gateway.security.service.impl;
 
 import java.util.List;
 
+import org.easymis.easysaas.gateway.config.datasource.DataSourceType;
+import org.easymis.easysaas.gateway.config.datasource.EasymisDataSource;
+import org.easymis.easysaas.gateway.entitys.mybatis.mapper.RoleMapper;
+import org.easymis.easysaas.gateway.security.service.RoleService;
+import org.easymis.easysaas.gateway.security.userdetail.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.sharepanzer.companydata.config.datasource.DataSourceType;
-import com.sharepanzer.companydata.config.datasource.EasymisDataSource;
-import com.sharepanzer.companydata.core.security.service.RoleService;
-import com.sharepanzer.companydata.core.security.userdetail.Role;
-import com.sharepanzer.companydata.core.web.mapper.RoleMapper;
 
 @Service
 public class RoleServiceImpl implements RoleService{
