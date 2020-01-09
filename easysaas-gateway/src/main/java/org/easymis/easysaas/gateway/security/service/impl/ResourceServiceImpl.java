@@ -2,12 +2,11 @@ package org.easymis.easysaas.gateway.security.service.impl;
 
 import org.easymis.easysaas.gateway.config.datasource.DataSourceType;
 import org.easymis.easysaas.gateway.config.datasource.EasymisDataSource;
+import org.easymis.easysaas.gateway.entitys.mybatis.mapper.ResourceMapper;
 import org.easymis.easysaas.gateway.security.service.ResourceService;
 import org.easymis.easysaas.gateway.security.userdetail.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.sharepanzer.companydata.core.web.mapper.ResourceMapper;
 @Service
 public class ResourceServiceImpl implements ResourceService {
 	@Autowired
