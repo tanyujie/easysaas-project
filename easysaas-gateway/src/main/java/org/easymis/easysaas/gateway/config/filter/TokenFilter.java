@@ -1,4 +1,4 @@
-package org.easymis.easysaas.gateway.security.filer;
+package org.easymis.easysaas.gateway.config.filter;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
