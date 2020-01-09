@@ -7,12 +7,11 @@ import java.util.Random;
 
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.NotBlank;
-
-import com.sharepanzer.companydata.common.contant.RegexConstant;
-import com.sharepanzer.companydata.common.result.RestResult;
-import com.sharepanzer.companydata.common.utils.MD5Util;
+import org.easymis.easysaas.common.contant.RegexConstant;
+import org.easymis.easysaas.common.result.RestResult;
+import org.easymis.easysaas.common.utils.MD5Util;
 import org.easymis.easysaas.gateway.security.userdetail.User;
+import org.hibernate.validator.constraints.NotBlank;
 
 
 public interface UserService {

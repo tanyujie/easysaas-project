@@ -88,6 +88,11 @@
 		</dependency>
 
 		<!--elasticsearch -->
+				<dependency>
+			<groupId>org.easymis.easysaas</groupId>
+			<artifactId>easysaas-common</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>

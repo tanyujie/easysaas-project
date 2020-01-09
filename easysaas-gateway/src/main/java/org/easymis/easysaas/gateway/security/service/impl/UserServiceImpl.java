@@ -8,26 +8,26 @@ import java.util.concurrent.TimeUnit;
 
 import javax.validation.constraints.Pattern;
 
+import org.easymis.easysaas.common.cache.RedisPrefixConstant;
+import org.easymis.easysaas.common.cache.RedisUtils;
+import org.easymis.easysaas.common.result.RestResult;
+import org.easymis.easysaas.common.sms.AliyunCommonRpc;
+import org.easymis.easysaas.common.sms.AliyunSmsResult;
+import org.easymis.easysaas.common.sms.SmsUtil;
+import org.easymis.easysaas.common.utils.NameBuilder;
+import org.easymis.easysaas.gateway.security.check.LoginWrongChecker;
+import org.easymis.easysaas.gateway.security.service.UserService;
+import org.easymis.easysaas.gateway.security.userdetail.User;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import com.sharepanzer.companydata.common.cache.RedisPrefixConstant;
-import com.sharepanzer.companydata.common.cache.RedisUtils;
-import com.sharepanzer.companydata.common.result.RestResult;
-import com.sharepanzer.companydata.common.sms.AliyunCommonRpc;
-import com.sharepanzer.companydata.common.sms.AliyunSmsResult;
-import com.sharepanzer.companydata.common.sms.SmsUtil;
-import com.sharepanzer.companydata.common.utils.NameBuilder;
-import com.sharepanzer.companydata.config.datasource.DataSourceType;
+import com.netflix.servo.annotations.DataSourceType;
 import com.sharepanzer.companydata.config.datasource.EasymisDataSource;
 import com.sharepanzer.companydata.core.entitys.mybatis.dto.SendSms;
 import com.sharepanzer.companydata.core.entitys.mybatis.mapper.SendSmsMapper;
-import com.sharepanzer.companydata.core.security.check.LoginWrongChecker;
-import com.sharepanzer.companydata.core.security.service.UserService;
-import com.sharepanzer.companydata.core.security.userdetail.User;
 import com.sharepanzer.companydata.core.web.mapper.UserMapper;
 @Service
 public class UserServiceImpl implements UserService {

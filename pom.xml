@@ -65,12 +65,12 @@
 		</dependencies>
 	</dependencyManagement>
 	<modules>
-		<module>easysaas-common</module>
- 		<module>easysaas-core</module>
+ 		<module>easysaas-common</module>
+  		<module>easysaas-core</module>
  		<module>easysaas-eureka</module>
  		<module>easysaas-gateway</module>
-		<module>easysaas-crm</module>
-		<module>easysaas-mobile</module>
+<!-- 		<module>easysaas-crm</module>
+		<module>easysaas-mobile</module> -->
 	</modules>
 
 	 <build>

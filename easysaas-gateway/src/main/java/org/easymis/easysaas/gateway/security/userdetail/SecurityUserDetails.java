@@ -7,7 +7,6 @@ import java.util.Objects;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sharepanzer.companydata.core.security.userdetail.ExpireDateGrantedAuthority;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
