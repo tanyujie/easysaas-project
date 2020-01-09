@@ -1,7 +1,7 @@
 package org.easymis.easysaas.gateway.security.userdetail;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -83,12 +83,12 @@ public class User implements Serializable {
     /**
      * 修改时间
      */
-    private LocalDateTime modifyTime;
+    private Date modifyTime;
 
     /**
      * 创建时间
      */
-    private LocalDateTime createTime;
+    private Date createTime;
 
 
     private Boolean enabled;

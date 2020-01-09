@@ -1,5 +1,5 @@
 package org.easymis.easysaas.gateway.security.filer;
-
+/*
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,14 +10,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LoginInterceptor implements HandlerInterceptor{
 	private static String[] IGNORE_URI = {"/login/login"};
-	/**
+	*//**
 	 * 进入controller层之前拦截请求
 	 * @param httpServletRequest
 	 * @param httpServletResponse
 	 * @param o
 	 * @return
 	 * @throws Exception
-	 */
+	 *//*
 	@Override
 	public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
 		System.out.println("---------------------开始进入请求地址拦截----------------------------");
@@ -62,3 +62,4 @@ public class LoginInterceptor implements HandlerInterceptor{
 	}
 
 }
+*/

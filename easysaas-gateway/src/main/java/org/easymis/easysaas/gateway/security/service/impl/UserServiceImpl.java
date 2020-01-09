@@ -1,6 +1,6 @@
 package org.easymis.easysaas.gateway.security.service.impl;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
             bean.setCode(code);
             bean.setMobile(phoneNumber);
             bean.setSendType(1);
-            bean.setSendTime(LocalDateTime.now());
+            bean.setSendTime(new Date());
             sendSmsMapper.save(bean);
         }
 
@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService {
             bean.setCode(code);
             bean.setMobile(phoneNumber);
             bean.setSendType(2);
-            bean.setSendTime(LocalDateTime.now());
+            bean.setSendTime(new Date());
             sendSmsMapper.save(bean);
         }
         return RestResult.buildSuccess();
@@ -107,7 +107,7 @@ public class UserServiceImpl implements UserService {
             bean.setCode(code);
             bean.setMobile(phoneNumber);
             bean.setSendType(3);
-            bean.setSendTime(LocalDateTime.now());
+            bean.setSendTime(new Date());
             sendSmsMapper.save(bean);
         }
         return RestResult.buildSuccess();
@@ -137,7 +137,7 @@ public class UserServiceImpl implements UserService {
 		User user = new User();
         user.setPhoneNumber(phoneNumber);
         //user.setPassword(Optional.ofNullable(password).orElse(generatePassword()));
-        user.setCreateTime(LocalDateTime.now());
+        user.setCreateTime(new Date());
         user.setSex("男");  //默认男
         user.setUserNo(generateUserNo(phoneNumber));
         //user.setName(generateUsername());
@@ -205,7 +205,7 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setPhoneNumber(phoneNumber);
         user.setPassword(Optional.ofNullable(password).orElse(generatePassword()));
-        user.setCreateTime(LocalDateTime.now());
+        user.setCreateTime(new Date());
         user.setSex("男");  //默认男
         user.setUserNo(generateUserNo(phoneNumber));
         user.setName(generateUsername());

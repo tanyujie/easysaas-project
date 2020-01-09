@@ -2,6 +2,14 @@ package org.easymis.easysaas.gateway.config;
 
 
 import org.easymis.easysaas.gateway.security.access.AccessDecisionManagerImpl;
+import org.easymis.easysaas.gateway.security.filer.JwtAuthenticationTokenFilter;
+import org.easymis.easysaas.gateway.security.filer.JwtPasswordAuthenticationFilter;
+import org.easymis.easysaas.gateway.security.handler.AnonyAuthenticationEntryPoint;
+import org.easymis.easysaas.gateway.security.handler.JwtAccessDeniedHandler;
+import org.easymis.easysaas.gateway.security.handler.JwtAuthenticationFailureHandler;
+import org.easymis.easysaas.gateway.security.handler.JwtAuthenticationSuccessHandler;
+import org.easymis.easysaas.gateway.security.handler.LogoutSuccessHandler;
+import org.easymis.easysaas.gateway.security.provider.JwtAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,15 +27,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import mobile.sharepanzer.companydata.security.filer.JwtAuthenticationTokenFilter;
-import mobile.sharepanzer.companydata.security.filer.JwtPasswordAuthenticationFilter;
-import mobile.sharepanzer.companydata.security.handler.AnonyAuthenticationEntryPoint;
-import mobile.sharepanzer.companydata.security.handler.JwtAccessDeniedHandler;
-import mobile.sharepanzer.companydata.security.handler.JwtAuthenticationFailureHandler;
-import mobile.sharepanzer.companydata.security.handler.JwtAuthenticationSuccessHandler;
-import mobile.sharepanzer.companydata.security.handler.LogoutSuccessHandler;
-import mobile.sharepanzer.companydata.security.provider.JwtAuthenticationProvider;
 
 
 

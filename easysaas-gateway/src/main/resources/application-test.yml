@@ -3,8 +3,17 @@ server:
 spring:
   application:
     name: gateway
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
   jmx:
     enabled: false
+  redis:
+    #数据库索引（默认为0）
+    database: 10
+    host: 172.17.255.60
+    password:
+    port: 6379
+    timeout: 3s
   cloud:
     gateway:
       discovery:
@@ -65,3 +74,14 @@ datasource:
     username: prod_gde_user
     password: vBVI0@4PGY
     driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+    mapper-locations: classpath*:org/easymis/easysaas/gateway/entitys/mybatis/mapper/*Mapper.xml
+    type-aliases-package: org.easymis.easysaas.gateway.modules.entitys.mybatis.dto
+    configuration:
+        mapUnderscoreToCamelCase: true
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    pageSizeZero: true
+    params: count=countSql

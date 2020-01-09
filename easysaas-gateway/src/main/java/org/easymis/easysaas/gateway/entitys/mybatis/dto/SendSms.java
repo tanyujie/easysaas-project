@@ -1,6 +1,6 @@
 package org.easymis.easysaas.gateway.entitys.mybatis.dto;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 public class SendSms {
 	private String id;
 	private String mobile;
-	private LocalDateTime sendTime;
+	private Date sendTime;
 	private Integer sendType;
 	private String code;
 
