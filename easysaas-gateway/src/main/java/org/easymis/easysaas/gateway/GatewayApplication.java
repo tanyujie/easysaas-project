@@ -19,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.reactive.config.EnableWebFlux;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -30,6 +31,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @EnableTransactionManagement(order = 2)
 @MapperScan({"*.easymis.easysaas.gateway.**.mapper"})
 @EnableWebSecurity
+@EnableWebFlux
 @ComponentScan({"*.easymis.easysaas.gateway.*"})
 public class GatewayApplication {
 	public static void main(String[] args) {
