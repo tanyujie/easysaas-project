@@ -58,7 +58,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>mobile-v3</finalName>
+		<finalName>easysaas-eureka</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
