@@ -50,3 +50,18 @@ hystrix:
           thread:
             timeoutInMilliseconds: 3000
   shareSecurityContext: true
+##多数据源
+datasource:
+  #主库
+  master:
+    jdbcUrl: jdbc:mysql://172.17.255.60:3306/companydata_console_test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
+    username: test_gde_user
+    password: nogiDHaiY3
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #从库
+  slave:
+    #并非url而是jdbcUrl(因为这个在获取数据源时一直报错，看了DataSource的属性才知道是jdbcUrl)
+    jdbcUrl: jdbc:mysql://172.17.255.57:3306/prism1?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
+    username: prod_gde_user
+    password: vBVI0@4PGY
+    driver-class-name: com.mysql.cj.jdbc.Driver
