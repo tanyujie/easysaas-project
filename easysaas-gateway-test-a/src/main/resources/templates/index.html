@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>http://www.xinyues.com</title>
+<link rel="stylesheet" type="text/css"
+	href="/xinyue-server-a/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="/xinyue-server-a/easyui/themes/icon.css">
+<script src="/xinyue-server-a/js/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/xinyue-server-a/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript"
+	src="/xinyue-server-a/easyui/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body style="background: #f2f4f8;">
+
+	<div align="center">
+
+		<h2>
+			欢迎，更多技术文章，点击：<a href="http://www.xinyues.com">http://www.xinyues.com</a>
+		</h2>
+		<hr>
+		<table style="border-collapse: separate; border-spacing: 0px 10px;">
+			<tr>
+				<td><span id="errorTips" style="color: red"></span></td>
+			</tr>
+			<tr>
+				<td>账号： <input class="easyui-textbox" prompt="Username"
+					id="username" iconWidth="28">
+				</td>
+			</tr>
+
+			<tr>
+				<td>密码： <input class="easyui-passwordbox" prompt="Password"
+					id="password" iconWidth="28">
+				</td>
+			</tr>
+			<tr align="center">
+				<td><a href="javascript:void(0)" class="easyui-linkbutton"
+					onclick="submitForm()">--登陆--</a></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+<script type="text/javascript">
+	function postAjax(url, json, success) {
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : JSON.stringify(json),
+			dataType : "json",
+			contentType : "application/json",
+			success : function(data) {
+				if (data.code == 0) {
+					success(data);
+				} else {
+					alert("服务器异常,请联系开发者");
+				}
+			},
+			error : function(data) {
+				alert(url + "请求错误：" + JSON.stringify(data));
+			}
+		});
+	}
+	function submitForm() {
+		$("#errorTips").html("");
+		var username = $("#username").val();
+		var password = $("#password").val();
+		var url = "/xinyue-server-a/account/login";
+		var json = {
+			"username" : username,
+			"password" : password
+		};
+		postAjax(
+				url,
+				json,
+				function(data) {
+					if (data.code == 0) {
+						var authUrl = "/xinyue-server-a/account/authen";
+						var param = {};
+						postAjax(
+								authUrl,
+								param,
+								function(data) {
+									if (data.code == 0) {
+										window.location.href = "/xinyue-server-a/account/main";
+									} else {
+										$("#errorTips").html(data.msg);
+									}
+								});
+					} else {
+						$("#errorTips").html(data.msg);
+					}
+				});
+	}
+</script>
+</html>

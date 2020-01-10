@@ -1,0 +1,97 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: xinyue-server-a
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    encoding: UTF-8
+    cache: false
+  resources:
+    static-locations: classpath:statics/
+  http:
+    encoding:
+      charset: UTF-8
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+  jmx:
+    enabled: false
+  redis:
+    #数据库索引（默认为0）
+    database: 10
+    host: 172.17.255.60
+    password:
+    port: 6379
+    timeout: 3s
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+      - id: zt-nlp-workflow
+        uri: lb://ZT-NLP-WORKFLOW
+        predicates:
+        - Path=/workflow/**
+      - id: workflow_route
+        uri: http://www.163.com/
+        predicates:
+        - Path=/163
+  zipkin:
+    base-url: http://192.168.230.1:9987/
+  #这里把抽样百分比设置为1，即信息全部采集
+  sleuth:
+    sampler:
+      probability: 1.0
+eureka:
+  instance:
+    prefer-ip-address: true 
+  client:
+    register-with-eureka: true 
+    fetch-registry: true 
+    service-url:
+      defaultZone: http://easysass:easysass123@localhost:8761/eureka #Eureka服务位置
+filters:
+# 熔断降级配置
+- name: Hystrix
+  args:
+    name : default
+    fallbackUri: 'forward:/defaultfallback'
+# hystrix 信号量隔离，3秒后自动超时
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 3000
+  shareSecurityContext: true
+##多数据源
+datasource:
+  #主库
+  master:
+    jdbcUrl: jdbc:mysql://172.17.255.60:3306/companydata_console_test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
+    username: test_gde_user
+    password: nogiDHaiY3
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #从库
+  slave:
+    #并非url而是jdbcUrl(因为这个在获取数据源时一直报错，看了DataSource的属性才知道是jdbcUrl)
+    jdbcUrl: jdbc:mysql://172.17.255.57:3306/prism1?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
+    username: prod_gde_user
+    password: vBVI0@4PGY
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+    mapper-locations: classpath*:org/easymis/easysaas/gateway/entitys/mybatis/mapper/*Mapper.xml
+    type-aliases-package: org.easymis.easysaas.gateway.modules.entitys.mybatis.dto
+    configuration:
+        mapUnderscoreToCamelCase: true
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    pageSizeZero: true
+    params: count=countSql
