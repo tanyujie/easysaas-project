@@ -1,3 +1,44 @@
+logging:
+  config: classpath:log4j2.xml
+server:
+  port: 8090
+  servlet:
+    session:
+      timeout: 604800 # session有效期7天
 spring:
-  profiles:
-    active: test
+  application:
+    name: xinyue-server-a
+  freemarker:
+    allowRequestOverride: false
+    allowSessionOverride: false
+    cache: true
+    checkTemplateLocation: true
+    contentType: text/html
+    exposeRequestAttributes: false
+    exposeSessionAttributes: false
+    exposeSpringMacroHelpers: false
+    suffix: .html
+    templateEncoding: UTF-8
+    #表示所有的模板文件都放在该目录下
+    templateLoaderPath: classpath:/templates/ 
+    locale: zh_CN
+    date_format: yyyy-MM-dd
+    time_format: HH:mm:ss
+    datetime_format: yyyy-MM-dd HH:mm:ss
+    request-context-attribute: request
+    recognize_standard_file_extensions: true
+  resources:
+    static-locations: classpath:statics/
+  http:
+    encoding:
+      charset: UTF-8
+eureka:
+  instance:
+    prefer-ip-address: true 
+  client:
+    register-with-eureka: true 
+    fetch-registry: true 
+    service-url:
+      defaultZone: http://easysass:easysass123@localhost:8761/eureka #Eureka服务位置
+
+      
