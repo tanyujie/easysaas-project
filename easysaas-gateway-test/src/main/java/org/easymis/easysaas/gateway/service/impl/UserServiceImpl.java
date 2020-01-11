@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.easymis.easysaas.gateway.config.datasource.DataSourceType;
 import org.easymis.easysaas.gateway.config.datasource.EasymisDataSource;
+import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
 import org.easymis.easysaas.gateway.entitys.mybatis.mapper.UserMapper;
 import org.easymis.easysaas.gateway.entitys.vo.Role;
 import org.easymis.easysaas.gateway.entitys.vo.User;
@@ -36,7 +37,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@EasymisDataSource(DataSourceType.Master)
-	public User findByMobile(String mobile) {
+	public Member findByMobile(String mobile) {
 		return mapper.findByPhoneNumber(mobile);
 	}
 }

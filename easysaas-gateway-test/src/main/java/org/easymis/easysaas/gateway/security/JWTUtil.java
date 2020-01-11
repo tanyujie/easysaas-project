@@ -5,13 +5,14 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-
-import org.easymis.easysaas.gateway.entitys.vo.User;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 /**
  *
@@ -45,10 +46,10 @@ public class JWTUtil implements Serializable {
 		return expiration.before(new Date());
 	}
 	
-	public String generateToken(User user) {
+	public String generateToken(Member user) {
 		Map<String, Object> claims = new HashMap<>();
 		claims.put("role", user.getRoles());
-		return doGenerateToken(claims, user.getUsername());
+		return doGenerateToken(claims, user.getPhoneNumber());
 	}
 
 	private String doGenerateToken(Map<String, Object> claims, String username) {
@@ -68,5 +69,9 @@ public class JWTUtil implements Serializable {
 	public Boolean validateToken(String token) {
 		return !isTokenExpired(token);
 	}
-
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		JWTUtil jwtUtil = new JWTUtil();
+		
+	}
 }

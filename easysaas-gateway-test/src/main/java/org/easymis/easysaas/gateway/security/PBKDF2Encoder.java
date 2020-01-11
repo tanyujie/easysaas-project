@@ -46,5 +46,10 @@ public class PBKDF2Encoder implements PasswordEncoder{
 	public boolean matches(CharSequence cs, String string) {
 		return encode(cs).equals(string);
 	}
-	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		PBKDF2Encoder pBKDF2Encoder = new PBKDF2Encoder();
+		System.out.println(pBKDF2Encoder.encode("123456"));
+		
+	}
 }

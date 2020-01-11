@@ -1,9 +1,9 @@
 package org.easymis.easysaas.gateway.controller;
 
 import org.easymis.easysaas.common.result.RestResult;
+import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
 import org.easymis.easysaas.gateway.entitys.vo.AuthRequest;
 import org.easymis.easysaas.gateway.entitys.vo.AuthResponse;
-import org.easymis.easysaas.gateway.entitys.vo.User;
 import org.easymis.easysaas.gateway.security.JWTUtil;
 import org.easymis.easysaas.gateway.security.PBKDF2Encoder;
 import org.easymis.easysaas.gateway.service.UserService;
@@ -34,8 +34,9 @@ public class LoginController {
     //
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public RestResult login(AuthRequest ar) {
-		User userDetails=userRepository.findByMobile(ar.getUsername());
+		Member userDetails=userRepository.findByMobile(ar.getUsername());
 		if(userDetails!=null) {
+			System.out.println(passwordEncoder.encode(ar.getPassword()));
 			if (passwordEncoder.encode(ar.getPassword()).equals(userDetails.getPassword())) {
 				return RestResult.buildSuccess(new AuthResponse(jwtUtil.generateToken(userDetails),ar.getUsername()));
 			} else {

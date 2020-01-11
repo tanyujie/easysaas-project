@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.easymis.easysaas.gateway.entitys.vo.User;
+import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
 
 public interface UserMapper {
 	 @Select("select * from easymis_Resource t WHERE t.org_id = #{orgId}")  
@@ -80,13 +80,13 @@ public interface UserMapper {
 	 @Result(property = "lockStatus", column = "lock_status"),
 	 @Result(property = "ipGateway", column = "ip_gateway")
 	 }) 
-	 User findById(@Param("id") String id);
+	 Member findById(@Param("id") String id);
 
     @Select("SELECT * FROM member WHERE name = #{name}")
     @Results({
             @Result(property = "id", column = "id"),
-            @Result(property = "username", column = "name"),
-/*            @Result(property = "roles", column = "id", many = @Many(select = "com.zingtech.nlp.admin.mapper.ResourceRoleMapper.findByUserId")),*/
+            @Result(property = "Membername", column = "name"),
+/*            @Result(property = "roles", column = "id", many = @Many(select = "com.zingtech.nlp.admin.mapper.ResourceRoleMapper.findByMemberId")),*/
             @Result(property = "account", column = "account"),
             @Result(property = "password", column = "password"),
             @Result(property = "email", column = "email"),
@@ -98,12 +98,12 @@ public interface UserMapper {
             @Result(property = "sex", column = "sex"),
             @Result(property = "status", column = "status")
     })
-    User findByUsername(@Param("name") String name);
+    Member findByMembername(@Param("name") String name);
 
-    @Insert("insert into user(id, user_no, sex, age, company_name, department, position, password, head_url, phone_number, email, modify_time, create_time, name, enabled)"
+    @Insert("insert into Member(id, Member_no, sex, age, company_name, department, position, password, head_url, phone_number, email, modify_time, create_time, name, enabled)"
     		+ "values"
-    		+ "(#{id},#{userNo},#{sex},#{age},#{companyName},#{department},#{position},#{password},#{headUrl},#{phoneNumber},#{email},#{modifyTime},#{createTime},#{name},#{enabled})")  
-    int insertByBean(User bean);
+    		+ "(#{id},#{MemberNo},#{sex},#{age},#{companyName},#{department},#{position},#{password},#{headUrl},#{phoneNumber},#{email},#{modifyTime},#{createTime},#{name},#{enabled})")  
+    int insertByBean(Member bean);
 
     @Insert("<script> " + "insert into friend(" +
             "id, member_id,friend_id) " + "VALUES" +
@@ -111,25 +111,25 @@ public interface UserMapper {
             "(#{item.id},#{item.memberId},#{item.friendId})" +
             "</foreach>" +
             " </script>")
-    int insertByBeanList(@Param(value="itemList") List<User> itemList);
+    int insertByBeanList(@Param(value="itemList") List<Member> itemList);
     
-    @Insert("INSERT INTO member_role(id, user_id,role_id) " +
-            "VALUES(#{id}, #{userId}, #{roleId})")
-    int intIntoUserRole(@Param("id") String id,@Param("userId") String userId,@Param("roleId") String roleId);
+    @Insert("INSERT INTO member_role(id, Member_id,role_id) " +
+            "VALUES(#{id}, #{MemberId}, #{roleId})")
+    int intIntoMemberRole(@Param("id") String id,@Param("MemberId") String MemberId,@Param("roleId") String roleId);
 
-    @Update("UPDATE member set name=#{username},account=#{account},email=#{email},mobile=#{mobile},wx=#{wx},address=#{address},photo=#{photo},sex=#{sex} WHERE id = #{id}")
-    void update(User bean);
+    @Update("UPDATE member set name=#{Membername},account=#{account},email=#{email},mobile=#{mobile},wx=#{wx},address=#{address},photo=#{photo},sex=#{sex} WHERE id = #{id}")
+    void update(Member bean);
 
     @Delete("DELETE FROM member WHERE id = #{id}")
     void delete(String id);
 
     //删除用户和角色关系表里的数据
-    @Delete("DELETE FROM member_role WHERE user_id = #{userId}")
-    void deleteUserAndRoleByUserId(String userId);
+    @Delete("DELETE FROM member_role WHERE Member_id = #{MemberId}")
+    void deleteMemberAndRoleByMemberId(String MemberId);
 
     @Results({
             @Result(property = "id", column = "id"),
-            @Result(property = "username", column = "name"),
+            @Result(property = "Membername", column = "name"),
             @Result(property = "account", column = "account"),
             @Result(property = "password", column = "password"),
             @Result(property = "email", column = "email"),
@@ -149,8 +149,8 @@ public interface UserMapper {
             "            <if test=\"id != null and id != ''\">\n" +
             "                and id = #{id}\n" +
             "            </if>\n" +
-            "            <if test=\"username != null and username != ''\">\n" +
-            "                and name = #{username}\n" +
+            "            <if test=\"Membername != null and Membername != ''\">\n" +
+            "                and name = #{Membername}\n" +
             "            </if>\n" +
             "            <if test=\"account != null and account != ''\">\n" +
             "                and account = #{account}\n" +
@@ -160,15 +160,15 @@ public interface UserMapper {
             "            </if>\n" +
             "        </where>" +
             "</script>")
-    List<User> findAll();
+    List<Member> findAll();
 
-    @Update("UPDATE user set password=#{password} WHERE id = #{id}")
-    void updatePassword(User bean);
+    @Update("UPDATE Member set password=#{password} WHERE id = #{id}")
+    void updatePassword(Member bean);
 
     @Results({
             @Result(property = "id", column = "id"),
-            @Result(property = "username", column = "name"),
-            @Result(property = "roles", column = "id", many = @Many(select = "com.zingtech.nlp.admin.mapper.ResourceRoleMapper.findByUserId")),
+            @Result(property = "Membername", column = "name"),
+            @Result(property = "roles", column = "id", many = @Many(select = "com.zingtech.nlp.admin.mapper.ResourceRoleMapper.findByMemberId")),
             @Result(property = "account", column = "account"),
             @Result(property = "password", column = "password"),
             @Result(property = "email", column = "email"),
@@ -181,27 +181,27 @@ public interface UserMapper {
             @Result(property = "status", column = "status")
     })
 	@Select("<script>" + "SELECT * FROM easymis_Resource " + "</script>")
-    List<User> findByPage(User vo);
+    List<Member> findByPage(Member vo);
 
-	@Select("<script>" + "SELECT * FROM user WHERE phone_number=#{phoneNumber}" + "</script>")
-	User findByPhoneNumber(@Param("phoneNumber") String phoneNumber);
+	@Select("<script>" + "SELECT * FROM Member WHERE phone_number=#{phoneNumber}" + "</script>")
+	Member findByPhoneNumber(@Param("phoneNumber") String phoneNumber);
 	
-	@Select("<script>" + "SELECT * FROM user WHERE email = #{email}" + "</script>")
+	@Select("<script>" + "SELECT * FROM Member WHERE email = #{email}" + "</script>")
     @Results({
         @Result(property = "id", column = "id"),
-        @Result(property = "userNo", column = "user_no"),
+        @Result(property = "MemberNo", column = "Member_no"),
         @Result(property = "phoneNumber", column = "phone_number"),
         @Result(property = "enabled", column = "enabled")
 })
-	User findByEmail(String email);
-	@Select("<script>" + "SELECT * FROM user WHERE user_no = #{userNo}" + "</script>")
+	Member findByEmail(String email);
+	@Select("<script>" + "SELECT * FROM Member WHERE Member_no = #{MemberNo}" + "</script>")
     @Results({
         @Result(property = "id", column = "id"),
-/*        @Result(property = "userNo", column = "user_no"),
+/*        @Result(property = "MemberNo", column = "Member_no"),
         @Result(property = "phoneNumber", column = "phone_number"),*/
         @Result(property = "password", column = "password"),
         @Result(property = "enabled", column = "enabled")
 })
-	User findByUserno(String userNo);
+	Member findByMemberno(String MemberNo);
  
 }
