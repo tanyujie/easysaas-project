@@ -1,8 +1,10 @@
 package org.easymis.easysaas.gateway.security;
 
-import io.jsonwebtoken.Claims;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-import org.easymis.easysaas.gateway.security.model.Role;
+import org.easymis.easysaas.gateway.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -10,10 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
+import io.jsonwebtoken.Claims;
 import reactor.core.publisher.Mono;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  *

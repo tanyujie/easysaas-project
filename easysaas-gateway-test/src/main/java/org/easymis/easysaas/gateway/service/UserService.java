@@ -2,8 +2,8 @@ package org.easymis.easysaas.gateway.service;
 
 import java.util.Arrays;
 
+import org.easymis.easysaas.gateway.model.Role;
 import org.easymis.easysaas.gateway.model.User;
-import org.easymis.easysaas.gateway.security.model.Role;
 import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Mono;
