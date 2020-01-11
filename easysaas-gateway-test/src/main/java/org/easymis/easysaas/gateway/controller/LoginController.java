@@ -1,8 +1,8 @@
 package org.easymis.easysaas.gateway.controller;
 
+import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.gateway.model.AuthRequest;
 import org.easymis.easysaas.gateway.model.AuthResponse;
-import org.easymis.easysaas.gateway.model.RestResult;
 import org.easymis.easysaas.gateway.model.User;
 import org.easymis.easysaas.gateway.security.JWTUtil;
 import org.easymis.easysaas.gateway.security.PBKDF2Encoder;
