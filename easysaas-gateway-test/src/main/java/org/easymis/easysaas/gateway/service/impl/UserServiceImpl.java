@@ -28,4 +28,12 @@ public class UserServiceImpl implements UserService {
 			return Mono.empty();
 		}
 	}
+
+	@Override
+	public User findByMobile(String mobile) {
+		if (mobile.equals(userUsername)) {
+			return user;
+		}
+		return admin;
+	}
 }
