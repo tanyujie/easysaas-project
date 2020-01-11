@@ -1,4 +1,4 @@
-package org.easymis.easysaas.gateway.model;
+package org.easymis.easysaas.gateway.entitys.vo;
 
 import java.util.Collection;
 import java.util.List;

@@ -1,5 +1,5 @@
 
-package org.easymis.easysaas.gateway.model;
+package org.easymis.easysaas.gateway.entitys.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

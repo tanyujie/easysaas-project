@@ -1,4 +1,4 @@
-package org.easymis.easysaas.gateway.model;
+package org.easymis.easysaas.gateway.entitys.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;

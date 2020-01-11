@@ -1,6 +1,6 @@
 package org.easymis.easysaas.gateway.service;
 
-import org.easymis.easysaas.gateway.model.User;
+import org.easymis.easysaas.gateway.entitys.vo.User;
 
 import reactor.core.publisher.Mono;
 
