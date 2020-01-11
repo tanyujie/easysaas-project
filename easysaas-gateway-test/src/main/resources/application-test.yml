@@ -1,8 +1,25 @@
 server:
-  port: 9001
+  port: 8090
+springbootwebfluxjjwt:
+  password:
+    encoder:
+      secret: mysecret
+      iteration: 33
+      keylength: 256
+  jjwt:
+    secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave512bitsKeySize
+    expiration: 28800
+management:
+  endpoints:
+    web:
+      base-path: /
 spring:
   application:
-    name: gateway
+    name: gateway-security
+  security:
+    user:
+      name: admin
+      password: 123456
   main:
     allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
   jmx:
@@ -21,6 +38,13 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
+      - id: gateway-security
+        uri: lb://gateway-security
+        predicates:
+        - Path=/api/**
+        filters:
+        - StripPrefix=1
+        
       - id: zt-nlp-workflow
         uri: lb://ZT-NLP-WORKFLOW
         predicates:
@@ -53,7 +77,7 @@ eureka:
     register-with-eureka: true 
     fetch-registry: true 
     service-url:
-      defaultZone: http://easysass:easysass123@localhost:8761/eureka #Eureka服务位置
+      defaultZone: http://easysass:easysass123@118.31.43.2:8761/eureka #Eureka服务位置
 filters:
 # 熔断降级配置
 - name: Hystrix
@@ -74,16 +98,16 @@ hystrix:
 datasource:
   #主库
   master:
-    jdbcUrl: jdbc:mysql://172.17.255.60:3306/companydata_console_test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
-    username: test_gde_user
-    password: nogiDHaiY3
+    jdbcUrl: jdbc:mysql://172.17.255.60:3306/easysaas?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   #从库
   slave:
     #并非url而是jdbcUrl(因为这个在获取数据源时一直报错，看了DataSource的属性才知道是jdbcUrl)
-    jdbcUrl: jdbc:mysql://172.17.255.57:3306/prism1?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
-    username: prod_gde_user
-    password: vBVI0@4PGY
+    jdbcUrl: jdbc:mysql://172.17.255.57:3306/easysaas?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis:
     mapper-locations: classpath*:org/easymis/easysaas/gateway/entitys/mybatis/mapper/*Mapper.xml

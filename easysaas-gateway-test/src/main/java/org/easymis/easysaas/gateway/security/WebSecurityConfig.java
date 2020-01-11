@@ -1,72 +1,90 @@
 package org.easymis.easysaas.gateway.security;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Iterator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.buffer.DataBuffer;
-import org.springframework.core.io.buffer.NettyDataBufferFactory;
-import org.springframework.security.authentication.ReactiveAuthenticationManager;
-import org.springframework.security.authentication.ReactiveAuthenticationManagerAdapter;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
+import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
-import org.springframework.security.web.server.authentication.AuthenticationWebFilter;
-import org.springframework.security.web.server.authentication.RedirectServerAuthenticationEntryPoint;
-import org.springframework.web.server.WebFilter;
-import com.alibaba.fastjson.JSONObject;
-import io.netty.buffer.UnpooledByteBufAllocator;
-import reactor.core.publisher.Flux;
 
+/**
+ *
+启用webflux登陆权限校验
 @EnableWebFluxSecurity
+ 启用@PreAuthorize注解配置，如果不加这个注解的话，即使方法中加了@PreAuthorize也不会生效
+
+ */
+@EnableWebFluxSecurity
+@EnableReactiveMethodSecurity
 public class WebSecurityConfig {
-    @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-        RedirectServerAuthenticationEntryPoint loginPoint = new RedirectServerAuthenticationEntryPoint("/xinyue-server-a/account/index");
-        http.authorizeExchange().pathMatchers("/xinyue-server-a/easyui/**","/xinyue-server-a/js/**","/xinyue-server-a/account/index","/xinyue-server-a/account/login").permitAll()    
-        .and().formLogin().loginPage("/xinyue-server-a/account/authen").authenticationEntryPoint(loginPoint)
-        .authenticationSuccessHandler((webFilterExchange,authentication)->{//认证成功之后返回给客户端的信息
-            JSONObject result = new JSONObject();
-            result.put("code", 0);
-            return webFilterExchange.getExchange().getResponse().writeWith(Flux.create(sink -> {
-                NettyDataBufferFactory nettyDataBufferFactory = new NettyDataBufferFactory(new UnpooledByteBufAllocator(false));
-                try {
-                    DataBuffer dataBuffer= nettyDataBufferFactory.wrap(result.toJSONString().getBytes("utf8"));
-                    sink.next(dataBuffer);
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-                sink.complete();
-            }));
-        })
-        .and().authorizeExchange().pathMatchers("/xinyue-server-a/account/main").access(new XinyueReactiveAuthorizationManager("Manager", "Dev"))
-        .and().authorizeExchange().anyExchange().authenticated()
-        .and().csrf().disable();
-        SecurityWebFilterChain chain = http.build();
-        Iterator<WebFilter>  weIterable = chain.getWebFilters().toIterable().iterator();
-        while(weIterable.hasNext()) {
-            WebFilter f = weIterable.next();
-            if(f instanceof AuthenticationWebFilter) {
-              AuthenticationWebFilter webFilter = (AuthenticationWebFilter) f;
-              //将自定义的AuthenticationConverter添加到过滤器中
-              webFilter.setServerAuthenticationConverter(new XinyueAuthenticationConverter());      
-            }
-        }
-        return chain;
-    }
-    @Bean
-    public ReactiveAuthenticationManager reactiveAuthenticationManager() {
-        return new ReactiveAuthenticationManagerAdapter((authentication)->{
-            if(authentication instanceof XinyueAccountAuthentication) {
-                XinyueAccountAuthentication gmAccountAuthentication = (XinyueAccountAuthentication) authentication;
-                if(gmAccountAuthentication.getPrincipal() != null) {
-                    authentication.setAuthenticated(true);
-                    return authentication;
-                } else {
-                    return authentication;
-                }
-            } else {
-                return authentication;
-            }
-        });
-    }
+    //security的鉴权排除列表
+    private static final String[] AUTH_WHITELIST = {
+    		"/login", 
+    		"/actuator/**",
+    		"/api/demo",
+            "/auth/login",
+            "/auth/logout",
+            "/health",
+            "/api/socket/**"
+    };
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private SecurityContextRepository securityContextRepository;
+	
+	
+	@Bean
+	public SecurityWebFilterChain securitygWebFilterChain(ServerHttpSecurity http,
+			final JwtAuthenticationWebFilter authenticationWebFilter,
+            final UnauthorizedAuthenticationEntryPoint entryPoint,
+            final AuthenticationAccessDeniedHandler accessDeniedHandler) throws Exception {
+		//管理系统启用登录
+/*		ServerHttpSecurity.FormLoginSpec formLoginSpec = http.formLogin();
+        formLoginSpec.authenticationSuccessHandler(createAuthenticationSuccessHandler())
+                .loginPage("/login")
+                .authenticationFailureHandler(createAuthenticationFailureHandler());*/
+		return http
+                .exceptionHandling()
+                .authenticationEntryPoint(entryPoint)
+                .accessDeniedHandler(accessDeniedHandler)
+                .and()
+                .addFilterAt(authenticationWebFilter, SecurityWebFiltersOrder.AUTHENTICATION)
+				.csrf().disable()
+				.formLogin().disable()
+				.httpBasic().disable()
+				.authenticationManager(authenticationManager)
+				.securityContextRepository(securityContextRepository)
+				.authorizeExchange()
+				.pathMatchers(HttpMethod.OPTIONS).permitAll()
+				.pathMatchers(AUTH_WHITELIST).permitAll()
+				.anyExchange().authenticated()
+				.and().build();
+		
+/*		return http
+				.exceptionHandling()
+				.authenticationEntryPoint((swe, e) -> {
+					return Mono.fromRunnable(() -> {
+						swe.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+					});
+				}).accessDeniedHandler((swe, e) -> {
+					return Mono.fromRunnable(() -> {
+						swe.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
+					});
+				}).and()
+				.csrf().disable()
+				.formLogin().disable()
+				.httpBasic().disable()
+				.authenticationManager(authenticationManager)
+				.securityContextRepository(securityContextRepository)
+				.authorizeExchange()
+				.pathMatchers(HttpMethod.OPTIONS).permitAll()
+				.pathMatchers(AUTH_WHITELIST).permitAll()
+				.anyExchange().authenticated()
+				.and().build();*/
+	}
+
+
 }
