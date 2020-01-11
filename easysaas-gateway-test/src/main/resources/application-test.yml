@@ -10,9 +10,18 @@ springbootwebfluxjjwt:
     secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave512bitsKeySize
     expiration: 28800
 management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
   endpoints:
     web:
       base-path: /
+      exposure:
+        include: "*"
+  endpoint:
+    bus-refresh:
+      enabled: true
 spring:
   application:
     name: gateway-security
@@ -120,3 +129,5 @@ pagehelper:
     supportMethodsArguments: true
     pageSizeZero: true
     params: count=countSql
+swagger2:
+  enable: true

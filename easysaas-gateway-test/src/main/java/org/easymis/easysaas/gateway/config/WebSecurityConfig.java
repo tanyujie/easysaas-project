@@ -1,5 +1,10 @@
-package org.easymis.easysaas.gateway.security;
+package org.easymis.easysaas.gateway.config;
 
+import org.easymis.easysaas.gateway.security.AuthenticationAccessDeniedHandler;
+import org.easymis.easysaas.gateway.security.AuthenticationManager;
+import org.easymis.easysaas.gateway.security.JwtAuthenticationWebFilter;
+import org.easymis.easysaas.gateway.security.SecurityContextRepository;
+import org.easymis.easysaas.gateway.security.UnauthorizedAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -27,6 +32,14 @@ public class WebSecurityConfig {
             "/auth/login",
             "/auth/logout",
             "/health",
+            "/swagger-ui.html",
+            "/v2/api-docs", // swagger api json
+            "/swagger-resources/configuration/ui", // 用来获取支持的动作
+            "/swagger-resources", // 用来获取api-docs的URI
+            "/swagger-resources/configuration/security", // 安全选项
+            "/swagger-resources/**",
+            "/webjars/**",
+            "/csrf",
             "/api/socket/**"
     };
 	@Autowired
