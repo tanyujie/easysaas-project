@@ -1,7 +1,6 @@
 package org.easymis.easysaas.member.service.impl;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
@@ -18,11 +17,10 @@ import org.easymis.easysaas.member.config.datasource.DataSourceType;
 import org.easymis.easysaas.member.config.datasource.EasymisDataSource;
 import org.easymis.easysaas.member.entitys.mybatis.dto.Member;
 import org.easymis.easysaas.member.entitys.mybatis.dto.SendSms;
+import org.easymis.easysaas.member.entitys.mybatis.mapper.SendSmsMapper;
 import org.easymis.easysaas.member.entitys.mybatis.mapper.UserMapper;
-import org.easymis.easysaas.member.entitys.vo.Role;
-import org.easymis.easysaas.member.entitys.vo.User;
 import org.easymis.easysaas.member.security.check.LoginWrongChecker;
-import org.easymis.easysaas.member.security.service.impl.SendSmsMapper;
+import org.easymis.easysaas.member.security.userdetail.User;
 import org.easymis.easysaas.member.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -39,26 +37,6 @@ public class UserServiceImpl implements UserService {
 	UserMapper mapper;
 	@Autowired
 	SendSmsMapper sendSmsMapper;
-	
-	@Autowired
-	UserMapper mapper;
-	//username:passwowrd -> 13551259347:123456
-	private final String userUsername = "13551259347";// password: 123456
-	private final User user = new User(userUsername, "fV8G3g4M7OgyajhE/BcbHL69JAZfDlU5+ihrxO5wBi0=", true, Arrays.asList(Role.ROLE_USER));
-	
-	//username:passwowrd -> admin:admin
-	private final String adminUsername = "admin";// password: admin
-	private final User admin = new User(adminUsername, "dQNjUIMorJb8Ubj2+wVGYp6eAeYkdekqAcnYp+aRq5w=", true, Arrays.asList(Role.ROLE_ADMIN));
-	
-	public Mono<User> findByUsername(String username) {
-		if (username.equals(userUsername)) {
-			return Mono.just(user);
-		} else if (username.equals(adminUsername)) {
-			return Mono.just(admin);
-		} else {
-			return Mono.empty();
-		}
-	}
 
 	@EasymisDataSource(DataSourceType.Master)
 	public Member findByMobile(String mobile) {
@@ -76,11 +54,11 @@ public class UserServiceImpl implements UserService {
             if (!Objects.equals(result.getCode(), "OK")) {
                 return RestResult.buildFail("发送短信过于频繁,请稍后再试");
             }
-            redisTemplate.opsForValue().set(RedisUtils.joinKey(RedisPrefixConstant.USER_REG_SMS, phoneNumber), code, 5, TimeUnit.MINUTES); 
+            redisTemplate.opsForValue().set(RedisUtils.joinKey(RedisPrefixConstant.USER_REG_SMS, mobile), code, 5, TimeUnit.MINUTES); 
             SendSms bean= new SendSms();
             bean.setId(UUID.randomUUID().toString());
             bean.setCode(code);
-            bean.setMobile(phoneNumber);
+            bean.setMobile(mobile);
             bean.setSendType(1);
             bean.setSendTime(LocalDateTime.now());
             sendSmsMapper.save(bean);
@@ -140,12 +118,12 @@ public class UserServiceImpl implements UserService {
 
 	@EasymisDataSource(DataSourceType.Master)
 	public RestResult quickRegister(String mobile, String code, String password) {
-        String cacheCode = (String) redisTemplate.opsForValue().get(RedisUtils.joinKey(RedisPrefixConstant.USER_REG_SMS, phoneNumber));
+        String cacheCode = (String) redisTemplate.opsForValue().get(RedisUtils.joinKey(RedisPrefixConstant.USER_REG_SMS, mobile));
         if (!Objects.equals(cacheCode, code)) {
             return RestResult.buildFail("验证码错误!");
         } else {
             RestResult restResult = RestResult.buildSuccess();
-            User user = generateUser(mobile, password);
+            Member user = generateUser(mobile, password);
             user.setEnabled(true);
             try {
             	mapper.insertByBean(user);
@@ -156,8 +134,8 @@ public class UserServiceImpl implements UserService {
         }
     }
 	@EasymisDataSource(DataSourceType.Master)
-	public User quicRegister(String phoneNumber) {
-		User user = new User();
+	public Member quickRegister(String phoneNumber) {
+		Member user = new Member();
         user.setPhoneNumber(phoneNumber);
         //user.setPassword(Optional.ofNullable(password).orElse(generatePassword()));
         user.setCreateTime(LocalDateTime.now());
@@ -171,7 +149,7 @@ public class UserServiceImpl implements UserService {
 	}
 	@EasymisDataSource(DataSourceType.Master)
 	public RestResult updatePasswordByOldPassword(String oldpwd, String newpwd, String phonwNumber) {
-        User user =findByPhoneNumber(phonwNumber);
+		Member user =findByMobile(phonwNumber);
         if (Objects.isNull(user)) {
             return RestResult.buildError("该号码未注册");
         }
@@ -188,7 +166,7 @@ public class UserServiceImpl implements UserService {
 
 	@EasymisDataSource(DataSourceType.Master)
 	public RestResult updatePasswordByShortMessage(String smscode, String newpwd, String phonwNumber) {
-        User user = mapper.findByPhoneNumber(phonwNumber);
+		Member user = mapper.findByPhoneNumber(phonwNumber);
         if (Objects.isNull(user)) {
             return RestResult.buildError("该号码未注册");
         }
@@ -204,22 +182,22 @@ public class UserServiceImpl implements UserService {
         }
     }
 	@EasymisDataSource(DataSourceType.Master)
-	public User findByEmail(String email) {
+	public Member findByEmail(String email) {
 		// TODO Auto-generated method stub
 		return mapper.findByEmail(email);
 	}
 	@EasymisDataSource(DataSourceType.Master)
-	public User findByUserno(String userno) {
+	public Member findByUserno(String userno) {
 		// TODO Auto-generated method stub
-		return mapper.findByUserno(userno);
+		return null;//mapper.findByUserno(userno);
 	}
 	@EasymisDataSource(DataSourceType.Master)
-	public void updatePassword(User user) {
+	public void updatePassword(Member user) {
 		// TODO Auto-generated method stub
 		mapper.updatePassword(user);
 	}
-    protected User generateUser(String phoneNumber, String password) {
-        User user = new User();
+    protected Member generateUser(String phoneNumber, String password) {
+    	Member user = new Member();
         user.setPhoneNumber(phoneNumber);
         user.setPassword(Optional.ofNullable(password).orElse(generatePassword()));
         user.setCreateTime(LocalDateTime.now());
@@ -228,5 +206,11 @@ public class UserServiceImpl implements UserService {
         user.setName(generateUsername());
         return user;
     }
+
+	@Override
+	public Mono<User> findByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
  
 }

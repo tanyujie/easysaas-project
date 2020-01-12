@@ -36,7 +36,7 @@ spring:
   redis:
     #数据库索引（默认为0）
     database: 10
-    host: 172.17.255.60
+    host: 127.0.0.1
     password:
     port: 6379
     timeout: 3s

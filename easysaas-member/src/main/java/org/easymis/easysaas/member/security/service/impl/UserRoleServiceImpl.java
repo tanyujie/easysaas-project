@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.easymis.easysaas.member.config.datasource.DataSourceType;
 import org.easymis.easysaas.member.config.datasource.EasymisDataSource;
+import org.easymis.easysaas.member.entitys.mybatis.mapper.UserRoleMapper;
 import org.easymis.easysaas.member.security.service.RoleService;
 import org.easymis.easysaas.member.security.service.UserRoleService;
 import org.easymis.easysaas.member.security.userdetail.ExpireDateGrantedAuthority;
@@ -14,8 +15,6 @@ import org.easymis.easysaas.member.security.userdetail.Role;
 import org.easymis.easysaas.member.security.userdetail.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.sharepanzer.companydata.core.web.mapper.UserRoleMapper;
 @Service
 public class UserRoleServiceImpl implements UserRoleService {
     @Autowired

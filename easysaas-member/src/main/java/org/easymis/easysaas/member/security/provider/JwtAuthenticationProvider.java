@@ -12,12 +12,12 @@ import org.apache.commons.logging.LogFactory;
 import org.easymis.easysaas.common.cache.RedisPrefixConstant;
 import org.easymis.easysaas.common.cache.RedisUtils;
 import org.easymis.easysaas.common.sms.AliyunGetMobile;
+import org.easymis.easysaas.member.entitys.mybatis.dto.Member;
 import org.easymis.easysaas.member.security.check.LoginWrongChecker;
-import org.easymis.easysaas.member.security.service.UserService;
 import org.easymis.easysaas.member.security.service.impl.JwtPasswordUserDetailService;
 import org.easymis.easysaas.member.security.userdetail.SecurityUserDetails;
-import org.easymis.easysaas.member.security.userdetail.User;
 import org.easymis.easysaas.member.security.utils.JwtTokenUtil;
+import org.easymis.easysaas.member.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -84,7 +84,7 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
             }
 
             if (Objects.isNull(userDetails.getUsername())) {
-                User user = userService.quickReg(username);
+                Member user = userService.quickRegister(username);
                 userDetails = new SecurityUserDetails().setUserNo(user.getUserNo()).setPhoneNumber(user.getPhoneNumber()).setUsername(username).setPassword(password).setId(user.getId());
             }
             checker.removeWarningRecord(redisTemplate,username);
@@ -110,7 +110,7 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
                     throw new BadCredentialsException("验证码错误");
                 } else {
                     if (Objects.isNull(userDetails.getUsername())) {
-                        User user = userService.quickReg(username);
+                        Member user = userService.quickRegister(username);
                         userDetails = new SecurityUserDetails().setUserNo(user.getUserNo()).setPhoneNumber(user.getPhoneNumber()).setUsername(username).setPassword(password).setId(user.getId());
                     }
                     checker.removeWarningRecord(redisTemplate,username);

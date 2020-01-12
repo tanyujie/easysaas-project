@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 import org.easymis.easysaas.common.contant.RegexConstant;
-import org.easymis.easysaas.member.entitys.vo.User;
+import org.easymis.easysaas.member.entitys.mybatis.dto.Member;
 import org.easymis.easysaas.member.security.service.UserRoleService;
 import org.easymis.easysaas.member.security.userdetail.ExpireDateGrantedAuthority;
 import org.easymis.easysaas.member.security.userdetail.SecurityUserDetails;
@@ -36,9 +36,9 @@ public class JwtPasswordUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    	User user=null;
+    	Member user=null;
         if (Pattern.matches(RegexConstant.regexp_phoneNumber, username)) {
-        	user = userService.findByPhoneNumber(username);
+        	user = userService.findByMobile(username);
         } else if (Pattern.matches(RegexConstant.regexp_email, username)) {
             user = userService.findByEmail(username);
         } else {
