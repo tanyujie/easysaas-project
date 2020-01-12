@@ -24,7 +24,7 @@ management:
       enabled: true
 spring:
   application:
-    name: gateway-security
+    name: easysaas-member
   security:
     user:
       name: admin
@@ -40,45 +40,7 @@ spring:
     password:
     port: 6379
     timeout: 3s
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-      routes:
-      - id: easysaas-member
-        uri: lb://easysaas-member
-        predicates:
-        - Path=/member/**
-        filters:
-        - StripPrefix=1
-      - id: gateway-security
-        uri: lb://gateway-security
-        predicates:
-        - Path=/api/**
-        filters:
-        - StripPrefix=1
-        
-      - id: zt-nlp-workflow
-        uri: lb://ZT-NLP-WORKFLOW
-        predicates:
-        - Path=/workflow/**
-      - id: workflow_route
-        uri: http://www.163.com/
-        predicates:
-        - Path=/163
-      - id: xinyue-sever-router
-        uri: lb://xinyue-server-a
-        order: -1  # 注意这个优先级的问题，因为对于此uri有多个路由器，如果优先级低，不会起作用
-        predicates:
-        - Path=/xinyue-server-a/account/login  # 拦截登陆请求
-        filters:
-        - Authentication   # 添加自定义的过滤器
-        - name: RewritePath
-          args:
-            regexp: /xinyue-server-a/(?<remaining>.*)
-            replacement: /${remaining}
+
   zipkin:
     base-url: http://192.168.230.1:9987/
   #这里把抽样百分比设置为1，即信息全部采集

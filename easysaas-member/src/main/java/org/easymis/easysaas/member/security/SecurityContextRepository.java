@@ -1,4 +1,4 @@
-package org.easymis.easysaas.gateway.security;
+package org.easymis.easysaas.member.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

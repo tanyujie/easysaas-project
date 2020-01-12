@@ -1,4 +1,4 @@
-package org.easymis.easysaas.gateway.security;
+package org.easymis.easysaas.member.security;
 
 import java.io.Serializable;
 import java.util.Base64;
@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
+import org.easymis.easysaas.member.entitys.mybatis.dto.Member;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

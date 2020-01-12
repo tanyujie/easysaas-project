@@ -1,10 +1,10 @@
-package org.easymis.easysaas.gateway.security;
+package org.easymis.easysaas.member.security;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.easymis.easysaas.gateway.entitys.vo.Role;
+import org.easymis.easysaas.member.entitys.vo.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

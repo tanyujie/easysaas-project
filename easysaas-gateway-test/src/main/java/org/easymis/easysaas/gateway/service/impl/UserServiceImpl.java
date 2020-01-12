@@ -18,9 +18,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserMapper mapper;
-	//username:passwowrd -> user:user
-	private final String userUsername = "user";// password: user
-	private final User user = new User(userUsername, "cBrlgyL2GI2GINuLUUwgojITuIufFycpLG4490dhGtY=", true, Arrays.asList(Role.ROLE_USER));
+	//username:passwowrd -> 13551259347:123456
+	private final String userUsername = "13551259347";// password: 123456
+	private final User user = new User(userUsername, "fV8G3g4M7OgyajhE/BcbHL69JAZfDlU5+ihrxO5wBi0=", true, Arrays.asList(Role.ROLE_USER));
 	
 	//username:passwowrd -> admin:admin
 	private final String adminUsername = "admin";// password: admin

@@ -1,4 +1,4 @@
-package org.easymis.easysaas.gateway.security;
+package org.easymis.easysaas.member.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.config.CorsRegistry;
