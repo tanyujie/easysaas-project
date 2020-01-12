@@ -12,11 +12,11 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
 @EnableEurekaServer
-public class EurekaApplication {
-	protected static final Logger logger = LoggerFactory.getLogger(EurekaApplication.class);
+public class MonitorApplication {
+	protected static final Logger logger = LoggerFactory.getLogger(MonitorApplication.class);
 
 	public static void main(String[] args) {
-		SpringApplication springApplication = new SpringApplication(EurekaApplication.class);
+		SpringApplication springApplication = new SpringApplication(MonitorApplication.class);
 		springApplication.setBanner(new EasymisEurekaManagerBanner());
 		springApplication.run(args);
 	}
