@@ -1,30 +1,38 @@
+
 server:
-  port: 8761
+  port: 8769
+spring:
+  application:
+    name: easysaasMonitor
+  security:
+    user:
+      name: "admin"
+      password: "admin"
 #服务过期时间配置,超过这个时间没有接收到心跳EurekaServer就会将这个实例剔除
 #注意，EurekaServer一定要设置eureka.server.eviction-interval-timer-in-ms否则这个配置无效，这个配置一般为服务刷新时间配置的三倍
 #默认90s
 #服务刷新时间配置，每隔这个时间会主动心跳一次
 #默认30s eureka.instance.lease-renewal-interval-in-seconds=5
 eureka:
-  server:
-    enable-self-preservation: true
-    eviction-interval-timer-in-ms: 4000
-  instance:
-    prefer-ip-address: true
-    hostname: localhost
-    lease-expiration-duration-in-seconds: 15
-    lease-renewal-interval-in-seconds: 5
   client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://easysass:easysass123@localhost:${server.port}/eureka/
-# 安全认证的配置  
-spring:
-  security:
-    basic:
-      enabled: true
-    user: 
-      name: easysass
-      password: easysass123
-#spring.cloud.config.discovery.enabled: true
+    registryFetchIntervalSeconds: 5
+    service-url:
+      defaultZone: http://easysass:easysass123@118.31.43.2:8761/eureka #Eureka服务位置
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS      
+spring.mail.host: smtp.163.com
+spring.mail.username: miles02
+spring.mail.password:
+spring.boot.admin.notify.mail.to: 124746406@qq.com
