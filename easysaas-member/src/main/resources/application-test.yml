@@ -75,6 +75,8 @@ eureka:
   client:
     register-with-eureka: true 
     fetch-registry: true 
+#eureka client刷新本地缓存时间，默认30s
+    registryFetchIntervalSeconds: 5
     service-url:
       defaultZone: http://easysass:easysass123@118.31.43.2:8761/eureka #Eureka服务位置
 filters:
