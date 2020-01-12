@@ -39,9 +39,9 @@ public class RegisterController {
     
     
     @ApiOperation("快速注册 ,发送验证码")
-    @PostMapping("sendSmsCode")
+    @PostMapping("/sendVerifyCode.do")
     @ApiImplicitParams({
-        @ApiImplicitParam(name = "phoneNumber", value = "手机号码", dataType = "string", required = true),
+        @ApiImplicitParam(name = "mobile", value = "手机号码", dataType = "string", required = true),
         @ApiImplicitParam(name = "sendType", value = "发送类型:1注册验证码2登录验证码3找回密码验证码", dataType = "Integer", required = true)
     })
 
@@ -74,7 +74,7 @@ public class RegisterController {
 
 
     @ApiOperation("快速注册")
-    @PostMapping("quickRegister")
+    @PostMapping("quickRegister.do")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "phoneNumber", value = "手机号码", dataType = "string", required = true),
             @ApiImplicitParam(name = "code", value = "验证码", dataType = "string", required = true),
@@ -99,7 +99,7 @@ public class RegisterController {
             @ApiResponse(code = 200, message = "成功")
 
     })
-    @PostMapping("changePassword")
+    @PostMapping("changePassword.do")
     public RestResult changePassword(String oldpwd, @NotBlank(message = "新密码不能为空")
     @Length(min=32,message = "请输入有效密码") String newpwd, @NotBlank(message = "手机验证码不能为空") String smscode, @NotBlank(message = "手机号码不能为空") String phoneNumber) {
         if (StringUtils.isNotEmpty(oldpwd)) {

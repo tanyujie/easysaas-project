@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bootstrap Material Admin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <link rel="stylesheet" href="css/register.css" id="theme-stylesheet">
+  </head>
+  <body>
+    <div class="page login-page">
+      <div class="container d-flex align-items-center">
+        <div class="form-holder has-shadow">
+          <div class="row">
+            <!-- Logo & Information Panel-->
+            <div class="col-lg-6">
+              <div class="info d-flex align-items-center">
+                <div class="content">
+                  <div class="logo">
+                    <h1>欢迎注册</h1>
+                  </div>
+                  <p>easysass企业管理系统</p>
+                </div>
+              </div>
+            </div>
+            <!-- Form Panel    -->
+            <div class="col-lg-6 bg-white">
+              <div class="form d-flex align-items-center">
+
+                <div class="content register_step_2">
+ <!--                              <header class="text-center">
+                <h2>欢迎注册easysaas</h2>
+            </header> -->
+                    <div class="form-group">
+                      <input id="registerUsername" class="input-material" type="text" name="registerUsername" placeholder="请输入手机号/邮箱" >
+								      <div class="invalid-feedback">
+								        	用户名必须在2~10位之间
+								      </div>
+                    </div>
+                    <div class="form-group">
+                      <input id="register-verify-code" class="input-material" type="password" name="registerVerifyCode" placeholder="请输入密码"   >
+                    	<div class="invalid-feedback">
+								        	密码必须在6~10位之间
+								      </div>
+								      <a id="registerGetVerifyCode" class="register-form-get-verifycode text-primary"  >
+								      获取验证码
+								      </a>
+                    </div>
+
+                    <div class="form-group text-center">
+                      <button id="registerButtonStep2" type="button" name="registerStep2" class="btn btn-primary w-100 ">下一步</button>
+                    </div>
+                  <small>已有账号?</small><a href="login.html" class="signup">&nbsp;登录</a>
+                </div>
+                <div class="content register_step_3 ">
+ <!--                              <header class="text-center">
+                <h2>欢迎注册easysaas</h2>
+            </header> -->
+                    <div class="form-group">
+                      <input id="company_name" class="input-material" type="text" name="companyName" placeholder="请输入公司名称" >
+								      <div class="invalid-feedback">
+								        	公司名称不能为空
+								      </div>
+                    </div>
+                    <div class="form-group">
+                      <input id="company_scale" class="input-material" type="text" name="companyScale" placeholder="公司规模"   >
+                    	<div class="invalid-feedback">
+								        	选择公司规模
+								      </div>
+                    </div>
+                    <div class="form-group">
+                      <input id="name" class="input-material" type="text" name="name" placeholder="请输入姓名"   >
+                    	<div class="invalid-feedback">
+								        	请输入姓名
+								      </div>
+                    </div>
+                                        <div class="form-group">
+                      <input id="email" class="input-material" type="text" name="email" placeholder="输入邮箱"   >
+                    	<div class="invalid-feedback">
+								        	输入邮箱
+								      </div>
+                    </div>
+                    <div class="form-group">
+                      <input id="password" class="input-material" type="text" name="password" placeholder="输入密码"   >
+                    	<div class="invalid-feedback">
+								        	输入密码
+								      </div>
+                    </div>
+<!--                     <div class="form-group">
+                      <input id="register_invite_code" class="input-material" type="text" name="inviteCode" placeholder="邀请码（非必填）"   >
+                    </div> -->
+                    <div class="form-group text-center">
+                      <button id="register_button_step3" type="button" name="registerStep3" class="btn btn-primary w-100 ">完成</button>
+                    </div>
+                  <small>已有账号?</small><a href="login.html" class="signup">&nbsp;登录</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- JavaScript files-->
+    <script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/4.2.1/bootstrap.min.js"></script>
+    <script>
+    	$(function(){
+    		/*错误class  form-control is-invalid
+    		正确class  form-control is-valid*/
+    		var flagName=false;
+    		var flagPas=false;
+    		var flagPass=false;
+    		$(".register_step_3").hide();
+    		/*验证用户名*/
+    		var name,passWord,passWords;
+    		$("#registerUsername").change(function(){
+    			name=$("#registerUsername").val();
+    			if(name.length<2||name.length>11){
+    				$("#registerUsername").removeClass("form-control is-valid")
+    				$("#registerUsername").addClass("form-control is-invalid");
+    				flagName=false;
+    			}else{
+    				$("#registerUsername").removeClass("form-control is-invalid")
+    				$("#registerUsername").addClass("form-control is-valid");
+    				flagName=true;
+    			}
+    		})
+    		/*验证密码*/
+    		$("#register-verify-code").change(function(){
+    			passWord=$("#register-verify-code").val();
+    			if(passWord.length<6||passWord.length>18){
+    				$("#register-verify-code").removeClass("form-control is-valid")
+    				$("#register-verify-code").addClass("form-control is-invalid");
+    				flagPas=false;
+    			}else{
+    				$("#register-verify-code").removeClass("form-control is-invalid")
+    				$("#register-verify-code").addClass("form-control is-valid");
+    				flagPas=true;
+    			}
+    		})
+    		/*验证确认密码*/
+    		$("#rregister-verify-code").change(function(){
+    			passWords=$("#rregister-verify-code").val();
+    			if((passWord!=passWords)||(passWords.length<6||passWords.length>18)){
+    				$("#rregister-verify-code").removeClass("form-control is-valid")
+    				$("#rregister-verify-code").addClass("form-control is-invalid");
+    				flagPass=false;
+    			}else{
+    				$("#rregister-verify-code").removeClass("form-control is-invalid")
+    				$("#rregister-verify-code").addClass("form-control is-valid");
+    				flagPass=true;
+    			}
+    		})
+    		
+    		$("#registerGetVerifyCode").click(function(){
+    			let username=$("#registerUsername").val();
+    			$.ajax({
+					type:"post",
+	    			url:"http://192.168.1.5:8090/register/sendVerifyCode.do",
+	    			data:{"mobile": username, "sendType": 1},
+	        		dataType: 'json',
+	        		success:function(data){
+	        			console.info(data);  							        			
+	        		},
+	        		error: function(xhr, type) {        			
+	        			
+	            		console.info("失败");
+	        		}
+				});
+				
+    		})
+    		$("#registerButtonStep2").click(function(){
+    			
+    			$(".register_step_2").hide();
+    			$(".register_step_3").show();
+
+/*     			if(flagName&&flagPas&&flagPass){
+    				localStorage.setItem("name",name);
+    				localStorage.setItem("passWord",passWord);
+    				location="login.html"
+    			}else{
+    				if(!flagName){
+    					$("#registerUsername").addClass("form-control is-invalid");
+    				}
+    				if(!flagPas){
+    					$("#register-verify-code").addClass("form-control is-invalid");
+    				}
+    				if(!flagPass){
+    					$("#rregister-verify-code").addClass("form-control is-invalid");
+    				}
+    			} */
+    		})
+    		$("#register_button_step3").click(function(){
+    			let username=$("#registerUsername").val();
+    			$.ajax({
+					type:"post",
+	    			url:"http://192.168.1.5:8090/register/sendVerifyCode.do",
+	    			data:{"mobile": username, "sendType": 1},
+	        		dataType: 'json',
+	        		success:function(data){
+	        			console.info(data);  	
+	        			location="login.html";
+	        		},
+	        		error: function(xhr, type) {        			
+	        			
+	            		console.info("失败");
+	        		}
+				});
+    		})
+    		
+    	})
+    </script>
+  </body>
+</html>

@@ -19,6 +19,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
@@ -35,16 +40,9 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
-<!-- 		<dependency>
-			<groupId>org.easymis.easysaas</groupId>
-			<artifactId>easysaas-common</artifactId>
-			<version>1.0.0.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.easymis.easysaas</groupId>
-			<artifactId>easysaas-core</artifactId>
-			<version>1.0.0.RELEASE</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.easymis.easysaas</groupId> <artifactId>easysaas-common</artifactId> 
+			<version>1.0.0.RELEASE</version> </dependency> <dependency> <groupId>org.easymis.easysaas</groupId> 
+			<artifactId>easysaas-core</artifactId> <version>1.0.0.RELEASE</version> </dependency> -->
 		<!-- 热部署 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
