@@ -1,4 +1,4 @@
-package org.easymis.easysaas.member.security.userdetail;
+package org.easymis.easysaas.member.entitys.mybatis.dto;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

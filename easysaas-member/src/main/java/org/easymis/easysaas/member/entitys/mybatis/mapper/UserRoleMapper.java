@@ -11,8 +11,8 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.easymis.easysaas.member.security.userdetail.Resource;
-import org.easymis.easysaas.member.security.userdetail.UserRole;
+import org.easymis.easysaas.member.entitys.mybatis.dto.Resource;
+import org.easymis.easysaas.member.entitys.mybatis.dto.UserRole;
 @Mapper
 public interface UserRoleMapper {
 	 @Select("select * from easymis_Resource t WHERE t.org_id = #{orgId}")  

@@ -4,11 +4,10 @@ package org.easymis.easysaas.member.security.repository;
 import java.util.Objects;
 
 import org.springframework.security.core.context.SecurityContextHolder;
-
+import org.easymis.easysaas.member.entitys.mybatis.dto.Permit;
 import org.easymis.easysaas.member.security.exception.PrincipalNotFundException;
 import org.easymis.easysaas.member.security.exception.UnknownPrincipalException;
 import org.easymis.easysaas.member.security.userdetail.ExpireDateGrantedAuthority;
-import org.easymis.easysaas.member.security.userdetail.Permit;
 import org.easymis.easysaas.member.security.userdetail.SecurityUserDetails;
 
 public interface IdentityRepository {

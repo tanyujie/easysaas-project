@@ -1,6 +1,6 @@
-package org.easymis.easysaas.member.security.service;
+package org.easymis.easysaas.member.service;
 
-import org.easymis.easysaas.member.security.userdetail.Resource;
+import org.easymis.easysaas.member.entitys.mybatis.dto.Resource;
 
 public interface ResourceService {
 	Resource  getOne(String requestURI);

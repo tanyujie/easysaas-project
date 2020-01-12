@@ -7,7 +7,7 @@ import java.util.Random;
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.common.utils.MD5Util;
 import org.easymis.easysaas.member.entitys.mybatis.dto.Member;
-import org.easymis.easysaas.member.security.userdetail.User;
+import org.easymis.easysaas.member.entitys.mybatis.dto.User;
 
 import reactor.core.publisher.Mono;
 

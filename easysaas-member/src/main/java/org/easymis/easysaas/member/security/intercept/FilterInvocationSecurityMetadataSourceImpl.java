@@ -13,15 +13,14 @@ import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Component;
-
-import org.easymis.easysaas.member.security.service.ResourceService;
-import org.easymis.easysaas.member.security.service.RoleResourceService;
-import org.easymis.easysaas.member.security.service.RoleService;
-import org.easymis.easysaas.member.security.service.UserRoleService;
+import org.easymis.easysaas.member.entitys.mybatis.dto.Resource;
+import org.easymis.easysaas.member.entitys.mybatis.dto.Role;
+import org.easymis.easysaas.member.entitys.mybatis.dto.RoleResource;
 import org.easymis.easysaas.member.security.userdetail.ExpireDateGrantedAuthority;
-import org.easymis.easysaas.member.security.userdetail.Resource;
-import org.easymis.easysaas.member.security.userdetail.Role;
-import org.easymis.easysaas.member.security.userdetail.RoleResource;
+import org.easymis.easysaas.member.service.ResourceService;
+import org.easymis.easysaas.member.service.RoleResourceService;
+import org.easymis.easysaas.member.service.RoleService;
+import org.easymis.easysaas.member.service.UserRoleService;
 
 import lombok.extern.slf4j.Slf4j;
 

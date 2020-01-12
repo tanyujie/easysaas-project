@@ -1,10 +1,10 @@
-package org.easymis.easysaas.member.security.service.impl;
+package org.easymis.easysaas.member.service.impl;
 
 import org.easymis.easysaas.member.config.datasource.DataSourceType;
 import org.easymis.easysaas.member.config.datasource.EasymisDataSource;
+import org.easymis.easysaas.member.entitys.mybatis.dto.Resource;
 import org.easymis.easysaas.member.entitys.mybatis.mapper.ResourceMapper;
-import org.easymis.easysaas.member.security.service.ResourceService;
-import org.easymis.easysaas.member.security.userdetail.Resource;
+import org.easymis.easysaas.member.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service

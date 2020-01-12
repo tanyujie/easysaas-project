@@ -1,12 +1,12 @@
-package org.easymis.easysaas.member.security.service.impl;
+package org.easymis.easysaas.member.service.impl;
 
 import java.util.List;
 
 import org.easymis.easysaas.member.config.datasource.DataSourceType;
 import org.easymis.easysaas.member.config.datasource.EasymisDataSource;
+import org.easymis.easysaas.member.entitys.mybatis.dto.Role;
 import org.easymis.easysaas.member.entitys.mybatis.mapper.RoleMapper;
-import org.easymis.easysaas.member.security.service.RoleService;
-import org.easymis.easysaas.member.security.userdetail.Role;
+import org.easymis.easysaas.member.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,4 @@
-package org.easymis.easysaas.member.security.userdetail;
-
+package org.easymis.easysaas.member.entitys.mybatis.dto;
 
 import java.io.Serializable;
 
@@ -18,7 +17,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Resource implements Serializable {
+public class RoleResource implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -28,29 +27,30 @@ public class Resource implements Serializable {
     private String id;
 
     /**
-     * 不包含域名的路径
+     * 资源 id
      */
-    private String endPoint;
+    private String resourceId;
 
     /**
-     * 返回类
+     * 返回字段,分隔
      */
-    private String returnClass;
+    private String returnField;
 
     /**
-     * 名称
+     * role_id
      */
-    private String resourceName;
+    private String	 roleId;
 
     /**
-     * 上一级资源
+     * 条数
      */
-    private String parentId;
+    private Integer exportNumber;
 
     /**
-     * 是否返回的是文件
+     *  查询条数
+     *
      */
-    private Boolean returnFile;
+    private Integer queryNumber;
 
 
 }

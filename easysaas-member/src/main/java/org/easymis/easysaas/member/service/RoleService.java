@@ -1,8 +1,8 @@
-package org.easymis.easysaas.member.security.service;
+package org.easymis.easysaas.member.service;
 
 import java.util.List;
 
-import org.easymis.easysaas.member.security.userdetail.Role;
+import org.easymis.easysaas.member.entitys.mybatis.dto.Role;
 
 /**
  * <p>
