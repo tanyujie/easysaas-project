@@ -10,8 +10,11 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-/*@EnableSwagger2WebFlux*/
-/*@Configuration*/
+
+/**
+ * Created by leo on 2019/2/18.
+ */
+@Configuration
 public class Swagger2Config {
 
 
@@ -23,16 +26,16 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2).enable(enable)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("org.easymis.easysaas.gateway"))
+                //.apis(RequestHandlerSelectors.basePackage("mobile.sharepanzer.companydata"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("easysass信息数据接口")
-                .description("easysass信息数据接口")
-                .termsOfServiceUrl("localhost:8090")
+                .title("企业信息数据接口")
+                .description("企业信息数据接口")
+                .termsOfServiceUrl("localhost:80")
                 .version("1.0")
                 .build();
     }

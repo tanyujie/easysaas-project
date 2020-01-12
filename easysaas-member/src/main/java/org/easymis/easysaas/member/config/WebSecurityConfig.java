@@ -1,17 +1,15 @@
 package org.easymis.easysaas.member.config;
 
-import org.easymis.easysaas.member.security.AuthenticationAccessDeniedHandler;
-import org.easymis.easysaas.member.security.AuthenticationManager;
-import org.easymis.easysaas.member.security.JwtAuthenticationWebFilter;
-import org.easymis.easysaas.member.security.SecurityContextRepository;
-import org.easymis.easysaas.member.security.UnauthorizedAuthenticationEntryPoint;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
+import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
 /**
