@@ -32,7 +32,7 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping("/register")
 @Validated
 @Valid 
-public class SecurityUserController {
+public class RegisterController {
 
     @Autowired
     UserService userService;
