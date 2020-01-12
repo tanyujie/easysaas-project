@@ -13,9 +13,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableDiscoveryClient
 @MapperScan({"*.easymis.easysaas.**.mapper"})
 @ComponentScan({"*.easymis.easysaas.*"})
-public class GatewayApplication {
+public class MemeberApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GatewayApplication.class, args);
+		SpringApplication.run(MemeberApplication.class, args);
 	}
 }

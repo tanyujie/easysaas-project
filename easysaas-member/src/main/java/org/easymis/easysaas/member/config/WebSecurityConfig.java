@@ -28,7 +28,7 @@ public class WebSecurityConfig {
     private static final String[] AUTH_WHITELIST = {
     		"/login", 
     		"/actuator/**",
-    		"/api/demo",
+    		"/register",
             "/auth/login",
             "/auth/logout",
             "/health",
