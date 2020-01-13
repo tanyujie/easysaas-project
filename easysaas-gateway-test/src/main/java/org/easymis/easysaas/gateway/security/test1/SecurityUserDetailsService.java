@@ -31,7 +31,7 @@ public class SecurityUserDetailsService implements ReactiveUserDetailsService {
 
             
             UserDetails user = User.withUsername(username)
-                  .password("123456")
+                  .password(member.getPassword())
                     .roles("admin").authorities(AuthorityUtils.commaSeparatedStringToAuthorityList("admin"))
                     .build();
             // 预留调用数据库
