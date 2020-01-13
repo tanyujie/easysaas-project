@@ -1,15 +1,9 @@
 package org.easymis.easysaas.gateway.security.test1;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
 import org.easymis.easysaas.gateway.entitys.mybatis.mapper.UserMapper;
-import org.easymis.easysaas.gateway.entitys.vo.Role;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
