@@ -1,10 +1,11 @@
 package org.easymis.easysaas.gateway.security;
 
 import java.util.Collection;
+
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 
-public class XinyueAccountAuthentication extends AbstractAuthenticationToken{
+public class AccountAuthentication extends AbstractAuthenticationToken{
     /**
      * 
      */
@@ -12,7 +13,7 @@ public class XinyueAccountAuthentication extends AbstractAuthenticationToken{
     private Object credentials;
     private String principal;
     
-    public XinyueAccountAuthentication(Object credentials,String principal,Collection<? extends GrantedAuthority> authorities) {
+    public AccountAuthentication(Object credentials,String principal,Collection<? extends GrantedAuthority> authorities) {
         super(authorities);
         this.credentials = credentials;
         this.principal = principal;

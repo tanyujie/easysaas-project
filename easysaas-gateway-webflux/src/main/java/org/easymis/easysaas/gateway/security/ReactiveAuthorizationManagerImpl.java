@@ -2,17 +2,19 @@ package org.easymis.easysaas.gateway.security;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.authorization.ReactiveAuthorizationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.server.authorization.AuthorizationContext;
+
 import reactor.core.publisher.Mono;
 //参考AuthorityReactiveAuthorizationManager实现
-public class XinyueReactiveAuthorizationManager implements ReactiveAuthorizationManager<AuthorizationContext>  {
+public class ReactiveAuthorizationManagerImpl implements ReactiveAuthorizationManager<AuthorizationContext>  {
 
     private List<String> authorities = new ArrayList<>();
     
-    public XinyueReactiveAuthorizationManager(String authority, String... authorities ) {
+    public ReactiveAuthorizationManagerImpl(String authority, String... authorities ) {
         this.authorities.add("ROLE_" + authority);
         if(authorities != null) {
             for(String auth : authorities) {
@@ -20,7 +22,6 @@ public class XinyueReactiveAuthorizationManager implements ReactiveAuthorization
             }
         }
     }
-    @Override
     public Mono<AuthorizationDecision> check(Mono<Authentication> authentication, AuthorizationContext object) {
         return authentication
                 .filter(a -> a.isAuthenticated())

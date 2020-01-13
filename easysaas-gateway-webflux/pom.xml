@@ -27,12 +27,12 @@
 	</properties>
 
 	<dependencies>
-			<dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
@@ -45,6 +45,15 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>4.0.0</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+
+			<groupId>com.alibaba</groupId>
+
+			<artifactId>fastjson</artifactId>
+
+			<version>1.2.56</version>
+
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -93,7 +102,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-				<!-- 切面 -->
+		<!-- 切面 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
@@ -116,17 +125,13 @@
 			<artifactId>springfox-swagger2</artifactId>
 			<version>${springfox-swagger.version}</version>
 		</dependency>
-<!-- 		<dependency>
-		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-spring-webflux</artifactId>
-		    <version>jar</version>
-		</dependency> -->
+
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>${springfox-swagger.version}</version>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>org.easymis.easysaas</groupId>
 			<artifactId>easysaas-common</artifactId>
 			<version>1.0.0.RELEASE</version>

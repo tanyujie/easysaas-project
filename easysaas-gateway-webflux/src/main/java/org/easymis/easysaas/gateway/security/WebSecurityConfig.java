@@ -25,10 +25,10 @@ public class WebSecurityConfig {
 	@Bean
 	public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
 		RedirectServerAuthenticationEntryPoint loginPoint = new RedirectServerAuthenticationEntryPoint(
-				"/xinyue-server-a/account/index");
+				"/member/index.html");
 		http.authorizeExchange()
 				.pathMatchers("/xinyue-server-a/easyui/**", "/xinyue-server-a/js/**", "/xinyue-server-a/account/index",
-						"/xinyue-server-a/account/login")
+						"/member/user/login")
 				.permitAll().and().formLogin().loginPage("/xinyue-server-a/account/authen")
 				.authenticationEntryPoint(loginPoint)
 				.authenticationSuccessHandler((webFilterExchange, authentication) -> {// 认证成功之后返回给客户端的信息
@@ -46,7 +46,7 @@ public class WebSecurityConfig {
 						sink.complete();
 					}));
 				}).and().authorizeExchange().pathMatchers("/xinyue-server-a/account/main")
-				.access(new XinyueReactiveAuthorizationManager("Manager", "Dev")).and().authorizeExchange()
+				.access(new ReactiveAuthorizationManagerImpl("Manager", "Dev")).and().authorizeExchange()
 				.anyExchange().authenticated().and().csrf().disable();
 		SecurityWebFilterChain chain = http.build();
 		Iterator<WebFilter> weIterable = chain.getWebFilters().toIterable().iterator();
@@ -55,7 +55,7 @@ public class WebSecurityConfig {
 			if (f instanceof AuthenticationWebFilter) {
 				AuthenticationWebFilter webFilter = (AuthenticationWebFilter) f;
 				// 将自定义的AuthenticationConverter添加到过滤器中
-				webFilter.setServerAuthenticationConverter(new XinyueAuthenticationConverter());
+				webFilter.setServerAuthenticationConverter(new AuthenticationConverter());
 			}
 		}
 		return chain;
@@ -64,8 +64,8 @@ public class WebSecurityConfig {
 	@Bean
 	public ReactiveAuthenticationManager reactiveAuthenticationManager() {
 		return new ReactiveAuthenticationManagerAdapter((authentication) -> {
-			if (authentication instanceof XinyueAccountAuthentication) {
-				XinyueAccountAuthentication gmAccountAuthentication = (XinyueAccountAuthentication) authentication;
+			if (authentication instanceof AccountAuthentication) {
+				AccountAuthentication gmAccountAuthentication = (AccountAuthentication) authentication;
 				if (gmAccountAuthentication.getPrincipal() != null) {
 					authentication.setAuthenticated(true);
 					return authentication;
