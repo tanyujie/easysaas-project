@@ -12,4 +12,8 @@ public class ApiTestController {
     private String  demo(){
         return "demo";
     }
+    @GetMapping("/access")
+    private String  access(){
+        return "demo";
+    }
 }
