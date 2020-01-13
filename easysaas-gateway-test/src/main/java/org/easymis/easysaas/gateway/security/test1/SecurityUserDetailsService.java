@@ -26,7 +26,8 @@ public class SecurityUserDetailsService implements ReactiveUserDetailsService {
        //todo 预留调用数据库根据用户名获取用户
         if(StringUtils.equals(userName,username)){
             UserDetails user = User.withUsername(userName)
-                  .password(MD5Encoder.encode(password,username))
+                  //.password(MD5Encoder.encode(password,username))//
+            		.password("51c0ceb9087c69fac88fb6c3736d0fe9")
                     .roles("admin").authorities(AuthorityUtils.commaSeparatedStringToAuthorityList("admin"))
                     .build();
             return Mono.just(user);

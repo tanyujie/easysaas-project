@@ -1,15 +1,13 @@
 package org.easymis.easysaas.gateway.config;
 
-import org.easymis.easysaas.gateway.security.AuthenticationAccessDeniedHandler;
-import org.easymis.easysaas.gateway.security.AuthenticationManager;
-import org.easymis.easysaas.gateway.security.JwtAuthenticationWebFilter;
-import org.easymis.easysaas.gateway.security.SecurityContextRepository;
-import org.easymis.easysaas.gateway.security.UnauthorizedAuthenticationEntryPoint;
+import org.easymis.easysaas.gateway.security.type2.AuthenticationAccessDeniedHandler;
+import org.easymis.easysaas.gateway.security.type2.AuthenticationManager;
+import org.easymis.easysaas.gateway.security.type2.JwtAuthenticationWebFilter;
+import org.easymis.easysaas.gateway.security.type2.SecurityContextRepository;
+import org.easymis.easysaas.gateway.security.type2.UnauthorizedAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
@@ -21,8 +19,8 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
  启用@PreAuthorize注解配置，如果不加这个注解的话，即使方法中加了@PreAuthorize也不会生效
 
  */
-@EnableWebFluxSecurity
-@EnableReactiveMethodSecurity
+/*@EnableWebFluxSecurity
+@EnableReactiveMethodSecurity*/
 public class SecurityConfigType2 {
     //security的鉴权排除列表
     private static final String[] AUTH_WHITELIST = {
