@@ -27,8 +27,8 @@ spring:
     name: gateway-security
   security:
     user:
-      name: admin
-      password: 123456
+      name: 13551259347
+      password: 51c0ceb9087c69fac88fb6c3736d0fe9
   main:
     allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
   jmx:
