@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class JwtAuthenticationWebFilter extends AuthenticationWebFilter {
 
-	public JwtAuthenticationWebFilter(ReactiveAuthenticationManager authenticationManager) {
+	public JwtAuthenticationWebFilter(ReactiveAuthenticationManager authenticationManager) {		
 		super(authenticationManager);
+		System.out.println("JwtAuthenticationWebFilter");
 		// TODO Auto-generated constructor stub
-	}}
+	}
+}

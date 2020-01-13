@@ -11,14 +11,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  *
  * @author ard333
  */
 @Component
+@Slf4j
 public class JWTUtil implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -28,13 +31,40 @@ public class JWTUtil implements Serializable {
 	
 	@Value("${springbootwebfluxjjwt.jjwt.expiration}")
 	private String expirationTime;
-	
+	/**
+     * 从token中获取JWT中的负载
+	 */
 	public Claims getAllClaimsFromToken(String token) {
-		return Jwts.parser().setSigningKey(Base64.getEncoder().encodeToString(secret.getBytes())).parseClaimsJws(token).getBody();
+        Claims claims = null;
+        try {
+            claims = Jwts.parser()
+                    .setSigningKey(Base64.getEncoder().encodeToString(secret.getBytes()))
+                    .parseClaimsJws(token)
+                    .getBody();
+        }catch (ExpiredJwtException e){
+            throw e;
+        }
+        catch (Exception e) {
+            log.info("JWT格式验证失败:{}",token);
+        }
+        return claims;
 	}
-	
+    /**
+     * 从token中获取登录用户名
+     */
 	public String getUsernameFromToken(String token) {
-		return getAllClaimsFromToken(token).getSubject();
+
+        String username;
+        try {
+            Claims claims = getAllClaimsFromToken(token);
+            username =  claims.getSubject();
+        }catch (ExpiredJwtException e){
+            throw  e;
+        }
+        catch (Exception e) {
+            username = null;
+        }
+        return username;
 	}
 	
 	public Date getExpirationDateFromToken(String token) {

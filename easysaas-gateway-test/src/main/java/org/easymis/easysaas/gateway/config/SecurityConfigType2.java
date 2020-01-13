@@ -23,7 +23,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
  */
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
-public class WebSecurityConfig {
+public class SecurityConfigType2 {
     //security的鉴权排除列表
     private static final String[] AUTH_WHITELIST = {
     		"/login", 
@@ -55,10 +55,6 @@ public class WebSecurityConfig {
             final UnauthorizedAuthenticationEntryPoint entryPoint,
             final AuthenticationAccessDeniedHandler accessDeniedHandler) throws Exception {
 		//管理系统启用登录
-/*		ServerHttpSecurity.FormLoginSpec formLoginSpec = http.formLogin();
-        formLoginSpec.authenticationSuccessHandler(createAuthenticationSuccessHandler())
-                .loginPage("/login")
-                .authenticationFailureHandler(createAuthenticationFailureHandler());*/
 		return http
                 .exceptionHandling()
                 .authenticationEntryPoint(entryPoint)

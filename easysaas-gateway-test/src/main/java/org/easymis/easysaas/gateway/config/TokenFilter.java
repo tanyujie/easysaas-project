@@ -31,7 +31,7 @@ public class TokenFilter implements GlobalFilter, Ordered {
  
     @Override
     public int getOrder() {
-        return -100;
+        return -100;//数字越低优先级越高
     }
 
 }

@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.easymis.easysaas.gateway.config.RequestHolder;
 import org.easymis.easysaas.gateway.entitys.vo.Role;
+import org.easymis.easysaas.gateway.security.handler.JwtAuthenticationFailureHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,10 +16,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 
 @Component
+@Slf4j
 public class AuthenticationManager implements ReactiveAuthenticationManager {
 
 	@Autowired
@@ -24,15 +30,25 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public Mono<Authentication> authenticate(Authentication authentication) {
+	public Mono<Authentication> authenticate(Authentication authentication)   {
 		String authToken = authentication.getCredentials().toString();
 		
-		String username;
-		try {
-			username = jwtUtil.getUsernameFromToken(authToken);
-		} catch (Exception e) {
-			username = null;
+		String username = null;
+		if(authToken!=null) {
+			try {
+				username = jwtUtil.getUsernameFromToken(authToken);
+			}catch (ExpiredJwtException e) {
+	            log.info("token->{}过期", authToken);
+	            	throw new UnsupportedOperationException("token过期,请重新登录");
+
+			} catch (DisabledException e) {
+				log.info("token->{}暂停使用", authToken);
+				throw new UnsupportedOperationException("token过期,请重新登录"); //暂时使用该handler代替
+	           // return;
+	        }
 		}
+
+
 		if (username != null && jwtUtil.validateToken(authToken)) {
 			//从数据库读取角色
 			Claims claims = jwtUtil.getAllClaimsFromToken(authToken);
