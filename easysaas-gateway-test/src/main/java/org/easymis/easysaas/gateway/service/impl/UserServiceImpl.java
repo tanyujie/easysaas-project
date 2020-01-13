@@ -18,22 +18,23 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserMapper mapper;
-	//username:passwowrd -> 13551259347:123456
+/*	//username:passwowrd -> 13551259347:123456
 	private final String userUsername = "13551259347";// password: 123456
 	private final User user = new User(userUsername, "fV8G3g4M7OgyajhE/BcbHL69JAZfDlU5+ihrxO5wBi0=", true, Arrays.asList(Role.ROLE_USER));
 	
 	//username:passwowrd -> admin:admin
 	private final String adminUsername = "admin";// password: admin
 	private final User admin = new User(adminUsername, "dQNjUIMorJb8Ubj2+wVGYp6eAeYkdekqAcnYp+aRq5w=", true, Arrays.asList(Role.ROLE_ADMIN));
-	
+	*/
 	public Mono<User> findByUsername(String username) {
-		if (username.equals(userUsername)) {
+/*		if (username.equals(userUsername)) {
 			return Mono.just(user);
 		} else if (username.equals(adminUsername)) {
 			return Mono.just(admin);
 		} else {
 			return Mono.empty();
-		}
+		}*/
+		return Mono.empty();
 	}
 
 	@EasymisDataSource(DataSourceType.Master)

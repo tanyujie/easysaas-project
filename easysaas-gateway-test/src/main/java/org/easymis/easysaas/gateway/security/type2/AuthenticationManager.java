@@ -11,11 +11,9 @@ import org.springframework.security.authentication.ReactiveAuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 
@@ -54,13 +52,13 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
 			List<Role> roles = new ArrayList<>();
 			//bug
 			for (String rolemap : rolesMap) {
-				roles.add(Role.valueOf(rolemap));
+				//roles.add(Role.valueOf(rolemap));
 			}
 			//bug
 			UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
 				username,
 				null,
-				roles.stream().map(authority -> new SimpleGrantedAuthority(authority.name())).collect(Collectors.toList())
+				roles.stream().map(authority -> new SimpleGrantedAuthority(authority.getRoleSn())).collect(Collectors.toList())
 			);
 			return Mono.just(auth);
 		} else {

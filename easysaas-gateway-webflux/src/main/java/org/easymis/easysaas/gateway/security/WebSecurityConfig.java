@@ -25,11 +25,11 @@ public class WebSecurityConfig {
 	@Bean
 	public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
 		RedirectServerAuthenticationEntryPoint loginPoint = new RedirectServerAuthenticationEntryPoint(
-				"/member/index.html");
+				"/member/login.html");
 		http.authorizeExchange()
-				.pathMatchers("/xinyue-server-a/easyui/**", "/xinyue-server-a/js/**", "/xinyue-server-a/account/index",
+				.pathMatchers("/xinyue-server-a/easyui/**", "/xinyue-server-a/js/**", "/member/login.html",
 						"/member/user/login")
-				.permitAll().and().formLogin().loginPage("/xinyue-server-a/account/authen")
+				.permitAll().and().formLogin().loginPage("/member/login.html")
 				.authenticationEntryPoint(loginPoint)
 				.authenticationSuccessHandler((webFilterExchange, authentication) -> {// 认证成功之后返回给客户端的信息
 					JSONObject result = new JSONObject();

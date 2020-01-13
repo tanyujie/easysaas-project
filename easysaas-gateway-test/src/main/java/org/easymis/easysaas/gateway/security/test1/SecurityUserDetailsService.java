@@ -1,8 +1,15 @@
 package org.easymis.easysaas.gateway.security.test1;
 
-import org.apache.commons.lang.StringUtils;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
+import org.easymis.easysaas.gateway.entitys.mybatis.mapper.UserMapper;
+import org.easymis.easysaas.gateway.entitys.vo.Role;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,22 +21,33 @@ import reactor.core.publisher.Mono;
 @Component
 public class SecurityUserDetailsService implements ReactiveUserDetailsService {
 
-     @Value("${spring.security.user.name}")
+/*     @Value("${spring.security.user.name}")
      private   String userName;
 
     @Value("${spring.security.user.password}")
-    private   String password;
-
+    private   String password;*/
+	@Autowired
+	UserMapper mapper;
 
     @Override
     public Mono<UserDetails> findByUsername(String username) {
        //todo 预留调用数据库根据用户名获取用户
-        if(StringUtils.equals(userName,username)){
-            UserDetails user = User.withUsername(userName)
-                  //.password(MD5Encoder.encode(password,username))//
-            		.password("51c0ceb9087c69fac88fb6c3736d0fe9")
+    	Member member=mapper.findByPhoneNumber(username);
+        if(member!=null){
+
+            
+            UserDetails user = User.withUsername(username)
+                  .password("123456")
                     .roles("admin").authorities(AuthorityUtils.commaSeparatedStringToAuthorityList("admin"))
                     .build();
+            // 预留调用数据库
+/*            List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+            for (Role role : member.getRoles()) {
+                authorities.add(new SimpleGrantedAuthority(role.getRoleSn()));
+            }*/
+/*预留调用数据库            
+ * user=new org.springframework.security.core.userdetails.User(
+            		username, user.getPassword(), authorities); */
             return Mono.just(user);
         }
         else{
