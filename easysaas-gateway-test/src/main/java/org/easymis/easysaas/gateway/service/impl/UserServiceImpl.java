@@ -47,4 +47,10 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Member saveQuickRegister(String phoneNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

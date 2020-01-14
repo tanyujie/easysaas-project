@@ -5,6 +5,7 @@ import java.util.Base64;
 import org.easymis.easysaas.gateway.entitys.vo.AuthUserDetails;
 import org.easymis.easysaas.gateway.entitys.vo.MessageCode;
 import org.easymis.easysaas.gateway.entitys.vo.WsResponse;
+import org.easymis.easysaas.gateway.security.userdetail.SecurityUserDetails;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpResponse;
@@ -37,7 +38,7 @@ public class AuthenticationSuccessHandler extends WebFilterChainServerAuthentica
        byte[]   dataBytes={};
         ObjectMapper mapper = new ObjectMapper();
         try {
-            User user=(User)authentication.getPrincipal();
+        	SecurityUserDetails user=(SecurityUserDetails)authentication.getPrincipal();
             AuthUserDetails userDetails=buildUser(user);
             byte[] authorization=(userDetails.getUsername()+":"+userDetails.getPassword()).getBytes();
             String token= Base64.getEncoder().encodeToString(authorization);
@@ -58,7 +59,7 @@ public class AuthenticationSuccessHandler extends WebFilterChainServerAuthentica
 
 
 
-    private AuthUserDetails  buildUser(User user){
+    private AuthUserDetails  buildUser(SecurityUserDetails user){
         AuthUserDetails userDetails=new AuthUserDetails();
         userDetails.setUsername(user.getUsername());
         userDetails.setPassword(user.getPassword().substring(user.getPassword().lastIndexOf("}")+1,user.getPassword().length()));

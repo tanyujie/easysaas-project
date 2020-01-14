@@ -10,4 +10,6 @@ public interface UserService {
 	public Mono<User> findByUsername(String username);	
 	public Member findByMobile(String mobile);		
 	Member findByEmail(String email);
+	
+	Member saveQuickRegister(String phoneNumber);
 }

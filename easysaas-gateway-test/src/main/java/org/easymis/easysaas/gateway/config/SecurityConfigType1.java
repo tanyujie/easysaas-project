@@ -13,13 +13,13 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @EnableWebFluxSecurity
 public class SecurityConfigType1 {
-
 
     @Autowired
     private AuthenticationSuccessHandler authenticationSuccessHandler;
@@ -65,10 +65,35 @@ public class SecurityConfigType1 {
         return http.build();
     }
 
-    @Bean
+/*    @Bean
     public PasswordEncoder passwordEncoder() {
         return  NoOpPasswordEncoder.getInstance(); //默认
+    }*/
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
-
-
+	public static void main(String[] args) {
+		    Pbkdf2PasswordEncoder pbkdf2PasswordEncoder = new Pbkdf2PasswordEncoder("1");
+	        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+	 
+	        String pbk1 = pbkdf2PasswordEncoder.encode("123456");
+	        pbkdf2PasswordEncoder.upgradeEncoding("2");
+	        String pbk2 = pbkdf2PasswordEncoder.encode("123456");
+	 
+	        String bcr1 = bCryptPasswordEncoder.encode("123456");
+	        String bcr2 = bCryptPasswordEncoder.encode("123456");
+	 
+	        System.out.println("pbk1: " + pbk1.length());
+	        System.out.println("pbk2: " + pbk2.length());
+	        System.out.println("pbk1 password:" + pbkdf2PasswordEncoder.matches("123456",pbk1));
+	        System.out.println("pbk2 password:" + pbkdf2PasswordEncoder.matches("123456",pbk2));
+	 
+	        System.out.println("---------------------");
+	 
+	        System.out.println("bcr1: " + bcr1);
+	        System.out.println("bcr2: " + bcr2.length());
+	        System.out.println("bcr1 password:" + bCryptPasswordEncoder.matches("123456",bcr1));
+	        System.out.println("bcr2 password:" + bCryptPasswordEncoder.matches("123456",bcr2));
+	}
 }
