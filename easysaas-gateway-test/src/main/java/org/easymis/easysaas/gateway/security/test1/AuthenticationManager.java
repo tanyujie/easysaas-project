@@ -4,11 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.easymis.easysaas.gateway.security.check.LoginWrongChecker;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -23,9 +29,25 @@ AuthenticationManager 负责校验 Authentication 对象。在 AuthenticationMan
  */
 @Component
 public class AuthenticationManager implements ReactiveAuthenticationManager {
-
+    private LoginWrongChecker checker = new LoginWrongChecker();
+    @Autowired
+    RedisTemplate<String, Object> redisTemplate;
 	@Override
-	public Mono<Authentication> authenticate(Authentication authentication) {
+	public Mono<Authentication> authenticate(Authentication authentication) throws AuthenticationException{
+		String password = (String) authentication.getCredentials();
+		String username = authentication.getPrincipal() == null ? "NONE_PROVIDED" : authentication.getName();
+		UserDetails userDetails;
+		if(username.length()>1000) {
+			//一键登录
+		}else {
+            try {
+                checker.check(redisTemplate,username);
+                //userDetails = passwordUserDetailService.loadUserByUsername(username);
+            } catch (UsernameNotFoundException var6) {
+               // this.logger.debug("User '" + username + "' not found");
+                throw var6;
+            }
+		}
 		String authToekn = authentication.getCredentials().toString();
 		String name=authentication.getName();
 
