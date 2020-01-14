@@ -1,4 +1,4 @@
-package org.easymis.easysaas.gateway.security.test1;
+package org.easymis.easysaas.gateway.security;
 
 import org.easymis.easysaas.gateway.entitys.vo.MessageCode;
 import org.easymis.easysaas.gateway.entitys.vo.WsResponse;

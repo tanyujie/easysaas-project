@@ -1,4 +1,4 @@
-package org.easymis.easysaas.gateway.security.test1;
+package org.easymis.easysaas.gateway.security;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -10,7 +10,6 @@ import org.easymis.easysaas.common.sms.AliyunGetMobile;
 import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
 import org.easymis.easysaas.gateway.security.check.LoginWrongChecker;
 import org.easymis.easysaas.gateway.security.service.JwtPasswordUserDetailService;
-import org.easymis.easysaas.gateway.security.type2.JWTUtil;
 import org.easymis.easysaas.gateway.security.userdetail.SecurityUserDetails;
 import org.easymis.easysaas.gateway.security.utils.JwtTokenUtil;
 import org.easymis.easysaas.gateway.service.UserService;
@@ -40,7 +39,7 @@ AuthenticationManager 负责校验 Authentication 对象。在 AuthenticationMan
  */
 @Component
 @Slf4j
-public class AuthenticationManager implements ReactiveAuthenticationManager {
+public class JwtReactiveAuthenticationManager implements ReactiveAuthenticationManager {
     @Autowired
     JwtPasswordUserDetailService passwordUserDetailService;
     private LoginWrongChecker checker = new LoginWrongChecker();
@@ -108,7 +107,10 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
                 checker.removeWarningRecord(redisTemplate,username);
                 Collection<? extends GrantedAuthority> authorities = userDetail.getAuthorities();
                 this.writeNewTokenToCache(userDetail);
-                return Mono.just(new UsernamePasswordAuthenticationToken(userDetail, password, authorities));
+               // userDetail= (UserDetails) authentication.getPrincipal();
+                //password= (String) authentication.getCredentials();
+                Authentication auth=new UsernamePasswordAuthenticationToken(userDetail, password, authorities);
+                return Mono.just(auth);
             } else {
                 checker.loginError(redisTemplate,username);
                 log.info("Authentication failed: 用户名或密码不正确");

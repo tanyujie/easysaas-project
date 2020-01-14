@@ -1,4 +1,4 @@
-package org.easymis.easysaas.gateway.security.test1;
+package org.easymis.easysaas.gateway.security;
 
 import org.easymis.easysaas.gateway.entitys.vo.MessageCode;
 import org.springframework.core.io.buffer.DataBuffer;
@@ -13,7 +13,7 @@ import com.google.gson.JsonObject;
 
 import reactor.core.publisher.Mono;
 @Component
-public class CustomAccessDeineHandler implements ServerAccessDeniedHandler {
+public class AuthenticationAccessDeniedHandler implements ServerAccessDeniedHandler {
 
 	@Override
 	public Mono<Void> handle(ServerWebExchange serverWebExchange, AccessDeniedException denied) {

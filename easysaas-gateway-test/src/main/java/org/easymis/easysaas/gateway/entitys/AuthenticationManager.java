@@ -1,18 +1,9 @@
-package org.easymis.easysaas.gateway.security.type2;
+package org.easymis.easysaas.gateway.entitys;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.easymis.easysaas.gateway.entitys.mybatis.dto.Role;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import reactor.core.publisher.Mono;
 
@@ -21,8 +12,6 @@ import reactor.core.publisher.Mono;
 @Slf4j*/
 public class AuthenticationManager implements ReactiveAuthenticationManager {
 
-	@Autowired
-	private JWTUtil jwtUtil;
 	
 	@Override
 	@SuppressWarnings("unchecked")
@@ -32,7 +21,7 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
 		String username = null;
 		if(authToken!=null) {
 			try {
-				username = jwtUtil.getUsernameFromToken(authToken);
+				username =null;//jwtUtil.getUsernameFromToken(authToken);
 			}catch (ExpiredJwtException e) {
 	            //log.info("token->{}过期", authToken);
 	            	throw new UnsupportedOperationException("token过期,请重新登录");
@@ -45,9 +34,9 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
 		}
 
 
-		if (username != null && jwtUtil.validateToken(authToken)) {
+/*		if (username != null && jwtUtil.validateToken(authToken)) {
 			//从数据库读取角色
-			Claims claims = jwtUtil.getAllClaimsFromToken(authToken);
+			Claims claims = null;//jwtUtil.getAllClaimsFromToken(authToken);
 			List<String> rolesMap = claims.get("role", List.class);
 			List<Role> roles = new ArrayList<>();
 			//bug
@@ -63,6 +52,7 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
 			return Mono.just(auth);
 		} else {
 			return Mono.empty();
-		}
+		}*/
+		return Mono.empty();
 	}
 }

@@ -4,9 +4,6 @@ import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.common.utils.MD5Util;
 import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
 import org.easymis.easysaas.gateway.entitys.vo.AuthRequest;
-import org.easymis.easysaas.gateway.entitys.vo.AuthResponse;
-import org.easymis.easysaas.gateway.security.type2.JWTUtil;
-import org.easymis.easysaas.gateway.security.type2.PBKDF2Encoder;
 import org.easymis.easysaas.gateway.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -24,11 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LoginController {
 
-	@Autowired
-	private JWTUtil jwtUtil;
-	
-	@Autowired
-	private PBKDF2Encoder passwordEncoder;
+
 
 	@Autowired
 	private UserService userRepository;
@@ -39,7 +32,7 @@ public class LoginController {
 		if(userDetails!=null) {
 			System.out.println(MD5Util.md5(ar.getPassword()));
 			if (MD5Util.md5(ar.getPassword()).equals(userDetails.getPassword())) {
-				return RestResult.buildSuccess(new AuthResponse(jwtUtil.generateToken(userDetails),ar.getUsername()));
+				//return RestResult.buildSuccess(new AuthResponse(jwtUtil.generateToken(userDetails),ar.getUsername()));
 			} else {
 				return RestResult.buildFail("密码错误");
 			}

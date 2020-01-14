@@ -139,7 +139,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private PasswordEncoder getPasswordEncoder() {
-        return new MessageDigestPasswordEncoder("MD5");
+        return new BCryptPasswordEncoder();
     }
 
 

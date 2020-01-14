@@ -1,4 +1,4 @@
-package org.easymis.easysaas.gateway.security.test1;
+package org.easymis.easysaas.gateway.security.filter;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -33,7 +33,7 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class JwtWebConfig implements WebFilter {
+public class JwtWebFilter implements WebFilter {
     private static final String tokenHeader = "Authorization";
     private static final String tokenHead = "Bearer ";
 
@@ -46,7 +46,8 @@ public class JwtWebConfig implements WebFilter {
 		boolean allowedPath = ALLOWED_PATHS.contains(request.getPath().value());
 		if (allowedPath) {
 			return webFilterChain.filter(serverWebExchange);
-		}else {String authHeader = request.getHeaders().getFirst(tokenHeader);		
+		}else {
+			String authHeader = request.getHeaders().getFirst(tokenHeader);		
 		if (StringUtils.isNotEmpty(authHeader) && authHeader.startsWith(tokenHead)) {
 			 String authToken = authHeader.substring(tokenHead.length());
 			 String username = null;
@@ -109,7 +110,7 @@ public class JwtWebConfig implements WebFilter {
         if (Objects.nonNull(value)) {
             String token = (String) value;
             if (!Objects.equals(token, authToken)) {
-                throw new ExpiredJwtException(null, null, "tonken已过期");
+                throw new ExpiredJwtException(null, null, "tonken已过期，请重新登录！");
             }
         }
     }

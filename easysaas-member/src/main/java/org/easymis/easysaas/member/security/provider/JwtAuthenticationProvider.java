@@ -103,7 +103,7 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
             }
 
             //先确认是不是手机验证码
-            if (password.length()!=32) {
+            if (password.length()!=60) {
                 String cacheCode = (String) redisTemplate.opsForValue().get(RedisUtils.joinKey(RedisPrefixConstant.USER_LOGIN_SMS, username));
                 if (!Objects.equals(cacheCode, password)) {
                     checker.loginError(redisTemplate,username);
