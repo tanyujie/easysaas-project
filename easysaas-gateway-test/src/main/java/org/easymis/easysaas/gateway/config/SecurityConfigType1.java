@@ -1,7 +1,7 @@
 package org.easymis.easysaas.gateway.config;
 
+import org.easymis.easysaas.gateway.security.handler.JwtAuthenticationSuccessHandler;
 import org.easymis.easysaas.gateway.security.test1.AuthenticationFaillHandler;
-import org.easymis.easysaas.gateway.security.test1.AuthenticationSuccessHandler;
 import org.easymis.easysaas.gateway.security.test1.CustomAccessDeineHandler;
 import org.easymis.easysaas.gateway.security.test1.CustomHttpBasicServerAuthenticationEntryPoint;
 import org.easymis.easysaas.gateway.security.test1.JwtWebConfig;
@@ -22,7 +22,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 public class SecurityConfigType1 {
 
     @Autowired
-    private AuthenticationSuccessHandler authenticationSuccessHandler;
+    private JwtAuthenticationSuccessHandler authenticationSuccessHandler;
     @Autowired
     private AuthenticationFaillHandler authenticationFaillHandler;
     @Autowired

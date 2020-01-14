@@ -1,31 +1,63 @@
-package org.easymis.easysaas.gateway.security.test1;
+package org.easymis.easysaas.gateway.security.handler;
 
-import java.util.Base64;
-
-import org.easymis.easysaas.gateway.entitys.vo.AuthUserDetails;
-import org.easymis.easysaas.gateway.entitys.vo.MessageCode;
-import org.easymis.easysaas.gateway.entitys.vo.WsResponse;
+import org.easymis.easysaas.common.result.RestResult;
+import org.easymis.easysaas.gateway.entitys.vo.UserVo;
 import org.easymis.easysaas.gateway.security.userdetail.SecurityUserDetails;
+import org.springframework.beans.BeanUtils;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.server.WebFilterExchange;
 import org.springframework.security.web.server.authentication.WebFilterChainServerAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.JsonObject;
 
 import reactor.core.publisher.Mono;
 
 
 @Component
-public class AuthenticationSuccessHandler extends WebFilterChainServerAuthenticationSuccessHandler   {
-
+public class JwtAuthenticationSuccessHandler extends WebFilterChainServerAuthenticationSuccessHandler   {
     @Override
+    public Mono<Void> onAuthenticationSuccess(WebFilterExchange webFilterExchange, Authentication authentication) {
+        ServerWebExchange exchange = webFilterExchange.getExchange();
+        ServerHttpResponse response = exchange.getResponse();
+        //设置headers
+        HttpHeaders httpHeaders = response.getHeaders();
+        httpHeaders.add("Content-Type", "application/json; charset=UTF-8");
+        httpHeaders.add("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+        byte[]   dataBytes={};
+        UserVo userVo = new UserVo();
+        SecurityUserDetails userDetails = (SecurityUserDetails) authentication.getPrincipal();
+        BeanUtils.copyProperties(userDetails,userVo);
+        
+        RestResult success = RestResult.buildSuccess(userVo);
+        try {
+        	String dataBytesString=JSON.toJSONString(success);
+			dataBytes=dataBytesString.getBytes("UTF-8");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        DataBuffer bodyDataBuffer = response.bufferFactory().wrap(dataBytes);
+        return response.writeWith(Mono.just(bodyDataBuffer));
+        
+/*    	httpServletResponse.setCharacterEncoding("UTF-8");
+        httpServletResponse.setContentType("application/json;charset=utf-8");
+        Writer writer = httpServletResponse.getWriter();
+        SecurityUserDetails userDetails = (SecurityUserDetails) authentication.getPrincipal();
+        UserVo userVo = new UserVo();
+        BeanUtils.copyProperties(userDetails,userVo);
+      //  String token = JwtTokenUtil.generateToken(userDetails.getPhoneNumber());
+        RestResult success = RestResult.buildSuccess(userVo);
+        writer.write(JSON.toJSONString(success));
+        writer.flush();
+        writer.close();*/
+    }
+   /* @Override
     public Mono<Void> onAuthenticationSuccess(WebFilterExchange webFilterExchange, Authentication authentication){
         ServerWebExchange exchange = webFilterExchange.getExchange();
         ServerHttpResponse response = exchange.getResponse();
@@ -65,7 +97,7 @@ public class AuthenticationSuccessHandler extends WebFilterChainServerAuthentica
         userDetails.setPassword(user.getPassword().substring(user.getPassword().lastIndexOf("}")+1,user.getPassword().length()));
         return userDetails;
     }
-
+*/
 
 
 
