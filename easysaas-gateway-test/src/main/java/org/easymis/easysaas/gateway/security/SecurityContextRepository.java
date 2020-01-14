@@ -33,7 +33,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.micrometer.core.instrument.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
-/*@Component*/
+@Component
 @Slf4j
 public class SecurityContextRepository implements ServerSecurityContextRepository{
     private static final String tokenHeader = "Authorization";
@@ -44,10 +44,9 @@ public class SecurityContextRepository implements ServerSecurityContextRepositor
     private JwtReactiveAuthenticationManager authenticationManager;
 	@Autowired
 	private JwtPasswordUserDetailService userDetailsService;
-	@Override
+
 	public Mono<Void> save(ServerWebExchange swe, SecurityContext sc) {
-		//throw new UnsupportedOperationException("Not supported yet.");
-		
+		//throw new UnsupportedOperationException("Not supported yet.");		
 		return null;
 	}
 
@@ -131,5 +130,6 @@ public class SecurityContextRepository implements ServerSecurityContextRepositor
             }
         }
     }
+
 
 }

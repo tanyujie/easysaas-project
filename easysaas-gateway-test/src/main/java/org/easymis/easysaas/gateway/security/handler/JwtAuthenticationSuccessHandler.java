@@ -9,18 +9,23 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.server.WebFilterExchange;
-import org.springframework.security.web.server.authentication.WebFilterChainServerAuthenticationSuccessHandler;
+import org.springframework.security.web.server.authentication.ServerAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
 import com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import reactor.core.publisher.Mono;
 
-
+/**
+ * 
+　 * <p>Title: JwtAuthenticationSuccessHandler</p>
+　 * <p>Description: 登陆成功handler</p>
+　 * @author 谭宇杰
+　 * @date 2020年1月15日
+ */
 @Component
-public class JwtAuthenticationSuccessHandler extends WebFilterChainServerAuthenticationSuccessHandler   {
+public class JwtAuthenticationSuccessHandler implements ServerAuthenticationSuccessHandler  /*extends WebFilterChainServerAuthenticationSuccessHandler*/  {
     @Override
     public Mono<Void> onAuthenticationSuccess(WebFilterExchange webFilterExchange, Authentication authentication) {
         ServerWebExchange exchange = webFilterExchange.getExchange();
@@ -44,18 +49,6 @@ public class JwtAuthenticationSuccessHandler extends WebFilterChainServerAuthent
 		}
         DataBuffer bodyDataBuffer = response.bufferFactory().wrap(dataBytes);
         return response.writeWith(Mono.just(bodyDataBuffer));
-        
-/*    	httpServletResponse.setCharacterEncoding("UTF-8");
-        httpServletResponse.setContentType("application/json;charset=utf-8");
-        Writer writer = httpServletResponse.getWriter();
-        SecurityUserDetails userDetails = (SecurityUserDetails) authentication.getPrincipal();
-        UserVo userVo = new UserVo();
-        BeanUtils.copyProperties(userDetails,userVo);
-      //  String token = JwtTokenUtil.generateToken(userDetails.getPhoneNumber());
-        RestResult success = RestResult.buildSuccess(userVo);
-        writer.write(JSON.toJSONString(success));
-        writer.flush();
-        writer.close();*/
     }
    /* @Override
     public Mono<Void> onAuthenticationSuccess(WebFilterExchange webFilterExchange, Authentication authentication){
@@ -99,7 +92,28 @@ public class JwtAuthenticationSuccessHandler extends WebFilterChainServerAuthent
     }
 */
 
-
+/*   
+import com.alibaba.fastjson.JSONObject;
+import com.sisheng.authority.common.BaseResponse;
+import com.sisheng.authority.common.Constants;
+import org.springframework.core.io.buffer.DataBuffer;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.server.WebFilterExchange;
+import org.springframework.security.web.server.authentication.ServerAuthenticationSuccessHandler;
+import reactor.core.publisher.Mono;
+ *  @Override
+    public Mono<Void> onAuthenticationSuccess(WebFilterExchange webFilterExchange, Authentication authentication) {
+        ServerHttpResponse response = webFilterExchange.getExchange().getResponse();
+        response.setStatusCode(HttpStatus.OK);
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setCode("success");
+        baseResponse.setMsg("成功");
+        String body = JSONObject.toJSONString(baseResponse);
+        DataBuffer buffer = response.bufferFactory().wrap(body.getBytes(Constants.ENCODING_UTF_8_CHARSET));
+        return response.writeWith(Mono.just(buffer));
+    }*/
 
 
 

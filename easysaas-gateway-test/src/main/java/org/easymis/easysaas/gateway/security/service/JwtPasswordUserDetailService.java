@@ -18,7 +18,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import reactor.core.publisher.Mono;
-
+/**
+自定义用户信息获取方式
+获取用户信息的接口定义是：ReactiveUserDetailsService
+ */
 @Component("JwtPasswordUserDetailService")
 public class JwtPasswordUserDetailService implements ReactiveUserDetailsService {
     @Autowired

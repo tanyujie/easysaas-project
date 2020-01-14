@@ -56,7 +56,7 @@ public class JwtLoginFilter implements WebFilter {
 				JwtPasswordUserDetailService userDetailsService= (JwtPasswordUserDetailService) SpringBootBeanUtil.getBean("JwtPasswordUserDetailService");
 				 
 	                username = JwtTokenUtil.getUserNameFromToken(authToken);
-
+	                
 	                log.info("checking username:{}", username);
 	                if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 	                    UserDetails userDetails = userDetailsService.findByUsername(username).block(); //手机号

@@ -1,4 +1,4 @@
-package org.easymis.easysaas.gateway.security;
+package org.easymis.easysaas.gateway.security.handler;
 
 import org.easymis.easysaas.gateway.entitys.vo.MessageCode;
 import org.easymis.easysaas.gateway.entitys.vo.WsResponse;
@@ -14,9 +14,15 @@ import org.springframework.web.server.ServerWebExchange;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import reactor.core.publisher.Mono;
-
+/**
+ * 
+　 * <p>Title: JwtAuthenticationFaillHandler</p>
+　 * <p>Description: 登陆失败handler</p>
+　 * @author 谭宇杰
+　 * @date 2020年1月15日
+ */
 @Component
-public class AuthenticationFaillHandler  implements ServerAuthenticationFailureHandler {
+public class JwtAuthenticationFaillHandler  implements ServerAuthenticationFailureHandler {
 
     @Override
     public Mono<Void> onAuthenticationFailure(WebFilterExchange webFilterExchange, AuthenticationException e) {
@@ -39,4 +45,14 @@ public class AuthenticationFaillHandler  implements ServerAuthenticationFailureH
         DataBuffer bodyDataBuffer = response.bufferFactory().wrap(dataBytes);
         return response.writeWith(Mono.just(bodyDataBuffer));
     }
+    
+/*    private Mono<Void> writeErrorMessage(ServerHttpResponse response, ErrorEnum errorEnum) {
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setCode(errorEnum.getCode());
+        baseResponse.setMsg(errorEnum.getMessage());
+        String result = JSONObject.toJSONString(baseResponse);
+        DataBuffer buffer = response.bufferFactory().wrap(result.getBytes(Constants.ENCODING_UTF_8_CHARSET));
+        return response.writeWith(Mono.just(buffer));
+    }*/
+
 }

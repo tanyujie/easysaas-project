@@ -1,12 +1,11 @@
 package org.easymis.easysaas.gateway.config;
 
-import org.easymis.easysaas.gateway.security.AuthenticationAccessDeniedHandler;
-import org.easymis.easysaas.gateway.security.AuthenticationFaillHandler;
 import org.easymis.easysaas.gateway.security.JwtReactiveAuthenticationManager;
+import org.easymis.easysaas.gateway.security.SecurityContextRepository;
 import org.easymis.easysaas.gateway.security.UnauthorizedAuthenticationEntryPoint;
 import org.easymis.easysaas.gateway.security.filter.JwtLoginFilter;
-import org.easymis.easysaas.gateway.security.filter.JwtTokenFilter;
-import org.easymis.easysaas.gateway.security.filter.JwtLoginFilter;
+import org.easymis.easysaas.gateway.security.handler.AuthenticationAccessDeniedHandler;
+import org.easymis.easysaas.gateway.security.handler.JwtAuthenticationFaillHandler;
 import org.easymis.easysaas.gateway.security.handler.JwtAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -29,7 +28,7 @@ public class SecurityConfig {
     @Autowired
     private JwtAuthenticationSuccessHandler authenticationSuccessHandler;
     @Autowired
-    private AuthenticationFaillHandler authenticationFaillHandler;
+    private JwtAuthenticationFaillHandler authenticationFaillHandler;
     @Autowired
     private UnauthorizedAuthenticationEntryPoint customHttpBasicServerAuthenticationEntryPoint;
     @Autowired
@@ -51,8 +50,6 @@ public class SecurityConfig {
     SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) throws Exception {
     	
         // 自定义登陆拦截器
-        JwtLoginFilter jwtLoginFilter = new JwtLoginFilter();
-        JwtTokenFilter jwtTokenFilter = new JwtTokenFilter();
         http.addFilterAt(new JwtLoginFilter(), SecurityWebFiltersOrder.AUTHORIZATION);
         
         http.exceptionHandling().authenticationEntryPoint(customHttpBasicServerAuthenticationEntryPoint)  //用来解决匿名用户访问无权限资源时的异常,基于http的接口请求鉴权失败           
@@ -67,7 +64,7 @@ public class SecurityConfig {
 //                .formLogin().disable()
                 .httpBasic().disable()
                 .authenticationManager(authenticationManager)
-               // .securityContextRepository(securityContext)
+                //.securityContextRepository(securityContext)
                 .authorizeExchange()
                 .pathMatchers(HttpMethod.OPTIONS).permitAll()//option 请求默认放行
                 .pathMatchers("/user/login").permitAll()
