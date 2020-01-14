@@ -6,7 +6,7 @@ import org.easymis.easysaas.gateway.security.JwtReactiveAuthenticationManager;
 import org.easymis.easysaas.gateway.security.UnauthorizedAuthenticationEntryPoint;
 import org.easymis.easysaas.gateway.security.filter.JwtLoginFilter;
 import org.easymis.easysaas.gateway.security.filter.JwtTokenFilter;
-import org.easymis.easysaas.gateway.security.filter.JwtWebFilter;
+import org.easymis.easysaas.gateway.security.filter.JwtLoginFilter;
 import org.easymis.easysaas.gateway.security.handler.JwtAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -53,7 +53,7 @@ public class SecurityConfig {
         // 自定义登陆拦截器
         JwtLoginFilter jwtLoginFilter = new JwtLoginFilter();
         JwtTokenFilter jwtTokenFilter = new JwtTokenFilter();
-        http.addFilterAt(new JwtWebFilter(), SecurityWebFiltersOrder.AUTHORIZATION);
+        http.addFilterAt(new JwtLoginFilter(), SecurityWebFiltersOrder.AUTHORIZATION);
         
         http.exceptionHandling().authenticationEntryPoint(customHttpBasicServerAuthenticationEntryPoint)  //用来解决匿名用户访问无权限资源时的异常,基于http的接口请求鉴权失败           
         		.authenticationEntryPoint(customHttpBasicServerAuthenticationEntryPoint)
