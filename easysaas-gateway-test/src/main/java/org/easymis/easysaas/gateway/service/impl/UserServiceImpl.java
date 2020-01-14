@@ -5,8 +5,8 @@ import java.util.Arrays;
 import org.easymis.easysaas.gateway.config.datasource.DataSourceType;
 import org.easymis.easysaas.gateway.config.datasource.EasymisDataSource;
 import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
+import org.easymis.easysaas.gateway.entitys.mybatis.dto.Role;
 import org.easymis.easysaas.gateway.entitys.mybatis.mapper.UserMapper;
-import org.easymis.easysaas.gateway.entitys.vo.Role;
 import org.easymis.easysaas.gateway.entitys.vo.User;
 import org.easymis.easysaas.gateway.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +40,11 @@ public class UserServiceImpl implements UserService {
 	@EasymisDataSource(DataSourceType.Master)
 	public Member findByMobile(String mobile) {
 		return mapper.findByPhoneNumber(mobile);
+	}
+
+	@Override
+	public Member findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

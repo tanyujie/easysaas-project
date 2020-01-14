@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
+import org.easymis.easysaas.gateway.entitys.mybatis.dto.Role;
 import org.easymis.easysaas.gateway.entitys.mybatis.mapper.UserMapper;
-import org.easymis.easysaas.gateway.entitys.vo.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.easymis.easysaas.gateway.security.check.LoginWrongChecker;
+import org.easymis.easysaas.gateway.security.service.JwtPasswordUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -29,6 +30,8 @@ AuthenticationManager 负责校验 Authentication 对象。在 AuthenticationMan
  */
 @Component
 public class AuthenticationManager implements ReactiveAuthenticationManager {
+    @Autowired
+    JwtPasswordUserDetailService passwordUserDetailService;
     private LoginWrongChecker checker = new LoginWrongChecker();
     @Autowired
     RedisTemplate<String, Object> redisTemplate;
@@ -36,13 +39,13 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
 	public Mono<Authentication> authenticate(Authentication authentication) throws AuthenticationException{
 		String password = (String) authentication.getCredentials();
 		String username = authentication.getPrincipal() == null ? "NONE_PROVIDED" : authentication.getName();
-		UserDetails userDetails;
+		Mono<UserDetails> userDetails;
 		if(username.length()>1000) {
 			//一键登录
 		}else {
             try {
                 checker.check(redisTemplate,username);
-                //userDetails = passwordUserDetailService.loadUserByUsername(username);
+                userDetails = passwordUserDetailService.findByUsername(username);
             } catch (UsernameNotFoundException var6) {
                // this.logger.debug("User '" + username + "' not found");
                 throw var6;
