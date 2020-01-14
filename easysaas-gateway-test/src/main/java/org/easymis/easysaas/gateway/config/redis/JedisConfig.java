@@ -65,7 +65,7 @@ public class JedisConfig {
         redisClient.setJedisPool(pool);
         return redisClient;
     }
-    @Bean
+    @Bean("RedisTemplate")
     @SuppressWarnings("all")
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
         RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();

@@ -29,6 +29,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+import io.jsonwebtoken.ExpiredJwtException;
+
 
 /**
  * 处理全局异常 <br/>
@@ -50,6 +52,16 @@ public class GlobalExceptionControllerAdvice {
         restResult.error(e.getMessage());
         return restResult;
     }
+    @ExceptionHandler(ExpiredJwtException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
+    public RestResult processExpiredJwtException(NativeWebRequest request, ExpiredJwtException e) {
+        logger.error("拦截异常", e);
+        RestResult restResult = new RestResult();
+        restResult.error("token 失效");
+        return restResult;
+    }
+    
     @ExceptionHandler(UnsupportedOperationException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody

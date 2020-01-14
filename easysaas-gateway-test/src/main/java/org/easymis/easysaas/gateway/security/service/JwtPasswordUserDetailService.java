@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 
 import reactor.core.publisher.Mono;
 
-@Component
+@Component("JwtPasswordUserDetailService")
 public class JwtPasswordUserDetailService implements ReactiveUserDetailsService {
     @Autowired
     UserService userService;

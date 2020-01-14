@@ -2,6 +2,7 @@ package org.easymis.easysaas.gateway.security.test1;
 
 import java.util.Collection;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 import org.easymis.easysaas.common.cache.RedisPrefixConstant;
 import org.easymis.easysaas.common.cache.RedisUtils;
@@ -9,7 +10,9 @@ import org.easymis.easysaas.common.sms.AliyunGetMobile;
 import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
 import org.easymis.easysaas.gateway.security.check.LoginWrongChecker;
 import org.easymis.easysaas.gateway.security.service.JwtPasswordUserDetailService;
+import org.easymis.easysaas.gateway.security.type2.JWTUtil;
 import org.easymis.easysaas.gateway.security.userdetail.SecurityUserDetails;
+import org.easymis.easysaas.gateway.security.utils.JwtTokenUtil;
 import org.easymis.easysaas.gateway.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -45,6 +48,8 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
     RedisTemplate<String, Object> redisTemplate;
     @Autowired
     UserService userService;
+/*	@Autowired
+	private JwtTokenUtil jwtTokenUtil;*/
 	@Override
 	public Mono<Authentication> authenticate(Authentication authentication) throws AuthenticationException{
 		String password = (String) authentication.getCredentials();
@@ -143,10 +148,10 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
 	}
     public void writeNewTokenToCache(UserDetails userDetail) {
         SecurityUserDetails securityUserDetails = (SecurityUserDetails) userDetail;
-        /*String jwt = JwtTokenUtil.generateToken(securityUserDetails.getPhoneNumber());
+        String jwt =JwtTokenUtil.generateToken(securityUserDetails.getPhoneNumber());
         securityUserDetails.setToken(jwt);
         redisTemplate.opsForValue()
                 .set(RedisUtils.joinKey(RedisPrefixConstant.token, securityUserDetails.getPhoneNumber()),jwt, JwtTokenUtil.getExpiration()-1, TimeUnit.SECONDS);
-    */}
+    }
 
 }
