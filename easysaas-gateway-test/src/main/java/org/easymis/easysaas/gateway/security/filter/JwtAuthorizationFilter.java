@@ -33,7 +33,7 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class JwtLoginFilter implements WebFilter {
+public class JwtAuthorizationFilter implements WebFilter {
     private static final String tokenHeader = "Authorization";
     private static final String tokenHead = "Bearer ";
 
@@ -44,6 +44,9 @@ public class JwtLoginFilter implements WebFilter {
 		ServerHttpRequest request = serverWebExchange.getRequest();
 		ServerHttpResponse response = serverWebExchange.getResponse();
 		boolean allowedPath = ALLOWED_PATHS.contains(request.getPath().value());
+		
+		log.info("request method-url:{}:{}",request.getMethodValue(),request.getURI());
+		String url=request.getPath().value();
 		if (allowedPath) {
 			return webFilterChain.filter(serverWebExchange);
 		}else {
@@ -57,12 +60,13 @@ public class JwtLoginFilter implements WebFilter {
 				 
 	                username = JwtTokenUtil.getUserNameFromToken(authToken);
 	                
-	                log.info("checking username:{}", username);
+	                log.info("检查用户名完毕:{}", username);
 	                if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 	                    UserDetails userDetails = userDetailsService.findByUsername(username).block(); //手机号
 	                    if (JwtTokenUtil.validateToken(authToken, username)) {
 	                        if (!JwtTokenUtil.isTokenExpired(authToken)) {
 	                            this.checkTokenFromCache(authToken,username);
+	                            //检查角色权限
 	                            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 	                            //authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 	                            log.info("authenticated user:{}", username);

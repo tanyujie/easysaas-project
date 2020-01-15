@@ -1,9 +1,8 @@
 package org.easymis.easysaas.gateway.config;
 
 import org.easymis.easysaas.gateway.security.JwtReactiveAuthenticationManager;
-import org.easymis.easysaas.gateway.security.SecurityContextRepository;
 import org.easymis.easysaas.gateway.security.UnauthorizedAuthenticationEntryPoint;
-import org.easymis.easysaas.gateway.security.filter.JwtLoginFilter;
+import org.easymis.easysaas.gateway.security.filter.JwtAuthorizationFilter;
 import org.easymis.easysaas.gateway.security.handler.AuthenticationAccessDeniedHandler;
 import org.easymis.easysaas.gateway.security.handler.JwtAuthenticationFaillHandler;
 import org.easymis.easysaas.gateway.security.handler.JwtAuthenticationSuccessHandler;
@@ -12,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
@@ -29,10 +30,16 @@ public class SecurityConfig {
     private JwtAuthenticationSuccessHandler authenticationSuccessHandler;
     @Autowired
     private JwtAuthenticationFaillHandler authenticationFaillHandler;
+    /**
+     * 访问权限认证异常处理
+     */
     @Autowired
     private UnauthorizedAuthenticationEntryPoint customHttpBasicServerAuthenticationEntryPoint;
+    /**
+     * 自定义访问无权限接口时403响应内容
+     */
     @Autowired
-    private AuthenticationAccessDeniedHandler customAccessDeineHandler;
+    private AuthenticationAccessDeniedHandler urlAccessDeniedHandler;
     @Autowired 
     private JwtReactiveAuthenticationManager authenticationManager;
 /*    @Autowired 
@@ -48,20 +55,23 @@ public class SecurityConfig {
 
     @Bean
     SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) throws Exception {
-    	
+        // 禁用CSRF 开启跨域,必须支持跨域
+        http.csrf().disable().cors();
+        // 防止iframe 造成跨域
+        http.headers().frameOptions().disable();
         // 自定义登陆拦截器
-        http.addFilterAt(new JwtLoginFilter(), SecurityWebFiltersOrder.AUTHORIZATION);
+        http.addFilterAt(new JwtAuthorizationFilter(), SecurityWebFiltersOrder.AUTHORIZATION);
+        // 未登录认证异常，用来解决匿名用户访问无权限资源时的异常,基于http的接口请求鉴权失败
+        http.exceptionHandling().authenticationEntryPoint(customHttpBasicServerAuthenticationEntryPoint);   
+        // 登录过后访问无权限的接口时自定义403响应内容
+        http.exceptionHandling().accessDeniedHandler(urlAccessDeniedHandler);
+
         
-        http.exceptionHandling().authenticationEntryPoint(customHttpBasicServerAuthenticationEntryPoint)  //用来解决匿名用户访问无权限资源时的异常,基于http的接口请求鉴权失败           
-        		.authenticationEntryPoint(customHttpBasicServerAuthenticationEntryPoint)
-        		.accessDeniedHandler(customAccessDeineHandler)
-        		.and()
+        http
         		.formLogin().loginPage("/user/login")//登录页面访问路径
                 .authenticationSuccessHandler(authenticationSuccessHandler) //认证成功
                 .authenticationFailureHandler(authenticationFaillHandler) //登陆验证失败
                 .and()
-                .csrf().disable()//必须支持跨域
-//                .formLogin().disable()
                 .httpBasic().disable()
                 .authenticationManager(authenticationManager)
                 //.securityContextRepository(securityContext)

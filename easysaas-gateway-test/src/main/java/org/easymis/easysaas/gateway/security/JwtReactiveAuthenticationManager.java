@@ -107,8 +107,6 @@ public class JwtReactiveAuthenticationManager implements ReactiveAuthenticationM
                 checker.removeWarningRecord(redisTemplate,username);
                 Collection<? extends GrantedAuthority> authorities = userDetail.getAuthorities();
                 this.writeNewTokenToCache(userDetail);
-               // userDetail= (UserDetails) authentication.getPrincipal();
-                //password= (String) authentication.getCredentials();
                 Authentication auth=new UsernamePasswordAuthenticationToken(userDetail, password, authorities);
                 return Mono.just(auth);
             } else {
