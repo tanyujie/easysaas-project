@@ -1,20 +1,17 @@
 package org.easymis.easysaas.gateway.service.impl;
 
-import java.util.Arrays;
-
 import org.easymis.easysaas.gateway.config.datasource.DataSourceType;
 import org.easymis.easysaas.gateway.config.datasource.EasymisDataSource;
 import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
-import org.easymis.easysaas.gateway.entitys.mybatis.dto.Role;
 import org.easymis.easysaas.gateway.entitys.mybatis.mapper.UserMapper;
 import org.easymis.easysaas.gateway.entitys.vo.User;
-import org.easymis.easysaas.gateway.service.UserService;
+import org.easymis.easysaas.gateway.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Mono;
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements MemberService {
 	
 	@Autowired
 	UserMapper mapper;

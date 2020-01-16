@@ -22,9 +22,9 @@ public class SecurityUserDetails implements UserDetails {
     @JsonIgnore
     private String password;
 
-    private String userNo;
+    private String memberNo;
     // userId
-    private Integer id;
+    private String memberId;
 
     //m默认是手机号码 或者邮箱
     private String name;

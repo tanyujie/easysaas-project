@@ -4,7 +4,7 @@ import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.common.utils.MD5Util;
 import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
 import org.easymis.easysaas.gateway.entitys.vo.AuthRequest;
-import org.easymis.easysaas.gateway.service.UserService;
+import org.easymis.easysaas.gateway.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +24,7 @@ public class LoginController {
 
 
 	@Autowired
-	private UserService userRepository;
+	private MemberService userRepository;
     //
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public RestResult login(AuthRequest ar) {

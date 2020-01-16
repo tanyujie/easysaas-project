@@ -19,12 +19,12 @@ public class Member implements Serializable{
     /**
      * id
      */
-    private Integer id;
+    private String memberId;
 
     /**
      * user编号
      */
-    private String userNo;
+    private String memberNo;
 
     /**
      * 性别
@@ -36,20 +36,6 @@ public class Member implements Serializable{
      */
     private Integer age;
 
-    /**
-     * 公司名称
-     */
-    private String companyName;
-
-    /**
-     * 部门
-     */
-    private String department;
-
-    /**
-     * 职位
-     */
-    private String position;
 
     /**
      * 密码

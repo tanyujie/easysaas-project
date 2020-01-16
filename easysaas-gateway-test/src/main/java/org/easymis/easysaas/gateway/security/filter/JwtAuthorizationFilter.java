@@ -67,11 +67,15 @@ public class JwtAuthorizationFilter implements WebFilter {
 	                        if (!JwtTokenUtil.isTokenExpired(authToken)) {
 	                            this.checkTokenFromCache(authToken,username);
 	                            //检查角色权限
-	                            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-	                            //authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-	                            log.info("authenticated user:{}", username);
-	                            SecurityContextHolder.getContext().setAuthentication(authentication);
-	                            serverWebExchange.getAttributes().put("user", username);
+	                            if(userDetailsService.checkUrlPermission(username, url)) {
+		                            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+		                            SecurityContextHolder.getContext().setAuthentication(authentication);
+		                            serverWebExchange.getAttributes().put("user", username);
+		                            log.info("authenticated user:{}", username);                           	
+	                            }else {
+	                            	return this.setErrorResponse(response, "无权限访问请授权");
+	                            }
+	   
 	                        } else {
 	                            throw new ExpiredJwtException(null, null, "");
 	                        }

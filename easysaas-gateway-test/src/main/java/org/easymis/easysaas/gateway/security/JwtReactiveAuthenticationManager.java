@@ -12,7 +12,7 @@ import org.easymis.easysaas.gateway.security.check.LoginWrongChecker;
 import org.easymis.easysaas.gateway.security.service.JwtPasswordUserDetailService;
 import org.easymis.easysaas.gateway.security.userdetail.SecurityUserDetails;
 import org.easymis.easysaas.gateway.security.utils.JwtTokenUtil;
-import org.easymis.easysaas.gateway.service.UserService;
+import org.easymis.easysaas.gateway.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -46,7 +46,7 @@ public class JwtReactiveAuthenticationManager implements ReactiveAuthenticationM
     @Autowired
     RedisTemplate<String, Object> redisTemplate;
     @Autowired
-    UserService userService;
+    MemberService userService;
 /*	@Autowired
 	private JwtTokenUtil jwtTokenUtil;*/
 	@Override
@@ -71,7 +71,7 @@ public class JwtReactiveAuthenticationManager implements ReactiveAuthenticationM
             }
             if (Objects.isNull(userDetail.getUsername())) {
             	Member member = userService.saveQuickRegister(username);
-            	userDetail = new SecurityUserDetails().setUserNo(member.getUserNo()).setPhoneNumber(member.getPhoneNumber()).setUsername(username).setPassword(password).setId(member.getId());
+            	userDetail = new SecurityUserDetails().setMemberNo(member.getMemberNo()).setPhoneNumber(member.getPhoneNumber()).setUsername(username).setPassword(password).setMemberId(member.getMemberId());
             }
             checker.removeWarningRecord(redisTemplate,username);
             Collection<? extends GrantedAuthority> authorities = userDetail.getAuthorities();
@@ -95,7 +95,7 @@ public class JwtReactiveAuthenticationManager implements ReactiveAuthenticationM
                 } else {
                     if (Objects.isNull(userDetail.getUsername())) {
                         Member member = userService.saveQuickRegister(username);
-                        userDetail = new SecurityUserDetails().setUserNo(member.getUserNo()).setPhoneNumber(member.getPhoneNumber()).setUsername(username).setPassword(password).setId(member.getId());
+                        userDetail = new SecurityUserDetails().setMemberNo(member.getMemberNo()).setPhoneNumber(member.getPhoneNumber()).setUsername(username).setPassword(password).setMemberId(member.getMemberId());
                     }
                     checker.removeWarningRecord(redisTemplate,username);
                     Collection<? extends GrantedAuthority> authorities = userDetail.getAuthorities();

@@ -5,14 +5,14 @@ import java.util.List;
 import org.easymis.easysaas.gateway.config.datasource.DataSourceType;
 import org.easymis.easysaas.gateway.config.datasource.EasymisDataSource;
 import org.easymis.easysaas.gateway.entitys.mybatis.dto.RoleResource;
-import org.easymis.easysaas.gateway.entitys.mybatis.mapper.RoleResourceMapper;
-import org.easymis.easysaas.gateway.service.RoleResourceService;
+import org.easymis.easysaas.gateway.entitys.mybatis.mapper.RolePermissionMapper;
+import org.easymis.easysaas.gateway.service.RolePermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
-public class RoleResourceServiceImpl implements RoleResourceService {
+public class RolePermissionServiceImpl implements RolePermissionService {
 	@Autowired
-	RoleResourceMapper mapper;
+	RolePermissionMapper mapper;
 	@EasymisDataSource(DataSourceType.Master)
 	public List<RoleResource> list(String resourceId) {
 		// TODO Auto-generated method stub

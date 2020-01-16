@@ -9,7 +9,7 @@ import org.easymis.easysaas.gateway.entitys.mybatis.dto.RoleResource;
  * 服务类
  * </p>
  */
-public interface RoleResourceService {
+public interface RolePermissionService {
 	List<RoleResource> list(String resourceId);
 	List<RoleResource> findByResourceId(String resourceId);
 }

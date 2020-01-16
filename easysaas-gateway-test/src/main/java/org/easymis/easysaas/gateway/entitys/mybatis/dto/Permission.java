@@ -18,7 +18,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Resource implements Serializable {
+public class Permission implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,7 +30,7 @@ public class Resource implements Serializable {
     /**
      * 不包含域名的路径
      */
-    private String endPoint;
+    private String url;
 
     /**
      * 返回类
