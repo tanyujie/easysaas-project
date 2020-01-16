@@ -102,7 +102,7 @@ public interface PermissionMapper {
 	@Select("	select * from permission "
 			+ " left join role_permission on permission.permission_id=permission.permission_id"
 			+ " left join member_role on role_permission.role_id=member_role.role_id "
-			+ " where member_role.memeber_id= #{memeberId}")
+			+ " where member_role.member_id= #{memberId}")
 	List<Permission> findByMemberId(@Param("memberId")String memberId);
  
 }

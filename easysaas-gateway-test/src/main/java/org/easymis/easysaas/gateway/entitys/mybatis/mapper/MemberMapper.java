@@ -13,7 +13,7 @@ import org.apache.ibatis.annotations.Update;
 import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
 
 public interface MemberMapper {
-	 @Select("select * from easymis_Resource t WHERE t.member_id = #{memberId}")  
+	 @Select("select * from member t WHERE t.member_id = #{memberId}")  
 	 Member findById(@Param("memberId") String memberId);
 
     @Select("SELECT * FROM member WHERE name = #{name}")

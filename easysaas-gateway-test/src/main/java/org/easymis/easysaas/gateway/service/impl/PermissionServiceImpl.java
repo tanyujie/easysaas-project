@@ -26,9 +26,9 @@ public class PermissionServiceImpl implements PermissionService {
 	}
 
 	@Override
-	public List<Permission> findByMemberId(String memberNo) {
+	public List<Permission> findByMemberId(String memberId) {
 		// TODO Auto-generated method stub
-		return mapper.findByMemberId(memberNo);
+		return mapper.findByMemberId(memberId);
 	}
 
 }

@@ -54,35 +54,36 @@ public class JwtAuthorizationFilter implements WebFilter {
 		if (StringUtils.isNotEmpty(authHeader) && authHeader.startsWith(tokenHead)) {
 			 String authToken = authHeader.substring(tokenHead.length());
 			 String memberId = null;
-			try {
-					
-				JwtPasswordUserDetailService userDetailsService= (JwtPasswordUserDetailService) SpringBootBeanUtil.getBean("JwtPasswordUserDetailService");
-				 
-				memberId = JwtTokenUtil.getUserNameFromToken(authToken);
-	                
-	                log.info("检查用户名完毕:{}", memberId);
-	                if (memberId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-	                    UserDetails userDetails = userDetailsService.findByMemberId(memberId).block(); //手机号
-	                    if (JwtTokenUtil.validateToken(authToken, memberId)) {
-	                        if (!JwtTokenUtil.isTokenExpired(authToken)) {
-	                            this.checkTokenFromCache(authToken,memberId);
-	                            //检查角色权限
-	                            if(userDetailsService.checkUrlPermission(memberId, url)) {
-		                            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-		                            SecurityContextHolder.getContext().setAuthentication(authentication);
-		                            serverWebExchange.getAttributes().put("user", memberId);
-		                            log.info("authenticated user:{}", memberId);                           	
-	                            }else {
-	                            	return this.setErrorResponse(response, "无权限访问请授权");
-	                            }
-	   
-	                        } else {
-	                            throw new ExpiredJwtException(null, null, "");
-	                        }
-	                    }
-	                }
+				try {
 
-	            } catch (ExpiredJwtException e) {
+					JwtPasswordUserDetailService userDetailsService = (JwtPasswordUserDetailService) SpringBootBeanUtil
+							.getBean("JwtPasswordUserDetailService");
+					memberId = JwtTokenUtil.getUserNameFromToken(authToken);
+
+					log.info("检查用户名完毕:{}", memberId);
+					if (memberId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+						UserDetails userDetails = userDetailsService.findByMemberId(memberId).block(); // 手机号
+						if (JwtTokenUtil.validateToken(authToken, memberId)) {
+							if (!JwtTokenUtil.isTokenExpired(authToken)) {
+								this.checkTokenFromCache(authToken, memberId);
+								// 检查角色权限
+								if (userDetailsService.checkUrlPermission(memberId, url)) {
+									UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+											userDetails, null, userDetails.getAuthorities());
+									SecurityContextHolder.getContext().setAuthentication(authentication);
+									serverWebExchange.getAttributes().put("user", memberId);
+									log.info("authenticated user:{}", memberId);
+								} else {
+									return this.setErrorResponse(response, "无权限访问请授权");
+								}
+
+							} else {
+								throw new ExpiredJwtException(null, null, "");
+							}
+						}
+					}
+
+				} catch (ExpiredJwtException e) {
 	                log.info("token->{}过期", authToken);
 					return this.setErrorResponse(response, e.getMessage());
 	                //new JwtAuthenticationFailureHandler().onAuthenticationFailure(request, response, new TokenAuthenticationException("token过期,请重新登录"));  //暂时使用该handler代替
