@@ -3,7 +3,7 @@ package org.easymis.easysaas.gateway.service.impl;
 import org.easymis.easysaas.gateway.config.datasource.DataSourceType;
 import org.easymis.easysaas.gateway.config.datasource.EasymisDataSource;
 import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
-import org.easymis.easysaas.gateway.entitys.mybatis.mapper.UserMapper;
+import org.easymis.easysaas.gateway.entitys.mybatis.mapper.MemberMapper;
 import org.easymis.easysaas.gateway.entitys.vo.User;
 import org.easymis.easysaas.gateway.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 public class UserServiceImpl implements MemberService {
 	
 	@Autowired
-	UserMapper mapper;
+	MemberMapper mapper;
 /*	//username:passwowrd -> 13551259347:123456
 	private final String userUsername = "13551259347";// password: 123456
 	private final User user = new User(userUsername, "fV8G3g4M7OgyajhE/BcbHL69JAZfDlU5+ihrxO5wBi0=", true, Arrays.asList(Role.ROLE_USER));
@@ -33,7 +33,10 @@ public class UserServiceImpl implements MemberService {
 		}*/
 		return Mono.empty();
 	}
-
+	@EasymisDataSource(DataSourceType.Master)
+	public Member findById(String memberId) {
+		return mapper.findById(memberId);
+	}
 	@EasymisDataSource(DataSourceType.Master)
 	public Member findByMobile(String mobile) {
 		return mapper.findByPhoneNumber(mobile);

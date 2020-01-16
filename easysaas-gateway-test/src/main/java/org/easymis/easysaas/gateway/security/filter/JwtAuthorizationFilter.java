@@ -53,25 +53,25 @@ public class JwtAuthorizationFilter implements WebFilter {
 			String authHeader = request.getHeaders().getFirst(tokenHeader);		
 		if (StringUtils.isNotEmpty(authHeader) && authHeader.startsWith(tokenHead)) {
 			 String authToken = authHeader.substring(tokenHead.length());
-			 String username = null;
+			 String memberId = null;
 			try {
 					
 				JwtPasswordUserDetailService userDetailsService= (JwtPasswordUserDetailService) SpringBootBeanUtil.getBean("JwtPasswordUserDetailService");
 				 
-	                username = JwtTokenUtil.getUserNameFromToken(authToken);
+				memberId = JwtTokenUtil.getUserNameFromToken(authToken);
 	                
-	                log.info("检查用户名完毕:{}", username);
-	                if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-	                    UserDetails userDetails = userDetailsService.findByUsername(username).block(); //手机号
-	                    if (JwtTokenUtil.validateToken(authToken, username)) {
+	                log.info("检查用户名完毕:{}", memberId);
+	                if (memberId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+	                    UserDetails userDetails = userDetailsService.findByMemberId(memberId).block(); //手机号
+	                    if (JwtTokenUtil.validateToken(authToken, memberId)) {
 	                        if (!JwtTokenUtil.isTokenExpired(authToken)) {
-	                            this.checkTokenFromCache(authToken,username);
+	                            this.checkTokenFromCache(authToken,memberId);
 	                            //检查角色权限
-	                            if(userDetailsService.checkUrlPermission(username, url)) {
+	                            if(userDetailsService.checkUrlPermission(memberId, url)) {
 		                            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 		                            SecurityContextHolder.getContext().setAuthentication(authentication);
-		                            serverWebExchange.getAttributes().put("user", username);
-		                            log.info("authenticated user:{}", username);                           	
+		                            serverWebExchange.getAttributes().put("user", memberId);
+		                            log.info("authenticated user:{}", memberId);                           	
 	                            }else {
 	                            	return this.setErrorResponse(response, "无权限访问请授权");
 	                            }

@@ -12,75 +12,9 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
 
-public interface UserMapper {
-	 @Select("select * from easymis_Resource t WHERE t.org_id = #{orgId}")  
-	 @Results(value = {@Result(property = "orgId", column = "org_id"),
-	 @Result(property = "orgNo", column = "org_no"),
-	 @Result(property = "orgName", column = "org_name"),
-	 @Result(property = "parentId", column = "parent_id"),
-	 @Result(property = "priority", column = "priority"),
-	 @Result(property = "ownerId", column = "owner_id"),
-	 @Result(property = "ownerName", column = "owner_name"),
-	 @Result(property = "contact", column = "contact"),
-	 @Result(property = "mobile", column = "mobile"),
-	 @Result(property = "createTime", column = "create_time"),
-	 @Result(property = "startDate", column = "start_date"),
-	 @Result(property = "endTime", column = "end_time"),
-	 @Result(property = "versionStatus", column = "version_status"),
-	 @Result(property = "countryId", column = "country_id"),
-	 @Result(property = "countryName", column = "country_name"),
-	 @Result(property = "provinceId", column = "province_id"),
-	 @Result(property = "provinceName", column = "province_name"),
-	 @Result(property = "cityId", column = "city_id"),
-	 @Result(property = "cityName", column = "city_name"),
-	 @Result(property = "districtId", column = "district_id"),
-	 @Result(property = "districtName", column = "district_name"),
-	 @Result(property = "registerAddress", column = "register_address"),
-	 @Result(property = "officeAddress", column = "office_address"),
-	 @Result(property = "phone", column = "phone"),
-	 @Result(property = "fax", column = "fax"),
-	 @Result(property = "zip", column = "zip"),
-	 @Result(property = "totalStaff", column = "total_staff"),
-	 @Result(property = "usedStaff", column = "used_staff"),
-	 @Result(property = "status", column = "status"),
-	 @Result(property = "depict", column = "depict"),
-	 @Result(property = "businessLicenseNo", column = "business_license_no"),
-	 @Result(property = "legalPerson", column = "legal_person"),
-	 @Result(property = "registeredCapital", column = "registered_capital"),
-	 @Result(property = "businessScope", column = "business_scope"),
-	 @Result(property = "email", column = "email"),
-	 @Result(property = "ipo", column = "ipo"),
-	 @Result(property = "stockCode", column = "stock_code"),
-	 @Result(property = "bankNo", column = "bank_no"),
-	 @Result(property = "bankName", column = "bank_name"),
-	 @Result(property = "url", column = "url"),
-	 @Result(property = "blog", column = "blog"),
-	 @Result(property = "level1IndustryId", column = "level1_industry_id"),
-	 @Result(property = "level2IndustryId", column = "level2_industry_id"),
-	 @Result(property = "level3IndustryId", column = "level3_industry_id"),
-	 @Result(property = "level4IndustryId", column = "level4_industry_id"),
-	 @Result(property = "level1IndustryName", column = "level1_industry_name"),
-	 @Result(property = "level2IndustryName", column = "level2_industry_name"),
-	 @Result(property = "level3IndustryName", column = "level3_industry_name"),
-	 @Result(property = "level4IndustryName", column = "level4_industry_name"),
-	 @Result(property = "industryId", column = "industry_id"),
-	 @Result(property = "industryName", column = "industry_name"),
-	 @Result(property = "sourceId", column = "source_id"),
-	 @Result(property = "ownership", column = "ownership"),
-	 @Result(property = "annualRevenue", column = "annual_revenue"),
-	 @Result(property = "qq", column = "qq"),
-	 @Result(property = "weChat", column = "we_chat"),
-	 @Result(property = "updateId", column = "update_id"),
-	 @Result(property = "updateName", column = "update_name"),
-	 @Result(property = "updateTime", column = "update_time"),
-	 @Result(property = "deleteStatus", column = "delete_status"),
-	 @Result(property = "deleteId", column = "delete_id"),
-	 @Result(property = "deleteName", column = "delete_name"),
-	 @Result(property = "deleteTime", column = "delete_time"),
-	 @Result(property = "lockStatus", column = "lock_status"),
-	 @Result(property = "ipGateway", column = "ip_gateway")
-	 }) 
-	 Member findById(@Param("id") String id);
+public interface MemberMapper {
+	 @Select("select * from easymis_Resource t WHERE t.member_id = #{memberId}")  
+	 Member findById(@Param("memberId") String memberId);
 
     @Select("SELECT * FROM member WHERE name = #{name}")
     @Results({

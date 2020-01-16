@@ -72,6 +72,25 @@ public class JwtPasswordUserDetailService implements ReactiveUserDetailsService 
 
     }
 
+    public Mono<UserDetails> findByMemberId(String memberId) throws UsernameNotFoundException{
+    	Member member=memberService.findById(memberId);
+        SecurityUserDetails details = new SecurityUserDetails()
+                .setMemberId(member.getMemberId())
+                .setPassword(member.getPassword())
+                .setUsername(member.getName())
+                .setMemberNo(member.getMemberNo())
+                .setHeadUrl(member.getHeadUrl())
+                .setEmail(member.getEmail())
+                .setPhoneNumber(member.getPhoneNumber())
+                .setEnabled(member.getEnabled())
+                .setSex(member.getSex());
+        //----------------------------------------------------------------
+        List<ExpireDateGrantedAuthority> authority = userRoleService.getGrantedAuthorityByMemberId(member.getMemberNo());
+        details.setExpireDateGrantedAuthorityList(authority);
+        checker.check(details);
+        return Mono.just(details);
+
+    }
 	public Boolean checkUrlPermission(String memberId, String url) {
 		List<Permission> permissionList = permissionService.findByMemberId(memberId);
 		Set<String> permissionSet = new HashSet();

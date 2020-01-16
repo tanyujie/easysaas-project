@@ -148,10 +148,10 @@ public class JwtReactiveAuthenticationManager implements ReactiveAuthenticationM
 	}
     public void writeNewTokenToCache(UserDetails userDetail) {
         SecurityUserDetails securityUserDetails = (SecurityUserDetails) userDetail;
-        String jwt =JwtTokenUtil.generateToken(securityUserDetails.getPhoneNumber());
-        securityUserDetails.setToken(jwt);
+        String token =JwtTokenUtil.generateToken(securityUserDetails.getMemberId());
+        securityUserDetails.setToken(token);
         redisTemplate.opsForValue()
-                .set(RedisUtils.joinKey(RedisPrefixConstant.token, securityUserDetails.getPhoneNumber()),jwt, JwtTokenUtil.getExpiration()-1, TimeUnit.SECONDS);
+                .set(RedisUtils.joinKey(RedisPrefixConstant.token, securityUserDetails.getPhoneNumber()),token, JwtTokenUtil.getExpiration()-1, TimeUnit.SECONDS);
     }
 
 }
