@@ -183,14 +183,7 @@ public interface UserRoleMapper {
 	@Select("<script>" + "SELECT * FROM easymis_Resource " + "</script>")
     List<Permission> findByPage(Permission vo);
 
-	@Select("<script>" + "SELECT * FROM member_role WHERE user_no = #{userNo}" + "</script>")
-    @Results({
-        @Result(property = "id", column = "id"),
-        @Result(property = "userNo", column = "user_no"),
-        @Result(property = "roleName", column = "role_name"),
-        @Result(property = "fromTime", column = "from_time"),
-        @Result(property = "toTime", column = "to_time"),
-})
-	List<UserRole> findByUserNo(String userNo);
+	@Select("<script>" + "SELECT * FROM member_role WHERE member_id = #{memberId}" + "</script>")
+	List<UserRole> findByMemberId(@Param(value="memberId")String memberId);
  
 }

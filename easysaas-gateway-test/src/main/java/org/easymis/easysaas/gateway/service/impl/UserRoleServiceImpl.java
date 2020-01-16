@@ -23,9 +23,9 @@ public class UserRoleServiceImpl implements UserRoleService {
     @Autowired
     RoleService roleService;
 	@EasymisDataSource(DataSourceType.Master)
-	public List<ExpireDateGrantedAuthority> getGrantedAuthorityByUserNo(String userNo) {
+	public List<ExpireDateGrantedAuthority> getGrantedAuthorityByMemberId(String memberId) {
         List<ExpireDateGrantedAuthority> grantedAuthoritieList = new ArrayList<>();
-        List<UserRole> userRoleList = findByUserNo(userNo);
+        List<UserRole> userRoleList = findByMemberId(memberId);
         if (userRoleList.size() == 0) {
             // 未设定Role
             grantedAuthoritieList.add(ExpireDateGrantedAuthority.defaultGrantedAuthority());  //设定默认的
@@ -47,9 +47,9 @@ public class UserRoleServiceImpl implements UserRoleService {
 
     }
 	@EasymisDataSource(DataSourceType.Master)
-	public List<UserRole> findByUserNo(String userNo) {
+	public List<UserRole> findByMemberId(String userNo) {
 		// TODO Auto-generated method stub
-		return mapper.findByUserNo(userNo);
+		return mapper.findByMemberId(userNo);
 	}
 
 }

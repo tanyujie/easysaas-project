@@ -5,14 +5,6 @@ import java.util.List;
 import org.easymis.easysaas.gateway.security.userdetail.ExpireDateGrantedAuthority;
 import org.easymis.easysaas.gateway.security.userdetail.UserRole;
 
-/**
- * <p>
- * 服务类
- * </p>
- *
- * @author zh
- * @since 2019-09-02
- */
 public interface UserRoleService{
 
 
@@ -21,8 +13,8 @@ public interface UserRoleService{
     String guest = "ROLE_ANONYMOUS";
 
 
-    List<ExpireDateGrantedAuthority> getGrantedAuthorityByUserNo(String userNo);
-    List<UserRole> findByUserNo(String userNo);
+    List<ExpireDateGrantedAuthority> getGrantedAuthorityByMemberId(String memberId);
+    List<UserRole> findByMemberId(String userNo);
 
 
 }

@@ -65,7 +65,7 @@ public class JwtPasswordUserDetailService implements ReactiveUserDetailsService 
                 .setEnabled(member.getEnabled())
                 .setSex(member.getSex());
         //----------------------------------------------------------------
-        List<ExpireDateGrantedAuthority> authority = userRoleService.getGrantedAuthorityByUserNo(member.getMemberNo());
+        List<ExpireDateGrantedAuthority> authority = userRoleService.getGrantedAuthorityByMemberId(member.getMemberNo());
         details.setExpireDateGrantedAuthorityList(authority);
         checker.check(details);
         return Mono.just(details);
