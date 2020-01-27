@@ -12,9 +12,9 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.easymis.easysaas.gateway.entitys.mybatis.dto.Permission;
-import org.easymis.easysaas.gateway.entitys.mybatis.dto.Role;
+import org.easymis.easysaas.gateway.entitys.mybatis.dto.RoleResource;
 @Mapper
-public interface RoleMapper {
+public interface RolePermissionMapper {
 	 @Select("select * from easymis_Resource t WHERE t.org_id = #{orgId}")  
 	 @Results(value = {@Result(property = "orgId", column = "org_id"),
 	 @Result(property = "orgNo", column = "org_no"),
@@ -183,21 +183,15 @@ public interface RoleMapper {
 	@Select("<script>" + "SELECT * FROM easymis_Resource " + "</script>")
     List<Permission> findByPage(Permission vo);
 
-	@Select("<script>" + "SELECT * FROM role WHERE id in "
-			+ "<foreach item=\"item\" index=\"index\" collection=\"roleIds\" open=\"(\" separator=\",\" close=\")\">"
-			+ " #{item}" + "</foreach>" + "</script>")
-	@Results({ @Result(property = "id", column = "id"),
-		@Result(property = "roleName", column = "role_name"),
-		@Result(property = "roleSn", column = "role_sn")})
-	List<Role> findByRoleIds(@Param("roleIds") List<String> roleIds);
-
-	@Select("<script>" + "SELECT * FROM role WHERE role_name in "
-			+ "<foreach item=\"item\" index=\"index\" collection=\"roleNames\" open=\"(\" separator=\",\" close=\")\">"
-			+ " #{item}" + "</foreach>" + "</script>")
-	@Results({ @Result(property = "id", column = "id"),
-		@Result(property = "roleName", column = "role_name"),
-		@Result(property = "roleSn", column = "role_sn")})
-
-	List<Role> findByRoleNames(@Param("roleNames") List<String> roleNames);
-
+	@Select("<script>" + "SELECT * FROM role_resource WHERE resource_id = #{resourceId}" + "</script>")
+    @Results({
+        @Result(property = "id", column = "id"),
+        @Result(property = "resourceId", column = "resource_id"),
+        @Result(property = "returnField", column = "return_field"),
+        @Result(property = "roleId", column = "role_id"),
+        @Result(property = "exportNumber", column = "export_number"),
+        @Result(property = "queryNumber", column = "query_number")
+})
+	List<RoleResource> findByResourceId(String resourceId);
+ 
 }

@@ -1,108 +1,89 @@
 package org.easymis.easysaas.gateway.config;
 
-
-import org.easymis.easysaas.gateway.security.access.AccessDecisionManagerImpl;
-import org.easymis.easysaas.gateway.security.filer.JwtAuthenticationTokenFilter;
-import org.easymis.easysaas.gateway.security.filer.JwtPasswordAuthenticationFilter;
-import org.easymis.easysaas.gateway.security.handler.AnonyAuthenticationEntryPoint;
-import org.easymis.easysaas.gateway.security.handler.JwtAccessDeniedHandler;
-import org.easymis.easysaas.gateway.security.handler.JwtAuthenticationFailureHandler;
+import org.easymis.easysaas.gateway.security.JwtReactiveAuthenticationManager;
+import org.easymis.easysaas.gateway.security.UnauthorizedAuthenticationEntryPoint;
+import org.easymis.easysaas.gateway.security.filter.JwtAuthorizationFilter;
+import org.easymis.easysaas.gateway.security.handler.AuthenticationAccessDeniedHandler;
+import org.easymis.easysaas.gateway.security.handler.JwtAuthenticationFaillHandler;
 import org.easymis.easysaas.gateway.security.handler.JwtAuthenticationSuccessHandler;
-import org.easymis.easysaas.gateway.security.handler.LogoutSuccessHandler;
-import org.easymis.easysaas.gateway.security.provider.JwtAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.ObjectPostProcessor;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
+import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
+import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
+import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.MessageDigestPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
-import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
+import org.springframework.security.web.server.SecurityWebFilterChain;
 
-
-
-@SuppressWarnings("deprecation")
+@EnableWebFluxSecurity
+@EnableReactiveMethodSecurity
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 
     @Autowired
-    JwtAuthenticationProvider jwtAuthenticationProvider;
-
+    private JwtAuthenticationSuccessHandler authenticationSuccessHandler;
     @Autowired
-    JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
-
+    private JwtAuthenticationFaillHandler authenticationFaillHandler;
+    /**
+     * 访问权限认证异常处理
+     */
     @Autowired
-    AccessDecisionManagerImpl accessDecisionManager;
-
+    private UnauthorizedAuthenticationEntryPoint customHttpBasicServerAuthenticationEntryPoint;
+    /**
+     * 自定义访问无权限接口时403响应内容
+     */
     @Autowired
-    FilterInvocationSecurityMetadataSource filterInvocationSecurityMetadataSource;
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(
-                "/swagger-ui.html",
-                "/v2/api-docs", // swagger api json
-                "/swagger-resources/configuration/ui", // 用来获取支持的动作
-                "/swagger-resources", // 用来获取api-docs的URI
-                "/swagger-resources/configuration/security", // 安全选项
-                "/swagger-resources/**",
-                "/webjars/**",
-                "/csrf",
-                "/index/accessPermission"
-        );
-		// 忽略登录界面
-		web.ignoring().antMatchers("/login");
-		// 首页地址不拦截
-		web.ignoring().antMatchers("/index.html");
-		web.ignoring().antMatchers("/static/**");
-		web.ignoring().antMatchers("/web/socket/**");
-		web.ignoring().antMatchers("/webSocket.html");
-		web.ignoring().antMatchers("/sec/sendRegisterSmsCode");
+    private AuthenticationAccessDeniedHandler urlAccessDeniedHandler;
+    @Autowired 
+    private JwtReactiveAuthenticationManager authenticationManager;
+/*    @Autowired 
+    private SecurityContextRepository securityContext;*/
 
-	}
+    //security的鉴权排除列表
+    private static final String[] excludedAuthPages = {
+            "/user/login",
+            "/auth/logout",
+            "/health",
+            "/api/socket/**"
+    };
 
-    @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.addFilterBefore(this.getJwtPasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-        httpSecurity.csrf()// 由于使用的是JWT，我们这里不需要csrf
-                .disable()
-                .sessionManagement()// 基于token，所以不需要session
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+    @Bean
+    SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) throws Exception {
+        // 禁用CSRF 开启跨域,必须支持跨域
+        http.csrf().disable().cors();
+        // 防止iframe 造成跨域
+        http.headers().frameOptions().disable();
+        // 自定义登陆拦截器
+        http.addFilterAt(new JwtAuthorizationFilter(), SecurityWebFiltersOrder.AUTHORIZATION);
+        // 未登录认证异常，用来解决匿名用户访问无权限资源时的异常,基于http的接口请求鉴权失败
+        http.exceptionHandling().authenticationEntryPoint(customHttpBasicServerAuthenticationEntryPoint);   
+        // 登录过后访问无权限的接口时自定义403响应内容
+        http.exceptionHandling().accessDeniedHandler(urlAccessDeniedHandler);
+
+        
+        http
+        		.formLogin().loginPage("/user/login")//登录页面访问路径
+                .authenticationSuccessHandler(authenticationSuccessHandler) //认证成功
+                .authenticationFailureHandler(authenticationFaillHandler) //登陆验证失败
                 .and()
-                .authorizeRequests()
-                .antMatchers("/user/login")// 对登录注册要允许匿名访问
-                .permitAll()
-                /*  .antMatchers(HttpMethod.OPTIONS)//跨域请求会先进行一次options请求
-                  .permitAll()*/
-//                .antMatchers("/**")//测试时全部运行访问
-//                .permitAll()
-                .anyRequest()// 除上面外的所有请求全部需要鉴权认证
-                .authenticated().withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
-            @Override
-            public <O extends FilterSecurityInterceptor> O postProcess(O fsi) {
-                fsi.setAccessDecisionManager(accessDecisionManager);
-                fsi.setSecurityMetadataSource(filterInvocationSecurityMetadataSource);
-                return fsi;
-            }
-        })
-                .and().anonymous().principal("ROLE_ANONYMOUS").and().logout().logoutUrl("/user/logout").permitAll().addLogoutHandler(new LogoutSuccessHandler());
-        // 禁用缓存
-        httpSecurity.headers().cacheControl();
-        // 添加JWT filter
-        httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
-        //添加自定义未授权和未登录结果返回
-        httpSecurity.exceptionHandling()
-                .accessDeniedHandler(new JwtAccessDeniedHandler())
-                .authenticationEntryPoint(new AnonyAuthenticationEntryPoint());
+                .httpBasic().disable()
+                .authenticationManager(authenticationManager)
+                //.securityContextRepository(securityContext)
+                .authorizeExchange()
+                .pathMatchers(HttpMethod.OPTIONS).permitAll()//option 请求默认放行
+                .pathMatchers("/user/login").permitAll()
+                .pathMatchers(excludedAuthPages).permitAll()  //无需进行权限过滤的请求路径
+                .anyExchange().authenticated()
+                .and()
+                .logout().disable();
+
+        return http.build();
     }
 
 
@@ -110,36 +91,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        jwtAuthenticationProvider.setPasswordEncoder(this.getPasswordEncoder());
-        auth.authenticationProvider(jwtAuthenticationProvider);
-
-    }
-
-
-    private JwtPasswordAuthenticationFilter getJwtPasswordAuthenticationFilter() throws Exception {
-        JwtPasswordAuthenticationFilter jwtPasswordAuthenticationFilter = new JwtPasswordAuthenticationFilter();
-        jwtPasswordAuthenticationFilter.setAuthenticationManager(authenticationManager());
-        jwtPasswordAuthenticationFilter.setAuthenticationSuccessHandler(new JwtAuthenticationSuccessHandler());
-        jwtPasswordAuthenticationFilter.setAuthenticationFailureHandler(new JwtAuthenticationFailureHandler());
-
-        return jwtPasswordAuthenticationFilter;
-
-    }
-
-    private PasswordEncoder getPasswordEncoder() {
-        return new MessageDigestPasswordEncoder("MD5");
-    }
-
-
+	public static void main(String[] args) {
+		    Pbkdf2PasswordEncoder pbkdf2PasswordEncoder = new Pbkdf2PasswordEncoder("1");
+	        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+	 
+	        String pbk1 = pbkdf2PasswordEncoder.encode("123456");
+	        pbkdf2PasswordEncoder.upgradeEncoding("2");
+	        String pbk2 = pbkdf2PasswordEncoder.encode("123456");
+	 
+	        String bcr1 = bCryptPasswordEncoder.encode("123456");
+	        String bcr2 = bCryptPasswordEncoder.encode("123456");
+	 
+	        System.out.println("pbk1: " + pbk1.length());
+	        System.out.println("pbk2: " + pbk2.length());
+	        System.out.println("pbk1 password:" + pbkdf2PasswordEncoder.matches("123456",pbk1));
+	        System.out.println("pbk2 password:" + pbkdf2PasswordEncoder.matches("123456",pbk2));
+	 
+	        System.out.println("---------------------");
+	 
+	        System.out.println("bcr1: " + bcr1);
+	        System.out.println("bcr2: " + bcr2.length());
+	        System.out.println("bcr1 password:" + bCryptPasswordEncoder.matches("123456",bcr1));
+	        System.out.println("bcr2 password:" + bCryptPasswordEncoder.matches("123456",bcr2));
+	}
 }

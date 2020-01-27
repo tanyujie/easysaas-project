@@ -44,7 +44,6 @@ public class LoginWrongChecker    {
                redisTemplate.delete(WRONG_NUMBER+username);
                log.info("username={}因为登录错误次数过多账号锁定,现已解除",username);
            }
-
        }
    }
 

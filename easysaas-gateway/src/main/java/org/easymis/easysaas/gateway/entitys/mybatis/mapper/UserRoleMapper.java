@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.easymis.easysaas.gateway.security.userdetail.Resource;
+import org.easymis.easysaas.gateway.entitys.mybatis.dto.Permission;
 import org.easymis.easysaas.gateway.security.userdetail.UserRole;
 @Mapper
 public interface UserRoleMapper {
@@ -82,7 +82,7 @@ public interface UserRoleMapper {
 	 @Result(property = "lockStatus", column = "lock_status"),
 	 @Result(property = "ipGateway", column = "ip_gateway")
 	 }) 
-	 Resource findById(@Param("id") String id);
+	 Permission findById(@Param("id") String id);
 
     @Select("SELECT * FROM member WHERE name = #{name}")
     @Results({
@@ -100,10 +100,10 @@ public interface UserRoleMapper {
             @Result(property = "sex", column = "sex"),
             @Result(property = "status", column = "status")
     })
-    Resource findByUsername(@Param("name") String name);
+    Permission findByUsername(@Param("name") String name);
 
     @Insert("insert into easymis_Resource(org_id,org_no,org_name,parent_id,priority,owner_id,owner_name,contact,mobile,create_time,start_date,end_time,version_status,country_id,country_name,province_id,province_name,city_id,city_name,district_id,district_name,register_address,office_address,phone,fax,zip,total_staff,used_staff,status,depict,business_license_no,legal_person,registered_capital,business_scope,email,ipo,stock_code,bank_no,bank_name,url,blog,level1_industry_id,level2_industry_id,level3_industry_id,level4_industry_id,level1_industry_name,level2_industry_name,level3_industry_name,level4_industry_name,industry_id,industry_name,source_id,ownership,annual_revenue,qq,we_chat,update_id,update_name,update_time,delete_status,delete_id,delete_name,delete_time,lock_status,ip_gateway)values(#{orgId},#{orgNo},#{orgName},#{parentId},#{priority},#{ownerId},#{ownerName},#{contact},#{mobile},#{createTime},#{startDate},#{endTime},#{versionStatus},#{countryId},#{countryName},#{provinceId},#{provinceName},#{cityId},#{cityName},#{districtId},#{districtName},#{registerAddress},#{officeAddress},#{phone},#{fax},#{zip},#{totalStaff},#{usedStaff},#{status},#{depict},#{businessLicenseNo},#{legalPerson},#{registeredCapital},#{businessScope},#{email},#{ipo},#{stockCode},#{bankNo},#{bankName},#{url},#{blog},#{level1IndustryId},#{level2IndustryId},#{level3IndustryId},#{level4IndustryId},#{level1IndustryName},#{level2IndustryName},#{level3IndustryName},#{level4IndustryName},#{industryId},#{industryName},#{sourceId},#{ownership},#{annualRevenue},#{qq},#{weChat},#{updateId},#{updateName},#{updateTime},#{deleteStatus},#{deleteId},#{deleteName},#{deleteTime},#{lockStatus},#{ipGateway})")  
-    int insertByBean(Resource bean);
+    int insertByBean(Permission bean);
 
     @Insert("<script> " + "insert into friend(" +
             "id, member_id,friend_id) " + "VALUES" +
@@ -111,14 +111,14 @@ public interface UserRoleMapper {
             "(#{item.id},#{item.memberId},#{item.friendId})" +
             "</foreach>" +
             " </script>")
-    int insertByBeanList(@Param(value="itemList") List<Resource> itemList);
+    int insertByBeanList(@Param(value="itemList") List<Permission> itemList);
     
     @Insert("INSERT INTO member_role(id, user_id,role_id) " +
             "VALUES(#{id}, #{userId}, #{roleId})")
     int intIntoUserRole(@Param("id") String id,@Param("userId") String userId,@Param("roleId") String roleId);
 
     @Update("UPDATE member set name=#{username},account=#{account},email=#{email},mobile=#{mobile},wx=#{wx},address=#{address},photo=#{photo},sex=#{sex} WHERE id = #{id}")
-    void update(Resource bean);
+    void update(Permission bean);
 
     @Delete("DELETE FROM member WHERE id = #{id}")
     void delete(String id);
@@ -160,10 +160,10 @@ public interface UserRoleMapper {
             "            </if>\n" +
             "        </where>" +
             "</script>")
-    List<Resource> findAll();
+    List<Permission> findAll();
 
     @Update("UPDATE member set password=#{password} WHERE id = #{id}")
-    void updatePassword(Resource bean);
+    void updatePassword(Permission bean);
 
     @Results({
             @Result(property = "id", column = "id"),
@@ -181,16 +181,9 @@ public interface UserRoleMapper {
             @Result(property = "status", column = "status")
     })
 	@Select("<script>" + "SELECT * FROM easymis_Resource " + "</script>")
-    List<Resource> findByPage(Resource vo);
+    List<Permission> findByPage(Permission vo);
 
-	@Select("<script>" + "SELECT * FROM user_role WHERE user_no = #{userNo}" + "</script>")
-    @Results({
-        @Result(property = "id", column = "id"),
-        @Result(property = "userNo", column = "user_no"),
-        @Result(property = "roleName", column = "role_name"),
-        @Result(property = "fromTime", column = "from_time"),
-        @Result(property = "toTime", column = "to_time"),
-})
-	List<UserRole> findByUserNo(String userNo);
+	@Select("<script>" + "SELECT * FROM member_role WHERE member_id = #{memberId}" + "</script>")
+	List<UserRole> findByMemberId(@Param(value="memberId")String memberId);
  
 }

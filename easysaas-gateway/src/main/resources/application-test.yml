@@ -1,8 +1,34 @@
 server:
-  port: 9001
+  port: 8090
+springbootwebfluxjjwt:
+  password:
+    encoder:
+      secret: mysecret
+      iteration: 33
+      keylength: 256
+  jjwt:
+    secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave512bitsKeySize
+    expiration: 28800
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: "*"
+  endpoint:
+    bus-refresh:
+      enabled: true
 spring:
   application:
-    name: gateway
+    name: gateway-security
+  security:
+    user:
+      name: 13551259347
+      password: 51c0ceb9087c69fac88fb6c3736d0fe9
   main:
     allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
   jmx:
@@ -10,10 +36,14 @@ spring:
   redis:
     #数据库索引（默认为0）
     database: 10
-    host: 172.17.255.60
+    host: 118.31.43.2
     password:
     port: 6379
-    timeout: 3s
+    timeout: 100
+    pool:
+      max-active: 8 
+      max-idle: 8
+      max-wait: -1
   cloud:
     gateway:
       discovery:
@@ -21,6 +51,19 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
+      - id: easysaas-member
+        uri: lb://easysaas-member
+        predicates:
+        - Path=/member/**
+        filters:
+        - StripPrefix=1
+      - id: gateway-security
+        uri: lb://gateway-security
+        predicates:
+        - Path=/api/**
+        filters:
+        - StripPrefix=1
+        
       - id: zt-nlp-workflow
         uri: lb://ZT-NLP-WORKFLOW
         predicates:
@@ -29,6 +72,17 @@ spring:
         uri: http://www.163.com/
         predicates:
         - Path=/163
+      - id: xinyue-sever-router
+        uri: lb://xinyue-server-a
+        order: -1  # 注意这个优先级的问题，因为对于此uri有多个路由器，如果优先级低，不会起作用
+        predicates:
+        - Path=/xinyue-server-a/account/login  # 拦截登陆请求
+        filters:
+        - Authentication   # 添加自定义的过滤器
+        - name: RewritePath
+          args:
+            regexp: /xinyue-server-a/(?<remaining>.*)
+            replacement: /${remaining}
   zipkin:
     base-url: http://192.168.230.1:9987/
   #这里把抽样百分比设置为1，即信息全部采集
@@ -42,7 +96,7 @@ eureka:
     register-with-eureka: true 
     fetch-registry: true 
     service-url:
-      defaultZone: http://easysass:easysass123@localhost:8761/eureka #Eureka服务位置
+      defaultZone: http://easysass:easysass123@118.31.43.2:8761/eureka #Eureka服务位置
 filters:
 # 熔断降级配置
 - name: Hystrix
@@ -63,16 +117,16 @@ hystrix:
 datasource:
   #主库
   master:
-    jdbcUrl: jdbc:mysql://172.17.255.60:3306/companydata_console_test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
-    username: test_gde_user
-    password: nogiDHaiY3
+    jdbcUrl: jdbc:mysql://127.0.0.1:3307/easysaas?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   #从库
   slave:
     #并非url而是jdbcUrl(因为这个在获取数据源时一直报错，看了DataSource的属性才知道是jdbcUrl)
-    jdbcUrl: jdbc:mysql://172.17.255.57:3306/prism1?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
-    username: prod_gde_user
-    password: vBVI0@4PGY
+    jdbcUrl: jdbc:mysql://127.0.0.1:3307/easysaas?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis:
     mapper-locations: classpath*:org/easymis/easysaas/gateway/entitys/mybatis/mapper/*Mapper.xml
@@ -85,3 +139,5 @@ pagehelper:
     supportMethodsArguments: true
     pageSizeZero: true
     params: count=countSql
+swagger2:
+  enable: true
