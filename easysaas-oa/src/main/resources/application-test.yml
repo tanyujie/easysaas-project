@@ -1,0 +1,67 @@
+server:
+  port: 80
+websocket:
+    bufferSize: 1024000
+spring:
+  jackson:
+    joda-date-time-format: yyyy-MM-dd
+    date-format: yyyy-MM-dd
+  application:
+    name: search
+  freemarker:
+    request-context-attribute: req  #req访问request
+    templateEncoding: UTF-8
+    locale: zh_CN
+    suffix: .html  #后缀名
+    content-type: text/html
+    enabled: true
+    cache: false #缓存配置
+    template-loader-path: classpath:/templates/ #模板加载路径 按需配置
+    charset: UTF-8 #编码格式
+    date_format: yyyy-MM-dd
+    time_format: HH:mm:ss
+    datetime_format: yyyy-MM-dd HH:mm:ss
+    settings:
+      number_format: '0.##'   #数字格式化，无小数点
+  redis:
+    #数据库索引（默认为0）
+    database: 10
+    host: 127.0.0.1
+    password:
+    port: 6379
+    timeout: 3s
+##多数据源
+datasource:
+  #主库
+  master:
+    jdbcUrl: jdbc:mysql://127.0.0.1:3307/easysecurity?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  #从库
+  slave:
+    #并非url而是jdbcUrl(因为这个在获取数据源时一直报错，看了DataSource的属性才知道是jdbcUrl)
+    jdbcUrl: jdbc:mysql://127.0.0.1:3307/easysecurity?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+    mapper-locations: classpath*:org/easymis/dbview/entitys/mybatis/mapper/*Mapper.xml
+    type-aliases-package: org.easymis.dbview.modules.entitys.mybatis.dto
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    pageSizeZero: true
+    params: count=countSql
+    
+cors:
+  origins: http://127.0.0.1:80,*
+swagger2:
+  enable: true
+# 控制日志输出级别
+logback:
+  level: INFO
+ios:
+  payType: 0
