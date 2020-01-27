@@ -7,7 +7,7 @@ spring:
     joda-date-time-format: yyyy-MM-dd
     date-format: yyyy-MM-dd
   application:
-    name: search
+    name: easysaas-oa
   freemarker:
     request-context-attribute: req  #req访问request
     templateEncoding: UTF-8
@@ -26,7 +26,7 @@ spring:
   redis:
     #数据库索引（默认为0）
     database: 10
-    host: 127.0.0.1
+    host: 118.31.43.2
     password:
     port: 6379
     timeout: 3s
@@ -34,21 +34,21 @@ spring:
 datasource:
   #主库
   master:
-    jdbcUrl: jdbc:mysql://127.0.0.1:3307/easysecurity?useUnicode=true&characterEncoding=utf-8
+    jdbcUrl: jdbc:mysql://127.0.0.1:3307/easysaas?useUnicode=true&characterEncoding=utf-8
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   #从库
   slave:
     #并非url而是jdbcUrl(因为这个在获取数据源时一直报错，看了DataSource的属性才知道是jdbcUrl)
-    jdbcUrl: jdbc:mysql://127.0.0.1:3307/easysecurity?useUnicode=true&characterEncoding=utf-8
+    jdbcUrl: jdbc:mysql://127.0.0.1:3307/easysaas?useUnicode=true&characterEncoding=utf-8
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:
-    mapper-locations: classpath*:org/easymis/dbview/entitys/mybatis/mapper/*Mapper.xml
-    type-aliases-package: org.easymis.dbview.modules.entitys.mybatis.dto
+    mapper-locations: classpath*:org/easymis/easysaas/entitys/mybatis/mapper/*Mapper.xml
+    type-aliases-package: org.easymis.easysaas.oa.entitys.mybatis.dto
 pagehelper:
     helperDialect: mysql
     reasonable: true
@@ -63,5 +63,11 @@ swagger2:
 # 控制日志输出级别
 logback:
   level: INFO
-ios:
-  payType: 0
+eureka:
+  instance:
+    prefer-ip-address: true 
+  client:
+    register-with-eureka: true 
+    fetch-registry: true 
+    service-url:
+      defaultZone: http://easysass:easysass123@118.31.43.2:8761/eureka #Eureka服务位置

@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.ard333</groupId>
-	<artifactId>spring-boot-webflux-jjwt</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>org.easymis.easysaas</groupId>
+	<artifactId>easysaas-gateway</artifactId>
+	<version>1.0.0.RELEASE</version>
 	<packaging>jar</packaging>
 
-	<name>spring-boot-webflux-jjwt</name>
+	<name>easysaas-gateway</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

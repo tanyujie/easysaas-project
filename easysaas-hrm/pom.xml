@@ -4,14 +4,14 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.easymis.easycrm</groupId>
-		<artifactId>easycrm-project</artifactId>
+		<groupId>org.easymis.easysaas</groupId>
+		<artifactId>easysaas-project</artifactId>
 		<version>1.0.0.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>org.easymis.easycrm</groupId>
-	<artifactId>easycrm-core</artifactId>
-	<name>web</name>
+	<groupId>org.easymis.easysaas</groupId>
+	<artifactId>easysaas-hrm</artifactId>
+	<name>easysaas-hrm</name>
 	<url>http://www.easymis.org</url>
 	<properties>
 		<java.version>1.8</java.version>
@@ -128,5 +128,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<description>easycrm-web</description>
+	<version>1.0.0.RELEASE</version>
+	<description>easysaas-hrm</description>
 </project>
