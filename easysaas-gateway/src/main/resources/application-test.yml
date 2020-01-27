@@ -24,7 +24,7 @@ management:
       enabled: true
 spring:
   application:
-    name: gateway-security
+    name: easysaas-gateway
   security:
     user:
       name: 13551259347
@@ -64,14 +64,14 @@ spring:
         filters:
         - StripPrefix=1
         
-      - id: zt-nlp-workflow
-        uri: lb://ZT-NLP-WORKFLOW
+      - id: easysaas-mobile
+        uri: lb://easysaas-mobile
         predicates:
-        - Path=/workflow/**
-      - id: workflow_route
-        uri: http://www.163.com/
+        - Path=/mobile/**
+      - id: crm_route
+        uri: lb://easysaas-crm
         predicates:
-        - Path=/163
+        - Path=/crm/**
       - id: xinyue-sever-router
         uri: lb://xinyue-server-a
         order: -1  # 注意这个优先级的问题，因为对于此uri有多个路由器，如果优先级低，不会起作用
