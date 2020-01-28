@@ -1,0 +1,290 @@
+.container.-top {
+    padding-top: 16px!important;
+}
+.company-header-block {
+    border: 0;
+    background: #fff;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.1);
+    box-shadow: 0 0 2px rgba(0,0,0,.1);
+    margin-bottom: 16px;
+}
+.company-header-block .chb-box{
+    position: relative;
+    border: 0 solid;
+    padding: 24px 16px 16px 164px;
+}
+.company-header-block .chb-box .logo-warp {
+    position: absolute;
+    left: 32px;
+    top: 28px;
+}
+.lazy-img.-image .img {
+    display: block;
+}
+.lazy-img.-image .logo {
+    display: block;
+}
+.logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border-radius: 6px;
+    text-align: center;
+    overflow: hidden;
+}
+.logo .img {
+    width: 100%;
+}
+.company-header-block .chb-box .content {
+    font-size: 0;
+}
+.company-header-block .chb-box .content .header {
+    margin-bottom: 10px;
+    line-height: 22px;
+    font-size: 12px;
+    vertical-align: middle;
+}
+.company-header-block .chb-box .content .header .name {
+    display: inline-block;
+    font-size: 20px;
+    max-width: 620px;
+    margin: 0;
+    padding: 0;
+    line-height: 26px;
+    vertical-align: middle;
+    color: #000;
+    font-weight: 700;
+}
+.button {
+    display: inline-block;
+    height: 36px;
+    padding: 0 8px;
+    border: 1px solid #f3f3f3;
+    border-radius: 2px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 34px;
+    font-weight: 400;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    -webkit-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+    min-width: 62px;
+    color: #333;
+    background-color: #fff;
+    border-color: #e0e0e0;
+}
+.button.-normal {
+    color: #0084ff;
+    background-color: #fff;
+    border-color: #0084ff;
+}
+.button.-h28, .button.-sm {
+    font-size: 12px;
+    line-height: 26px;
+    height: 28px;
+}
+.button-claim {
+    color: #fff;
+    background-color: #ffaf25;
+    border-color: #ffaf25;
+}
+.button.-active {
+    color: #fff;
+    background-color: #0084ff;
+    border-color: #0084ff;
+}
+.button .button-icon {
+    padding-right: 4px;
+    font-size: 20px;
+    display: inline-block;
+    vertical-align: top;
+}
+.watch-btn {
+    position: relative;
+}
+.watch-btn .warp.-normal {
+    height: auto;
+}
+.watch-btn .warp .triangle {
+    left: auto;
+    top: -16px;
+    right: 38px;
+}
+.watch-btn .triangle {
+    display: block;
+    width: 30px;
+    height: 16px;
+    position: absolute;
+    overflow: hidden;
+    -webkit-box-shadow: 0 16px 10px -17px #e0e0e0;
+    box-shadow: 0 16px 10px -17px #e0e0e0;
+    z-index: 120;
+    top: -15px;
+    left: 65px;
+}
+.watch-btn .warp .desc-left {
+    float: left;
+    width: 198px;
+    height: 138px;
+}
+.watch-btn .warp .desc-right {
+    float: right;
+    width: 224px;
+    margin: 24px 16px 0 0;
+    font-size: 14px;
+    line-height: 22px;
+}
+img.lazy-img.-image {
+    opacity: 1;
+    height: auto;
+}
+
+img.lazy-img {
+    opacity: 0;
+    height: 0;
+}
+.lazy-img {
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+}
+.company-header-block .chb .content .header .btn, .company-header-block .chb .content .header .button {
+    vertical-align: top;
+    margin-left: 16px;
+}
+.company-header-block .chb .content .tag-list-content {
+    width: 800px;
+    height: 20px;
+    overflow: hidden;
+}
+.tag-common {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 8px;
+    border: 1px solid transparent;
+    line-height: 1.5714285714;
+    height: 20px;
+    border-radius: 2px;
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+}
+.company-header-block .chb .logo-warp .visitor-content {
+    margin-top: 24px;
+}
+.company-visitor {
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 64px;
+    padding-right: 20px;
+}
+.company-header-block .chb .content {
+    font-size: 0;
+}
+.company-header-block .chb .content .detail {
+    margin: 18px 0 0;
+    padding: 11px 16px 13px 12px;
+    position: relative;
+    background: #f5fbff;
+    font-size: 14px;
+}
+.company-header-block .chb .content .detail .f0 {
+    margin-bottom: 8px;
+}
+.company-header-block .chb .content .detail .claim-opt {
+    position: absolute;
+    right: 16px;
+    top: 11px;
+    font-size: 12px;
+}
+.tag-common+.tag-common {
+    margin-left: 8px;
+}
+.company-header-block .footer {
+    line-height: 39px;
+    font-size: 14px;
+    padding: 0 16px;
+    border-top: 1px solid #f3f3f3;
+    background: #fff;
+}
+.company-header-block .footer .link-hover-click {
+    display: inline-block;
+    float: right;
+    margin-left: 16px;
+}
+.link-hover-click {
+    color: #333;
+    cursor: pointer;
+}
+ .company-header-block .footer .link-hover-click .tic {
+    font-size: 20px;
+    margin-right: 4px;
+    float: left;
+    color: #339cff;
+} 
+.navigation {
+    position: relative;
+    width: 936px;
+    height: 48px;
+    margin-left: -16px;
+    z-index: 100;
+}
+.navigation .item-container {
+    float: left;
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+}
+.navigation .content {
+    position: absolute;
+    top: 0;
+    width: 936px;
+    height: 48px;
+    overflow: hidden;
+    background-color: #fcfcfc;
+}
+.company-header-container .content .item-container {
+    border-right: 1px solid transparent;
+    text-align: left;
+}
+.company-header-container .content .item-container .itemtitle {
+    position: relative;
+    text-align: center;
+}
+
+.navigation .item-container .itemtitle.-active {
+    font-weight: 700;
+    color: #0084ff;
+    background: #fff;
+}
+.navigation .item-container .itemtitle {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding: 11px 0;
+    border-bottom: 1px solid #f3f3f3;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+.section-title {
+    font-family: "Helvetica Neue", "Helvetica", "STHeiti", "Verdana", 'Microsoft YaHei', "Sans-Serif";
+    border-left: 3px solid #1478f0;
+    padding-left: 8px;
+    margin-bottom: 10px;
+    height: 18px;
+}
+.margin-t-2x {
+    margin-top: 30px !important;
+}
+.section-title .title-h3 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 18px;
+    font-weight: 600;
+    display: inline-block;
+}

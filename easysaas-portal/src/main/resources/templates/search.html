@@ -1,0 +1,349 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- 新 Bootstrap4 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+ 
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+ 
+<!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+ 
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style>
+em {
+    font-style: normal;
+    color: red;
+}
+.m_search_head {
+    padding: 12px 0 44px;
+    margin-bottom: -1px;
+    line-height: 31px;
+    background: #fcfcfc;
+}
+.m-l {
+    margin-left: 15px;
+}
+.font-15 {
+    font-size: 15px !important;
+}
+.pull-left {
+    float: left !important;
+}
+.logo img {
+    width: 80px;
+    max-height: 80px;
+    border-radius: 4px;
+}
+.searchList{
+}
+.company-title{
+line-height: 22px;
+}
+.font-f1 {
+    color: #333 !important;
+}
+.font-18 {
+    font-size: 18px;
+}
+</style>
+<link rel="stylesheet" href="${request.contextPath}/css/common.css">
+<link rel="stylesheet" href="${request.contextPath}/css/search.css">
+</head>
+<body>
+<header class="navi-header">
+		<div class="container">
+			<div class="navi-brand">
+				<a class="logo" onclick="zhugeTrack('顶栏按钮点击',{'按钮名称':'LOGO'});"
+					href="/"> <img
+					src="https://www.qichacha.com/material/theme/chacha/cms/v2/images/logo4.png"
+					class="m-r-sm" alt="企查查">
+				</a>
+			</div>
+
+
+			<ul class="navi-nav mr-auto">
+			<li class=""> <a rel="nofollow" onclick="zhugeTrack('顶栏按钮点击',{'按钮名称':'VIP服务'});" href="/vip.html">VIP服务</a> </li>
+			<li class="head-line">|</li>
+				<li><a rel="nofollow" class="navi-btn"
+					data-toggle="modal" data-target="#myModal"> <span class="">登录 | 注册</span>
+				</a></li>
+			</ul>
+		</div>
+	</header>
+	<div class="mt-3" id="web-content">
+<div class="container">
+	<div class="row">
+		<div class="col-md-9 pr-0">
+<!-- 			<div>
+				<section class="card">
+				  <div class="card-header">						<span class="font-15 text-dark"> 小查为你找到&nbsp;<span
+							class="text-danger">1</span>&nbsp;个投资机构/品牌产品
+						</span></div>
+					<div class="card-body ">
+					<div class="card">
+ <div class="card-header">
+ 1		
+ </div>
+					</div>
+										<div class="card">
+										 <div class="card-header">
+2	
+ </div>
+					</div>
+	
+					</div>
+
+				</section>
+			</div> -->
+
+
+					<div class="search-filter">
+						<div class="filter-type">
+							<a class="type-title active"
+								href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6"
+								rel="nofollow">公司</a><a class="type-title "
+								href="https://www.tianyancha.com/search/t100?key=%E6%88%90%E9%83%BD%E9%93%B6"
+								rel="nofollow">司法风险</a><a class="type-title "
+								href="https://www.tianyancha.com/search/t200?key=%E6%88%90%E9%83%BD%E9%93%B6"
+								rel="nofollow">经营风险</a><a class="type-title "
+								href="https://www.tianyancha.com/search/t300?key=%E6%88%90%E9%83%BD%E9%93%B6"
+								rel="nofollow">经营状况</a><a class="type-title "
+								href="https://www.tianyancha.com/search/t400?key=%E6%88%90%E9%83%BD%E9%93%B6"
+								rel="nofollow">知识产权</a>
+						</div>
+						<div class="filter-body">
+						<div class="filter-scope">
+						<span class="scope-title">机构类型</span>
+						<div class="scope-box scope-content-box"><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.normal_company" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=normal_company" rel="nofollow">企业</a><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.institution" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=institution" rel="nofollow">事业单位</a><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.npo_foundation" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=npo_foundation" rel="nofollow">基金会</a><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.npo" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=npo" rel="nofollow">社会组织</a><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.lawFirm" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=lawFirm" rel="nofollow">律所</a><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.hk" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=hk" rel="nofollow">香港特别行政区企业</a><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.tw" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=tw" rel="nofollow">台湾省企业</a></div>
+						</div>
+						</div>
+					</div>
+
+					<div class="no-padding-right mt-2 " id="ajaxlist">
+						<div class="result-tips">
+							<div class="tips-content clearfix">
+								<div class="num-title  align-middle">
+									<span class="text-center">爱依客为你找到</span><span class="tips-num">26608</span>家公司
+								</div>
+								<div class="float-right">
+									<div class="btn-group">
+										<div class="dropdown">
+											<a
+												class="btn btn-outline-white  dropdown-toggle m-1 border-1"
+												data-toggle="dropdown"> 默认排序 </a>
+											<div class="dropdown-menu">
+												<a class="dropdown-item" href="#">Link 1</a> <a
+													class="dropdown-item" href="#">Link 2</a> <a
+													class="dropdown-item" href="#">Link 3</a>
+											</div>
+										</div>
+
+
+
+										<a class="btn btn-outline-warning m-1 border-1">批量联系</a> <a
+											class="btn btn-warning m-1 border-0">导出数据</a>
+										<!-- <span class="pull-left m-l btn btn-default" data-toggle="modal" data-target="#loginModal" onclick="getCaptcha()"> <span class="sortDesc">默认排序</span> <span class="caret m-l"></span> </span> -->
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="result-list">
+							<#list companyList as company>
+							<div class="search-item">
+								<div class="search-result-single">
+
+									<div class="left-item">
+										<div class="logo" style="background-image: url(&quot;&quot;);">
+											<img class="img"
+												data-src="https://img5.tianyancha.com/logo/lll/b4b9b48b5a3dbe76ca566ca01c752480.png@!f_200x200"
+												alt="<em>成都爱</em>林实业有限公司" err-src=""
+												src="https://img5.tianyancha.com/logo/lll/b4b9b48b5a3dbe76ca566ca01c752480.png@!f_200x200">
+										</div>
+									</div>
+									<div class="srs-content">
+										<div class="header row">
+											<a class="name select-none" tyc-event-click=""
+												tyc-event-ch="CompanySearch.Company"
+												href="/company/${company.id}.html" target="_blank"><text
+													class="tyc-num lh24 ">${company.nameHighlight}</text></a>
+											<div class="tag-common -risk-bg">吊销，未注销</div>
+										</div>
+										<div class="info row text-ellipsis">
+											<div class="title -wider text-ellipsis">
+												法定代表人：<a title="周小强" class="legalPersonName link-click"
+													target="_blank"
+													href="https://www.tianyancha.com/human/1853979566-c3089059637">周小强</a>
+											</div>
+											<div class="title -narrow text-ellipsis">
+												注册资本：<span title="5000万人民币">5000万人民币</span>
+											</div>
+											<div class="title  text-ellipsis">
+												成立日期：<span title="2017-08-17 00:00:00.0">2017-08-17</span>
+											</div>
+										</div>
+										<div class="contact row ">
+											<div class="col p-0">
+												<span class="label">电话：</span><span class="link-hover"
+													onclick="openPhonePopup(this)" tyc-event-click=""
+													tyc-event-ch="CompanySearch.MoreTel">1862816****</span><span
+													class="link-click" onclick="openPhonePopup(this)"
+													tyc-event-click="" tyc-event-ch="CompanySearch.MoreTel">登录查看</span>
+											</div>
+										</div>
+										<div class="match row text-ellipsis">
+											<i class="tic tic-match"></i><span class="label">地址信息：</span><span>${company.address!}</span>
+										</div>
+									</div>
+
+
+									<div class="right-item">
+										<span class="site">四川</span>
+										<div class="score ">
+											<span class="score-num">83</span><span class="score-fen">分</span>
+										</div>
+										<div class="contact-card">
+											<button type="button" class="btn btn-outline-primary">联系企业</button>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+							</#list>
+						</div>
+						<div class="result-footer">
+							<div class=" search-pager">
+								<ul class="pagination" page-total="5000" change-type=""
+									line-type-name="" line-type-val="">
+									<li><a class="num -current"
+										href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6">1</a></li>
+									<li><a class="num "
+										href="https://www.tianyancha.com/search/p2?key=%E6%88%90%E9%83%BD%E9%93%B6">2</a></li>
+									<li><a class="num "
+										href="https://www.tianyancha.com/search/p3?key=%E6%88%90%E9%83%BD%E9%93%B6">3</a></li>
+									<li><a class="num "
+										href="https://www.tianyancha.com/search/p4?key=%E6%88%90%E9%83%BD%E9%93%B6">4</a></li>
+									<li><a class="num "
+										href="https://www.tianyancha.com/search/p5?key=%E6%88%90%E9%83%BD%E9%93%B6">5</a></li>
+									<li><a class="num "
+										href="https://www.tianyancha.com/search/p6?key=%E6%88%90%E9%83%BD%E9%93%B6">6</a></li>
+									<li><a class="num "
+										href="https://www.tianyancha.com/search/p7?key=%E6%88%90%E9%83%BD%E9%93%B6">7</a></li>
+									<li><a class="num "
+										href="https://www.tianyancha.com/search/p8?key=%E6%88%90%E9%83%BD%E9%93%B6">8</a></li>
+									<li><a class="num "
+										href="https://www.tianyancha.com/search/p9?key=%E6%88%90%E9%83%BD%E9%93%B6">9</a></li>
+									<li><a class="num "
+										href="https://www.tianyancha.com/search/p10?key=%E6%88%90%E9%83%BD%E9%93%B6">10</a></li>
+									<li><a class="num -end"
+										href="https://www.tianyancha.com/search/p250?key=%E6%88%90%E9%83%BD%E9%93%B6">...250</a></li>
+									<li><a class="num -next"
+										href="https://www.tianyancha.com/search/p2?key=%E6%88%90%E9%83%BD%E9%93%B6">&gt;</a></li>
+								</ul>
+								<div id="customize" class="customize">
+									<span>跳到</span><input type="text" class="input -h30" value="1"><span>页</span>
+									<div class="search-btn btn -h30 btn-outline-primary"
+										onclick="searchPageSubmit('https://www.tianyancha.com/search/p2?key=%E6%88%90%E9%83%BD%E9%93%B6', 1, 250)">确定</div>
+									<!-- 	<input type="text" class="hidden" id="pg_customize_total"
+										value="250"><input type="text" class="hidden"
+										id="pg_customize_current" value="1"><input type="text"
+										class="hidden" id="pg_url_no" value=""><input
+										type="text" class="hidden" id="pg_customize_url"
+										value="https://www.tianyancha.com/search/p2?key=%E6%88%90%E9%83%BD%E9%93%B6"> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-3">
+					<div class="right-block right-bd-claim-activity"
+						data-scroll-fix="299px">
+						<a class="image-click"
+							href="https://www.tianyancha.com/claim/entry" href-event=""
+							event-name="VIP广告" tyc-event-click=""
+							tyc-event-ch="CompanySearch.Right.claimtuiguang" target="_blank"
+							rel="nofollow"><img class="lazy-img -image"
+							data-src="https://image.tianyancha.com/37f6c37d9b4c4d8199b76c830879a3ee.jpg"
+							alt="vip风险"
+							src="https://image.tianyancha.com/37f6c37d9b4c4d8199b76c830879a3ee.jpg"></a>
+					</div>
+					<div class="right-block">
+						<a class="image-click" href="https://open.tianyancha.com/"
+							tyc-event-click="" tyc-event-ch="CompanySearch.Right.RightApi"
+							target="_blank" rel="nofollow"><img class="lazy-img -image"
+							data-src="https://cdn.tianyancha.com/web-require-js/public/images/ad/right-open-api-2.png"
+							alt="数据开放平台"
+							src="https://cdn.tianyancha.com/web-require-js/public/images/ad/right-open-api-2.png"></a>
+					</div>
+					<div class="right-block -business">
+						<a class="image-click" href="https://www.tianyancha.com/business"
+							target="_blank" rel="nofollow"><img class="lazy-img -image"
+							data-src="https://cdn.tianyancha.com/web-require-js/themes/18blue/images/ad/ad-1.jpg"
+							alt="商务合作"
+							src="https://cdn.tianyancha.com/web-require-js/themes/18blue/images/ad/ad-1.jpg"></a><a
+							class="banner_business_qq position-abs"
+							href="https://www.sobot.com/chat/pc/index.html?sysNum=857213d1fb6d4c2e93c5f4b703a423b3"
+							target="_blank">立即交谈</a>
+					</div>
+						<div class="right-block right-claim-company">
+					<div class="card">
+					<div class="card-header">认证企业展示专区
+									<div class="data-describe mr-auto">
+									<a class="link-click"
+										style="color: #FFAE25;"
+										tyc-event-click=""
+										tyc-event-ch="CompanySearch.Right.ShowMyCompany"
+										href="javascript:void(0);"
+										onclick="common.show_search_modal()">展示我的企业</a>
+					<!-- 				<div class="warp -normal"
+										style="width: 301px; margin-top: -39px; margin-right: 15px; left: -320px;">
+										<div class="triangle"></div>
+										<div class="">认证成功后，信息填写完整度100%（基础信息和自主信息）的企业，即可展示在这</div>
+									</div> -->
+								</div>
+					</div>
+					<div class="card-body">
+										<div class="company-item"
+											onclick="window.open('https://own.tianyancha.com/company/3357424405h4cc3','_blank')"
+											tyc-event-click=""
+											tyc-event-ch="CompanySearch.Right.RenzhengCompany">
+											<div class="company-item-left">
+												<div class="logo-warp">
+													<div class="lazy-img -image">
+														<div class="logo-text -l4 -w48 -bg4">
+															<span class="text">金美智能</span>
+														</div>
+														<div class="logo -w48" data-index="null">
+															<img class="img"
+																data-src="https://img5.tianyancha.com/tmp/19110716/992695575018/edit_company888739.JPG@!f_88x88"
+																alt="洛阳金美智能科技有限公司" erro-src=""
+																src="https://img5.tianyancha.com/tmp/19110716/992695575018/edit_company888739.JPG@!f_88x88">
+														</div>
+													</div>
+													<div class="claim_icon_ok">
+														<img class="renzheng lazy-img -image"
+															data-src="https://static.tianyancha.com/web-require-js/themes/18blue/images/claim-company-pkg-home-3-1.png"
+															src="https://static.tianyancha.com/web-require-js/themes/18blue/images/claim-company-pkg-home-3-1.png">
+													</div>
+												</div>
+											</div>
+											<div class="company-item-right">
+												<span class="link-click">洛阳金美智能科</span><span
+													class="link-claim">信息完整度：100%</span>
+											</div>
+										</div>
+</div> 
+					</div>
+					
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
+</body>
+</html>
