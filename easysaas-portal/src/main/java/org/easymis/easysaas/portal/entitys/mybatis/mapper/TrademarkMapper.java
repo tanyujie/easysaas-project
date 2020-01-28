@@ -39,7 +39,7 @@ public interface TrademarkMapper {
 
 	@Select(" SELECT t.* FROM trademark t ")
 	public List<Trademark> findByIds(List<String> list);
-	@Select("select * from trademark t WHERE t.companyid = #{companyId} order by app_date desc")
+	@Select("select * from trademark t WHERE t.company_id = #{companyId} order by app_date desc")
 	List<Trademark> findByCompanyId(@Param("companyId") String companyId);
 
 }

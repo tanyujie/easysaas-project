@@ -27,7 +27,7 @@ public class DataSourceAspect {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	//切点
-	@Pointcut("execution(* org.easymis.dbview.modules..*.*(..)))")
+	@Pointcut("execution(* org.easymis.easysaas.portal..*.*(..)))")
 	public void aspect() { }
 	
 	@Before("aspect()")
