@@ -1,6 +1,5 @@
 package org.easymis.easysaas.portal.controller;
 
-import java.util.List;
 import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
@@ -18,8 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
-import com.sharepanzer.companydata.core.entitys.mybatis.dto.LicenseInfoDTO;
-import com.sharepanzer.companydata.core.entitys.mybatis.vo.CompanyLicenseInfoCreditchina;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -55,7 +52,7 @@ public class LicenseController {
     @ApiResponses({
             @ApiResponse(code = 0, message = "成功", response = CompanyLicense.class)
     })
-	public SearchResult getLicenseInfo(@NotNull Long companyId,Integer pageNum, Integer pageSize) {
+	public SearchResult getLicenseInfo(@NotNull String companyId,Integer pageNum, Integer pageSize) {
 		pageNum = Objects.isNull(pageNum) ? 1 : pageNum;
 		pageSize = Objects.isNull(pageSize) ? 10 : pageSize;
 		Page page = new Page(pageNum, pageSize);

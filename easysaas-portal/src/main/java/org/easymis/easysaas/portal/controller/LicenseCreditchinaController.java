@@ -1,15 +1,12 @@
 package org.easymis.easysaas.portal.controller;
 
-import java.util.List;
 import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
 import org.easymis.easysaas.common.result.SearchResult;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.CompanyLicense;
-import org.easymis.easysaas.portal.service.CompanyLicenseEntpubService;
 import org.easymis.easysaas.portal.service.CompanyLicenseInfoCreditchinaService;
-import org.easymis.easysaas.portal.service.CompanyLicenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,17 +33,10 @@ public class LicenseCreditchinaController {
     @Autowired
     private CompanyLicenseInfoCreditchinaService licenseInfoCreditchinaService;
 
-    @Autowired
-    private CompanyLicenseEntpubService companyLicenseEntpubService;
-
-    @Autowired
-    private CompanyLicenseService companyLicenseService;
-
 
     @ApiModelProperty("行政许可")
     @GetMapping("queryLicenseInfo")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "companyId", value = "企业id", required = true, dataType = "int"),
             @ApiImplicitParam(name = "companyName", value = "企业名称", required = true, dataType = "string"),
             @ApiImplicitParam(name = "pageNum", value = "页码", required = false, dataType = "string"),
             @ApiImplicitParam(name = "pageSize", value = "每页数量", required = false, dataType = "string")
@@ -54,17 +44,15 @@ public class LicenseCreditchinaController {
     @ApiResponses({
             @ApiResponse(code = 0, message = "成功", response = CompanyLicense.class)
     })
-	public SearchResult getLicenseInfo(@NotNull Long companyId, String companyName, Integer pageNum, Integer pageSize) {
+	public SearchResult getLicenseInfo(@NotNull String companyName, Integer pageNum, Integer pageSize) {
 		pageNum = Objects.isNull(pageNum) ? 1 : pageNum;
 		pageSize = Objects.isNull(pageSize) ? 10 : pageSize;
 		Page page = new Page(pageNum, pageSize);
-		LicenseInfoDTO dto = new LicenseInfoDTO();
-		PageInfo licensePageInfo = companyLicenseService.getPage(page, companyId);
-		List<CompanyLicense> licenseList = licensePageInfo.getList();
+
+
 		PageInfo creditchinaPageInfo = licenseInfoCreditchinaService.getPage(page, companyName);
-		List<CompanyLicenseInfoCreditchina> infoCreditchinaList = creditchinaPageInfo.getList();
-		dto.setCompanyLicense(licenseList).setLicenseInfoCreditchinas(infoCreditchinaList);
-		return SearchResult.buildSuccess(dto);
+	
+		return SearchResult.buildSuccess(creditchinaPageInfo);
 	}
 
 }
