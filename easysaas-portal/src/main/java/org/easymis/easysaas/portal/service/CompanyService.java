@@ -27,7 +27,7 @@ public interface CompanyService {
 	 * 获取全部
 	 */
 	public List<Company> getAll();
-
+	List<Company> findByIds(List<String> companyIds);
 	/**
 	 * 
 	 * <p>
