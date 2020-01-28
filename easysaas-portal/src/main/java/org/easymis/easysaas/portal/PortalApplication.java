@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 @EnableTransactionManagement(order = 2) // 设置事务执行顺序(需要在切换数据源之后，否则只走主库)
 @MapperScan(basePackages = "org.easymis.easysaas.portal.**.entitys.mybatis.mapper")
 @ServletComponentScan
-public class SpringbootEsApplication {
+public class PortalApplication {
     @RestController
     public class UploadController {
 
@@ -30,6 +30,6 @@ public class SpringbootEsApplication {
     }
     
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootEsApplication.class, args);
+		SpringApplication.run(PortalApplication.class, args);
 	}
 }
