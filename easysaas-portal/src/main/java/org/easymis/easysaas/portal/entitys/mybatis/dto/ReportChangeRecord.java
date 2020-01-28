@@ -13,12 +13,11 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * <p>
- * 年报变更记录
- * </p>
- *
- * @author zh
- * @since 2019-07-11
+ * 
+　 * <p>Title: 年报变更记录</p>
+　 * <p>Description: </p>
+　 * @author 谭宇杰
+　 * @date 2020年1月28日
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
