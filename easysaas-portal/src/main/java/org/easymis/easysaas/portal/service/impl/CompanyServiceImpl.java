@@ -10,6 +10,8 @@ import java.util.List;
 
 import org.easymis.easysaas.portal.config.ElasticSearchConfig;
 import org.easymis.easysaas.portal.config.EsEntity;
+import org.easymis.easysaas.portal.config.datasource.DataSourceType;
+import org.easymis.easysaas.portal.config.datasource.EasymisDataSource;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.Company;
 import org.easymis.easysaas.portal.entitys.mybatis.mapper.CompanyMapper;
 import org.easymis.easysaas.portal.service.CompanyService;
@@ -18,7 +20,6 @@ import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.index.query.TermQueryBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -171,6 +172,11 @@ public class CompanyServiceImpl implements CompanyService {
             throw new RuntimeException(e);
         }
 
+	}
+
+	@EasymisDataSource(DataSourceType.Slave)
+	public List<Company> findByIds(List<String> companyIds) {
+		return mapper.findByIds(companyIds);
 	}
 
 

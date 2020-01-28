@@ -12,9 +12,21 @@ import org.easymis.easysaas.common.result.SearchResult;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.AnnualReport;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.Company;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.ReportChangeRecord;
+import org.easymis.easysaas.portal.entitys.mybatis.dto.ReportEquityChangeInfo;
+import org.easymis.easysaas.portal.entitys.mybatis.dto.ReportOutGuaranteeInfo;
+import org.easymis.easysaas.portal.entitys.mybatis.dto.ReportOutboundInvestment;
+import org.easymis.easysaas.portal.entitys.mybatis.dto.ReportShareholder;
+import org.easymis.easysaas.portal.entitys.mybatis.dto.ReportSocialSecurityInfo;
+import org.easymis.easysaas.portal.entitys.mybatis.dto.ReportWebinfo;
 import org.easymis.easysaas.portal.service.AnnualReportService;
 import org.easymis.easysaas.portal.service.CompanyService;
 import org.easymis.easysaas.portal.service.ReportChangeRecordService;
+import org.easymis.easysaas.portal.service.ReportEquityChangeInfoService;
+import org.easymis.easysaas.portal.service.ReportOutGuaranteeInfoService;
+import org.easymis.easysaas.portal.service.ReportOutboundInvestmentService;
+import org.easymis.easysaas.portal.service.ReportShareholderService;
+import org.easymis.easysaas.portal.service.ReportSocialSecurityInfoService;
+import org.easymis.easysaas.portal.service.ReportWebinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,18 +35,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
-import com.sharepanzer.companydata.core.entitys.mybatis.vo.ReportEquityChangeInfo;
-import com.sharepanzer.companydata.core.entitys.mybatis.vo.ReportOutGuaranteeInfo;
-import com.sharepanzer.companydata.core.entitys.mybatis.vo.ReportOutboundInvestment;
-import com.sharepanzer.companydata.core.entitys.mybatis.vo.ReportShareholder;
-import com.sharepanzer.companydata.core.entitys.mybatis.vo.ReportSocialSecurityInfo;
-import com.sharepanzer.companydata.core.entitys.mybatis.vo.ReportWebinfo;
-import com.sharepanzer.companydata.core.web.service.ReportEquityChangeInfoService;
-import com.sharepanzer.companydata.core.web.service.ReportOutGuaranteeInfoService;
-import com.sharepanzer.companydata.core.web.service.ReportOutboundInvestmentService;
-import com.sharepanzer.companydata.core.web.service.ReportShareholderService;
-import com.sharepanzer.companydata.core.web.service.ReportSocialSecurityInfoService;
-import com.sharepanzer.companydata.core.web.service.ReportWebinfoService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -114,7 +114,7 @@ public class AnnualReportController {
             List<ReportChangeRecord> records = changeRecordService.listByAnnualreportId(annualReportIds);// bug changeRecordService.list(new QueryWrapper<ReportChangeRecord>().lambda().in(ReportChangeRecord::getAnnualreportId, annualReportIds));
             records.stream().forEach(reportChangeRecord -> {
                 for (AnnualReport report : annualReports) {
-                    Long annualId = report.getId();
+                    String annualId = report.getId();
                     if (Objects.equals(reportChangeRecord.getAnnualreportId(), annualId)) {
                         List<ReportChangeRecord> recordList = report.getReportChangeRecords();
                         if (Objects.isNull(recordList)) {
@@ -132,7 +132,7 @@ public class AnnualReportController {
             List<ReportEquityChangeInfo> infos = reportEquityChangeInfoService.listByAnnualreportId(annualReportIds);// bug reportEquityChangeInfoService.list(new QueryWrapper<ReportEquityChangeInfo>().lambda().in(ReportEquityChangeInfo::getAnnualreportId, annualReportIds));
             infos.stream().forEach(reportEquityChangeInfo -> {
                 for (AnnualReport report : annualReports) {
-                    Long annualId = report.getId();
+                    String annualId = report.getId();
                     if (Objects.equals(reportEquityChangeInfo.getAnnualreportId(), annualId)) {
                         List<ReportEquityChangeInfo> changeInfos = report.getReportEquityChangeInfos();
                         if (Objects.isNull(changeInfos)) {
@@ -150,7 +150,7 @@ public class AnnualReportController {
             List<ReportOutboundInvestment> outboundInvestmentList =investmentService.listByAnnualReportId(annualReportIds);// investmentService.list(new QueryWrapper<ReportOutboundInvestment>().lambda().in(ReportOutboundInvestment::getAnnualReportId, annualReportIds));
             outboundInvestmentList.stream().forEach(investment -> {
                 for (AnnualReport report : annualReports) {
-                    Long annualId = report.getId();
+                    String annualId = report.getId();
                     if (Objects.equals(investment.getAnnualReportId(), annualId)) {
                         List<ReportOutboundInvestment> outboundInvestments = report.getReportOutboundInvestments();
                         if (Objects.isNull(outboundInvestments)) {
@@ -169,7 +169,7 @@ public class AnnualReportController {
             List<ReportShareholder> shareholders = reportShareholderService.listByAnnualReportId(annualReportIds);// bug reportShareholderService.list(new QueryWrapper<ReportShareholder>().lambda().in(ReportShareholder::getAnnualReportId, annualReportIds));
             shareholders.stream().forEach(reportShareholder -> {
                 for (AnnualReport report : annualReports) {
-                    Long annualId = report.getId();
+                    String annualId = report.getId();
                     if (Objects.equals(reportShareholder.getAnnualReportId(), annualId)) {
                         List<ReportShareholder> reportShareholders = report.getReportShareholders();
                         if (Objects.isNull(reportShareholders)) {
@@ -188,7 +188,7 @@ public class AnnualReportController {
             List<ReportSocialSecurityInfo> socialSecurityInfoList = socialSecurityInfoService.listByAnnaulreportId(annualReportIds);//bug socialSecurityInfoService.list(new QueryWrapper<ReportSocialSecurityInfo>().lambda().in(ReportSocialSecurityInfo::getAnnaulreportId, annualReportIds));
             socialSecurityInfoList.stream().forEach(socialSecurityInfo -> {
                 for (AnnualReport report : annualReports) {
-                    Long annualId = report.getId();
+                    String annualId = report.getId();
                     if (Objects.equals(socialSecurityInfo.getAnnaulreportId(), annualId)) {
                         List<ReportSocialSecurityInfo> socialSecurityInfos = report.getReportSocialSecurityInfos();
                         if (Objects.isNull(socialSecurityInfos)) {
@@ -207,7 +207,7 @@ public class AnnualReportController {
             List<ReportOutGuaranteeInfo> guaranteeInfoList =guaranteeInfoService.listByAnnualreportId(annualReportIds) ;// bug guaranteeInfoService.list(new QueryWrapper<ReportOutGuaranteeInfo>().lambda().in(ReportOutGuaranteeInfo::getAnnualreportId, annualReportIds));
             guaranteeInfoList.stream().forEach(reportOutGuaranteeInfo -> {
                 for (AnnualReport report : annualReports) {
-                    Long annualId = report.getId();
+                    String annualId = report.getId();
                     if (Objects.equals(reportOutGuaranteeInfo.getAnnualreportId(), annualId)) {
                         List<ReportOutGuaranteeInfo> guaranteeInfos = report.getReportOutGuaranteeInfos();
                         if (Objects.isNull(guaranteeInfos)) {
@@ -227,7 +227,7 @@ public class AnnualReportController {
             List<ReportWebinfo> reportWebinfoList = webinfoService.listByAnnualreportId(annualReportIds);//webinfoService.list(new QueryWrapper<ReportWebinfo>().lambda().in(ReportWebinfo::getAnnualreportId, annualReportIds));
             reportWebinfoList.stream().forEach(reportWebinfo -> {
                 for (AnnualReport report : annualReports) {
-                    Long annualId = report.getId();
+                    String annualId = report.getId();
                     if (Objects.equals(reportWebinfo.getAnnualreportId(), annualId)) {
                         List<ReportWebinfo> webinfos = report.getReportWebinfos();
                         if (Objects.isNull(webinfos)) {

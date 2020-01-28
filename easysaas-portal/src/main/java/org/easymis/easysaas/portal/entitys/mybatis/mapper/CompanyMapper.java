@@ -5,8 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.Company;
@@ -37,6 +35,13 @@ public interface CompanyMapper {
 	@Select("select * from company t WHERE t.id = #{id}")
 	public Company findById(@Param("id") String id);
 
-	@Select(" SELECT t.* FROM bi_dbs t }")
-	public List<Company> findByIds(List<String> list);
+	@Select({"<script>",
+        "SELECT * from company",
+        "WHERE id IN", 
+          "<foreach item='item' index='index' collection='ids'",
+            "open='(' separator=',' close=')'>",
+            "#{item}",
+          "</foreach>",
+        "</script>"}) 
+	public List<Company> findByIds(@Param("ids")List<String> ids);
 }
