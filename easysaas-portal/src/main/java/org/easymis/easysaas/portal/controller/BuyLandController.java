@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 
-@Api(description = "电信许可")
-@RequestMapping("news")
+@Api(description = "购地信息")
+@RequestMapping("buyLand")
 @RestController
 @Validated
-public class NewsController18 {
+public class BuyLandController {
 
 }
