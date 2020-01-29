@@ -7,6 +7,8 @@ import java.util.Map;
 
 import org.easymis.easysaas.portal.config.ElasticSearchConfig;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.CompanyDto;
+import org.easymis.easysaas.portal.entitys.vo.SearchOutput;
+import org.easymis.easysaas.portal.entitys.vo.SearchVo;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.Operator;
@@ -24,6 +26,9 @@ import com.alibaba.fastjson.JSONObject;
 import io.searchbox.client.JestClient;
 import io.searchbox.core.Search;
 import io.searchbox.core.SearchResult;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -31,15 +36,37 @@ import lombok.extern.slf4j.Slf4j;
 public class SearchController {
     @Autowired
     private JestClient jestClient;
-    
+    @ApiOperation(value = "根据各种条件查询公司信息", response = SearchOutput.class)
+    @ApiImplicitParams({
+    	@ApiImplicitParam(name = "wd", value = "搜索关键字", dataType = "string", required = false),
+		@ApiImplicitParam(name = "province", value = "省名称", dataType = "string", required = false),
+		@ApiImplicitParam(name = "city", value = "市名称", dataType = "string", required = false),
+		@ApiImplicitParam(name = "district", value = "区名称", dataType = "string", required = false),
+    })
     @RequestMapping("/search")
-    public String search(String wd,ModelMap map) throws IOException {
+    public String search(SearchVo searchVo,ModelMap map) throws IOException {
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
            BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
            
-           if (!StringUtils.isEmpty(wd)) {
-               boolQueryBuilder.must(QueryBuilders.matchQuery("name", wd.trim()).operator(Operator.AND).analyzer("ik_max_word"));
+           if (!StringUtils.isEmpty(searchVo.getWd())) {
+               boolQueryBuilder.must(QueryBuilders.matchQuery("name", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
                //boolQueryBuilder.must(QueryBuilders.matchQuery("name", wd.trim()));
+           }
+           //搜索范围
+           if (!StringUtils.isEmpty(searchVo.getSearchType())) {
+        	   
+           }
+           //机构类型
+           if (!StringUtils.isEmpty(searchVo.getCompanyType())) {
+        	   
+           }
+           //省份地区
+           if (!StringUtils.isEmpty(searchVo.getProvince())) {
+        	   
+           }
+           //区县
+           if (!StringUtils.isEmpty(searchVo.getAreaCode())) {
+        	   
            }
            /**高亮公司名*/
            HighlightBuilder highlightBuilder = new HighlightBuilder();
