@@ -72,9 +72,15 @@
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>1.1.1</version>
+			<version>2.0.0</version>
 		</dependency>
-				<dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-typehandlers-jsr310</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
 			<version>1.0.0</version>
@@ -139,15 +145,14 @@
 			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
 		<!-- 热部署 -->
-<!-- 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-devtools</artifactId> 
+			<optional>true</optional> </dependency> <dependency> <groupId>org.springframework.boot</groupId> 
+			<artifactId>spring-boot-starter-tomcat</artifactId> </dependency> -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-		</dependency> -->
+			<groupId>org.easymis.easysaas</groupId>
+			<artifactId>easysaas-common</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>
