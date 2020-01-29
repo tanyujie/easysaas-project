@@ -5,6 +5,7 @@ import java.util.Objects;
 import javax.validation.constraints.NotNull;
 
 import org.easymis.easysaas.common.result.SearchResult;
+import org.easymis.easysaas.portal.entitys.mybatis.dto.SoftwareCopyright;
 import org.easymis.easysaas.portal.service.SoftwareCopyrightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
-import com.sharepanzer.companydata.core.entitys.mybatis.dto.SoftwareCopyright;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

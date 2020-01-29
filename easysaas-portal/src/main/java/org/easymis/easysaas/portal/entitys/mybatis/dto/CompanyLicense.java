@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
 　 * <p>Title: 行政许可</p>
 　 * <p>Description: </p>
 　 * @author 谭宇杰
-　 * @date 2020年1月28日
+　 * @date 2020年1月29日
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
