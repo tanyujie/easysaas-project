@@ -30,15 +30,15 @@ public class SearchVo {
 	//企业状态:在业
     private String companyStatus;
 	//资本类型,注册资本金额范围
-    private Integer registeredCapitalNumberType;
+    private Integer registerCapitalNumberType;
     //注册资本金额范围-开始
     @Min(value = 0, message = "注册资本金额范围不合法,请检查")
-    private Long registeredCapitalFrom;
+    private Long registerCapitalFrom;
     //注册资本金额范围-结束
     @Min(value = 1, message = "注册资本金额范围不合法,请检查")
-    private Long registeredCapitalTo;
+    private Long registerCapitalTo;
     //资本币种：人民币，美元，其他
-    private String registeredCapitalType;
+    private String registerCapitalType;
     //参保人数范围
     private Integer  insurancePersonNumberType;
     //参保人数范围-开始
@@ -66,7 +66,10 @@ public class SearchVo {
     //作品著作权
     @Range(min = 0, max = 1)
     public Integer haveCopyrightWorks;
-
     
+    @Range(min = 1, max = 30, message = "每页最大数量为30")
+    public Integer pageSize = 10;
+    @Min(value = 1, message = "pageNo大于等于1")
+    public Integer pageNo = 1;
 
 }

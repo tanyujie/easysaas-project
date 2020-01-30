@@ -48,7 +48,7 @@ public class ElasticSearchConfig {
     @Value("${elasticsearch.scheme}")
     public String scheme;
 
-    public static final String INDEX_NAME = "book-index";
+    public static final String INDEX_NAME = "company-index";
 
     public static final String CREATE_INDEX = "{\n" +
             "    \"properties\": {\n" +
