@@ -14,6 +14,11 @@ public class SearchOutput {
     private String companyName;
     @ApiModelProperty(value = "法人姓名")
     private String legalPersonName;
+    @ApiModelProperty(value = "公司名称(高亮)")
+    private String nameHighlight;
+    @ApiModelProperty(value = "法人名称(高亮)")
+    private String legalPersonNameHighlight;
+    
     @ApiModelProperty(value = "联系电话")
     private String telephone;
     @ApiModelProperty(value = "邮箱")

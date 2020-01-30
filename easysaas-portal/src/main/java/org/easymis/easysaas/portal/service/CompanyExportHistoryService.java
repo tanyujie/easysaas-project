@@ -8,8 +8,8 @@ import org.easymis.easysaas.portal.entitys.vo.SearchOutput;
 public interface CompanyExportHistoryService {
 	List<String> findByShort(String memberId, String exportQueryMD5);
 
-	List<SearchOutput> compareDifferenceOfTarget(List<String> cacheLongs, List<SearchOutput> infoList);
+	public List<SearchOutput> compareDifferenceOfTarget(List<String> longs, List<SearchOutput> targetList);
 
-	void saveOutput(List<SearchOutput> differenceList, String memberId, String exportedQueryMD5);
+	void saveOutput(List<SearchOutput> targetList, String memberId, String exportedQueryMD5);
 	void saveBatch(List<CompanyExportHistory> historyRecords);
 }

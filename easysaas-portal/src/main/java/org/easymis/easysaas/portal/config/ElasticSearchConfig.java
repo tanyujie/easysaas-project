@@ -21,6 +21,7 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.client.indices.CreateIndexResponse;
 import org.elasticsearch.client.indices.GetIndexRequest;
+import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.reindex.DeleteByQueryRequest;
@@ -52,13 +53,10 @@ public class ElasticSearchConfig {
 
     public static final String CREATE_INDEX = "{\n" +
             "    \"properties\": {\n" +
-            "      \"id\":{\n" +
+            "      \"companyId\":{\n" +
             "        \"type\":\"text\"\n" +
             "      },\n" +
-            "      \"userId\":{\n" +
-            "        \"type\":\"integer\"\n" +
-            "      },\n" +
-            "      \"name\":{\n" +
+            "      \"companyName\":{\n" +
             "        \"type\":\"text\",\n" +
             "        \"analyzer\": \"ik_max_word\",\n" +
             "        \"search_analyzer\": \"ik_smart\"\n" +
@@ -84,12 +82,12 @@ public class ElasticSearchConfig {
             client = new RestHighLevelClient(RestClient.builder(new HttpHost(host, port, scheme)));
 
             if (this.indexExist(INDEX_NAME)) {
-               // DeleteIndexRequest deleteIndexRequest= new DeleteIndexRequest(INDEX_NAME);
+                //DeleteIndexRequest deleteIndexRequest= new DeleteIndexRequest(INDEX_NAME);
                 //client.indices().delete(deleteIndexRequest,  RequestOptions.DEFAULT);
                 return;
             }
             CreateIndexRequest request = new CreateIndexRequest(INDEX_NAME);
-           // request.settings(Settings.builder().put("index.number_of_shards", 3).put("index.number_of_replicas", 2));
+            request.settings(Settings.builder().put("index.number_of_shards", 3).put("index.number_of_replicas", 2));
             //request.mapping(CREATE_INDEX, XContentType.JSON);
             request.mapping(buildIndexMapping(),XContentType.JSON);
  
@@ -253,10 +251,10 @@ public class ElasticSearchConfig {
 		Map<String, Object> name = new HashMap<>();
 		name.put("type", "text");
 		name.put("analyzer", "ik_max_word");
-		name.put("search_analyzer", "ik_smart");
+		name.put("search_analyzer", "ik_max_word");
 		
 		Map<String, Object> properties = new HashMap<>();
-		properties.put("name", name);
+		properties.put("companyName", name);
 		Map<String, Object> indexMapping = new HashMap<>();
 		indexMapping.put("properties", properties);
 		//jsonMap.put("books", book);

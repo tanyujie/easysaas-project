@@ -26,18 +26,22 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-
+@Api(description = "查询入口接口")
 @Controller
+@Validated
 @Slf4j
 public class SearchController {
 	
@@ -89,8 +93,9 @@ public class SearchController {
 			@ApiImplicitParam(name = "exportNumber", value = "导出数量", dataType = "string", required = true),
 			@ApiImplicitParam(name = "recordId", value = "查询记录id", dataType = "int", required = true),
 			@ApiImplicitParam(name = "keyword", value = "关键字", dataType = "string", required = true) })
+    @ResponseBody
 	@RequestMapping(value = "/company/export.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public RestResult exportedQuery(@Valid ExportQueryVo exportQueryDto,
+	public RestResult exportQuery(@Valid ExportQueryVo exportQueryDto,
 			@NotNull(message = "请输入导出的数据") Integer exportNumber,
 			@NotNull(message = "请输入正确的邮箱") @Pattern(regexp = RegexConstant.regexp_email, message = "邮箱地址格式不正确") String email,
 			Integer recordId) throws Exception {
@@ -109,8 +114,7 @@ public class SearchController {
 		exportRecord.setKeyword(exportQueryDto.getKeyword());
 		exportRecord.setToMail(email);
 		companyExportRecordService.save(exportRecord);
-		searchService.exportQueryResult(exportQueryDto, exportNumber, email, null,
-				exportQueryString, exportQueryMD5, exportRecord);
+		searchService.exportQueryResult(exportQueryDto, exportNumber, email, null,exportQueryString, exportQueryMD5, exportRecord);
 		return RestResult.buildSuccess();
 		
 	}

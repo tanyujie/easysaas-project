@@ -6,10 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpHost;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -124,7 +127,7 @@ public class BulkProcessImpl implements BulkProcessService{
 				for (int i = 1; i <= colData.getColumnCount(); i++) {
 					c = colData.getColumnName(i);
 					v = rs.getString(c);
-					map.put(c, v);
+					map.put(lineToHump(c), v);
 				}
 				dataList.add(map);
 				// 每20锟斤拷锟斤拷写一锟轿ｏ拷锟斤拷锟斤拷锟斤拷锟斤拷蔚锟斤拷锟斤拷锟斤拷一锟斤拷锟结交
@@ -132,7 +135,7 @@ public class BulkProcessImpl implements BulkProcessService{
 					logger.info("Mysql handle data number : " + count);
 					// 写锟斤拷ES
 					for (HashMap<String, String> hashMap2 : dataList) {
-						 bulkProcessor.add(new IndexRequest(tableName).id(hashMap2.get("id")).source(JSON.toJSONString(hashMap2),XContentType.JSON));
+						 bulkProcessor.add(new IndexRequest(tableName).id(hashMap2.get("companyId")).source(JSON.toJSONString(hashMap2),XContentType.JSON));
 					}
 				     client.bulk(request, RequestOptions.DEFAULT);
 				     
@@ -143,7 +146,7 @@ public class BulkProcessImpl implements BulkProcessService{
 			}
 			// count % 200000 锟斤拷锟斤拷未锟结交锟斤拷锟斤拷锟斤拷
 			for (HashMap<String, String> hashMap2 : dataList) {
-				bulkProcessor.add(new IndexRequest(tableName).id(hashMap2.get("id")).source(JSON.toJSONString(hashMap2),
+				bulkProcessor.add(new IndexRequest(tableName).id(hashMap2.get("companyId")).source(JSON.toJSONString(hashMap2),
 						XContentType.JSON));
 			}
 		    client.bulk(request, RequestOptions.DEFAULT);
@@ -214,4 +217,20 @@ public class BulkProcessImpl implements BulkProcessService{
 		}
 		return bulkProcessor;
 	}
+	 /** 下划线转驼峰 */
+	  public static String lineToHump(String str) {
+		  StringBuilder builder = new StringBuilder();
+		  List<String> dataList = Arrays.asList(str.split("_"));
+		  for (int i = 0; i < dataList.size(); i++) {
+			  String temp=dataList.get(i);
+			  if(i>0)
+				  builder.append(StringUtils.capitalize(temp));
+			  else
+				  builder.append(StringUtils.trim(temp));
+			}
+/*		  Arrays.asList(str.split("_")).forEach(
+	                Integer index = Arrays.IndexOf(temp);
+				  temp -> builder.append(StringUtils.capitalize(temp)));*/
+		  return builder.toString();
+	 }
 }

@@ -76,8 +76,7 @@ public class SearchServiceImpl implements SearchService {
 		PageData pageData = new PageData();
 
 		if (!StringUtils.isEmpty(searchVo.getWd())) {
-			boolQueryBuilder.must(QueryBuilders.matchQuery("name", searchVo.getWd().trim()).operator(Operator.AND)
-					.analyzer("ik_max_word"));
+            boolQueryBuilder.must(QueryBuilders.matchQuery("companyName", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
 			// boolQueryBuilder.must(QueryBuilders.matchQuery("name", wd.trim()));
 		}
 		// 搜索范围
@@ -258,7 +257,7 @@ public class SearchServiceImpl implements SearchService {
 		}
 		/** 高亮公司名 */
 		HighlightBuilder highlightBuilder = new HighlightBuilder();
-		highlightBuilder.field("name");
+		highlightBuilder.field("companyName");
 		searchSourceBuilder.query(boolQueryBuilder);
 		searchSourceBuilder.highlighter(highlightBuilder);
 
@@ -273,14 +272,14 @@ public class SearchServiceImpl implements SearchService {
 		SearchResult result = jestClient.execute(search);
 		
 		/** 返回字段处理 */
-		List<SearchResult.Hit<CompanyDto, Void>> hits = result.getHits(CompanyDto.class, false);
+		List<SearchResult.Hit<SearchOutput, Void>> hits = result.getHits(SearchOutput.class, false);
 
-		List<CompanyDto> outList = new ArrayList<>();
+		List<SearchOutput> outList = new ArrayList<>();
 		try {
-			for (SearchResult.Hit<CompanyDto, Void> esQueryOutputDTOVoidHit : hits) {
-				CompanyDto out = esQueryOutputDTOVoidHit.source;
-				if (StringUtils.isNotEmpty(out.getName())) {
-					out.setNameHighlight(esQueryOutputDTOVoidHit.highlight.get("name").get(0));
+			for (SearchResult.Hit<SearchOutput, Void> esQueryOutputDTOVoidHit : hits) {
+				SearchOutput out = esQueryOutputDTOVoidHit.source;
+				if (StringUtils.isNotEmpty(out.getCompanyName())) {
+					out.setNameHighlight(esQueryOutputDTOVoidHit.highlight.get("companyName").get(0));
 				}
 
 				outList.add(out);
@@ -312,6 +311,7 @@ public class SearchServiceImpl implements SearchService {
         List<SearchOutput> queryResultDto = new ArrayList<>();
         SearchVo dto = new SearchVo();
         BeanUtils.copyProperties(exportQueryVo, dto);
+        dto.setWd(exportQueryVo.getKeyword());
         PageData pageData = new PageData();
         log.info("exportQueryResult 开始对比：");
         int step = 0;
@@ -321,7 +321,7 @@ public class SearchServiceImpl implements SearchService {
 
         try {
             for (int i = 0; i < 10000; ) {//10000是深度
-                dto.setPageNo(i);
+                dto.setPageNo(step+1);
                 dto.setPageSize(size);
                 //bug问题点，500页去重处理
                 pageData = this.esQuery(dto);
