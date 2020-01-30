@@ -4,7 +4,7 @@ import org.easymis.easysaas.portal.entitys.mybatis.dto.CompanyExport;
 import org.easymis.easysaas.portal.service.CompanyExportService;
 import org.springframework.stereotype.Service;
 @Service
-public class CompanyExportRecordServiceImpl implements CompanyExportService {
+public class CompanyExportServiceImpl implements CompanyExportService {
 
 	@Override
 	public void save(CompanyExport bean) {
