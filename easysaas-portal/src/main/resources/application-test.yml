@@ -23,17 +23,17 @@ spring:
 datasource:
   #主库
   master:
-    jdbcUrl: jdbc:mysql://127.0.0.1:3307/easymis_dbview?useUnicode=true&characterEncoding=utf-8
+    jdbcUrl: jdbc:mysql://127.0.0.1:3307/easysaas?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   #从库
   slave:
     #并非url而是jdbcUrl(因为这个在获取数据源时一直报错，看了DataSource的属性才知道是jdbcUrl)
-    jdbcUrl: jdbc:mysql://127.0.0.1:3307/easymis_dbview?useUnicode=true&characterEncoding=utf-8
+    jdbcUrl: jdbc:mysql://127.0.0.1:3307/easycompany?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
 elasticsearch:
   host: 127.0.0.1
   port: 9200
