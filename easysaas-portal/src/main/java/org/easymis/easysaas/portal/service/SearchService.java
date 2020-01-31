@@ -15,6 +15,6 @@ public interface SearchService {
 
 	@Async("QueryQuantityAsyncExecutorPool")
 	void exportQueryResult(ExportQueryVo exportQueryVo, Integer exportNumber, String email,
-			SecurityUserDetails userDetails, String exportQueryString, String exportQueryMD5,
+			String memberId, String exportQueryString, String exportQueryMD5,
 			CompanyExport queryRecord) throws Exception;
 }

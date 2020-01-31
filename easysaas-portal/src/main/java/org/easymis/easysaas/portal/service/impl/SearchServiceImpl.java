@@ -305,9 +305,8 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	public void exportQueryResult(ExportQueryVo exportQueryVo, Integer exportedNumber, String email,
-			SecurityUserDetails userDetails, String exportedQueryString, String exportedQueryMD5,
+			String memberId, String exportedQueryString, String exportedQueryMD5,
 			CompanyExport companyExportRecord) throws Exception{
-		String memberId="memberId";
         List<SearchOutput> queryResultDto = new ArrayList<>();
         SearchVo dto = new SearchVo();
         BeanUtils.copyProperties(exportQueryVo, dto);

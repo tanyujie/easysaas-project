@@ -43,7 +43,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Validated
 @Slf4j
-public class SearchController {
+public class SearchController extends IdentityRepository{
 	
 	@Autowired
 	SearchService searchService;
@@ -99,6 +99,7 @@ public class SearchController {
 			@NotNull(message = "请输入导出的数据") Integer exportNumber,
 			@NotNull(message = "请输入正确的邮箱") @Pattern(regexp = RegexConstant.regexp_email, message = "邮箱地址格式不正确") String email,
 			Integer recordId) throws Exception {
+    	String memberId=this.getIdentityFeature();
 		String exportQueryString = JSON.toJSONString(exportQueryDto);
 		String exportQueryMD5 = MD5Util.md5(exportQueryString);
 		CompanyExport exportRecord = new CompanyExport();
@@ -114,7 +115,7 @@ public class SearchController {
 		exportRecord.setKeyword(exportQueryDto.getKeyword());
 		exportRecord.setToMail(email);
 		companyExportRecordService.save(exportRecord);
-		searchService.exportQueryResult(exportQueryDto, exportNumber, email, null,exportQueryString, exportQueryMD5, exportRecord);
+		searchService.exportQueryResult(exportQueryDto, exportNumber, email, memberId,exportQueryString, exportQueryMD5, exportRecord);
 		return RestResult.buildSuccess();
 		
 	}
