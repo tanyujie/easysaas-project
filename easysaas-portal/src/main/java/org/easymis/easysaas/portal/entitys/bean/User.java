@@ -1,4 +1,4 @@
-package org.easymis.easysaas.portal.bean;
+package org.easymis.easysaas.portal.entitys.bean;
 /*package org.easymis.workflow.elasticsearch.bean;
 
 import org.springframework.data.mongodb.core.mapping.Document;

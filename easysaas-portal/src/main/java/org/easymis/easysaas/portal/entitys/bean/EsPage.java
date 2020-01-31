@@ -1,4 +1,4 @@
-package org.easymis.easysaas.portal.bean;
+package org.easymis.easysaas.portal.entitys.bean;
 
 import lombok.Data;
 import lombok.ToString;

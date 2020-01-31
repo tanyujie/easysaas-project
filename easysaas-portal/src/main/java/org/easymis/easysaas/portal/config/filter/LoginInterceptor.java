@@ -1,4 +1,9 @@
-package org.easymis.easysaas.portal.security.filter;
+package org.easymis.easysaas.portal.config.filter;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,7 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LoginInterceptor implements HandlerInterceptor{
-	private static String[] IGNORE_URI = {"/login/login"};
+	private static final Set<String> ALLOWED_PATHS = Collections
+			.unmodifiableSet(new HashSet<>(Arrays.asList("/", "/login/login", "/search",
+					"/user/login", "/auth/logout", "/health", "/api/socket/**")));
 	/**
 	 * 进入controller层之前拦截请求
 	 * @param httpServletRequest
@@ -19,19 +26,13 @@ public class LoginInterceptor implements HandlerInterceptor{
 	 * @throws Exception
 	 */
 	@Override
-	public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse httpServletResponse, Object o) throws Exception {
 		System.out.println("---------------------开始进入请求地址拦截----------------------------");
-		boolean flag = false;
-        String url = httpServletRequest.getRequestURL().toString();
-        
-		for (String s : IGNORE_URI) {
-            if (url.contains(s)) {
-                flag = true;
-                break;
-            }
-        }
-        if (!flag) {
-			String token = httpServletRequest.getHeader("Authorization");
+        String url = request.getServletPath();	
+        boolean allowedPath = ALLOWED_PATHS.contains(url);
+
+        if (!allowedPath) {
+			String token = request.getHeader("Authorization");
 			if(!"".equals(token)||!token.isEmpty()) {
 				try {
 					//JwtUtils.getUID(token);

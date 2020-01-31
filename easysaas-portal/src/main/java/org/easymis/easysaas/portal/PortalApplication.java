@@ -5,12 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -19,18 +14,15 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @MapperScan({"*.easymis.easysaas.portal.**.mapper"})
 @EnableSwagger2
 @ComponentScan({"*.easymis.easysaas.portal.*"})
-public class PortalApplication {
-    @RestController
-    public class UploadController {
-
-        @PostMapping(value = "/uploadFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-        public String handleFileUpload(@RequestPart(value = "file") MultipartFile file) {
-            return file.getName();
-        }
-
-    }
-    
+public class PortalApplication {    
 	public static void main(String[] args) {
 		SpringApplication.run(PortalApplication.class, args);
 	}
+/*	@Bean
+    public FilterRegistrationBean<JwtAuthenticationFilter> jwtFilter() {
+        final FilterRegistrationBean<JwtAuthenticationFilter> registrationBean = new FilterRegistrationBean<JwtAuthenticationFilter>();
+        JwtAuthenticationFilter filter = new JwtAuthenticationFilter();
+        registrationBean.setFilter(filter);
+        return registrationBean;
+    }*/
 }
