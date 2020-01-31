@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.easymis.easysaas.portal.config.ElasticSearchConfig;
-import org.easymis.easysaas.portal.config.EsEntity;
 import org.easymis.easysaas.portal.config.datasource.DataSourceType;
 import org.easymis.easysaas.portal.config.datasource.EasymisDataSource;
+import org.easymis.easysaas.portal.entitys.bean.EsEntity;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.Company;
 import org.easymis.easysaas.portal.entitys.mybatis.mapper.CompanyMapper;
 import org.easymis.easysaas.portal.service.CompanyService;
