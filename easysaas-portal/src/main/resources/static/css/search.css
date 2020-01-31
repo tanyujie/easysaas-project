@@ -492,3 +492,18 @@ img.lazy-img {
     font-size: 14px;
     color: #333;
 }
+.search-expand-btn {
+    position: absolute;
+    width: 100%;
+}
+.search-expand-btn .expand {
+    width: 78px;
+    height: 20px;
+    margin: 0 auto;
+    line-height: 20px;
+    text-align: center;
+    background-image: url(https://cdn.tianyancha.com/web-require-js/public/images/search-expand-bg.png);
+    background-size: 100%;
+    color: #999;
+    cursor: pointer;
+}

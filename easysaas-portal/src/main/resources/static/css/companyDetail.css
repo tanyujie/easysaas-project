@@ -288,3 +288,53 @@ img.lazy-img {
     font-weight: 600;
     display: inline-block;
 }
+.block-data-group .group-title {
+    margin: 60px 0 20px 0;
+}
+.block-data-group .group-title .text {
+    vertical-align: baseline;
+}
+.group-title {
+    font-size: 18px;
+    line-height: 1.5555555556;
+    font-weight: 700;
+    border-bottom: 1px solid #f3f3f3;
+    padding: 0 0 7px 0;
+}
+.group-title .text {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+.group-title .text::after {
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -9px;
+    background-color: #0084ff;
+    left: 0;
+    -webkit-transform: translate(0,-25%);
+    transform: translate(0,-25%);
+}
+.block-data .data-header {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    line-height: 1.5;
+    height: 24px;
+    color: #333;
+    font-weight: 700;
+}
+.block-data .data-title {
+    display: inline-block;
+    vertical-align: baseline;
+}
+.block-data .data-count {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    vertical-align: baseline;
+    color: #0084ff;
+}
