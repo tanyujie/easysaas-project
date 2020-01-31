@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 
 import org.apache.http.HttpHost;
+import org.easymis.easysaas.portal.entitys.bean.EsEntity;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.delete.DeleteRequest;

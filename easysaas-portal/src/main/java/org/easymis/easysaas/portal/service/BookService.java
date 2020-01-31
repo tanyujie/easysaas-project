@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.easymis.easysaas.portal.config.ElasticSearchConfig;
-import org.easymis.easysaas.portal.config.EsEntity;
+import org.easymis.easysaas.portal.entitys.bean.EsEntity;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.Company;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
