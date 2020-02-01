@@ -106,7 +106,7 @@ line-height: 22px;
 			</div> -->
 
 
-					<div class="search-filter">
+					<div class="search-filter " id="search-filter">
 						<div class="filter-type">
 							<a class="type-title active"
 								href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6"
@@ -176,6 +176,10 @@ line-height: 22px;
 						</div>
 						</div>
 						</div>
+						<div class="search-expand-btn">
+							<div class="expand" onclick="window1.toggleFilter(this)">收起</div>
+						</div>
+
 					</div>
 
 					<div class="no-padding-right mt-2 " id="ajaxlist">
@@ -200,7 +204,7 @@ line-height: 22px;
 
 
 										<a class="btn btn-outline-warning m-1 border-1">批量联系</a> <a
-											class="btn btn-warning m-1 border-0" id="btnCompanyExport">导出数据</a>
+											class="btn btn-warning m-1 border-0" onclick="window1.companyExport()">导出数据</a>
 										<!-- <span class="pull-left m-l btn btn-default" data-toggle="modal" data-target="#loginModal" onclick="getCaptcha()"> <span class="sortDesc">默认排序</span> <span class="caret m-l"></span> </span> -->
 									</div>
 								</div>

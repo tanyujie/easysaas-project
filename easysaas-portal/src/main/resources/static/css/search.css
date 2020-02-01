@@ -502,8 +502,9 @@ img.lazy-img {
     margin: 0 auto;
     line-height: 20px;
     text-align: center;
-    background-image: url(https://cdn.tianyancha.com/web-require-js/public/images/search-expand-bg.png);
+    background-image: url(../images/search-expand-bg.png);
     background-size: 100%;
     color: #999;
     cursor: pointer;
 }
+.search-filter.-folder .filter-body{display:none}
