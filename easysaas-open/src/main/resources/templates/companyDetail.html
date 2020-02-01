@@ -1,0 +1,288 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- 新 Bootstrap4 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+ 
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+ 
+<!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+ 
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${request.contextPath}/css/common.css">
+<link rel="stylesheet" href="${request.contextPath}/css/companyDetail.css">
+</head>
+<body>
+<header class="navi-header">
+		<div class="container">
+			<div class="navi-brand">
+				<a class="logo" onclick="zhugeTrack('顶栏按钮点击',{'按钮名称':'LOGO'});"
+					href="/"> <img
+					src="https://www.qichacha.com/material/theme/chacha/cms/v2/images/logo4.png"
+					class="m-r-sm" alt="企查查">
+				</a>
+			</div>
+
+
+			<ul class="navi-nav mr-auto">
+			<li class=""> <a rel="nofollow" onclick="zhugeTrack('顶栏按钮点击',{'按钮名称':'VIP服务'});" href="/vip.html">VIP服务</a> </li>
+			<li class="head-line">|</li>
+				<li><a rel="nofollow" class="navi-btn"
+					data-toggle="modal" data-target="#myModal"> <span class="">登录 | 注册</span>
+				</a></li>
+			</ul>
+		</div>
+	</header>
+<!-- 		<div class="ieker-header"></div> -->
+	<div class="container company-header-block mt-2">
+		<div class="chb-box">
+			<div class="logo-warp">
+				<div class="lazy-img  -bg3 -image">
+					<div class="logo-text -l4 -w100 -bg3">
+						<span class="text">银商天下</span>
+					</div>
+					<div class="logo -w100" data-index="">
+						<img class="img"
+							data-src="https://img5.tianyancha.com/logo/lll/facfe0c44e3024bcb779b2e78b91db05.png@!f_200x200"
+							alt="成都银商天下网络科技有限公司" err-src=""
+							src="https://img5.tianyancha.com/logo/lll/facfe0c44e3024bcb779b2e78b91db05.png@!f_200x200">
+					</div>
+				</div>
+				<div class="claim_icon_ok"></div>
+				<div class="company-claim-certificate-btn-container">
+					<div onclick="showCertificateModal(this)" tyc-event-click=""
+						tyc-event-ch="CompanyDetail.Head.GetCertificate"
+						class="company-claim-certificate-btn tic  w108 tic-zhengshubiaozhi">获取认证证书</div>
+				</div>
+				<!-- 访客 -->
+				<div class="visitor-content">
+					<div class="company-visitor" id="_visit_chart_warp">
+						<img class="lazy-img company-visitor-bg -image"
+							data-src="#"
+							alt=""
+							src="#">
+						<div class="pv">
+							<span class="pv-txt">浏览量：607</span>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="content">
+				<div class="header">
+					<h1 class="name">${company.name!}</h1>
+					<span class="button -h28 button-claim"
+						onclick="claimCompanySelect(1637437679)" tyc-event-click=""
+						tyc-event-ch="CompangyDetail.Head.Renzheng"><i
+						class="tic tic-claim button-icon"></i><span class="btn-inner">我要认证</span></span>
+					<div class="float-right btns-right-container">
+						<!--信用报告-->
+						<div class="button -normal -sm" tyc-event-click=""
+							tyc-event-ch="CompangyDetail.xiazaiaogao"
+							onclick="downloadReport314(0)">
+							<span class="tic tic-download-report button-icon"></span><span
+								class="btn-inner">下载报告</span>
+						</div>
+						<input type="hidden" is-monitor="" value="false">
+						<div id="" class="button -sm -active watch-btn" watch-btn=""
+							tyc-event-click="" tyc-event-ch="CompangyDetail.Monitor"
+							onclick="toogleWatch()">
+							<i class="tic tic-monitor button-icon"></i><span
+								class="btn-inner">风险监控</span>
+
+						</div>
+					</div>
+				</div>
+				<div class="tag-list-content" style="overflow: visible;"><div class="tag-list"><!-- 0806 - 0819    --><span class="tag-common" style="background:#E0F3E8;color:#079C49">存续</span><span class="tag-common" style="background:#EDEEF9;color:#757DD3">小微企业</span><!--开业状态--><!-- 
+          <div class="tag-common -normal">存续</div>--><!--           --><!--           --><!--            --><!--<span class="tag-common -hint ">项目品牌</span>--><!-- 
+           --><!--           --><!--           --><!--           <span class="tag-common -hint -click" tag-click>小微企业<span class="content"><span class="triangle"></span><span class="inner">小型微型企业概念来自工信部《中小企业划型标准规定》，具体标准根据企业从业人员、营业收入、资产总额等指标，结合行业特点制定。</span></span></span>--></div></div>
+           <div class="detail "><!--联系方式等--><div class="f0"><div class="in-block sup-ie-company-header-child-1"><span class="label">电话：</span><span class="link-hover-click" onclick="openPhonePopup(this)">1775058****</span><span class=""><span class="hidden">["1775058****","1801051****"]</span><script type="text/html">["1775058****","1801051****"]</script><span class="link-click link-spacing " onclick="openPhonePopup(this)" tyc-event-click="" tyc-event-ch="CompangyDetail.Phone.More">登录查看</span></span></div><div class="in-block sup-ie-company-header-child-2"><span class="label">邮箱：</span><span class="email" title="1584117587@qq.com">1584117587@qq.com</span></div></div><div class="f0 clearfix"><div class="in-block sup-ie-company-header-child-1"><span class="label">网址：</span><i class="safetype tic tic-anquan"></i><a class="company-link" target="_blank" href="http://www.ystxpay.com" rel="nofollow" tyc-event-click="" tyc-event-ch="CompangyDetail.Head.website" title="www.ystxpay.com">www.ystxpay.com</a></div><div class="in-block sup-ie-company-header-child-2"><span class="label">地址：</span><div style="max-height:16px;" class="auto-folder" auto-folder="16" folder-type="custom" is-load="true"><div>成都市成华区建设北路三段2号1栋2单元16层17号</div><span class="hidden folder-btn" folder-btn="">...&nbsp;<a class="link-click" onclick="openAddressPopup()" tyc-event-click="" tyc-event-ch="CompangyDetail.Head.address.detail">更多</a></span></div><script type="text/html" id="company_base_info_address">
+              成都市成华区建设北路三段2号1栋2单元16层17号
+            </script><a class="link-click link-spacing " href="https://www.tianyancha.com/map/1637437679" tyc-event-click="" tyc-event-ch="CompangyDetail.NearCompany" target="_blank">附近公司</a></div></div><div class="summary"><script type="text/html" id="company_base_info_detail">
+            注册号：****所在地：四川省注册资本：500万元人民币法定代表：夏长京企业类型：有限责任公司（自然人独资）登记状态：存续登记机关：成都市成华工商局注册地址：成都市成华区建设北路三段2号1栋2单元16层17号
+          </script><div style="max-height:22px;" class="auto-folder" auto-folder="22" folder-type="custom" is-load="true"><div> <span class="label">简介：</span>注册号：****所在地：四川省注册资本：500万元人民币法定代表：夏长京企业类型：有限责任公司（自然人独资）登记状态：存续登记机关：成都市成华工商局注册地址：成都市成华区建设北路三段2号1栋2单元16层17号</div><span class="folder-btn" folder-btn="">...&nbsp;<a class="link-click" onclick="companyDetail()" tyc-event-click="" tyc-event-ch="CompangyDetail.Head.introduce.detail">更多</a></span></div></div><div class="claim-opt 1"><span class="tips-block-data" tyc-event-click="" tyc-event-ch="CompangyDetail.Head.Renzheng">认证成功后即可编辑信息，<a class="link-claim" target="_blank" onclick="claimGuide.toClaimCompany(1637437679)">去认证</a></span></div></div>
+			</div>
+		</div>
+		<div class="footer">
+	<div class="link-hover-click followfocusbtn focusBtn" tyc-event-click="" tyc-event-ch="CompangyDetail.Collect" onclick="focusCompany(1,0)"><i class="tic tic-icon-star"></i><span>关注</span></div>
+	<div class="link-hover-click focusBtn" tyc-event-click="" tyc-event-ch="CompanyDetail.Head.Complain" onclick="backToTop.feedbackCompany('成都银商天下网络科技有限公司','1637437679','max');"><i class="tic tic-complain"></i><span>我要投诉</span></div>
+	<div class="link-hover-click focusBtn" data-is-claim="0" data-is-yours="0" tyc-event-click="" tyc-event-ch="CompangyDetail.Card" onclick="window.addContact(this)"><span class="tic tic-dimingpian"></span><span class="">递名片</span></div>
+	<div class="link-hover-click focusBtn fptt-content" onclick="follow.closeModal('login','fptt');" tyc-event-click="" tyc-event-ch="CompanyDeatil.fptt.Login"><span class="tic tic-invoice"></span><span>发票抬头</span></div>
+	</div>
+	</div>
+	<div class="container company-header-block">
+	<div class="navigation"><div class="content  -shadow" style="position: absolute; top: 0px;"><div class="item-container" style="width:138px" nav-id="nav_nav-main-backgroundItem"><a class="itemtitle  -active" onclick="goToPageH5(event,'nav-main-backgroundItem')" _nav_title="nav-main-backgroundItem">公司背景<span class="item-count">13</span></a></div><div class="item-container" style="width:133px" nav-id="nav_nav-main-lawDangerous"><a class="itemtitle -no-border" onclick="goToPageH5(event,'nav-main-lawDangerous')" _nav_title="nav-main-lawDangerous">司法风险<span class="item-count">0</span></a></div><div class="item-container" style="width:133px" nav-id="nav_nav-main-manageDangerous"><a class="itemtitle -no-border" onclick="goToPageH5(event,'nav-main-manageDangerous')" _nav_title="nav-main-manageDangerous">经营风险<span class="item-count">0</span></a></div><div class="item-container -hover" style="width:133px" nav-id="nav_nav-main-develope"><a class="itemtitle -no-border" onclick="goToPageH5(event,'nav-main-develope')" _nav_title="nav-main-develope">公司发展<span class="item-count">0</span></a></div><div class="item-container" style="width:133px" nav-id="nav_nav-main-manageStatus"><a class="itemtitle -no-border" onclick="goToPageH5(event,'nav-main-manageStatus')" _nav_title="nav-main-manageStatus">经营状况<span class="item-count">1</span></a></div><div class="item-container" style="width:133px" nav-id="nav_nav-main-knowledgeProperty"><a class="itemtitle -no-border" onclick="goToPageH5(event,'nav-main-knowledgeProperty')" _nav_title="nav-main-knowledgeProperty">知识产权<span class="item-count">2</span></a></div><div class="item-container" style="width:133px" nav-id="nav_nav-main-past"><a class="itemtitle -no-border" onclick="goToPageH5(event,'nav-main-past')" _nav_title="nav-main-past">历史信息<span class="item-count">0</span></a></div><div style="max-height: 218px;" class="scroll-box"><div class="item-container" nav-id="nav_nav-main-backgroundItem" style="width:138px;"><div class="itemcontent   " style="height:612px"><div class="item  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.baseInfo" onclick="goToPage('nav-main-baseInfo')">工商信息</div><div class="item  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.riskInfo" onclick="goToPage('nav-main-riskInfo')">天眼风险</div><div class="item  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.graphTreeInfo" onclick="goToPage('nav-main-graphTreeInfo')">股权穿透图</div><div class="item  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.staffCount" onclick="goToPage('nav-main-staffCount')">主要人员<span class="itemnumber">2</span></div><div class="item  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.holderCount" onclick="goToPage('nav-main-holderCount')">股东信息<span class="itemnumber">1</span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.pastHolderCount">历史股东信息<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.inverstCount">对外投资<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.pastInverstCount">历史对外投资<span class="itemnumber"></span></div><div class="item" tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.finalHolderCount" onclick="goToPage('nav-main-shouyirenCount')">最终受益人<span class="itemnumber">1</span></div><div class="item" tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.sacInfo" onclick="goToPage('nav-main-graphSACInfo')">疑似实际控制人</div><div class="item -disable" tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.finalInvestCount">实际控制权</div><div class="item -disable" tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.financialAnalysis" onclick="void(0)">财务简析</div><div class="item  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.graphInfo" onclick="goToPage('nav-main-graphInfo')">企业关系</div><div class="item  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.changeCount" onclick="goToPage('nav-main-changeCount')">变更记录<span class="itemnumber">3</span></div><div class="item  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.reportCount" onclick="goToPage('nav-main-reportCount')">企业年报<span class="itemnumber">5</span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.branchCount">分支机构<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.parentCompanyInfoCount">总公司<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.companyVerbCount">公司公示</div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.backgroundItem.constructAllCount">建筑资质</div></div></div><div class="item-container" nav-id="nav_nav-main-lawDangerous" style="width:133px;"><div class="itemcontent -no-border " style="height:612px"><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.announcementCount">开庭公告<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.pastAnnouncementCount">历史开庭公告<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.lawsuitCount">法律诉讼<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.pastLawsuitCount">历史法律诉讼<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.courtCount">法院公告<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.pastCourtCount">历史法院公告<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.consumptionRestrictionCount">限制消费令<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.endCaseCount">终本案件<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.dishonest">失信信息<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.pastDishonest">历史失信信息<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.zhixing">被执行人<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.pastZhixing">历史被执行人<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.judicialaAidCount">司法协助<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.pastJudicialaAidCount">历史司法协助<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.sendAnnouncementsCount">送达公告<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.lawDangerous.courtRegisterCount">立案信息<span class="itemnumber -alarm"></span></div></div></div><div class="item-container" nav-id="nav_nav-main-manageDangerous" style="width:133px;"><div class="itemcontent -no-border " style="height:612px"><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.abnormalCount">经营异常<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.historyAbnormalListCount">历史经营异常<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.punishment">行政处罚</div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.pastPunishment">历史行政处罚</div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.illegalCount">严重违法<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.equityCount">股权出质<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.pastEquityCount">历史股权出质<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.equityPledgeTotalCount">股权质押</div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.taxContraventionsCount">税收违法<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.mortgageCount">动产抵押<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.pastMortgageCount">历史动产抵押<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.environmentalPenaltiesCount">环保处罚<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.ownTaxCount">欠税公告<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.judicialSaleCount">司法拍卖<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.inquiryEvaluationCount">询价评估<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.clearingCount">清算信息<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.intellectualProperty">知识产权出质<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.publicnotice">公示催告<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.landMortgagesCount">土地抵押<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageDangerous.briefCancelAnnouncementsCount" onclick="goToPage('nav-main-briefCancelAnnouncementsCount')">简易注销</div></div></div><div class="item-container -hover" nav-id="nav_nav-main-develope" style="width:133px;"><div class="itemcontent -no-border " style="height:612px"><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.develope.companyRongzi">融资历程<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.develope.companyTeammember">核心团队<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.develope.companyProduct">企业业务<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.develope.jigouTzanli">投资事件<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.develope.companyJingpin">竞品信息<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.develope.investOrgsCount">投资机构<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.develope.privateFundsCount" onclick="goToPage('nav-main-privateFundsCount')">私募基金</div></div></div><div class="item-container" nav-id="nav_nav-main-manageStatus" style="width:133px;"><div class="itemcontent -no-border " style="height:612px"><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.baipinCount">招聘信息<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.findNewsCount">新闻舆情<span class="itemnumber"></span><span class="nav-new-tag -narrow-tag"><i class="tic tic-biaoqiannew"></i></span></div><div class="item  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.licenseAllCount" onclick="goToPage('nav-main-licenseAllCount')">行政许可<span class="itemnumber">1</span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.pastLicenseCredit">历史行政许可</div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.taxCreditCount">税务评级<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.checkCount">抽查检查<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.doubleRandomCheckCount">双随机抽查<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.certificateCount">资质证书<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.bidCount">招投标<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.productinfo">产品信息<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.weChatCount">微信公众号<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.weiboCount">微博<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.announcementReportCount">公告研报<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.landPublicitysV2Count">地块公示<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.landTransfersCount">土地转让<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.importAndExportCount">进出口信用<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.bondCount">债券信息<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.goudiCountV2">购地信息<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.teleCommunicationLicense">电信许可<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.suppliesCount">供应商<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.clientsCount">客户<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.manageStatus.franchiseCount">商业特许经营<span class="itemnumber"></span></div></div></div><div class="item-container" nav-id="nav_nav-main-knowledgeProperty" style="width:133px;"><div class="itemcontent -no-border " style="height:612px"><div class="item  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.knowledgeProperty.tmCount" onclick="goToPage('nav-main-tmCount')">商标信息<span class="itemnumber">1</span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.knowledgeProperty.pastTmCount">历史商标信息<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.knowledgeProperty.patentCount">专利信息<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.knowledgeProperty.cpoyRCount">软件著作权<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.knowledgeProperty.copyrightWorks">作品著作权<span class="itemnumber"></span></div><div class="item  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.knowledgeProperty.icpCount" onclick="goToPage('nav-main-icpCount')">网站备案<span class="itemnumber">1</span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.knowledgeProperty.historyIcpListCount">历史网站备案<span class="itemnumber"></span></div></div></div><div class="item-container" nav-id="nav_nav-main-past" style="width:133px;"><div class="itemcontent -no-border " style="height:612px"><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastICCount">工商信息</div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastHolderCount">股东信息<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastInverstCount">对外投资<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastAnnouncementCount">开庭公告<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastLawsuitCount">法律诉讼<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastCourtCount">法院公告<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastDishonest">失信信息<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastZhixing">被执行人<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastJudicialaAidCount">司法协助<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.historyAbnormalListCount">经营异常<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastPunishment">行政处罚</div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastEquityCount">股权出质<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastMortgageCount">动产抵押<span class="itemnumber -alarm"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastLicenseCredit">行政许可</div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.pastTmCount">商标信息<span class="itemnumber"></span></div><div class="item -disable  " tyc-event-click="" tyc-event-ch="CompanyDetail.Daohang.past.historyIcpListCount">网站备案<span class="itemnumber"></span></div></div></div></div></div></div>
+	<div class="tab-content">
+	<div class="section-title margin-t-2x"><h3 class="title-h3">工商信息</h3></div>
+	<table class="table table1 table-bordered margin-t-1x"><tbody><tr><td>统一社会信用代码</td><td>915101007801342441</td><td>组织机构代码</td><td>780134244</td></tr><tr><td>注册号</td><td>915101007801342441</td><td>经营状态</td><td>存续（在营、开业、在册）</td></tr><tr><td>公司类型</td><td>股份有限公司(台港澳与境内合资、未上市)</td><td>成立日期</td><td class="qxb-num">0553-66-69</td></tr><tr><td>法定代表人</td><td><a href="/search/?key=Peng%20Guo%28%E9%83%AD%E9%B9%8F%EF%BC%89&amp;scope=3" data-event-name="工商信息-点击法人名字" target="_blank">Peng Guo(郭鹏）</a><a href="/order/create/fe43e579-5269-48c7-abe4-b2031925d12f/?reportId=562b47719ecb94ee5941790c" class="btn4 btn-xs margin-l-0-6x" target="_blank" data-event-name="增值版企业信用报告" data-event-props="{&quot;触发页面&quot;:&quot;法人对外投资&quot;}"><i class="icon icon-duiwaitouzixiazai"></i>法人对外投资</a></td><td>营业期限</td><td>2005-11-17 - 2035-11-16</td></tr><tr><td>注册资本</td><td class="qxb-num">8143.6442万元人民币</td><td>发照日期</td><td class="qxb-num">0564-65-86</td></tr><tr><td>挂牌日期</td><td>2016-08-22</td><td>董秘电话</td><td>028-82666873</td></tr><tr><td>登记机关</td><td colspan="3">成都市市场监督管理局</td></tr><tr><td>注册地址</td><td colspan="3">四川省成都市温江区成都海峡两岸科技产业开发园科林路西段488号</td></tr><tr><td>经营范围</td><td colspan="3">化学药物中间体（不含危险品）生物技术，精细化学品（不含危险化学品）的研究、生产，销售本公司产品以及科研技术成果的转让（以上范围不含国家法律法规限制或禁止的项目，涉及许可的凭相关许可证开展经营活动）。</td></tr></tbody></table>
+	</div> 	
+<div class="tab-content" id="newOTCPartners"><div class="section-title margin-t-2x"><h3 class="title-h3">发起人/股东信息</h3><span class="badge margin-l-0-3x">5</span><a href="/chart/fe43e579-5269-48c7-abe4-b2031925d12f" style="float:right;font-size:14px;line-height:20px;font-weight:400;">查看股权结构</a></div><table class="table table-bordered margin-t-1x"><thead><tr><th>发起人/股东</th><th>持股数（万股）</th><th>增减情况（万股）</th><th>股本性质</th></tr></thead><tbody><tr><td class="nowrap"><a href="/company/d4ee4346-beac-11e6-a4de-00163f00240b" data-event-name="股东信息-点击名字" target="_blank">醇化科技（香港）有限公司</a></td><td>2665.2800</td><td>未变</td><td>可转让股份,流通受限股份</td></tr><tr><td class="nowrap"><a href="/company/c3cb364c-0c46-4b9f-9329-83a508c02f41" data-event-name="股东信息-点击名字" target="_blank">成都晶醇企业管理中心（有限合伙）</a></td><td>232.3200</td><td>未变</td><td>可转让股份,流通受限股份</td></tr><tr><td class="nowrap"><a href="/company/022268f4-ce1f-499c-a955-4683a5ef8357" data-event-name="股东信息-点击名字" target="_blank">醇化科技（成都）有限公司</a></td><td>174.0800</td><td>未变</td><td>可转让股份,流通受限股份</td></tr><tr><td class="nowrap"><a href="/company/e0965ee6-9a2a-48cb-9515-2922adcf7bed" data-event-name="股东信息-点击名字" target="_blank">成都英飞创汇企业管理中心（有限合伙）</a></td><td>138.8900</td><td>未变</td><td>可转让股份</td></tr><tr><td class="nowrap"><a href="/company/0c298601-cf51-494b-ac3a-08af66bae9bc" data-event-name="股东信息-点击名字" target="_blank">成都诺成企业管理中心（有限合伙）</a></td><td>81.0400</td><td>未变</td><td>可转让股份,流通受限股份</td></tr><tr><td colspan="4">显示最新前<span class="font-m2">5名</span>发起人/股东，总持股数（万股）<span class="font-m2">3291.61</span><span class="pull-right">发起人/股东总数：<span class="font-m2">8</span>&nbsp;截止日期:2018-12-31</span></td></tr></tbody></table><div class="third-party-partner-info margin-t-1x"><span class="tp-title">股东出资参考信息</span><span class="tp-explain">（数据来源：第三方数据 有效时间：2018-04-22）</span></div><table class="table table2 table-bordered margin-t-1x"><thead><tr><th class="bg2 font-f2">股东类型</th><th class="bg2 font-f2">股东</th><th class="bg2 font-f2">出资比例</th><th class="bg2 font-f2">认缴出资</th></tr></thead><tbody><tr><td>外国(地区)企业</td><td><span>醇化科技（香港）有限公司</span></td><td>76.47%</td><td>2665.28万元人民币</td></tr><tr><td>合伙企业</td><td><span>成都悟本企业管理中心（有限合伙）</span></td><td>1.97%</td><td>68.58万元人民币</td></tr><tr><td>合伙企业</td><td><span>成都晶醇企业管理中心（有限合伙）</span></td><td>6.67%</td><td>232.32万元人民币</td></tr><tr><td>合伙企业</td><td><span>成都英飞创汇企业管理中心(有限合伙)</span></td><td>3.99%</td><td>138.8889万元人民币</td></tr><tr><td>合伙企业</td><td><span>成都诺成企业管理中心（有限合伙）</span></td><td>2.33%</td><td>81.04万元人民币</td></tr></tbody></table><div class="clearfix margin-t-1x"><div class="ui-pagination clearfix pull-right"><nav><ul class="pagination"><li class="disabled"><a href="javascript:;"><span>«</span></a></li><li class="active"><a href="javascript:;">1</a></li><li><a href="javascript:;">2</a></li><li class="disabled"><a href="javascript:;"><span>»</span></a></li></ul></nav></div></div></div>
+	
+	<div class="tab-content" id="newOTCEmployees"><div class="section-title margin-t-2x"><h3 class="title-h3">高管信息</h3><span class="badge margin-l-0-3x">11</span></div><table class="table table-bordered margin-t-1x"><thead><tr><th>名称</th><th>职务</th><th>任职日期</th><th>期末持股数（万股）</th><th>操作</th></tr></thead><tbody><tr><td class="nowrap"><span>PENG GUO</span></td><td>董事长</td><td>2018-09-17</td><td>0.00</td><td><a href="javascript:;" data-placement="bottom" data-trigger="hover" data-toggle="popover" data-content="PENG GUO，男，1962年5月出生，美国国籍，硕士研究生学历。1986年至1990年就职于中国科学院成都有机化学研究所任助理研究员，1992年9月至1995年5月任职于Sterling Winthrop Pharmaceutical Company（施德龄温莎公司，现名Sanofi-Aventis Pharmaceutical Company)任医药化学部研发人员，1995年5月至1999年3月就职于Bristol-Myers SquibbPharmaceutical Company（施贵宝制药研究所）担任研发人员，1999年至2010年任爱斯特美国董事长、总经理，2004年至2010年任AstaTech（Canada）Company总经理，2000年3月至2006年、2014年至今就职于安华科技任执行董事，2006年至2012年任Asta-Holding,LP合伙人，2001年7月至今任爱斯特科技董事长，2012年9月至今任醇化科技（香港）执行董事，2012年9月至今任晶华生物执行董事，2013年1月至今任爱斯特化学执行董事，2014年10月至今任醇化科技（成都）执行董事，2015年3月至今任爱斯特化学执行董事兼总经理，2005年11月至今任爱斯特董事长。" data-original-title="" title="">查看简历</a></td></tr><tr><td colspan="5" class="clearfix"><span class="pull-right font-f3">截止日期:2018-06-30</span></td></tr><tr><td class="nowrap"><span>CHRIS HUGH SENANAYAKE</span></td><td>总经理</td><td>2018-06-27</td><td>0.00</td><td><a href="javascript:;" data-placement="bottom" data-trigger="hover" data-toggle="popover" data-content="CHRIS HUGH SENANAYAKE先生：美国国籍，1958年出生，博士研究生学历。1989年至1990年在Dow Chemical Co.(陶氏化学公司)任高级研究员；1990年至1996年在Merck Research Laboratories(默克研究实验室)任研究员；1996年至2002年在Sepracor Inc.任工艺研究执行总监；2002年至2018年在Boehringer Ingelheim Pharmaceuticals,Inc.(勃林格殷格翰制药公司)任化学研发部副总裁；2018年6月至今任爱斯特（成都）生物制药股份有限公司总经理。" data-original-title="" title="">查看简历</a></td></tr><tr><td colspan="5" class="clearfix"><span class="pull-right font-f3">截止日期:2018-06-30</span></td></tr><tr><td class="nowrap"><span>CHRIS HUGH SENANAYAKE</span></td><td>董事</td><td>2018-09-17</td><td>--</td><td><a href="javascript:;" data-placement="bottom" data-trigger="hover" data-toggle="popover" data-content="CHRIS HUGH SENANAYAKE先生：美国国籍，1958年出生，博士研究生学历。1989年至1990年在Dow Chemical Co.(陶氏化学公司)任高级研究员；1990年至1996年在Merck Research Laboratories(默克研究实验室)任研究员；1996年至2002年在Sepracor Inc.任工艺研究执行总监；2002年至2018年在Boehringer Ingelheim Pharmaceuticals,Inc.(勃林格殷格翰制药公司)任化学研发部副总裁；2018年6月至今任爱斯特（成都）生物制药股份有限公司总经理。" data-original-title="" title="">查看简历</a></td></tr><tr><td colspan="5" class="clearfix"><span class="pull-right font-f3">截止日期:2018-06-30</span></td></tr><tr><td class="nowrap"><a href="/shareholder/e59490e7aba0e5a587/fe43e579-5269-48c7-abe4-b2031925d12f" data-event-name="主要人员-点击名字" target="_blank">唐章奇</a></td><td>董事</td><td>2018-09-17</td><td>--</td><td><a href="javascript:;" data-placement="bottom" data-trigger="hover" data-toggle="popover" data-content="唐章奇，男，1968年6月出生，中国国籍，无境外永久居住权，硕士研究生学历，高级工程师、注册资产评估师。1990年7月至1995年8月就职于攀枝花钢铁（集团）公司设计院任设计师，1997年1月至1998年4月就职于广西北海城市规划研究所任研究部经理，1998年5月至2001年5月就职于广西大公资产评估有限公司任总经理助理，2001年5月至2003年11月就职于申银万国证券股份有限公司任市场咨询部经理，2003年12月起至今就职于中联资产评估集团有限公司，先后担任项目经理、部门经理，2015年5月起任成都诺成执行事务合伙人，现任中联资产评估集团有限公司副总裁、爱斯特董事。" data-original-title="" title="">查看简历</a></td></tr><tr><td colspan="5" class="clearfix"><span class="pull-right font-f3">截止日期:2018-06-30</span></td></tr><tr><td class="nowrap"><a href="/shareholder/e88296e783bd/fe43e579-5269-48c7-abe4-b2031925d12f" data-event-name="主要人员-点击名字" target="_blank">肖烽</a></td><td>董事</td><td>2018-09-17</td><td>--</td><td><a href="javascript:;" data-placement="bottom" data-trigger="hover" data-toggle="popover" data-content="肖烽先生，男，中国国籍，无永久境外居留权，1960年4月出生，大专学历。1981年8月至2000年2月，在中国机械工业第一安装工程公司一处先后任主办科员、副主任；2000年3月至2007年9月，任中国机械工业第一安装工程公司三分司经理；2007年9月至今，任中国机械工业第一建设有限公司劳务资源中心部门经理。2014年10月至今，任成都晶醇企业管理中心（有限合伙）执行合伙人。" data-original-title="" title="">查看简历</a></td></tr><tr><td colspan="5" class="clearfix"><span class="pull-right font-f3">截止日期:2018-06-30</span></td></tr><tr><td class="nowrap"><a href="/shareholder/e4baa2e585b4e9be99/fe43e579-5269-48c7-abe4-b2031925d12f" data-event-name="主要人员-点击名字" target="_blank">亢兴龙</a></td><td>董事</td><td>2018-09-17</td><td>--</td><td><a href="javascript:;" data-placement="bottom" data-trigger="hover" data-toggle="popover" data-content="亢兴龙，男，1976年7月出生，中国国籍，无境外永久居住权，本科学历。2000年7月至2000年11月就职于东莞香港合和领先整染厂任分析人员；2000年12月至2010年11月就职于爱斯特医药，先后担任课题组长、研发部部长；2010年12月至2012年3月就职于浙江浙邦制药有限公司任研发经理；2014年10月至今任醇化科技（成都）监事；2014年10月至今担任成都悟本执行合伙人；2012年3月至今就职于爱斯特，现任公司董事、定制研发中心高级部长。" data-original-title="" title="">查看简历</a></td></tr><tr><td colspan="5" class="clearfix"><span class="pull-right font-f3">截止日期:2018-06-30</span></td></tr><tr><td class="nowrap"><a href="/shareholder/e69d8ee5a89f/fe43e579-5269-48c7-abe4-b2031925d12f" data-event-name="主要人员-点击名字" target="_blank">李娟</a></td><td>监事会主席</td><td>2018-09-17</td><td>--</td><td><a href="javascript:;" data-placement="bottom" data-trigger="hover" data-toggle="popover" data-content="李娟女士：中国国籍，无永久境外居留权，1983年出生，本科学历。2006年5月至2010年10月在爱斯特（成都）医药科技有限公司任人力资源部经理；2010年11月至2015年9月在北京东方爱婴科教股份有限公司任成都地区人力资源部经理；2015年10月至今在爱斯特（成都）生物制药股份有限公司任人力资源部副经理。" data-original-title="" title="">查看简历</a></td></tr><tr><td colspan="5" class="clearfix"><span class="pull-right font-f3">截止日期:2018-06-30</span></td></tr><tr><td class="nowrap"><a href="/shareholder/e6b4aae5b78de4bc9f/fe43e579-5269-48c7-abe4-b2031925d12f" data-event-name="主要人员-点击名字" target="_blank">洪巍伟</a></td><td>监事</td><td>2018-09-17</td><td>--</td><td><a href="javascript:;" data-placement="bottom" data-trigger="hover" data-toggle="popover" data-content="洪巍伟，男，1986年9月出生，中国国籍，无境外永久居留权，本科学历。2011年至2014年就职于成都市新西南通用设备有限公司、2014年至2015年四川澳尔空调冷冻设备有限公司任副经理，2015年至今就任成都地山网络科技有限公司董事长、成都英飞创汇企业管理中心（有限合伙）任执行事务合伙人。现任公司监事。" data-original-title="" title="">查看简历</a></td></tr><tr><td colspan="5" class="clearfix"><span class="pull-right font-f3">截止日期:2018-06-30</span></td></tr><tr><td class="nowrap"><a href="/shareholder/e6a88ae5ba86e6958f/fe43e579-5269-48c7-abe4-b2031925d12f" data-event-name="主要人员-点击名字" target="_blank">樊庆敏</a></td><td>职工代表监事</td><td>2018-09-17</td><td>--</td><td><a href="javascript:;" data-placement="bottom" data-trigger="hover" data-toggle="popover" data-content="樊庆敏，男，1980年11月出生，中国国籍，无境外永久居留权，本科学历。2005年7月至2009年10月就职于凯莱英生命科学技术（天津）有限公司任分析员，2009年11月至今就职于本公司，先后担任QC部组长，现任公司监事、QC部高级经理。" data-original-title="" title="">查看简历</a></td></tr><tr><td colspan="5" class="clearfix"><span class="pull-right font-f3">截止日期:2018-06-30</span></td></tr><tr><td class="nowrap"><a href="/shareholder/e7a88ee7a791e88bb1/fe43e579-5269-48c7-abe4-b2031925d12f" data-event-name="主要人员-点击名字" target="_blank">税科英</a></td><td>董事会秘书</td><td>2018-01-29</td><td>--</td><td><a href="javascript:;" data-placement="bottom" data-trigger="hover" data-toggle="popover" data-content="税科英女士：女，中国国籍，无境外永久居留权，1981年出生，专科学历；2000年4月至2006年7月，四川百利药业有限公司，成本主管；2006年7月至2008年10月，成都再建装饰材料有限公司，财务主管；2008年10月至2013年9月，成都金桥包装有限公司，财务经理；2013年10月至2014年10月，爱斯特（成都〕生物制药股份有限公司，成本主管；2014年10月至2017年10月，爱斯特（成都）生物制药股份有限公司，财务副经理；2017年10月至今，爱斯特（成都〕生物制药股份有限公司，财务副总监。" data-original-title="" title="">查看简历</a></td></tr><tr><td colspan="5" class="clearfix"><span class="pull-right font-f3">截止日期:2018-06-30</span></td></tr><tr><td class="nowrap"><span>PENG GUO</span></td><td>代理财务总监</td><td>2018-05-31</td><td>--</td><td><a href="javascript:;" data-placement="bottom" data-trigger="hover" data-toggle="popover" data-content="PENG GUO，男，1962年5月出生，美国国籍，硕士研究生学历。1986年至1990年就职于中国科学院成都有机化学研究所任助理研究员，1992年9月至1995年5月任职于Sterling Winthrop Pharmaceutical Company（施德龄温莎公司，现名Sanofi-Aventis Pharmaceutical Company)任医药化学部研发人员，1995年5月至1999年3月就职于Bristol-Myers SquibbPharmaceutical Company（施贵宝制药研究所）担任研发人员，1999年至2010年任爱斯特美国董事长、总经理，2004年至2010年任AstaTech（Canada）Company总经理，2000年3月至2006年、2014年至今就职于安华科技任执行董事，2006年至2012年任Asta-Holding,LP合伙人，2001年7月至今任爱斯特科技董事长，2012年9月至今任醇化科技（香港）执行董事，2012年9月至今任晶华生物执行董事，2013年1月至今任爱斯特化学执行董事，2014年10月至今任醇化科技（成都）执行董事，2015年3月至今任爱斯特化学执行董事兼总经理，2005年11月至今任爱斯特董事长。" data-original-title="" title="">查看简历</a></td></tr><tr><td colspan="5" class="clearfix"><span class="pull-right font-f3">截止日期:2018-06-30</span></td></tr></tbody></table></div>
+		<div class="tab-content" id="changeInfo">
+			<div class="section-title margin-t-2x">
+				<h3 class="title-h3">工商变更</h3>
+				<span class="badge margin-l-0-3x">28</span>
+			</div>
+			<table class="table table-bordered margin-t-1x">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>变更日期</th>
+						<th>变更事项</th>
+						<th>变更前</th>
+						<th>变更后</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td class="nowrap">2018-10-30</td>
+						<td>高管</td>
+						<td
+							style="word-break: break-all; white-space: pre-wrap; line-height: 150%;">-</td>
+						<td
+							style="word-break: break-all; white-space: pre-wrap; line-height: 150%;"><link>
+							<a href="javascript:void(0);"></a><a href="javascript:void(0);">CHRIS
+								HUGH SENANAYAKE</a><em>: 董事</em><em>[新增]</em></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td class="nowrap">2018-10-30</td>
+						<td>章程</td>
+						<td
+							style="word-break: break-all; white-space: pre-wrap; line-height: 150%;">樊庆敏,监事
+							洪巍伟,监事</td>
+						<td
+							style="word-break: break-all; white-space: pre-wrap; line-height: 150%;">樊庆敏,监事
+							洪巍伟,监事 <em> 李娟,监事</em>
+						</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td class="nowrap">2017-06-27</td>
+						<td>章程</td>
+						<td
+							style="word-break: break-all; white-space: pre-wrap; line-height: 150%;">-</td>
+						<td
+							style="word-break: break-all; white-space: pre-wrap; line-height: 150%;">-</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td class="nowrap">2017-06-27</td>
+						<td>高管</td>
+						<td
+							style="word-break: break-all; white-space: pre-wrap; line-height: 150%;">-</td>
+						<td
+							style="word-break: break-all; white-space: pre-wrap; line-height: 150%;"><em>肖烽,董事
+								Li Shao（邵利）,董事</em></td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td class="nowrap">2017-04-21</td>
+						<td>章程</td>
+						<td
+							style="word-break: break-all; white-space: pre-wrap; line-height: 150%;">/</td>
+						<td
+							style="word-break: break-all; white-space: pre-wrap; line-height: 150%;">/</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="clearfix margin-t-1x">
+				<div class="ui-dimension-source pull-left font-14">
+					<span class="source"><span>来源：</span><a
+						href="http://www.gsxt.gov.cn/" target="_blank"
+						rel="noopener nofollow">国家信用信息公示系统</a></span>
+				</div>
+				<div class="ui-pagination clearfix pull-right">
+					<nav>
+						<ul class="pagination">
+							<li class="disabled"><a href="javascript:;"><span>«</span></a></li>
+							<li class="active"><a href="javascript:;">1</a></li>
+							<li><a href="javascript:;">2</a></li>
+							<li><a href="javascript:;">3</a></li>
+							<li><a href="javascript:;">4</a></li>
+							<li><a href="javascript:;">5</a></li>
+							<li><a href="javascript:;"><span>»</span></a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<!--=========知识产权=============-->
+		<div class="block-data-group" id="nav-main-manageStatus">
+			<div class="group-title">
+				<span class="text">知识产权</span>
+			</div>
+			<!-- 商标信息 -->
+			<div class="block-data" tyc-event-click=""
+				tyc-event-ch="CompangyDetail.zhaopin">
+				<div class="data-header" id="nav-main-baipin">
+					<span class="data-title">商标信息</span><span class="data-count">40</span>
+
+			
+				</div>
+				<div class="data-content" id="_container_baipin">
+					<table class="table -logo-center -sort">
+						<thead>
+							<tr>
+								<th class="sort-col">序号</th>
+								<th class="date-col">申请日期</th>
+								<th width="109">商标</th>
+								<th width="118">商标名称</th>
+								<th width="152">注册号</th>
+								<th width="162">国际分类</th>
+								<th>商标状态</th>
+								<th class="doing-col">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td><span>2020-01-07</span></td>
+								<td><div class="lazy-img   -bg1 -image">
+										<div class="logo -w64" data-index="">
+											<img class="img"
+												data-src="http://tm-image.tianyancha.com/tm/17d7c4964ff2c4db22b9a32f756f80bc.jpg"
+												alt=""
+												err-src="https://static.tianyancha.com/wap/images/searchLogo918.png"
+												src="http://tm-image.tianyancha.com/tm/17d7c4964ff2c4db22b9a32f756f80bc.jpg">
+										</div>
+									</div></td>
+								<td class="left-col"><span>-</span></td>
+								<td><span>43629932</span></td>
+								<td><span>36-金融物管</span></td>
+								<td><span>等待实质审查</span></td>
+								<td><a class="link-click" target="_blank"
+									tyc-event-click=""
+									tyc-event-ch="CompangyDetail.TrademarkInformation.details"
+									href="https://shangbiao.tianyancha.com/43629932t36">详情</a></td>
+							</tr>
+							
+						</tbody>
+					</table>
+					<!---->
+					<!---->
+					<!---->
+					<div class="company_pager pagination-warp">
+						<ul class="pagination" page-total="40" change-type="baipin"
+							line-type-name="" line-type-val="">
+							<li><a class="num -current">1</a></li>
+							<li><a class="num " onclick="companyPageChange(2,this)">2</a></li>
+							<li><a class="num " onclick="companyPageChange(3,this)">3</a></li>
+							<li><a class="num " onclick="companyPageChange(4,this)">4</a></li>
+							<li><a class="num -next" onclick="companyPageChange(2,this)">&gt;</a></li>
+						</ul>
+					</div>
+				</div>
+				<input type="hidden" id="_baiping_moreWebPath"
+					value="https://zhaopin.baidu.com/company?query=%E6%AD%A6%E6%B1%89%E6%96%97%E9%B1%BC%E7%BD%91%E7%BB%9C%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&amp;page=positionpage">
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
