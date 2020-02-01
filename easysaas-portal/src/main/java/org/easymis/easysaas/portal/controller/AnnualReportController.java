@@ -102,8 +102,8 @@ public class AnnualReportController {
             sompanyList.stream().forEach(company -> {
                 for (AnnualReport report : annualReports) {
                     String vCompanyId = report.getCompanyId();
-                    if (Objects.equals(company.getId(), vCompanyId)) {
-                    	report.setRegNumber(company.getRegNumber());
+                    if (Objects.equals(company.getCompanyId(), vCompanyId)) {
+                    	report.setRegNumber(company.getRegisterNumber());
                     }
                 }
             });

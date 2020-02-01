@@ -12,7 +12,7 @@ public class WebAppConfig implements WebMvcConfigurer {
 
 	private static final List<String> EXCLUDE_PATH = Arrays.asList("/", "/css/**", "/**/*.css", "/js/**", "/**/*.js",
 			"/**/*.png", "/**/*.jpg", "/**/*.jpeg", "/**/*.gif", "/**/fonts/*", "/assets/**", "/material/**",
-			"/index.html", "/", "/user/login", "/error");
+			"/index.html","/company/*.html","/dishonest", "/", "/user/login", "/error");
 
 	public void addInterceptors(InterceptorRegistry registry) {
 		// 注册自定义拦截器，添加拦截路径和排除拦截路径

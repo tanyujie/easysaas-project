@@ -33,7 +33,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Autowired
     private CompanyMapper mapper;
     
-	@Override
+    @EasymisDataSource(DataSourceType.Slave)
 	public Company getById(String id) {
 		return mapper.findById(id);
 /*        SearchSourceBuilder builder = new SearchSourceBuilder();
@@ -46,13 +46,13 @@ public class CompanyServiceImpl implements CompanyService {
         }*/
     }
 
-	@Override
+    @EasymisDataSource(DataSourceType.Slave)
 	public List<Company> getAll() {
         return esUtil.search(ElasticSearchConfig.INDEX_NAME, new SearchSourceBuilder(), Company.class);
         
         }
 
-	@Override
+    @EasymisDataSource(DataSourceType.Slave)
 	public List<Company> search(String content) {
 		BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder();
 		// boolQueryBuilder.must(QueryBuilders.termQuery("userId", userId));
@@ -63,14 +63,14 @@ public class CompanyServiceImpl implements CompanyService {
 
 	}
 
-	@Override
+    @EasymisDataSource(DataSourceType.Slave)
 	public void insert(String id) {
 		Company bean = mapper.findById(id);
-        EsEntity<Company> entity = new EsEntity<>(bean.getId(), bean);
+        EsEntity<Company> entity = new EsEntity<>(bean.getCompanyId(), bean);
         esUtil.insertOrUpdateOne(ElasticSearchConfig.INDEX_NAME, entity);
     }
 
-	@Override
+    @EasymisDataSource(DataSourceType.Slave)
 	public void insert() {
 		long startTime = System.currentTimeMillis();
 		BulkProcessImpl bulk = new BulkProcessImpl();
@@ -111,9 +111,9 @@ public class CompanyServiceImpl implements CompanyService {
 					// 写锟斤拷ES
 					for (HashMap<String, String> hashMap2 : dataList) {
 						Company bean = new Company();
-						bean.setId(hashMap2.get("id"));
-						bean.setName(hashMap2.get("name"));
-				        EsEntity<Company> entity = new EsEntity<>(bean.getId(), bean);
+						bean.setCompanyId(hashMap2.get("companyId"));
+						bean.setCompanyName(hashMap2.get("companyName"));
+				        EsEntity<Company> entity = new EsEntity<>(bean.getCompanyId(), bean);
 				        esUtil.insertOrUpdateOne(ElasticSearchConfig.INDEX_NAME, entity);
 					}
 					// 每提交一次便将map与list清空
@@ -125,9 +125,9 @@ public class CompanyServiceImpl implements CompanyService {
 			// count % 200000 处理未提交的数据
 			for (HashMap<String, String> hashMap2 : dataList) {
 				Company bean = new Company();
-				bean.setId(hashMap2.get("id"));
-				bean.setName(hashMap2.get("name"));
-				EsEntity<Company> entity = new EsEntity<>(bean.getId(), bean);
+				bean.setCompanyId(hashMap2.get("companyId"));
+				bean.setCompanyName(hashMap2.get("companyName"));
+				EsEntity<Company> entity = new EsEntity<>(bean.getCompanyId(), bean);
 				esUtil.insertOrUpdateOne(ElasticSearchConfig.INDEX_NAME, entity);
 			}
 
@@ -152,7 +152,7 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	public void save(List<Company> beans) {
         List<EsEntity> list = new ArrayList<>();
-        beans.forEach(item -> list.add(new EsEntity<>(item.getId().toString(), item)));
+        beans.forEach(item -> list.add(new EsEntity<>(item.getCompanyId(), item)));
         esUtil.insertBatch(ElasticSearchConfig.INDEX_NAME, list);
     }
 

@@ -82,7 +82,7 @@ public class BookService {
      */
     @PostMapping("/")
     public void putOne( Company book) {
-        EsEntity<Company> entity = new EsEntity<>(book.getId().toString(), book);
+        EsEntity<Company> entity = new EsEntity<>(book.getCompanyId().toString(), book);
         esUtil.insertOrUpdateOne(ElasticSearchConfig.INDEX_NAME, entity);
     }
 
@@ -94,7 +94,7 @@ public class BookService {
     @PutMapping("/many")
     public void putList(@RequestBody List<Company> books) {
         List<EsEntity> list = new ArrayList<>();
-        books.forEach(item -> list.add(new EsEntity<>(item.getId().toString(), item)));
+        books.forEach(item -> list.add(new EsEntity<>(item.getCompanyId().toString(), item)));
         esUtil.insertBatch(ElasticSearchConfig.INDEX_NAME, list);
     }
 

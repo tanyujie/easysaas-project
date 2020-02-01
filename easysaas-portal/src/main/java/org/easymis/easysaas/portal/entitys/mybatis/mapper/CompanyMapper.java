@@ -32,12 +32,12 @@ public interface CompanyMapper {
 
 	public void deleteBatch(List<String> list);
 
-	@Select("select * from company t WHERE t.id = #{id}")
-	public Company findById(@Param("id") String id);
+	@Select("select * from company t WHERE t.company_id = #{companyId}")
+	public Company findById(@Param("companyId") String companyId);
 
 	@Select({"<script>",
         "SELECT * from company",
-        "WHERE id IN", 
+        "WHERE companyId IN", 
           "<foreach item='item' index='index' collection='ids'",
             "open='(' separator=',' close=')'>",
             "#{item}",

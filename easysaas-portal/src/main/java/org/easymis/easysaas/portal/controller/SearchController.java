@@ -132,18 +132,6 @@ public class SearchController extends IdentityRepository{
         List<Map<String, Object>> list = null;//ElasticsearchUtil.searchListData(indexName, esType, boolQuery, 10, "name", null, "name");
         return JSONObject.toJSONString(list);
     }
-    @RequestMapping("/dishonest")
-    public String dishonest() {
-        BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
-        boolean matchPhrase = false;
-        if (matchPhrase == Boolean.TRUE) {
-            //不进行分词搜索
-            boolQuery.must(QueryBuilders.matchPhraseQuery("name", "m"));
-        } else {
-            boolQuery.must(QueryBuilders.matchQuery("name", "m-m"));
-        }
-        List<Map<String, Object>> list = null;//ElasticsearchUtil.searchListData(indexName, esType, boolQuery, 10, "name", null, "name");
-        return "/dishonest";
-    }    
+  
     
 }

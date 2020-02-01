@@ -139,8 +139,8 @@ public class CompanyInvestorController {
                     entOut.setAmountStr(new StringBuilder().append(amountStr).append(type).toString());
                 } else if (Objects.equals(companyInvestor.getInvestorType(), 2)) {
                     for (Company company : companyList) {
-                        if (Objects.equals(company.getId(), companyInvestor.getInvestorId())) {
-                            entOut.setName(company.getName());
+                        if (Objects.equals(company.getCompanyId(), companyInvestor.getInvestorId())) {
+                            entOut.setName(company.getCompanyName());
                             entOut.setPosition("公司");
                             String amountStr = Objects.isNull(entOut.getAmount()) ? "" : df.format(entOut.getAmount()) + "万";
                             entOut.setAmountStr(new StringBuilder().append(amountStr).append(type).toString());
