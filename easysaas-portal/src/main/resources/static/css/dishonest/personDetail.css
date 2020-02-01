@@ -1,0 +1,181 @@
+.dishonest-detail .header-card {
+	position: relative;
+	width: 936px;
+	margin-bottom: 16px;
+	padding: 24px 32px 29px 164px;
+	-webkit-box-shadow: 0 0 2px 0 rgba(0, 0, 0, .1);
+	box-shadow: 0 0 2px 0 rgba(0, 0, 0, .1);
+	background-color: #fff
+}
+
+.dishonest-detail .header-card.-fixed {
+	position: fixed;
+	top: 74px;
+	z-index: 200;
+	-webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .02), 0 2px 3px 0
+		rgba(0, 0, 0, .06);
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .02), 0 2px 3px 0
+		rgba(0, 0, 0, .06)
+}
+
+.dishonest-detail .header-card .logo-warp {
+	position: absolute;
+	left: 32px;
+	top: 22px
+}
+
+.dishonest-detail .header-card .info .title {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 30px;
+	font-size: 0
+}
+
+.dishonest-detail .header-card .info .title .name {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 16px;
+	max-width: 682px;
+	font-size: 20px;
+	color: #000;
+	font-weight: 700
+}
+
+.dishonest-detail .header-card .info .title .name .link {
+	color: #000
+}
+
+.dishonest-detail .header-card .info .title .name .link:hover {
+	color: #0084ff
+}
+
+.dishonest-detail .header-card .info .title .tag-status-warn {
+	vertical-align: top;
+	margin-top: 5px;
+	color: #e05a48;
+	border-color: #e05a48
+}
+
+.dishonest-detail .header-card .info .item {
+	margin-top: 9px;
+	font-size: 14px;
+	line-height: 22px;
+	color: #333
+}
+
+.dishonest-detail .header-card .info .item.disDetailItem {
+	height: 22px;
+	overflow: hidden
+}
+
+.dishonest-detail .header-card .info .item .item-company {
+	display: inline-block;
+	padding-right: 28px
+}
+
+.dishonest-detail .header-card .info .item .item-company:last-child {
+	padding-right: 0
+}
+
+.dishonest-detail .header-card .info .item .key {
+	color: #666
+}
+
+.dishonest-detail .header-card .info .item .value-name {
+	float: right;
+	height: 22px;
+	line-height: 22px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #0084ff
+}
+
+.dishonest-detail .header-card .info .item .value-name.no-color {
+	color: #333
+}
+
+.dishonest-detail .result-tips {
+	height: 48px;
+	line-height: 28px;
+	padding: 10px 16px;
+	border-bottom: 1px solid #f3f3f3;
+	color: #202020;
+	background-color: #fcfcfc
+}
+
+.dishonest-detail .result-tips .num-title {
+	display: inline-block
+}
+
+.dishonest-detail .list {
+	border-top: 1px solid #f3f3f3;
+	padding: 20px 24px;
+	cursor: pointer;
+	border-radius: 0
+}
+
+.dishonest-detail .list .name {
+	margin-bottom: 9px;
+	font-size: 16px;
+	line-height: 24px;
+	color: #333
+}
+
+.dishonest-detail .list .item {
+	display: inline;
+	font-size: 14px;
+	padding-left: 24px;
+	line-height: 22px;
+	color: #333
+}
+
+.dishonest-detail .list .item:first-child {
+	padding-left: 0
+}
+
+.dishonest-detail .list .item .key {
+	color: #666
+}
+
+.dishonest-detail .list:hover {
+	position: relative;
+	z-index: 1;
+	-webkit-box-shadow: 0 4px 5px -3px rgba(0, 0, 0, .06), 0 4px 12px 4px
+		rgba(0, 0, 0, .06);
+	box-shadow: 0 4px 5px -3px rgba(0, 0, 0, .06), 0 4px 12px 4px
+		rgba(0, 0, 0, .06)
+}
+
+.dishonest-detail .list:hover .name {
+	color: #0084ff
+}
+
+.dishonest-detail .list:first-child {
+	border-top: none
+}
+
+.dishonest-detail .result-footer {
+	padding: 21px 30px;
+	border-top: 1px solid #f3f3f3;
+	background: #fff
+}
+
+.dishonest-detail .result-footer .dishonest-paper {
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: -20px
+}
+
+.dishonest-detail .dishonest-tips {
+	padding-left: 80px;
+	position: relative;
+	line-height: 16px
+}
+
+.dishonest-detail .dishonest-tips .data-logo {
+	position: absolute;
+	left: 0;
+	top: -2px;
+	width: 64px
+}
