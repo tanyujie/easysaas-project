@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableTransactionManagement(order = 2) // 设置事务执行顺序(需要在切换数据源之后，否则只走主库)
 @MapperScan({"*.easymis.easysaas.portal.**.mapper"})
 @EnableSwagger2
-@ComponentScan({"*.easymis.easysaas.portal.*"})
+@ComponentScan({"*.easymis.easysaas.open.*"})
 @EnableCaching
 public class OpenApplication {    
 	public static void main(String[] args) {

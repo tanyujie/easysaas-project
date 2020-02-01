@@ -63,8 +63,8 @@ spring:
                maxIdle : 10
                maxWaitMillis : 100000
 mybatis:
-    mapper-locations: classpath*:org/easymis/easysaas/portal/entitys/mybatis/mapper/*Mapper.xml
-    type-aliases-package: org.easymis.easysaas.portal.entitys.mybatis.dto
+    mapper-locations: classpath*:org/easymis/easysaas/open/entitys/mybatis/mapper/*Mapper.xml
+    type-aliases-package: org.easymis.easysaas.open.entitys.mybatis.dto
     configuration:
         map-underscore-to-camel-case: true
 pagehelper:
