@@ -9,5 +9,9 @@ function Dishonest11(){
 var Dishonest1 = Dishonest11();
 function search(){
 	var t=$(".name").val().trim();
+	if(t.length<2){			
+		//$("#js-company-tooltip").removeClass("hidden");
+		return;
+	}
 	location.href="/dishonest/result?name="+t+"&type=2"
 }

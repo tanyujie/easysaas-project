@@ -12,7 +12,8 @@ body{margin:0}
 body,html{font-family:"Microsoft YaHei",Arial,sans-serif;font-size:14px;line-height:1.5714285714;-webkit-font-smoothing:antialiased;background:#f6f6f6;color:#333}
 body.-ready .no-data .img{background-image:url(https://cdn.tianyancha.com/web-require-js/public/images/no-data-common.png)}
 .clearfix::after,.clearfix::before{display:table;content:" "}.clearfix::after{clear:both}
-.vcontainer{margin:0 auto;width:1248px}.vcontainer::after,.vcontainer::before{display:table;content:" "}
+.vcontainer{margin:0 auto;width:1248px}
+.vcontainer::after,.vcontainer::before{display:table;content:" "}
 .vcontainer::after{clear:both}
 .vcontainer .vcontainer-left{width:936px;float:left;margin:0 0 16px 0}
 .vcontainer .vcontainer-right{width:296px;float:right}

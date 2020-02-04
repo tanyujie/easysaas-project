@@ -1,0 +1,170 @@
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<div class="vkwit-header ">
+		<div class="vcontainer rel">
+			<div class="left">
+				<a class="logo-header" href="https://www.tianyancha.com"><i
+					class="tic tic-tyc-logo tyc"></i><i
+					class="tic tic-tyc-logo-txt tyc-text"></i></a>
+					<div class="header-intro"><div class="top">国家中小企业发展基金旗下</div><div class="bottom">官方备案企业征信机构</div><div class="content"><div class="triangle"></div><div class="inner"><img data-src="https://cdn.tianyancha.com/web-require-js/public/images/tyc_credit.png" alt="" class="lazy-img credit -image" width="560px" src="https://cdn.tianyancha.com/web-require-js/public/images/tyc_credit.png"></div></div></div>
+			</div>
+			<div class="middle">
+				<div class="tab-header -search">
+					<div class="head">
+						<div class="item dishonest active"
+							onclick="headerDishonestObj.clearInputVal(event,'dishonest')">
+							<div class="top">查老赖</div>
+						</div>
+						<div class="item company " tyc-event-click=""
+							tyc-event-ch="Daohang.DishonestSearch.Company"
+							onclick="headerDishonestObj.clearInputVal(event,'company')">
+							<div class="top">查公司</div>
+						</div>
+						<div class="item human " tyc-event-click=""
+							tyc-event-ch="Daohang.DishonestSearch.Human"
+							onclick="headerDishonestObj.clearInputVal(event,'human')">
+							<div class="top">查老板</div>
+						</div>
+						<div class="item" tyc-event-click=""
+							tyc-event-ch="Daohang.DishonestSearch.Relation"
+							onclick="header.jumpToPath(event)">
+							<div class="top">查关系</div>
+						</div>
+					</div>
+					<div class="search js-search-container">
+						<div class="input-group search-group dishonest">
+							<div class="input-wrapper" tyc-event-click=""
+								tyc-event-ch="LaolaiSearch.CompanyInput">
+
+								<input type="text" class="input name -sm"
+									id="header-dishonest-search"
+									placeholder="请输入人名/公司名/身份证号码/组织机构代码"
+									onclick="headerDishonestObj.clickInputWrapper()"
+									onkeyup="headerDishonestObj.checkVal(event,'.name')"
+									autofocus="autofocus" maxlength="50" value="欧克"
+									autocomplete="off"> <img alt="搜索"
+									onclick="header.clearKey(event,'.name',this);"
+									src="https://cdn.tianyancha.com/wap/images/close.png"
+									class="clear-input">
+								<div class="input-group-btn btn -sm btn-primary"
+									tyc-event-click=""
+									tyc-event-ch="Daohang.DishonestSearch.Search"
+									onclick="headerDishonestObj.confirm()">天眼一下</div>
+							</div>
+						</div>
+						<div class="input-group search-group company"
+							style="display: none;">
+							<form autocomplete="off"
+								onsubmit="return header.stopSubmit(event,null,'#header-company-search');">
+								<div class="live-search-wrap">
+									<input class="input -sm js-live-search-auto" type="search"
+										id="header-company-search"
+										click-selected="header.suggestToCompany" maxlength="50"
+										placeholder="请输入公司名称、老板姓名、品牌名称等" value="" autocomplete="off">
+									<ul class="live-search-content hidden"></ul>
+								</div>
+							</form>
+							<img alt="搜索"
+								onclick="header.clearKey(event,'#header-company-search',this);"
+								src="https://cdn.tianyancha.com/wap/images/close.png"
+								class="clear-input hidden">
+							<div class="input-group-btn btn -sm btn-primary"
+								onclick="header.search(event,'#header-company-search')">天眼一下</div>
+						</div>
+						<div class="input-group search-group human" style="display: none;">
+							<form autocomplete="off"
+								onsubmit="return header.stopHumanSubmit(event,null,'#header-human-search');">
+								<div class="live-search-wrap">
+									<input class="input -sm js-live-search-auto"
+										id="header-human-search" livesearch-is-human="true"
+										enter-selected="true" click-selected="header.suggestToHuman"
+										type="search" maxlength="50" placeholder="请输入老板信息，如‘马云 杭州’"
+										value="" autocomplete="off">
+									<ul class="live-search-content hidden"></ul>
+								</div>
+							</form>
+							<img alt="搜索"
+								onclick="header.clearKey(event,'#header-human-search',this);"
+								src="https://cdn.tianyancha.com/wap/images/close.png"
+								class="clear-input hidden">
+							<div class="input-group-btn btn -sm btn-primary"
+								onclick="header.searchHuman(event,null,'#header-human-search')">天眼一下</div>
+						</div>
+						<div class="tooltip-box hidden animate show" animate="animate"
+							animate-in="show">
+							<div class="content">
+								<i class="tic tic-warn hint icon"></i>你还没有输入关键词~
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="right">
+				<div class="vkwit-nav ">
+					<div class="nav-item nav-line-right -vip ">
+						<a class="title link-vip-noline -nav"
+							href="${request.contextPath}/vipintro.html" target="_blank"
+							tyc-event-click="" tyc-event-ch="DaoHang.Vip"><span>VIP会员</span>
+							<i
+							class="fa fa-caret-down"></i>
+							
+							<!-- <i
+							class="tic tic-caret-down nav-icon"></i> --></a>
+						<div class="block content">
+							<div class="triangle"></div>
+							<div class="block-content">
+								<a class="item" href="${request.contextPath}/vipintro.html"
+									target="_blank" tyc-event-click=""
+									tyc-event-ch="DaoHang.PersonVIP" rel="nofollow">个人VIP</a><a
+									class="item" href="${request.contextPath}/vipbusiness.html"
+									target="_blank" tyc-event-click=""
+									tyc-event-ch="DaoHang.CompanyVIP" rel="nofollow">企业套餐</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav-item nav-line-right ">
+						<a class="title  link-nav"><span>百宝箱</span> <i
+							class="fa fa-caret-down"></i> </a>
+						<div class="block content -treasure">
+							<div class="triangle"></div>
+							<div class="block-content">
+							<div class="nav-box-group">
+							<div class="nav-box-title">热门服务</div>
+							<div><a class="nav-box" href="${request.contextPath}/dishonest" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Baibaoxiang.Chalaolai"><span class="nav-new-tag"><i class="tic tic-hot"></i></span><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/dishonest/nav-box-dishonest.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/dishonest/nav-box-dishonest.png"><span class="box-title">查老赖</span></a><a class="nav-box" href="https://www.tianyancha.com/batch" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.LargeSearch"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-batch-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-batch-1.png"><span class="box-title">批量查询</span></a><a class="nav-box" href="https://www.tianyancha.com/map" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.Map"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-map-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-map-1.png"><span class="box-title">天眼地图</span></a><a class="nav-box" href="https://www.tianyancha.com/claim/entry" rel="nofollow" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.Renzheng"><span class="nav-container-bg"></span><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-claim-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-claim-1.png"><span class="box-title">企业实名认证</span></a><a class="nav-box" href="https://www.tianyancha.com/overseas" target="_blank" tyc-event-click="" tyc-event-ch="Daohang.Baibaoxiang.OverseasCompany" onclick="header.openHrefNeedLogin(event, this, true)"><!--<span class="nav-new-tag"><i class="tic tic-nav-new-icon"></i></span>--><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/abroad/nav-box-overseas.png" src="https://cdn.tianyancha.com/web-require-js/public/images/abroad/nav-box-overseas.png"><span class="box-title">全球企业</span></a><a class="nav-box" href="https://www.tianyancha.com/usercenter/bid" target="_blank" tyc-event-click="" tyc-event-ch="Daohang.Box.TenderSubscribe" onclick="header.openHrefNeedLogin(event, this, true)"><!--<span class="nav-new-tag"><i class="tic tic-nav-new-icon"></i></span>--><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/user/bid-1.png" src="https://cdn.tianyancha.com/web-require-js/public/images/user/bid-1.png"><span class="box-title">招标订阅</span></a><a class="nav-box -nextline" href="https://pilu.tianyancha.com/announcements" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.ShangshiSearch"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-announcement-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-announcement-1.png"><span class="box-title">上市公告</span></a><a class="nav-box -nextline" href="https://std.tianyancha.com/" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.Zhuanyeban"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-pro-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-pro-1.png"><span class="box-title">专业版</span></a><a class="nav-box -nextline" tyc-event-click="" tyc-event-ch="Daohang.Box.api" href="https://open.tianyancha.com/" target="_blank"><img class="lazy-img -image" data-src="https://static.tianyancha.com/web-require-js/public/images/nav-box-api-02.png" alt="" src="https://static.tianyancha.com/web-require-js/public/images/nav-box-api-02.png"><span class="box-title">API服务</span></a><a class="nav-box -nextline" tyc-event-click="" tyc-event-ch="Daohang.Box.Wendajia" href="https://discuss.tianyancha.com/hot" target="_blank"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-discuss-2.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-discuss-2.png"><span class="box-title">问大家</span></a><a class="nav-box -nextline" href="https://www.tianyancha.com/check" target="_blank" tyc-event-click="" tyc-event-ch="Daohang.Box.Qiyeheming"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-enterpriseName-3.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-enterpriseName-3.png"><span class="box-title">企业核名</span></a></div>
+							</div>
+							<div class="nav-box-group">
+							<div class="nav-box-title">威客服务
+							<span class="nav-new-tag"><i class="fa fa-sun-o fa-spin"></i></span>
+							</div>
+							</div><div class="nav-box-group">
+							<div class="nav-box-title">企业库</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="nav-item nav-line-right ">
+						<a class="title  link-nav"><span>合作通道</span><i
+							class="fa fa-caret-down"></i></a>
+						<div class="block content">
+							<div class="triangle"></div>
+							<div class="block-content">
+								<a class="item" href="https://www.tianyancha.com/appfortrial"
+									target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Media"
+									rel="nofollow">媒体通道</a><a class="item"
+									href="https://www.tianyancha.com/business" target="_blank"
+									tyc-event-click="" tyc-event-ch="DaoHang.Business"
+									rel="nofollow">商务通道</a><a class="item"
+									href="https://std.tianyancha.com" target="_blank"
+									tyc-event-click="" tyc-event-ch="DaoHang.Pro">专业版通道</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav-item ">
+						<a class="link-nav" onclick="header.loginLink(event)"
+							tyc-event-click="" tyc-event-ch="DaoHang.Login">登录/注册</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
