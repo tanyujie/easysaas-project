@@ -169,7 +169,82 @@ public class BulkProcessImpl implements BulkProcessService{
 			}
 		}
 	}
+	@Override
+	public void writeDishonestIndex(String indexesName) {
+		RestHighLevelClient client = esUtil.client;
+		BulkProcessor bulkProcessor = getBulkProcessor(client);
 
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBHelper.getCompanyConnection();
+			logger.info("Start handle data "+indexesName);
+
+			String sql = "SELECT * from dishonest" ;
+
+			ps = conn.prepareStatement(sql, ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+			ps.setFetchSize(Integer.MIN_VALUE);
+			rs = ps.executeQuery();
+
+			ResultSetMetaData colData = rs.getMetaData();
+
+			ArrayList<HashMap<String, String>> dataList = new ArrayList<HashMap<String, String>>();
+
+			HashMap<String, String> map = null;
+			int count = 0;
+			String c = null;
+			String v = null;
+			 BulkRequest request = new BulkRequest();
+			while (rs.next()) {
+				count++;
+				map = new HashMap<String, String>(100);
+				for (int i = 1; i <= colData.getColumnCount(); i++) {
+					c = colData.getColumnName(i);
+					v = rs.getString(c);
+					map.put(lineToHump(c), v);
+				}
+				dataList.add(map);
+				// 每20锟斤拷锟斤拷写一锟轿ｏ拷锟斤拷锟斤拷锟斤拷锟斤拷蔚锟斤拷锟斤拷锟斤拷一锟斤拷锟结交
+				if (count % 200000 == 0) {
+					logger.info("Mysql handle data number : " + count);
+					// 写锟斤拷ES
+					for (HashMap<String, String> hashMap2 : dataList) {
+						 bulkProcessor.add(new IndexRequest(indexesName).id(hashMap2.get("id")).source(JSON.toJSONString(hashMap2),XContentType.JSON));
+					}
+				     client.bulk(request, RequestOptions.DEFAULT);
+				     
+					// 每锟结交一锟轿便将map锟斤拷list锟斤拷锟�
+					map.clear();
+					dataList.clear();
+				}
+			}
+			// count % 200000 锟斤拷锟斤拷未锟结交锟斤拷锟斤拷锟斤拷
+			for (HashMap<String, String> hashMap2 : dataList) {
+				bulkProcessor.add(new IndexRequest(indexesName).id(hashMap2.get("id")).source(JSON.toJSONString(hashMap2),
+						XContentType.JSON));
+			}
+		    client.bulk(request, RequestOptions.DEFAULT);
+			logger.info("-------------------------- Finally insert number total : " + count);
+            // 锟斤拷锟斤拷锟斤拷刷锟铰碉拷es, 注锟斤拷锟斤拷一锟斤拷执锟叫后并诧拷锟斤拷锟斤拷锟斤拷锟斤拷效锟斤拷取锟斤拷锟斤拷bulkProcessor锟斤拷锟矫碉拷刷锟斤拷时锟斤拷
+			bulkProcessor.flush();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		} finally {
+			try {
+				rs.close();
+				ps.close();
+				conn.close();
+				boolean terminatedFlag = bulkProcessor.awaitClose(150L, TimeUnit.SECONDS);
+//				client.close();
+				logger.info(terminatedFlag);
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		}
+	}
 	private static BulkProcessor getBulkProcessor(RestHighLevelClient client) {
 
 		BulkProcessor bulkProcessor = null;
@@ -233,4 +308,6 @@ public class BulkProcessImpl implements BulkProcessService{
 				  temp -> builder.append(StringUtils.capitalize(temp)));*/
 		  return builder.toString();
 	 }
+
+
 }

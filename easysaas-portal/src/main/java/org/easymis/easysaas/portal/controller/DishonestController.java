@@ -6,10 +6,13 @@ import java.util.Map;
 
 import org.easymis.easysaas.common.result.PageData;
 import org.easymis.easysaas.common.result.exception.ElasticSearchMaxRecordException;
+import org.easymis.easysaas.portal.entitys.vo.DishonestSearchVo;
 import org.easymis.easysaas.portal.entitys.vo.SearchOutput;
 import org.easymis.easysaas.portal.entitys.vo.SearchVo;
+import org.easymis.easysaas.portal.service.DishonestService;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
@@ -26,6 +29,9 @@ import lombok.extern.slf4j.Slf4j;
 @Validated
 @Slf4j
 public class DishonestController {
+	@Autowired
+	DishonestService dishonestService;
+	
     @ApiOperation(value = "根据各种条件查询老赖信息", response = SearchOutput.class)
     @ApiImplicitParams({
     	@ApiImplicitParam(name = "wd", value = "搜索关键字", dataType = "string", required = false),
@@ -47,7 +53,7 @@ public class DishonestController {
 		@ApiImplicitParam(name = "type", value = "查询类型1企业2个人", dataType = "integer", required = false),
     })
     @RequestMapping("/dishonest/result")
-    public String result(String name,Integer type) {
+    public String result(DishonestSearchVo searchVo,ModelMap map) throws IOException, ElasticSearchMaxRecordException {
     	
         BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
         boolean matchPhrase = false;
@@ -58,7 +64,10 @@ public class DishonestController {
             boolQuery.must(QueryBuilders.matchQuery("name", "m-m"));
         }
         List<Map<String, Object>> list = null;//ElasticsearchUtil.searchListData(indexName, esType, boolQuery, 10, "name", null, "name");
-		if (type == null || type == 1)
+		PageData pageData = dishonestService.esQuery(searchVo);
+
+		map.put("pageData", pageData);
+        if (searchVo.getType() == null || searchVo.getType() == 1)
 			return "/dishonest/resultCompany";
 		else
 			return "/dishonest/resultPerson";

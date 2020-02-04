@@ -10,9 +10,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebAppConfig implements WebMvcConfigurer {
 
-	private static final List<String> EXCLUDE_PATH = Arrays.asList("/", "/css/**", "/**/*.css", "/js/**", "/**/*.js",
+	private static final List<String> EXCLUDE_PATH = Arrays.asList("/", "/plugin/**","/css/**", "/**/*.css", "/js/**", "/**/*.js",
 			"/**/*.png", "/**/*.jpg", "/**/*.jpeg", "/**/*.gif", "/**/fonts/*", "/assets/**", "/material/**",
-			"/index.html","/company/*.html","/dishonest", "/", "/user/login", "/error");
+			"/index.html","/company/*.html","/dishonest", "/dishonest/result","/dishonest/detail/person/*.html",
+			"dishonest/detail/company/*.html","/",
+			"/vipintro.html",
+			"/vipbusiness.html",
+			"/batch",
+			"/map",
+			"/claim/entry",
+			"/indexes/**",
+			"/user/login", "/error");
 
 	public void addInterceptors(InterceptorRegistry registry) {
 		// 注册自定义拦截器，添加拦截路径和排除拦截路径

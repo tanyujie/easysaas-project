@@ -51,7 +51,8 @@ public class ElasticSearchConfig {
     public String scheme;
 
     public static final String INDEX_NAME = "company-index";
-
+    
+    public static final String INDEX_NAME_DISHONEST = "dishonest-index";
     public static final String CREATE_INDEX = "{\n" +
             "    \"properties\": {\n" +
             "      \"companyId\":{\n" +
@@ -81,16 +82,27 @@ public class ElasticSearchConfig {
                 client.close();
             }
             client = new RestHighLevelClient(RestClient.builder(new HttpHost(host, port, scheme)));
-
+            CreateIndexRequest request;
             if (this.indexExist(INDEX_NAME)) {
                 //DeleteIndexRequest deleteIndexRequest= new DeleteIndexRequest(INDEX_NAME);
                 //client.indices().delete(deleteIndexRequest,  RequestOptions.DEFAULT);
-                return;
+                //return;
+            }else {
+                request = new CreateIndexRequest(INDEX_NAME);
+                request.settings(Settings.builder().put("index.number_of_shards", 3).put("index.number_of_replicas", 2));
+                //request.mapping(CREATE_INDEX, XContentType.JSON);
+                request.mapping(buildIndexMapping(),XContentType.JSON);
             }
-            CreateIndexRequest request = new CreateIndexRequest(INDEX_NAME);
-            request.settings(Settings.builder().put("index.number_of_shards", 3).put("index.number_of_replicas", 2));
-            //request.mapping(CREATE_INDEX, XContentType.JSON);
-            request.mapping(buildIndexMapping(),XContentType.JSON);
+            //查老赖索引
+            if (this.indexExist(INDEX_NAME_DISHONEST)) {
+                //DeleteIndexRequest deleteIndexRequest= new DeleteIndexRequest(INDEX_NAME_DISHONEST);
+                //client.indices().delete(deleteIndexRequest,  RequestOptions.DEFAULT);
+                return;
+            }else {
+            	 request = new CreateIndexRequest(INDEX_NAME_DISHONEST);
+            	 request.mapping(buildIndexDishonestMapping(),XContentType.JSON);
+            }
+
  
             CreateIndexResponse res = client.indices().create(request, RequestOptions.DEFAULT);
             if (!res.isAcknowledged()) {
@@ -256,6 +268,21 @@ public class ElasticSearchConfig {
 		
 		Map<String, Object> properties = new HashMap<>();
 		properties.put("companyName", name);
+		Map<String, Object> indexMapping = new HashMap<>();
+		indexMapping.put("properties", properties);
+		//jsonMap.put("books", book);
+		return  JSON.toJSONString(indexMapping);
+
+	}
+	public String buildIndexDishonestMapping() {
+		Map<String, Object> jsonMap = new HashMap<>();
+		Map<String, Object> name = new HashMap<>();
+		name.put("type", "text");
+		name.put("analyzer", "ik_max_word");
+		name.put("search_analyzer", "ik_max_word");
+		
+		Map<String, Object> properties = new HashMap<>();
+		properties.put("name", name);
 		Map<String, Object> indexMapping = new HashMap<>();
 		indexMapping.put("properties", properties);
 		//jsonMap.put("books", book);
