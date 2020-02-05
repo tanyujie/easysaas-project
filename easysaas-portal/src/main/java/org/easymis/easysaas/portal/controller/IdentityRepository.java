@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.alibaba.fastjson.JSON;
+
 public class IdentityRepository {
 	@Autowired
 	private HttpServletRequest request;
@@ -15,5 +17,14 @@ public class IdentityRepository {
 
     public String getIdentityFeature() {
         return request.getAttribute("memberId").toString();
+    }
+
+    public Object districtJson() {
+        String districtJson = System.getProperty("districtJson");
+        return JSON.parse(districtJson);
+    }
+    public Object provinceJson() {
+        String provinceJson = System.getProperty("provinceJson");
+        return JSON.parse(provinceJson);
     }
 }

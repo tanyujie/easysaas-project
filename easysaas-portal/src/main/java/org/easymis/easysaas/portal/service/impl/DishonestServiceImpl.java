@@ -47,6 +47,18 @@ public class DishonestServiceImpl implements DishonestService {
 		if (searchVo.getType()!=null) {
 			boolQueryBuilder.filter().add(QueryBuilders.termQuery("dishonestType", searchVo.getType()));
 		}
+		if (searchVo.getProvince()!=null) {
+			boolQueryBuilder.filter().add(QueryBuilders.termQuery("province", searchVo.getProvince()));
+		}
+		if (searchVo.getBirthYear()!=null) {
+			boolQueryBuilder.filter().add(QueryBuilders.termQuery("birthYear", searchVo.getBirthYear()));
+		}
+		if (searchVo.getSex()!=null) {
+			if(searchVo.getSex()==1)
+				boolQueryBuilder.filter().add(QueryBuilders.termQuery("sex", "男"));
+			else
+				boolQueryBuilder.filter().add(QueryBuilders.termQuery("sex", "女"));
+		}
 		/** 高亮公司名 */
 		HighlightBuilder highlightBuilder = new HighlightBuilder();
 		highlightBuilder.field("name");

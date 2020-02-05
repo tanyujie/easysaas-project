@@ -309,5 +309,66 @@ public class BulkProcessImpl implements BulkProcessService{
 		  return builder.toString();
 	 }
 
+	@Override
+	public void writeJsonString(String fileName) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBHelper.getCompanyConnection();
+			logger.info("Start handle data "+fileName);
+
+			String sql = "SELECT * from identity_card_address" ;
+
+			ps = conn.prepareStatement(sql, ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+			ps.setFetchSize(Integer.MIN_VALUE);
+			rs = ps.executeQuery();
+
+			ResultSetMetaData colData = rs.getMetaData();
+
+			ArrayList<HashMap<String, String>> dataList = new ArrayList<HashMap<String, String>>();
+
+			HashMap<String, String> map = null;
+			int count = 0;
+			String c = null;
+			String v = null;
+			 BulkRequest request = new BulkRequest();
+			while (rs.next()) {
+				count++;
+				map = new HashMap<String, String>(100);
+				for (int i = 1; i <= colData.getColumnCount(); i++) {
+					c = colData.getColumnName(i);
+					v = rs.getString(c);
+					map.put(lineToHump(c), v);
+				}
+				dataList.add(map);
+				//
+				if (count % 200000 == 0) {
+					logger.info("Mysql handle data number : " + count);
+					// 写锟斤拷ES
+					for (HashMap<String, String> hashMap2 : dataList) {
+						JSON.toJSONString(hashMap2);
+						 //bulkProcessor.add(new IndexRequest(indexesName).id(hashMap2.get("id")).source(JSON.toJSONString(hashMap2),XContentType.JSON));
+					}
+
+					map.clear();
+					dataList.clear();
+				}
+			}
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		} finally {
+			try {
+				rs.close();
+				ps.close();
+				conn.close();
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+			}
+		}
+	}
+
 
 }

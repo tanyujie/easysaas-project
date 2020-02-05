@@ -12,6 +12,7 @@ import org.easymis.easysaas.portal.entitys.vo.DishonestSearchVo;
 import org.easymis.easysaas.portal.entitys.vo.SearchOutput;
 import org.easymis.easysaas.portal.entitys.vo.SearchVo;
 import org.easymis.easysaas.portal.service.DishonestService;
+import org.easymis.easysaas.portal.service.IdentityCardAddressService;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.beans.BeanUtils;
@@ -32,9 +33,12 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Validated
 @Slf4j
-public class DishonestController {
+public class DishonestController extends IdentityRepository{
 	@Autowired
 	DishonestService dishonestService;
+	@Autowired
+	IdentityCardAddressService identityCardAddressService;
+	
 	
     @ApiOperation(value = "根据各种条件查询老赖信息", response = SearchOutput.class)
     @ApiImplicitParams({
@@ -86,6 +90,8 @@ public class DishonestController {
         List<Map<String, Object>> list = null;//ElasticsearchUtil.searchListData(indexName, esType, boolQuery, 10, "name", null, "name");
     	
         DishonestSearchVo vo= new DishonestSearchVo();
+        if(searchVo.getProvince()!=null)
+        searchVo.setProvinceName(identityCardAddressService.findProvince(searchVo.getProvince()).getProvince());
     	BeanUtils.copyProperties(searchVo, vo);
         vo.setType(1);
         DishonestPageData companyPageData = dishonestService.esQuery(vo);

@@ -27,9 +27,17 @@ function Header(){
 		//var t=$(".name").val().trim(),i=$(".name").siblings(".tooltip-box");
 		//alert(t);
 	};
+	p.clearKey= function(){		
+		$(".name").val("");
+	};
+	p.confirm= function(){
+		var t=$(".name").val().trim();
+		location.href="/dishonest/result?name="+t;
+	};
 	return p;
 }
-var header = Header();
+
+var headerDishonestObj = Header();
 function DishonestResult(){
 	var p = new Object;
 	p.handleDetail = function(id){
@@ -42,14 +50,14 @@ function DishonestResult(){
 }
 var dishonestResult = DishonestResult();
 
-//header.loginLink(event)
+//headerDishonestObj.loginLink(event)
 </script>
 </head>
 <body>
 	<div class="vkwit-header ">
 		<div class="vcontainer rel">
 			<div class="left">
-				<a class="logo-header" href="https://www.tianyancha.com"><i
+				<a class="logo-header" href="http://www.vkwit.com"><i
 					class="tic tic-tyc-logo tyc"></i><i
 					class="tic tic-tyc-logo-txt tyc-text"></i></a>
 					<div class="header-intro"><div class="top">国家中小企业发展基金旗下</div><div class="bottom">官方备案企业征信机构</div><div class="content"><div class="triangle"></div><div class="inner"><img data-src="https://cdn.tianyancha.com/web-require-js/public/images/tyc_credit.png" alt="" class="lazy-img credit -image" width="560px" src="https://cdn.tianyancha.com/web-require-js/public/images/tyc_credit.png"></div></div></div>
@@ -87,7 +95,7 @@ var dishonestResult = DishonestResult();
 									placeholder="请输入人名/公司名/身份证号码/组织机构代码"
 									onclick="headerDishonestObj.clickInputWrapper()"
 									onkeyup="headerDishonestObj.checkVal(event,'.name')"
-									autofocus="autofocus" maxlength="50" value="欧克"
+									autofocus="autofocus" maxlength="50" value="${dishonest.name!}"
 									autocomplete="off"> <img alt="搜索"
 									onclick="header.clearKey(event,'.name',this);"
 									src="https://cdn.tianyancha.com/wap/images/close.png"
@@ -150,7 +158,7 @@ var dishonestResult = DishonestResult();
 				<div class="vkwit-nav ">
 					<div class="nav-item nav-line-right -vip ">
 						<a class="title link-vip-noline -nav"
-							href="https://www.tianyancha.com/vipintro" target="_blank"
+							href="http://www.vkwit.com/vipintro" target="_blank"
 							tyc-event-click="" tyc-event-ch="DaoHang.Vip"><span>VIP会员</span>
 							<i
 							class="fa fa-caret-down"></i>
@@ -160,10 +168,10 @@ var dishonestResult = DishonestResult();
 						<div class="block content">
 							<div class="triangle"></div>
 							<div class="block-content">
-								<a class="item" href="https://www.tianyancha.com/vipintro"
+								<a class="item" href="http://www.vkwit.com/vipintro"
 									target="_blank" tyc-event-click=""
 									tyc-event-ch="DaoHang.PersonVIP" rel="nofollow">个人VIP</a><a
-									class="item" href="https://www.tianyancha.com/vipbusiness"
+									class="item" href="http://www.vkwit.com/vipbusiness"
 									target="_blank" tyc-event-click=""
 									tyc-event-ch="DaoHang.CompanyVIP" rel="nofollow">企业套餐</a>
 							</div>
@@ -177,7 +185,7 @@ var dishonestResult = DishonestResult();
 							<div class="block-content">
 							<div class="nav-box-group">
 							<div class="nav-box-title">热门服务</div>
-							<div><a class="nav-box" href="https://www.tianyancha.com/dishonest" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Baibaoxiang.Chalaolai"><span class="nav-new-tag"><i class="tic tic-hot"></i></span><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/dishonest/nav-box-dishonest.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/dishonest/nav-box-dishonest.png"><span class="box-title">查老赖</span></a><a class="nav-box" href="https://www.tianyancha.com/batch" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.LargeSearch"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-batch-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-batch-1.png"><span class="box-title">批量查询</span></a><a class="nav-box" href="https://www.tianyancha.com/map" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.Map"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-map-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-map-1.png"><span class="box-title">天眼地图</span></a><a class="nav-box" href="https://www.tianyancha.com/claim/entry" rel="nofollow" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.Renzheng"><span class="nav-container-bg"></span><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-claim-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-claim-1.png"><span class="box-title">企业实名认证</span></a><a class="nav-box" href="https://www.tianyancha.com/overseas" target="_blank" tyc-event-click="" tyc-event-ch="Daohang.Baibaoxiang.OverseasCompany" onclick="header.openHrefNeedLogin(event, this, true)"><!--<span class="nav-new-tag"><i class="tic tic-nav-new-icon"></i></span>--><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/abroad/nav-box-overseas.png" src="https://cdn.tianyancha.com/web-require-js/public/images/abroad/nav-box-overseas.png"><span class="box-title">全球企业</span></a><a class="nav-box" href="https://www.tianyancha.com/usercenter/bid" target="_blank" tyc-event-click="" tyc-event-ch="Daohang.Box.TenderSubscribe" onclick="header.openHrefNeedLogin(event, this, true)"><!--<span class="nav-new-tag"><i class="tic tic-nav-new-icon"></i></span>--><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/user/bid-1.png" src="https://cdn.tianyancha.com/web-require-js/public/images/user/bid-1.png"><span class="box-title">招标订阅</span></a><a class="nav-box -nextline" href="https://pilu.tianyancha.com/announcements" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.ShangshiSearch"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-announcement-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-announcement-1.png"><span class="box-title">上市公告</span></a><a class="nav-box -nextline" href="https://std.tianyancha.com/" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.Zhuanyeban"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-pro-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-pro-1.png"><span class="box-title">专业版</span></a><a class="nav-box -nextline" tyc-event-click="" tyc-event-ch="Daohang.Box.api" href="https://open.tianyancha.com/" target="_blank"><img class="lazy-img -image" data-src="https://static.tianyancha.com/web-require-js/public/images/nav-box-api-02.png" alt="" src="https://static.tianyancha.com/web-require-js/public/images/nav-box-api-02.png"><span class="box-title">API服务</span></a><a class="nav-box -nextline" tyc-event-click="" tyc-event-ch="Daohang.Box.Wendajia" href="https://discuss.tianyancha.com/hot" target="_blank"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-discuss-2.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-discuss-2.png"><span class="box-title">问大家</span></a><a class="nav-box -nextline" href="https://www.tianyancha.com/check" target="_blank" tyc-event-click="" tyc-event-ch="Daohang.Box.Qiyeheming"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-enterpriseName-3.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-enterpriseName-3.png"><span class="box-title">企业核名</span></a></div>
+							<div><a class="nav-box" href="http://www.vkwit.com/dishonest" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Baibaoxiang.Chalaolai"><span class="nav-new-tag"><i class="tic tic-hot"></i></span><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/dishonest/nav-box-dishonest.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/dishonest/nav-box-dishonest.png"><span class="box-title">查老赖</span></a><a class="nav-box" href="http://www.vkwit.com/batch" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.LargeSearch"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-batch-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-batch-1.png"><span class="box-title">批量查询</span></a><a class="nav-box" href="http://www.vkwit.com/map" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.Map"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-map-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-map-1.png"><span class="box-title">天眼地图</span></a><a class="nav-box" href="http://www.vkwit.com/claim/entry" rel="nofollow" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.Renzheng"><span class="nav-container-bg"></span><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-claim-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-claim-1.png"><span class="box-title">企业实名认证</span></a><a class="nav-box" href="http://www.vkwit.com/overseas" target="_blank" tyc-event-click="" tyc-event-ch="Daohang.Baibaoxiang.OverseasCompany" onclick="header.openHrefNeedLogin(event, this, true)"><!--<span class="nav-new-tag"><i class="tic tic-nav-new-icon"></i></span>--><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/abroad/nav-box-overseas.png" src="https://cdn.tianyancha.com/web-require-js/public/images/abroad/nav-box-overseas.png"><span class="box-title">全球企业</span></a><a class="nav-box" href="http://www.vkwit.com/usercenter/bid" target="_blank" tyc-event-click="" tyc-event-ch="Daohang.Box.TenderSubscribe" onclick="header.openHrefNeedLogin(event, this, true)"><!--<span class="nav-new-tag"><i class="tic tic-nav-new-icon"></i></span>--><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/user/bid-1.png" src="https://cdn.tianyancha.com/web-require-js/public/images/user/bid-1.png"><span class="box-title">招标订阅</span></a><a class="nav-box -nextline" href="https://pilu.tianyancha.com/announcements" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.ShangshiSearch"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-announcement-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-announcement-1.png"><span class="box-title">上市公告</span></a><a class="nav-box -nextline" href="https://std.tianyancha.com/" target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Box.Zhuanyeban"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-pro-1.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-pro-1.png"><span class="box-title">专业版</span></a><a class="nav-box -nextline" tyc-event-click="" tyc-event-ch="Daohang.Box.api" href="https://open.tianyancha.com/" target="_blank"><img class="lazy-img -image" data-src="https://static.tianyancha.com/web-require-js/public/images/nav-box-api-02.png" alt="" src="https://static.tianyancha.com/web-require-js/public/images/nav-box-api-02.png"><span class="box-title">API服务</span></a><a class="nav-box -nextline" tyc-event-click="" tyc-event-ch="Daohang.Box.Wendajia" href="https://discuss.tianyancha.com/hot" target="_blank"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-discuss-2.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-discuss-2.png"><span class="box-title">问大家</span></a><a class="nav-box -nextline" href="http://www.vkwit.com/check" target="_blank" tyc-event-click="" tyc-event-ch="Daohang.Box.Qiyeheming"><img class="lazy-img -image" data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-enterpriseName-3.png" alt="" src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-enterpriseName-3.png"><span class="box-title">企业核名</span></a></div>
 							</div>
 							<div class="nav-box-group">
 							<div class="nav-box-title">威客服务
@@ -195,10 +203,10 @@ var dishonestResult = DishonestResult();
 						<div class="block content">
 							<div class="triangle"></div>
 							<div class="block-content">
-								<a class="item" href="https://www.tianyancha.com/appfortrial"
+								<a class="item" href="http://www.vkwit.com/appfortrial"
 									target="_blank" tyc-event-click="" tyc-event-ch="DaoHang.Media"
 									rel="nofollow">媒体通道</a><a class="item"
-									href="https://www.tianyancha.com/business" target="_blank"
+									href="http://www.vkwit.com/business" target="_blank"
 									tyc-event-click="" tyc-event-ch="DaoHang.Business"
 									rel="nofollow">商务通道</a><a class="item"
 									href="https://std.tianyancha.com" target="_blank"
@@ -286,7 +294,7 @@ var dishonestResult = DishonestResult();
 					<div class="right-block right-bd-claim-activity"
 						data-scroll-fix="299px">
 						<a class="image-click"
-							href="https://www.tianyancha.com/claim/entry" href-event=""
+							href="http://www.vkwit.com/claim/entry" href-event=""
 							event-name="VIP广告" tyc-event-click=""
 							tyc-event-ch="CompanySearch.Right.claimtuiguang" target="_blank"
 							rel="nofollow"><img class="lazy-img -image"
@@ -319,7 +327,7 @@ var dishonestResult = DishonestResult();
 						</div>
 					</div>
 					<div class="right-block -business">
-						<a class="image-click" href="https://www.tianyancha.com/business"
+						<a class="image-click" href="http://www.vkwit.com/business"
 							target="_blank" rel="nofollow"><img class="lazy-img -image"
 							data-src="https://cdn.tianyancha.com/web-require-js/themes/18blue/images/ad/ad-1.jpg"
 							alt="商务合作"

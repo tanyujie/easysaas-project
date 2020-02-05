@@ -44,8 +44,11 @@ spring:
         locale: zh_CN
         date_format: yyyy-MM-dd
         time_format: HH:mm:ss
-        datetime_format: yyyy-MM-dd HH:mm:ss
+        datetime_format: yyyy-MM-dd HH:mm:ss        
         request-context-attribute: request
+        settings:
+          number_format: 0.##
+          
 #指定mvc视图的后缀.
     mvc:
         view:
