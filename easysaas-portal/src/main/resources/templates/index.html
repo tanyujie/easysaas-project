@@ -47,9 +47,16 @@ function Header(){
 		$("#js-human-area").removeClass("hidden");
 		$("#js-company-tab").removeClass("active");
 		$("#js-company-area").addClass("hidden");
+		
+		
 	};
 	p.searchHuman = function(){
-		location.href="${request.contextPath}/dishonest";
+		let humanName=$("#home-human-search").val();
+		if(humanName.length<2){			
+			//$("#js-company-tooltip").removeClass("hidden");
+			return;
+		}
+		location.href="${request.contextPath}/human/result?name="+humanName;
 	};
 	p.jumpToPath = function(){
 		location.href="${request.contextPath}/dishonest";
@@ -326,7 +333,7 @@ $(function() {
 									<div class="input-group-btn btn -xl"
 										onclick="header.searchCompany(true,'#home-main-search')"
 										tyc-event-click="" tyc-event-ch="shouye.CompanySearch.Search">
-										<span>天眼一下</span>
+										<span>查一下</span>
 									</div>
 								</div>
 								<div class="tooltip-box hidden animate show" animate="animate"
@@ -506,7 +513,7 @@ $(function() {
 									<div class="input-group-btn btn -xl"
 										onclick="header.searchHuman(event,true,'#home-human-search')"
 										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.Serach">
-										<span>天眼一下</span>
+										<span>查一下</span>
 									</div>
 								</div>
 								<div class="tooltip-box hidden animate show" animate="animate"

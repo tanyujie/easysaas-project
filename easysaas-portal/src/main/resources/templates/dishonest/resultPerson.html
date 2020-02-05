@@ -85,7 +85,7 @@ var dishonestResult = DishonestResult();
 									placeholder="请输入人名/公司名/身份证号码/组织机构代码"
 									onclick="headerDishonestObj.clickInputWrapper()"
 									onkeyup="headerDishonestObj.checkVal(event,'.name')"
-									autofocus="autofocus" maxlength="50" value="欧克"
+									autofocus="autofocus" maxlength="50" value="${searchVo.name!}"
 									autocomplete="off"> <img alt="搜索"
 									onclick="header.clearKey(event,'.name',this);"
 									src="https://cdn.tianyancha.com/wap/images/close.png"
@@ -93,7 +93,7 @@ var dishonestResult = DishonestResult();
 								<div class="input-group-btn btn -sm btn-primary"
 									tyc-event-click=""
 									tyc-event-ch="Daohang.DishonestSearch.Search"
-									onclick="headerDishonestObj.confirm()">天眼一下</div>
+									onclick="headerDishonestObj.confirm()">查一下</div>
 							</div>
 						</div>
 						<div class="input-group search-group company"
@@ -113,7 +113,7 @@ var dishonestResult = DishonestResult();
 								src="https://cdn.tianyancha.com/wap/images/close.png"
 								class="clear-input hidden">
 							<div class="input-group-btn btn -sm btn-primary"
-								onclick="header.search(event,'#header-company-search')">天眼一下</div>
+								onclick="header.search(event,'#header-company-search')">查一下</div>
 						</div>
 						<div class="input-group search-group human" style="display: none;">
 							<form autocomplete="off"
@@ -132,7 +132,7 @@ var dishonestResult = DishonestResult();
 								src="https://cdn.tianyancha.com/wap/images/close.png"
 								class="clear-input hidden">
 							<div class="input-group-btn btn -sm btn-primary"
-								onclick="header.searchHuman(event,null,'#header-human-search')">天眼一下</div>
+								onclick="header.searchHuman(event,null,'#header-human-search')">查一下</div>
 						</div>
 						<div class="tooltip-box hidden animate show" animate="animate"
 							animate-in="show">
@@ -305,12 +305,12 @@ var dishonestResult = DishonestResult();
 		<div class="dishonest-result">
 			<div class="vcontainer">
 				<h2 class="bread">
-					<a class="link-hover-click" href="https://www.tianyancha.com"
+					<a class="link-hover-click" href="http://www.vkwit.com"
 						target="_blank" tyc-event-click=""
 						tyc-event-ch="LaolaiResult.Head.Tianyancha">威客智库</a><span
 						class="bread-arrow"><i class="fa fa-angle-right"></i></span><a
 						class="link-hover-click"
-						href="https://www.tianyancha.com/dishonest" target="_blank"
+						href="http://www.vkwit.com/dishonest" target="_blank"
 						tyc-event-click="" tyc-event-ch="LaolaiResult.Head.Chalaolai">查老赖</a><span
 						class="bread-arrow"><i class="fa fa-angle-right"></i></span><span
 						class="bread-title">成都</span>
@@ -321,11 +321,11 @@ var dishonestResult = DishonestResult();
 							<div class="filter-type">
 								<a class="type-title  active" tyc-event-click=""
 									tyc-event-ch="LaolaiResult.Human"
-									href="https://www.tianyancha.com/dishonest/result?name=%E6%88%90%E9%83%BD&amp;type=2"
-									rel="nofollow">失信自然人&nbsp;999+</a><a class="type-title  "
+									href="http://www.vkwit.com/dishonest/result?name=${searchVo.name!}&amp;type=2"
+									rel="nofollow">失信自然人&nbsp;${pageData.totalPersonDepict!}</a><a class="type-title  "
 									tyc-event-click="" tyc-event-ch="LaolaiResult.Company"
-									href="https://www.tianyancha.com/dishonest/result?name=%E6%88%90%E9%83%BD&amp;type=1"
-									rel="nofollow">失信企业&nbsp;999+</a>
+									href="http://www.vkwit.com/dishonest/result?name=${searchVo.name!}&amp;type=1"
+									rel="nofollow">失信企业&nbsp;${pageData.totalCompanyDepict!}</a>
 							</div>
 							<div class="filter-body filter-body-toggle">
 								<div class="search-filter" tyc-event-click="" tyc-event-ch="">
@@ -804,7 +804,7 @@ var dishonestResult = DishonestResult();
 						<div class="result-tips">
 							<div class="tips-content clearfix">
 								<div class="num-title">
-									<span>威客智库为你找到</span><span class="tips-num">29541</span>个老赖
+									<span>威客智库为你找到</span><span class="tips-num">${pageData.totalPersonDepict!}</span>个老赖
 								</div>
 							</div>
 						</div>
@@ -815,10 +815,10 @@ var dishonestResult = DishonestResult();
 								<div class="result-header   clearfix">
 									<div class="lazy-img  -alias -bg4">
 										<div class="logo-text -l1 -w64 -bg2">
-											<span class="text">张</span>
+											<span class="text">${person.familyName}</span>
 										</div>
 										<div class="logo -w64" data-index="">
-											<img class="img" is-expand="false" data-src="" alt="张华述"
+											<img class="img" is-expand="false" data-src="" alt="${person.name}"
 												err-src="">
 										</div>
 									</div>
@@ -826,7 +826,7 @@ var dishonestResult = DishonestResult();
 										<div class="title">
 											<span class="name" tyc-event-click=""
 												tyc-event-ch="LaolaiResult.Human.Human"
-												onclick="dishonestResult.handleDetail('4comzmv47bf8e40898d24414fl94ze78')">${person.nameHighlight}</span><span
+												onclick="dishonestResult.handleDetail('${person.id}')">${person.nameHighlight}</span><span
 												class="tag tag-status-warn">老赖</span><span
 												class="tag tag-status-label">你可能感兴趣</span>
 										</div>
@@ -840,7 +840,7 @@ var dishonestResult = DishonestResult();
 											<div style="max-height: 22px;" class="auto-folder"
 												auto-folder="22" folder-type="custom" is-load="true">
 												<div>
-													<span class="key">简介：</span>张华述，男，1966年出生，四川省成都市彭县人。
+													<span class="key">简介：</span>${person.name}，${person.sex!}，${person.birthYear}，四川省成都市彭县人。
 												</div>
 												<span class="hidden folder-btn" folder-btn="">...&nbsp;<a
 													class="link-click"

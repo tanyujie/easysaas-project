@@ -5,13 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.easymis.easysaas.common.result.PageData;
 import org.easymis.easysaas.common.result.PageVO;
 import org.easymis.easysaas.common.result.exception.ElasticSearchMaxRecordException;
 import org.easymis.easysaas.portal.config.ElasticSearchConfig;
+import org.easymis.easysaas.portal.config.datasource.DataSourceType;
+import org.easymis.easysaas.portal.config.datasource.EasymisDataSource;
+import org.easymis.easysaas.portal.entitys.mybatis.dto.Dishonest;
+import org.easymis.easysaas.portal.entitys.mybatis.mapper.DishonestMapper;
 import org.easymis.easysaas.portal.entitys.vo.DishonestOto;
+import org.easymis.easysaas.portal.entitys.vo.DishonestPageData;
 import org.easymis.easysaas.portal.entitys.vo.DishonestSearchVo;
-import org.easymis.easysaas.portal.entitys.vo.SearchOutput;
 import org.easymis.easysaas.portal.service.DishonestService;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.BoolQueryBuilder;
@@ -31,15 +34,19 @@ import lombok.extern.slf4j.Slf4j;
 public class DishonestServiceImpl implements DishonestService {
 	@Autowired
 	private JestClient jestClient;
+	@Autowired
+	DishonestMapper mapper;
 	@Override
-	public PageData esQuery(DishonestSearchVo searchVo) throws IOException, ElasticSearchMaxRecordException {
+	public DishonestPageData esQuery(DishonestSearchVo searchVo) throws IOException, ElasticSearchMaxRecordException {
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 		BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
-		PageData pageData = new PageData();
+		DishonestPageData pageData = new DishonestPageData();
 		if (!StringUtils.isEmpty(searchVo.getName())) {
             boolQueryBuilder.must(QueryBuilders.matchQuery("name", searchVo.getName().trim()).operator(Operator.AND).analyzer("ik_max_word"));
 		}
-		
+		if (searchVo.getType()!=null) {
+			boolQueryBuilder.filter().add(QueryBuilders.termQuery("dishonestType", searchVo.getType()));
+		}
 		/** 高亮公司名 */
 		HighlightBuilder highlightBuilder = new HighlightBuilder();
 		highlightBuilder.field("name");
@@ -85,6 +92,11 @@ public class DishonestServiceImpl implements DishonestService {
         pageVO.setPages(pages.intValue());
         pageData.setPage(pageVO);     
 		return pageData;
+	}
+	 @EasymisDataSource(DataSourceType.Slave)
+	public Dishonest findById(String id) {
+		// TODO Auto-generated method stub
+		return mapper.findById(id);
 	}
 
 }

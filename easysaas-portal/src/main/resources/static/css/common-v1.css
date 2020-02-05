@@ -13,6 +13,14 @@ em{font-style:normal}
 .btn-vip{color:#fff;background-color:#ff7d18;border-color:#ff7d18}
 .btn-vip:hover{color:#fff;background-color:#e46400;border-color:#e46400}
 .btn-vip:active{color:#fff;background-color:#ff7d18;border-color:#ff7d18}
+
+.button.-normal{color:#0084ff;background-color:#fff;border-color:#0084ff}
+.button.-normal:focus,.button.-normal:hover{color:#0084ff;background-color:rgba(0,132,255,.05);border-color:#0084ff}
+.button.-normal:active{color:#0084ff;background-color:rgba(0,132,255,.15);border-color:#0084ff}
+.button.-active{color:#fff;background-color:#0084ff;border-color:#0084ff}
+.button.-active:hover{color:#fff;background-color:#006acc;border-color:#006acc}
+.button.-active:active{color:#fff;background-color:#005cb3;border-color:#005cb3}
+
 .fa-caret-down{ margin-left: 5px;font-size:16px;font-style:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 body{margin:0}
 body,html{font-family:"Microsoft YaHei",Arial,sans-serif;font-size:14px;line-height:1.5714285714;-webkit-font-smoothing:antialiased;background:#f6f6f6;color:#333}

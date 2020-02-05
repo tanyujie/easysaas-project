@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
 @JsonSerialize(nullsUsing = SeventeenTableJsonSerializer.class)
 public class DishonestSearchVo {
 	private String name;
-	private Integer type;
+	private Integer type=2;
 	
     @Range(min = 1, max = 30, message = "每页最大数量为30")
     public Integer pageSize = 10;

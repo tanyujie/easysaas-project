@@ -95,7 +95,7 @@ var dishonestResult = DishonestResult();
 								<div class="input-group-btn btn -sm btn-primary"
 									tyc-event-click=""
 									tyc-event-ch="Daohang.DishonestSearch.Search"
-									onclick="headerDishonestObj.confirm()">天眼一下</div>
+									onclick="headerDishonestObj.confirm()">查一下</div>
 							</div>
 						</div>
 						<div class="input-group search-group company"
@@ -115,7 +115,7 @@ var dishonestResult = DishonestResult();
 								src="https://cdn.tianyancha.com/wap/images/close.png"
 								class="clear-input hidden">
 							<div class="input-group-btn btn -sm btn-primary"
-								onclick="header.search(event,'#header-company-search')">天眼一下</div>
+								onclick="header.search(event,'#header-company-search')">查一下</div>
 						</div>
 						<div class="input-group search-group human" style="display: none;">
 							<form autocomplete="off"
@@ -134,7 +134,7 @@ var dishonestResult = DishonestResult();
 								src="https://cdn.tianyancha.com/wap/images/close.png"
 								class="clear-input hidden">
 							<div class="input-group-btn btn -sm btn-primary"
-								onclick="header.searchHuman(event,null,'#header-human-search')">天眼一下</div>
+								onclick="header.searchHuman(event,null,'#header-human-search')">查一下</div>
 						</div>
 						<div class="tooltip-box hidden animate show" animate="animate"
 							animate-in="show">
@@ -218,18 +218,18 @@ var dishonestResult = DishonestResult();
 		<div class="dishonest-detail">
 			<div class="vcontainer">
 				<h2 class="bread">
-					<a class="link-hover-click" href="https://www.tianyancha.com"
-						target="_blank" tyc-event-click=""
-						tyc-event-ch="LaolaiDetail.Head.Tianyancha">天眼查</a><span
+					<a class="link-hover-click" href="http://www.vkwit.com"
+						target="_blank" 
+						>天眼查</a><span
 						class="bread-arrow"><i class="fa fa-angle-right"></i></span><a
 						class="link-hover-click"
-						href="https://www.tianyancha.com/dishonest" target="_blank"
-						tyc-event-click="" tyc-event-ch="LaolaiDetail.Head.Chalaolai">查老赖</a><span
+						href="http://www.vkwit.com/dishonest" target="_blank"
+						 >查老赖</a><span
 						class="bread-arrow"><i class="fa fa-angle-right"></i></span><a
 						class="link-hover-click"
-						href="https://www.tianyancha.com/dishonest/result?name=%E8%B4%BE%E8%B7%83%E4%BA%AD"
-						target="_blank" tyc-event-click=""
-						tyc-event-ch="LaolaiDetail.Head.Keyword">贾跃亭</a><span
+						href="http://www.vkwit.com/dishonest/result?name=${dishonest.name!}"
+						target="_blank" 
+						>${dishonest.name!}</a><span
 						class="bread-arrow"><i class="fa fa-angle-right"></i></span><span
 						class="bread-title">失信记录</span>
 				</h2>
@@ -251,7 +251,7 @@ var dishonestResult = DishonestResult();
 						<div class="info">
 							<div class="title">
 								<span class="name" tyc-event-click=""
-									tyc-event-ch="LaolaiDetail.Companyname">贾跃亭</span><span
+									tyc-event-ch="LaolaiDetail.Companyname">${dishonest.name!}</span><span
 									class="tag tag-status-warn">老赖</span>
 							</div>
 							<div class="item   disDetailItem">
