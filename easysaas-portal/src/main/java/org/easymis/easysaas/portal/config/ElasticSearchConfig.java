@@ -301,8 +301,23 @@ public class ElasticSearchConfig {
 		name.put("analyzer", "ik_max_word");
 		name.put("search_analyzer", "ik_max_word");
 		
+		Map<String, Object> publishDate = new HashMap<>();
+		publishDate.put("type", "date");
+		publishDate.put("format", "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis");
+		
+		Map<String, Object> execList = new HashMap<>();
+		Map<String, Object> execProperties = new HashMap<>();
+		Map<String, Object> execPublishDate = new HashMap<>();
+		execPublishDate.put("type", "date");
+		execPublishDate.put("format", "yyyy-MM-dd||epoch_millis");
+		
+		execProperties.put("publishDate", execPublishDate);	
+		execList.put("properties", execProperties);		
+		
 		Map<String, Object> properties = new HashMap<>();
 		properties.put("name", name);
+		properties.put("publishDate", publishDate);
+		properties.put("execList", execList);
 		Map<String, Object> indexMapping = new HashMap<>();
 		indexMapping.put("properties", properties);
 		//jsonMap.put("books", book);

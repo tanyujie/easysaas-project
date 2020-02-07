@@ -14,7 +14,7 @@ public class WebAppConfig implements WebMvcConfigurer {
 			"/**/*.png", "/**/*.jpg", "/**/*.jpeg", "/**/*.gif", "/**/fonts/*", "/assets/**", "/material/**",
 			"/index.html","/company/*.html","/dishonest", "/dishonest/result",
 			"/human/**",
-			"/dishonest/detail/*.html",
+			"/dishonest/detail/**",
 			"/dishonest/detail/person/*.html",
 			"dishonest/detail/company/*.html","/",
 			"/vipintro.html",

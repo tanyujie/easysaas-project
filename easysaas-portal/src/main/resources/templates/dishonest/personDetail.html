@@ -50,6 +50,12 @@ function DishonestResult(){
 }
 var dishonestResult = DishonestResult();
 
+function changeDisDetail(funcitonName,vthis,pageNum,pages){
+	var page=$(vthis).parent().find('input').eq(0).val()
+	var id=${dishonest.id!};
+	location.href="/dishonest/detail/"+id+"/"+page+".html";
+	
+}
 //headerDishonestObj.loginLink(event)
 </script>
 </head>
@@ -263,25 +269,96 @@ var dishonestResult = DishonestResult();
 									class="tag tag-status-warn">老赖</span>
 							</div>
 							<div class="item   disDetailItem">
-								<span class="key">身份证号码：</span><span class="value">1426231973****081X</span>
+								<span class="key">身份证号码：</span><span class="value">${dishonest.cardCode!}</span>
 							</div>
 							<div class="item">
-								<script type="text/html" id="dishonest_base_info_detail">
-              贾跃亭，男，1973年出生，山西省临汾地区襄汾县人。
-            </script>
 								<div style="max-height: 22px;" class="auto-folder"
 									auto-folder="22" folder-type="custom" is-load="true">
 									<div>
-										<span class="key">简介：</span>贾跃亭，男，1973年出生，山西省临汾地区襄汾县人。
+										<span class="key">简介：</span>${dishonest.name!}，${dishonest.sex!}，${dishonest.birthYear!}年出生，${dishonest.birthDistrict!}人。
 									</div>
 									<span class="hidden folder-btn" folder-btn="">...&nbsp;<a
-										class="link-click" onclick="infoDetail()" tyc-event-click=""
+										class="link-click" onclick="infoDetail()" 
 										tyc-event-ch="CompangyDetail.Head.introduce.detail">更多</a></span>
 								</div>
 							</div>
 						</div>
 					</div>
-		<div class="header-block-container" style="margin-top: 0px;"><div class="result-tips"><div class="tips-content clearfix"><div class="num-title"><span>共</span><span class="tips-num">16</span>条失信记录</div></div></div><div><div class="list" tyc-event-click="" tyc-event-ch="LaolaiDetail.Shixin" data-type="2" data-id="4m1m174me25e555dd7f3c111al2316a8" onclick="openPopup(this)"><div class="name">(2018)京03执672号</div><div class="text-ellipsis"><div class="item"><span class="key">发布日期：</span><span class="value">2019-12-14</span></div><div class="item"><span class="key">履行情况：</span><span class="value">全部未履行</span></div><div class="item"><span class="key">执行法院：</span><span class="value">北京市第三中级人民法院</span></div></div></div><div class="list" tyc-event-click="" tyc-event-ch="LaolaiDetail.Shixin" data-type="2" data-id="4m1eze4ofa8266f0f6e7f4146l3azdb8" onclick="openPopup(this)"><div class="name">(2019)京03执30号</div><div class="text-ellipsis"><div class="item"><span class="key">发布日期：</span><span class="value">2019-12-12</span></div><div class="item"><span class="key">履行情况：</span><span class="value">全部未履行</span></div><div class="item"><span class="key">执行法院：</span><span class="value">北京市第三中级人民法院</span></div></div></div><div class="list" tyc-event-click="" tyc-event-ch="LaolaiDetail.Shixin" data-type="2" data-id="4mozezo4ef9b765fb5ac69198l65e4a8" onclick="openPopup(this)"><div class="name">(2019)京03执781号</div><div class="text-ellipsis"><div class="item"><span class="key">发布日期：</span><span class="value">2019-12-09</span></div><div class="item"><span class="key">履行情况：</span><span class="value">全部未履行</span></div><div class="item"><span class="key">执行法院：</span><span class="value">北京市第三中级人民法院</span></div></div></div><div class="list" tyc-event-click="" tyc-event-ch="LaolaiDetail.Shixin" data-type="2" data-id="4mcozem76aa7bc640e55c0100l0ezbe8" onclick="openPopup(this)"><div class="name">(2019)京03执631号</div><div class="text-ellipsis"><div class="item"><span class="key">发布日期：</span><span class="value">2019-11-04</span></div><div class="item"><span class="key">履行情况：</span><span class="value">全部未履行</span></div><div class="item"><span class="key">执行法院：</span><span class="value">北京市第三中级人民法院</span></div></div></div><div class="list" tyc-event-click="" tyc-event-ch="LaolaiDetail.Shixin" data-type="2" data-id="49mv97v4e198cfb1220277171l949fe8" onclick="openPopup(this)"><div class="name">(2019)鄂01执290号</div><div class="text-ellipsis"><div class="item"><span class="key">发布日期：</span><span class="value">2019-10-15</span></div><div class="item"><span class="key">履行情况：</span><span class="value">全部未履行</span></div><div class="item"><span class="key">执行法院：</span><span class="value">武汉市中级人民法院</span></div></div></div><div class="list" tyc-event-click="" tyc-event-ch="LaolaiDetail.Shixin" data-type="2" data-id="49mv9741dfdb3fa63f7ca1111l8490b8" onclick="openPopup(this)"><div class="name">(2019)鄂01执289号</div><div class="text-ellipsis"><div class="item"><span class="key">发布日期：</span><span class="value">2019-10-15</span></div><div class="item"><span class="key">履行情况：</span><span class="value">全部未履行</span></div><div class="item"><span class="key">执行法院：</span><span class="value">武汉市中级人民法院</span></div></div></div><div class="list" tyc-event-click="" tyc-event-ch="LaolaiDetail.Shixin" data-type="2" data-id="49mv974o3b9e526eda9c2919bled9238" onclick="openPopup(this)"><div class="name">(2019)鄂01执292号</div><div class="text-ellipsis"><div class="item"><span class="key">发布日期：</span><span class="value">2019-10-15</span></div><div class="item"><span class="key">履行情况：</span><span class="value">全部未履行</span></div><div class="item"><span class="key">执行法院：</span><span class="value">武汉市中级人民法院</span></div></div></div><div class="list" tyc-event-click="" tyc-event-ch="LaolaiDetail.Shixin" data-type="2" data-id="49mv974768baef17f96475158l8e9ea8" onclick="openPopup(this)"><div class="name">(2019)鄂01执291号</div><div class="text-ellipsis"><div class="item"><span class="key">发布日期：</span><span class="value">2019-10-15</span></div><div class="item"><span class="key">履行情况：</span><span class="value">全部未履行</span></div><div class="item"><span class="key">执行法院：</span><span class="value">武汉市中级人民法院</span></div></div></div><div class="list" tyc-event-click="" tyc-event-ch="LaolaiDetail.Shixin" data-type="2" data-id="4emmz1me7844ab4b599c95157ld7z418" onclick="openPopup(this)"><div class="name">(2019)鄂96执53号</div><div class="text-ellipsis"><div class="item"><span class="key">发布日期：</span><span class="value">2019-07-19</span></div><div class="item"><span class="key">履行情况：</span><span class="value">全部未履行</span></div><div class="item"><span class="key">执行法院：</span><span class="value">湖北省汉江中级人民法院</span></div></div></div><div class="list" tyc-event-click="" tyc-event-ch="LaolaiDetail.Shixin" data-type="2" data-id="4e9oeovzef182a6ed8ccef1f8l4bef48" onclick="openPopup(this)"><div class="name">(2019)京03执301号</div><div class="text-ellipsis"><div class="item"><span class="key">发布日期：</span><span class="value">2019-06-27</span></div><div class="item"><span class="key">履行情况：</span><span class="value">全部未履行</span></div><div class="item"><span class="key">执行法院：</span><span class="value">北京市第三中级人民法院</span></div></div></div></div><div class="result-footer" tyc-event-click="" tyc-event-ch="LaolaiDetail.Fenye"><!--randomJump: 是否展示自定义跳转--><!----><!----><!----><div class=" dishonest-paper"><ul class="pagination" page-total="16" change-type="" line-type-name="" line-type-val=""><li><a class="num -current" href="/dishonest/detail/741m4vca7eca2479a0ec2f1fel08m466/t2?id=2187083120&amp;card=1426231973****081X&amp;source=1">1</a></li><li><a class="num " href="/dishonest/detail/741m4vca7eca2479a0ec2f1fel08m466/t2/p2?id=2187083120&amp;card=1426231973****081X&amp;source=1">2</a></li><li><a class="num -next" href="/dishonest/detail/741m4vca7eca2479a0ec2f1fel08m466/t2/p2?id=2187083120&amp;card=1426231973****081X&amp;source=1">&gt;</a></li></ul></div><div id="customize" class="customize"><span>跳到</span><input type="text" class="input -h30" value="1"><span>页</span><div class="search-btn btn -h30 btn-primary-bd" onclick="changeDisDetail('random' ,this, 1, 2)">确定</div><input type="text" class="hidden" id="pg_customize_total" value="2"><input type="text" class="hidden" id="pg_customize_current" value="1"><input type="text" class="hidden" id="pg_url_no" value="/dishonest/detail/741m4vca7eca2479a0ec2f1fel08m466/t2?id=2187083120&amp;card=1426231973****081X&amp;source=1"><input type="text" class="hidden" id="pg_customize_url" value="undefined/search/p2"></div></div></div>
+					<div class="header-block-container" style="margin-top: 0px;">
+						<div class="result-tips">
+							<div class="tips-content clearfix">
+								<div class="num-title">
+									<span>共</span><span class="tips-num">${dishonest.execPage.getTotal()!}</span>条失信记录
+								</div>
+							</div>
+						</div>
+						<div>
+						<#if dishonest.execPage.getList()?exists >
+							<#list dishonest.execPage.getList() as item>
+							<div class="list" tyc-event-click=""
+								tyc-event-ch="LaolaiDetail.Shixin" data-type="2"
+								data-id="4m1m174me25e555dd7f3c111al2316a8"
+								onclick="openPopup(this)">
+								<div class="name">${item.caseCode!}</div>
+								<div class="text-ellipsis">
+									<div class="item">
+										<span class="key">发布日期：</span><span class="value">${item.publishDate!}</span>
+									</div>
+									<div class="item">
+										<span class="key">履行情况：</span><span class="value">全部未履行</span>
+									</div>
+									<div class="item">
+										<span class="key">执行法院：</span><span class="value">${item.execCourtName!}</span>
+									</div>
+								</div>
+							</div>
+							</#list>
+							</#if>
+
+						</div>
+						<#if (dishonest.execPage.getPages()>1) >
+						
+						<div class="result-footer">
+							<!--randomJump: 是否展示自定义跳转-->
+
+							<div class=" dishonest-paper">
+								<ul class="pagination" page-total="16" change-type=""
+									line-type-name="" line-type-val="">
+									<#if !(dishonest.execPage.isFirstPage)>
+									<li><a class="num -prev" href="/dishonest/detail/${dishonest.id}/${dishonest.execPage.prePage}.html">&lt;</a></li>
+									</#if>
+									<#list dishonest.execPage.getNavigatepageNums() as element>
+									<#if element==dishonest.execPage.getPageNum()>
+					                    <li ><a class="num -current" href="/dishonest/detail/${dishonest.id}/${element}.html">${element} </a></li>
+					                </#if>
+					                <#if element!=dishonest.execPage.getPageNum()>
+					                    <li><a class="num" href="/dishonest/detail/${dishonest.id}/${element}.html">${element}</a></li>
+					                </#if>
+
+							
+									</#list>
+									<#if !(dishonest.execPage.isLastPage)>
+									<li><a class="num -next"
+										href="/dishonest/detail/${dishonest.id}/${dishonest.execPage.nextPage}.html">&gt;</a></li>
+									</#if>
+								</ul>
+							</div>
+							<div id="customize" class="customize">
+								<span>跳到</span>
+								<input type="text" class="input -h30" value="${dishonest.execPage.pages!}"><span>页</span>
+								<div class="search-btn btn -h30 btn-primary-bd"
+									onclick="changeDisDetail('random' ,this, 1, 2)">确定</div>
+								<input type="text" class="hidden" id="pg_customize_total"
+									value="2"><input type="text" class="hidden"
+									id="pg_customize_current" value="1"><input type="text"
+									class="hidden" id="pg_url_no"
+									value="/dishonest/detail/741m4vca7eca2479a0ec2f1fel08m466/t2?id=2187083120&amp;card=1426231973****081X&amp;source=1"><input
+									type="text" class="hidden" id="pg_customize_url"
+									value="undefined/search/p2">
+							</div>
+						</div>
+						</#if>
+					</div>
 					<div class="container-tips dishonest-tips">
 						<div class="data-logo">
 							<svg viewBox="0 0 99 33">

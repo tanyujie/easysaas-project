@@ -190,28 +190,50 @@ public class BulkProcessImpl implements BulkProcessService{
 
 			ResultSetMetaData colData = rs.getMetaData();
 
-			ArrayList<HashMap<String, String>> dataList = new ArrayList<HashMap<String, String>>();
+			ArrayList<HashMap<String, Object>> dataList = new ArrayList<HashMap<String, Object>>();
 
-			HashMap<String, String> map = null;
+			HashMap<String, Object> map = null;
 			int count = 0;
 			String c = null;
 			String v = null;
 			 BulkRequest request = new BulkRequest();
 			while (rs.next()) {
 				count++;
-				map = new HashMap<String, String>(100);
+				map = new HashMap<String, Object>(100);
 				for (int i = 1; i <= colData.getColumnCount(); i++) {
 					c = colData.getColumnName(i);
 					v = rs.getString(c);
 					map.put(lineToHump(c), v);
+					if(lineToHump(c).equals("dishonestId")) {
+						ArrayList<HashMap<String, Object>> execList = new ArrayList<HashMap<String, Object>>();
+						String vSql="SELECT * from dishonest_exec where dishonest_id='"+v+"'";	
+						Connection dishonestConnection = DBHelper.getDishonestConnection();
+						PreparedStatement psExec = dishonestConnection.prepareCall(vSql);
+						//psExec.setFetchSize(Integer.MIN_VALUE);
+						ResultSet rsExec = psExec.executeQuery();
+						ResultSetMetaData colDataExec = rsExec.getMetaData();						
+						while (rsExec.next()) {
+							HashMap<String, Object> mapExec = new HashMap<String, Object>(100);
+							for (int j = 1; j <= colDataExec.getColumnCount(); j++) {
+								c = colDataExec.getColumnName(j);
+								String o = rsExec.getString(c);
+								mapExec.put(lineToHump(c), o);								
+							}		
+							execList.add(mapExec);
+						}
+						map.put("execList", execList);					 
+						rsExec.close();
+						psExec.close();
+						dishonestConnection.close();
+					}
 				}
 				dataList.add(map);
 				// 每20锟斤拷锟斤拷写一锟轿ｏ拷锟斤拷锟斤拷锟斤拷锟斤拷蔚锟斤拷锟斤拷锟斤拷一锟斤拷锟结交
 				if (count % 200000 == 0) {
 					logger.info("Mysql handle data number : " + count);
 					// 写锟斤拷ES
-					for (HashMap<String, String> hashMap2 : dataList) {
-						 bulkProcessor.add(new IndexRequest(indexesName).id(hashMap2.get("id")).source(JSON.toJSONString(hashMap2),XContentType.JSON));
+					for (HashMap<String, Object> hashMap2 : dataList) {
+						 bulkProcessor.add(new IndexRequest(indexesName).id(hashMap2.get("id").toString()).source(JSON.toJSONString(hashMap2),XContentType.JSON));
 					}
 				     client.bulk(request, RequestOptions.DEFAULT);
 				     
@@ -221,8 +243,8 @@ public class BulkProcessImpl implements BulkProcessService{
 				}
 			}
 			// count % 200000 锟斤拷锟斤拷未锟结交锟斤拷锟斤拷锟斤拷
-			for (HashMap<String, String> hashMap2 : dataList) {
-				bulkProcessor.add(new IndexRequest(indexesName).id(hashMap2.get("id")).source(JSON.toJSONString(hashMap2),
+			for (HashMap<String, Object> hashMap2 : dataList) {
+				bulkProcessor.add(new IndexRequest(indexesName).id(hashMap2.get("id").toString()).source(JSON.toJSONString(hashMap2),
 						XContentType.JSON));
 			}
 		    client.bulk(request, RequestOptions.DEFAULT);

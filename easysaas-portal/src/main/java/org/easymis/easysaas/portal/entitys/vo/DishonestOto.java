@@ -1,5 +1,9 @@
 package org.easymis.easysaas.portal.entitys.vo;
 
+import java.util.List;
+
+import org.easymis.easysaas.portal.entitys.mybatis.dto.DishonestExec;
+
 import io.searchbox.annotations.JestId;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -23,6 +27,8 @@ public class DishonestOto {
     @ApiModelProperty(value = "出生年份")
     private String birthYear;
     
+    private List<DishonestExecOto> execList;
+    private Integer execListCout;
 	public String getFamilyName() {
 		if (dishonestType!=null&&dishonestType == 2)
 			return name.substring(0, 1);
@@ -35,5 +41,13 @@ public class DishonestOto {
 		else
 			return "";
 	}
+	public Integer getExecListCout() {
+		if (execList!=null&&execList.size()>0)
+			return execList.size();
+		else
+			return 0;
+	}
+	
+	
     
 }

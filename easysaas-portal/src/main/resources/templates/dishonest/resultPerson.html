@@ -39,7 +39,7 @@ var headerDishonestObj = Header();
 function DishonestResult(){
 	var p = new Object;
 	p.handleDetail = function(id){
-		location.href="/dishonest/detail/person/"+id+".html";
+		location.href="/dishonest/detail/"+id+".html";
 	};
 	p.openPopup = function(event){
 		alert("openPopup");
@@ -894,37 +894,21 @@ var dishonestResult = DishonestResult();
 									</div>
 								</div>
 								<div class="result-num">
-									<span>共<em>&nbsp;4&nbsp;</em>条失信记录
+									<span>共<em>&nbsp;${person.execListCout!}&nbsp;</em>条失信记录
 									</span>
 								</div>
+								
+								<#list person.getExecList() as item>
+							
 								<div class="results text-ellipsis" data-type="2"
-									data-id="4m4741z950f336578f1c86161lb64238" 
+									data-id="${item.id!}" 
 									tyc-event-ch="LaolaiResult.Shixin"
 									onclick="dishonestResult.openPopup(this)">
-									<span class="result">2019-11-11</span><span class="result">(2019)粤0106执19607号</span><span
-										class="result">全部未履行</span><span class="result">广州市天河区人民法院</span>
+									<span class="result">${item.publishDate!}</span><span class="result">${item.caseCode!}</span><span
+										class="result">全部未履行</span><span class="result">${item.execCourtName!}</span>
 								</div>
-								<div class="results text-ellipsis" data-type="2"
-									data-id="47c7vvmmeb1de919a71761110lbbva18" 
-									tyc-event-ch="LaolaiResult.Shixin"
-									onclick="dishonestResult.openPopup(this)">
-									<span class="result">2018-05-08</span><span class="result">(2018)川0182执221号</span><span
-										class="result">全部未履行</span><span class="result">彭州市人民法院</span>
-								</div>
-								<div class="results text-ellipsis" data-type="2"
-									data-id="4v7vvvz96590ea931a75de1e0l4bv108" 
-									tyc-event-ch="LaolaiResult.Shixin"
-									onclick="dishonestResult.openPopup(this)">
-									<span class="result">2018-02-01</span><span class="result">(2018)川0182执154号</span><span
-										class="result">全部未履行</span><span class="result">彭州市人民法院</span>
-								</div>
-								<div class="results text-ellipsis" data-type="2"
-									data-id="4o79794vf0d31b9aabd9e717bl9b7ea8" 
-									tyc-event-ch="LaolaiResult.Shixin"
-									onclick="dishonestResult.openPopup(this)">
-									<span class="result">2018-01-03</span><span class="result">(2017)川0182执1965号</span><span
-										class="result">全部未履行</span><span class="result">彭州市人民法院</span>
-								</div>
+								</#list>
+								
 							</div>
 							</#list>
 						</#if>

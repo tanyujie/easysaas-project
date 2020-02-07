@@ -31,4 +31,14 @@ public class DBHelper {
 		}
 		return conn;
 	}
+	public static Connection getDishonestConnection() {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String dbUrl = "jdbc:mysql://127.0.0.1:3307/easycompany?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull";
+			conn = DriverManager.getConnection(dbUrl, user, password);// ��ȡ����
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return conn;
+	}
 }

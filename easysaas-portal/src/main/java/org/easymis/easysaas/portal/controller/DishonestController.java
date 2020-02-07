@@ -1,9 +1,9 @@
 package org.easymis.easysaas.portal.controller;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.easymis.easysaas.common.result.exception.ElasticSearchMaxRecordException;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.Dishonest;
@@ -11,6 +11,7 @@ import org.easymis.easysaas.portal.entitys.vo.DishonestPageData;
 import org.easymis.easysaas.portal.entitys.vo.DishonestSearchVo;
 import org.easymis.easysaas.portal.entitys.vo.SearchOutput;
 import org.easymis.easysaas.portal.entitys.vo.SearchVo;
+import org.easymis.easysaas.portal.service.DishonestExecService;
 import org.easymis.easysaas.portal.service.DishonestService;
 import org.easymis.easysaas.portal.service.IdentityCardAddressService;
 import org.elasticsearch.index.query.BoolQueryBuilder;
@@ -22,6 +23,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -36,9 +38,12 @@ import lombok.extern.slf4j.Slf4j;
 public class DishonestController extends IdentityRepository{
 	@Autowired
 	DishonestService dishonestService;
+	
 	@Autowired
 	IdentityCardAddressService identityCardAddressService;
 	
+	@Autowired
+	DishonestExecService dishonestExecService;	
 	
     @ApiOperation(value = "根据各种条件查询老赖信息", response = SearchOutput.class)
     @ApiImplicitParams({
@@ -117,23 +122,27 @@ public class DishonestController extends IdentityRepository{
     	   
     }  
     @ApiOperation(value = "查询企业老赖详情", response = SearchOutput.class)
-    @RequestMapping("/dishonest/detail/{id}.html")
-	public String detail(@PathVariable("id") String id, ModelMap map) {
-		Dishonest vDishonest = dishonestService.findById(id);
+    @RequestMapping(value = {"/dishonest/detail/{dishonestId}.html", "/dishonest/detail/{dishonestId}/{pageNum}.html"}, method = RequestMethod.GET)
+	public String detail(@PathVariable("dishonestId") String dishonestId, @PathVariable(required = false)Integer pageNum, Integer pageSize,ModelMap map) {
+		Dishonest vDishonest = dishonestService.findById(dishonestId);
 		// DishonestOto dishonest= new DishonestOto();
 		// BeanUtils.copyProperties(vDishonest, dishonest);
+		pageNum = Objects.isNull(pageNum)?1:pageNum;
+		pageSize = Objects.isNull(pageSize)?5:pageSize;
+		
+		vDishonest.setExecPage(dishonestExecService.findByPageOnDishonestId(dishonestId, pageNum, pageSize));
 		map.put("dishonest", vDishonest);
 		if (vDishonest.getDishonestType() == 1)
 			return "/dishonest/companyDetail";
 		else
 			return "/dishonest/personDetail";
 	}
-    @ApiOperation(value = "查询企业老赖详情", response = SearchOutput.class)
+/*    @ApiOperation(value = "查询企业老赖详情", response = SearchOutput.class)
     @RequestMapping("/dishonest/detail/company/{id}.html")
     public String companyDetail() {
     	return "/dishonest/companyDetail";
-    }
-    @ApiOperation(value = "查询个人老赖详情", response = SearchOutput.class)
+    }*/
+/*    @ApiOperation(value = "查询个人老赖详情", response = SearchOutput.class)
     @RequestMapping("/dishonest/detail/person/{id}.html")
 	public String personDetail(@PathVariable("id") String id, ModelMap map)
 			throws IllegalAccessException, InvocationTargetException {
@@ -143,5 +152,5 @@ public class DishonestController extends IdentityRepository{
     	map.put("dishonest", vDishonest);
     	return "/dishonest/personDetail";
     	
-    }
+    }*/
 }
