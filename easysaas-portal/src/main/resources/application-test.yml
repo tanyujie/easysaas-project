@@ -1,35 +1,47 @@
 system:
-    domain: http://dbview.easymis.org
-    email: 535782704@qq.com
-    emailpwd:
-    name: easymis
-    icp: 蜀ICP备17043811号-1
-    auth: www.easymis.org
+  domain: http://dbview.easymis.org
+  email: 535782704@qq.com
+  emailpwd:
+  name: easymis
+  icp: 蜀ICP备17043811号-1
+  auth: www.easymis.org
 server:
-    tomcat:
-        access_log_enabled: true
-        basedir: target/tomcat
+  tomcat:
+    access_log_enabled: true
+    basedir: target/tomcat
 spring:
-    profiles:
-        include: pay,mail,param
-    thymeleaf:
-        cache: false
-    h2:
-        console:
-            enabled: true
-    jpa:
-        open-in-view: true
-    redis:
+  profiles:
+    include: pay,mail,param
+  thymeleaf:
+    cache: false
+  h2:
+    console:
+      enabled: true
+  jpa:
+    open-in-view: true
+  redis:
       #数据库索引（默认为0）
-        database: 10
-        host: 118.31.43.2
-        password:
-        port: 6379
-        timeout: 100
-        pool:
-            max-active: 8 
-            max-idle: 8
-            max-wait: -1
+    database: 10
+    host: 118.31.43.2
+    password:
+    port: 6379
+    timeout: 100
+    pool:
+      max-active: 8 
+      max-idle: 8
+      max-wait: -1
+  elasticsearch:
+    host: 127.0.0.1
+    port: 9200
+    scheme: http
+    pool: 5
+    jest:
+      uris: http://127.0.0.1:9200
+      username: elastic
+      password: 123456
+      read-timeout: 20000 #读取超时
+    connection-timeout: 20000 #连接超时
+
 ##多数据源
 datasource:
   #主库
@@ -45,13 +57,6 @@ datasource:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-elasticsearch:
-  host: 127.0.0.1
-  port: 9200
-  scheme: http
-  pool: 5
-  cluster:
-    name: elasticsearch
 #配置日志
 logging:
   #采用相对路径方式将日志文件输出到

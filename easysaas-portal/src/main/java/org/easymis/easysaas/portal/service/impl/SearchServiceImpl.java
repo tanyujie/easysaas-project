@@ -269,6 +269,7 @@ public class SearchServiceImpl implements SearchService {
 		String queryStr = searchSourceBuilder.toString();
 		log.info("\n******es语句：" + queryStr);
 		Search search = new Search.Builder(queryStr).addIndex(ElasticSearchConfig.INDEX_NAME).build();
+
 		SearchResult result = jestClient.execute(search);
 		
 		/** 返回字段处理 */

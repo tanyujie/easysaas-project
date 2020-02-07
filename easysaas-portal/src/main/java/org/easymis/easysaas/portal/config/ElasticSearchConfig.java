@@ -9,6 +9,11 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 
 import org.apache.http.HttpHost;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CredentialsProvider;
+import org.apache.http.impl.client.BasicCredentialsProvider;
+import org.apache.http.impl.nio.client.HttpAsyncClientBuilder;
 import org.easymis.easysaas.portal.entitys.bean.EsEntity;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.bulk.BulkRequest;
@@ -18,6 +23,7 @@ import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.client.indices.CreateIndexResponse;
@@ -43,11 +49,11 @@ import com.alibaba.fastjson.JSON;
 public class ElasticSearchConfig {
 
 
-    @Value("${elasticsearch.host}")
+    @Value("${spring.elasticsearch.host}")
     public String host;
-    @Value("${elasticsearch.port}")
+    @Value("${spring.elasticsearch.port}")
     public int port;
-    @Value("${elasticsearch.scheme}")
+    @Value("${spring.elasticsearch.scheme}")
     public String scheme;
 
     public static final String INDEX_NAME = "company-index";
@@ -81,7 +87,21 @@ public class ElasticSearchConfig {
             if (client != null) {
                 client.close();
             }
-            client = new RestHighLevelClient(RestClient.builder(new HttpHost(host, port, scheme)));
+            //初始化ES操作客户端
+            final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+            credentialsProvider.setCredentials(AuthScope.ANY,
+                    new UsernamePasswordCredentials("elastic", "123456"));  //es账号密码
+
+            //client = new RestHighLevelClient(RestClient.builder(new HttpHost(host, port, scheme)));
+            client = new RestHighLevelClient(RestClient.builder(
+                            new HttpHost(host,port)
+                            ).setHttpClientConfigCallback(new RestClientBuilder.HttpClientConfigCallback() {
+                                public HttpAsyncClientBuilder customizeHttpClient(HttpAsyncClientBuilder httpClientBuilder) {
+                                    httpClientBuilder.disableAuthCaching();
+                                    return httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
+                                }
+                            })
+            		);
             CreateIndexRequest request;
             if (this.indexExist(INDEX_NAME)) {
                 //DeleteIndexRequest deleteIndexRequest= new DeleteIndexRequest(INDEX_NAME);
@@ -103,8 +123,8 @@ public class ElasticSearchConfig {
             	 request.mapping(buildIndexDishonestMapping(),XContentType.JSON);
             }
 
- 
             CreateIndexResponse res = client.indices().create(request, RequestOptions.DEFAULT);
+            
             if (!res.isAcknowledged()) {
                 throw new RuntimeException("初始化失败");
             }
