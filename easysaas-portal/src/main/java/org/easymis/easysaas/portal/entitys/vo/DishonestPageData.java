@@ -17,7 +17,7 @@ public class DishonestPageData implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Object info;
-	private PageVO page;
+	private PageVO pageInfo;
 	private Long totalPerson;
 	private Long totalCompany;// 公司数量
 	private String totalPersonDepict;

@@ -35,6 +35,7 @@ import org.easymis.easysaas.portal.config.ElasticSearchConfig;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.CompanyDto;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.CompanyExport;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.CompanyExportHistory;
+import org.easymis.easysaas.portal.entitys.vo.DishonestOto;
 import org.easymis.easysaas.portal.entitys.vo.ExportQueryVo;
 import org.easymis.easysaas.portal.entitys.vo.SearchOutput;
 import org.easymis.easysaas.portal.entitys.vo.SearchVo;
@@ -292,14 +293,15 @@ public class SearchServiceImpl implements SearchService {
         if (outList.size() == 0)
             total = 0L;
         pageData.setInfo(outList);
-        PageVO pageVO = new PageVO();
+        PageVO<SearchOutput> pageVO = new PageVO<SearchOutput>(outList,searchVo.getPageNo(),searchVo.getPageSize(),total);
+/*        PageVO pageVO = new PageVO();
         pageVO.setTotal(total);
         pageVO.setPageSize(searchVo.getPageSize());
         pageVO.setPageNum(searchVo.getPageNo());
         Long pages = total / searchVo.getPageSize();
         if (total % searchVo.getPageSize() > 0)
             pages = pages + 1;
-        pageVO.setPages(pages.intValue());
+        pageVO.setPages(pages.intValue());*/
         pageData.setPage(pageVO);     
 		return pageData;
 	}

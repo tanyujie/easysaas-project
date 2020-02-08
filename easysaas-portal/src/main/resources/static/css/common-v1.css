@@ -1,7 +1,7 @@
 button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0;outline:none}
 button,input{overflow:visible}
 a{background-color:transparent}
-a{color:#0084ff;text-decoration:none !important;;cursor:pointer}
+a{color:#0084ff;text-decoration:none !important;cursor:pointer}
 em{font-style:normal}
 .btn{display:inline-block;padding:2px 12px;border:1px solid #f3f3f3;border-radius:2px;font-size:14px;text-align:center;line-height:18px;font-weight:400;background-color:#fff;color:#333;cursor:pointer;-webkit-transition:all .2s cubic-bezier(.075,.82,.165,1);transition:all .2s cubic-bezier(.075,.82,.165,1)}
 .btn.-h36,.btn.-lg{padding:8px 10px}

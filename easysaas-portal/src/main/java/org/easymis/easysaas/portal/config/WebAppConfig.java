@@ -20,6 +20,7 @@ public class WebAppConfig implements WebMvcConfigurer {
 			"/vipintro.html",
 			"/vipbusiness.html",
 			"/batch",
+			"/check",
 			"/map",
 			"/claim/entry",
 			"/indexes/**",

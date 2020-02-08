@@ -11,6 +11,7 @@ import org.easymis.easysaas.portal.config.ElasticSearchConfig;
 import org.easymis.easysaas.portal.config.datasource.DataSourceType;
 import org.easymis.easysaas.portal.config.datasource.EasymisDataSource;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.Dishonest;
+import org.easymis.easysaas.portal.entitys.mybatis.dto.DishonestExec;
 import org.easymis.easysaas.portal.entitys.mybatis.mapper.DishonestMapper;
 import org.easymis.easysaas.portal.entitys.vo.DishonestOto;
 import org.easymis.easysaas.portal.entitys.vo.DishonestPageData;
@@ -24,6 +25,8 @@ import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageInfo;
 
 import io.searchbox.client.JestClient;
 import io.searchbox.core.Search;
@@ -94,15 +97,15 @@ public class DishonestServiceImpl implements DishonestService {
         if (outList.size() == 0)
             total = 0L;
         pageData.setInfo(outList);
-        PageVO pageVO = new PageVO();
-        pageVO.setTotal(total);
+        PageVO<DishonestOto> pageVO = new PageVO<DishonestOto>(outList,searchVo.getPageNo(),searchVo.getPageSize(),total);
+/*
         pageVO.setPageSize(searchVo.getPageSize());
         pageVO.setPageNum(searchVo.getPageNo());
         Long pages = total / searchVo.getPageSize();
         if (total % searchVo.getPageSize() > 0)
             pages = pages + 1;
-        pageVO.setPages(pages.intValue());
-        pageData.setPage(pageVO);     
+        pageVO.setPages(pages.intValue());*/
+        pageData.setPageInfo(pageVO);     
 		return pageData;
 	}
 	 @EasymisDataSource(DataSourceType.Slave)

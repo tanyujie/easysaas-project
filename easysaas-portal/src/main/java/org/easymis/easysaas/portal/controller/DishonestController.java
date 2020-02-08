@@ -108,13 +108,13 @@ public class DishonestController extends IdentityRepository{
 		
 
 		if (searchVo.getType() != null && searchVo.getType() == 1) {
-			companyPageData.setTotalPerson(personPageData.getPage().getTotal());
-			companyPageData.setTotalCompany(companyPageData.getPage().getTotal());
+			companyPageData.setTotalPerson(personPageData.getPageInfo().getTotal());
+			companyPageData.setTotalCompany(companyPageData.getPageInfo().getTotal());
 			map.put("pageData", companyPageData);
 			return "/dishonest/resultCompany";
 		}else {
-			personPageData.setTotalPerson(personPageData.getPage().getTotal());
-			personPageData.setTotalCompany(companyPageData.getPage().getTotal());
+			personPageData.setTotalPerson(personPageData.getPageInfo().getTotal());
+			personPageData.setTotalCompany(companyPageData.getPageInfo().getTotal());
 			map.put("pageData", personPageData);
 			return "/dishonest/resultPerson";
 		}

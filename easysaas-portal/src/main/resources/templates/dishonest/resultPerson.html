@@ -48,7 +48,11 @@ function DishonestResult(){
 }
 var dishonestResult = DishonestResult();
 
-//headerDishonestObj.loginLink(event)
+function changeDisDetail(funcitonName,vthis,pageNum,pages){
+	var page=$(vthis).parent().find('input').eq(0).val();
+	location.href="/dishonest/result?name=${searchVo.name!}&province=${searchVo.province!}&birthYear=${searchVo.birthYear!}&sex=${searchVo.sex!}&pageNo="+page;
+	
+}
 </script>
 </head>
 <body>
@@ -913,6 +917,7 @@ var dishonestResult = DishonestResult();
 							</#list>
 						</#if>
 							</div>
+							<#if (pageData.pageInfo.getPages()>1) >
 						<div class="result-footer" 
 							tyc-event-ch="LaolaiResult.Fenye">
 							<!--randomJump: 是否展示自定义跳转-->
@@ -922,36 +927,28 @@ var dishonestResult = DishonestResult();
 							<div class=" dishonest-paper">
 								<ul class="pagination" page-total="5000" change-type=""
 									line-type-name="" line-type-val="">
-									<li><a class="num -current"
-										href="/dishonest/result?name=%E6%88%90%E9%83%BD&amp;type=-1">1</a></li>
-									<li><a class="num "
-										href="/dishonest/result/p2?name=%E6%88%90%E9%83%BD&amp;type=-1">2</a></li>
-									<li><a class="num "
-										href="/dishonest/result/p3?name=%E6%88%90%E9%83%BD&amp;type=-1">3</a></li>
-									<li><a class="num "
-										href="/dishonest/result/p4?name=%E6%88%90%E9%83%BD&amp;type=-1">4</a></li>
-									<li><a class="num "
-										href="/dishonest/result/p5?name=%E6%88%90%E9%83%BD&amp;type=-1">5</a></li>
-									<li><a class="num "
-										href="/dishonest/result/p6?name=%E6%88%90%E9%83%BD&amp;type=-1">6</a></li>
-									<li><a class="num "
-										href="/dishonest/result/p7?name=%E6%88%90%E9%83%BD&amp;type=-1">7</a></li>
-									<li><a class="num "
-										href="/dishonest/result/p8?name=%E6%88%90%E9%83%BD&amp;type=-1">8</a></li>
-									<li><a class="num "
-										href="/dishonest/result/p9?name=%E6%88%90%E9%83%BD&amp;type=-1">9</a></li>
-									<li><a class="num "
-										href="/dishonest/result/p10?name=%E6%88%90%E9%83%BD&amp;type=-1">10</a></li>
-									<li><a class="num -end"
-										href="/dishonest/result/p500?name=%E6%88%90%E9%83%BD&amp;type=-1">...500</a></li>
-									<li><a class="num -next"
-										href="/dishonest/result/p2?name=%E6%88%90%E9%83%BD&amp;type=-1">&gt;</a></li>
+									<#if (pageData.pageInfo.getPageNum()>1)>
+									<li><a class="num -prev" href="/dishonest/result?name=${searchVo.name!}&province=${searchVo.province!}&birthYear=${searchVo.birthYear!}&sex=${searchVo.sex!}&pageNo=${pageData.pageInfo.prePage}">&lt;</a></li>
+									</#if>
+									<#list pageData.pageInfo.getNavigatepageNums() as element>
+										<#if element==pageData.pageInfo.getPageNum()>
+						                    <li ><a class="num -current" href="/dishonest/result?name=${searchVo.name!}&province=${searchVo.province!}&birthYear=${searchVo.birthYear!}&sex=${searchVo.sex!}&pageNo=${element}">${element} </a></li>
+						                </#if>
+						                <#if element!=pageData.pageInfo.getPageNum()>
+						                    <li><a class="num" href="/dishonest/result?name=${searchVo.name!}&province=${searchVo.province!}&birthYear=${searchVo.birthYear!}&sex=${searchVo.sex!}&pageNo=${element}">${element}</a></li>
+						                </#if>
+									
+									</#list>
+									<#if !(pageData.pageInfo.isLastPage)>
+										<li><a class="num -next"
+											href="/dishonest/result?name=${searchVo.name!}&province=${searchVo.province!}&birthYear=${searchVo.birthYear!}&sex=${searchVo.sex!}&pageNo=${pageData.pageInfo.nextPage}">&gt;</a></li>
+									</#if>
 								</ul>
 							</div>
 							<div id="customize" class="customize">
-								<span>跳到</span><input type="text" class="input -h30" value="1"><span>页</span>
+								<span>跳到</span><input type="text" class="input -h30" value="${pageData.pageInfo.pageNum!}"><span>页</span>
 								<div class="search-btn btn -h30 btn-primary-bd"
-									onclick="changeDisDetail('random' ,this, 1, 500)">确定</div>
+									onclick="changeDisDetail('random' ,this, ${pageData.pageInfo.pageNum!}, 500)">确定</div>
 								<input type="text" class="hidden" id="pg_customize_total"
 									value="500"><input type="text" class="hidden"
 									id="pg_customize_current" value="1"><input type="text"
@@ -961,6 +958,7 @@ var dishonestResult = DishonestResult();
 									value="undefined/search/p2">
 							</div>
 						</div>
+						</#if>
 					</div>
 					<div class="container-tips dishonest-tips">
 						<div class="data-logo">

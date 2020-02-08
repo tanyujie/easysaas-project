@@ -797,7 +797,7 @@ img.lazy-img {
 .logo-text.-bg1,.logo-text.-bg2,.logo-text.-bg3,.logo-text.-bg4,.logo-text.-bg5,.logo-text.-bg6{color:#fff}
 .logo-text.-bg2{background:#d1ae9d}.logo-text.-bg3{background:#84cab0}.logo-text.-bg4{background:#8ca3cd}
 .logo-text.-bg5{background:#bc9edd}.logo-text.-bg6{background:#76b3ec}
-
+.pagination li+li{margin-left:10px}
 .dishonest-result .result-item .results{height:36px;line-height:36px;margin:0 -24px;padding-left:24px;padding-right:24px;cursor:pointer}
 
 .dishonest-result .result-item .results .result:first-child{margin-left:0}
