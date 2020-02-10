@@ -12,7 +12,9 @@ public class WebAppConfig implements WebMvcConfigurer {
 
 	private static final List<String> EXCLUDE_PATH = Arrays.asList("/", "/plugin/**","/css/**", "/**/*.css", "/js/**", "/**/*.js",
 			"/**/*.png", "/**/*.jpg", "/**/*.jpeg", "/**/*.gif", "/**/fonts/*", "/assets/**", "/material/**",
-			"/index.html","/company/*.html","/dishonest", "/dishonest/result",
+			"/index.html",
+			"/search/**",
+			"/company/*.html","/dishonest", "/dishonest/result",
 			"/human/**",
 			"/dishonest/detail/**",
 			"/dishonest/detail/person/*.html",

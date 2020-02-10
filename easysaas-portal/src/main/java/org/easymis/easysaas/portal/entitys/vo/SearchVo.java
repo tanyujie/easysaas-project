@@ -4,6 +4,8 @@ import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.Range;
 
+import com.github.pagehelper.util.StringUtil;
+
 import lombok.Data;
 
 @Data
@@ -11,6 +13,8 @@ public class SearchVo {
     //公司id
     public String companyId;
 	private String wd;
+	//t100经营风险,t200经营风险,t300经营状况,t400知识产权
+	private Integer term;
 	//搜索范围
 	private String searchType;
 	//机构类型
@@ -71,5 +75,15 @@ public class SearchVo {
     public Integer pageSize = 10;
     @Min(value = 1, message = "pageNo大于等于1")
     public Integer pageNo = 1;
+	private boolean filterScope=false;
+	public boolean isFilterScope() {
+		if(StringUtil.isNotEmpty(searchType)||StringUtil.isNotEmpty(companyType)||StringUtil.isNotEmpty(province))
+			return true;
+		return filterScope;
+	}
+	public void setFilterScope(boolean filterScope) {
+		this.filterScope = filterScope;
+	}
+	
 
 }

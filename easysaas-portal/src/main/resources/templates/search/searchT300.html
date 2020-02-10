@@ -315,84 +315,22 @@ line-height: 22px;
 		<div class="col-md-9 pr-0">
 					<div class="search-filter " id="search-filter">
 						<div class="filter-type">
-							<a class="type-title active"
+							<a class="type-title"
 								href="http://www.vkwit.com/search?wd=${vo.wd!}"
 								rel="nofollow">公司</a><a class="type-title "
 								href="http://www.vkwit.com/search/t100?wd=${vo.wd!}"
 								rel="nofollow">司法风险</a><a class="type-title "
 								href="http://www.vkwit.com/search/t200?wd=${vo.wd!}"
-								rel="nofollow">经营风险</a><a class="type-title "
+								rel="nofollow">经营风险</a>
+								<a class="type-title active"
 								href="http://www.vkwit.com/search/t300?wd=${vo.wd!}"
 								rel="nofollow">经营状况</a><a class="type-title "
 								href="http://www.vkwit.com/search/t400?wd=${vo.wd!}"
 								rel="nofollow">知识产权</a>
 						</div>
 						<div class="filter-body">
-						<#if vo.filterScope>
-							<div class="filter-select">
-								<div class="filter-scope">
-									<span class="scope-title">已选条件</span><a
-										class="btn -h24 btn-primary-bd"
-										href="http://www.vkwit.com/search?wd=北京">搜索范围：企业名称&nbsp;<i
-										class="tic tic-close-xs"></i></a><a class="scope-more link-click"
-										tyc-event-click=""
-										tyc-event-ch="CompanySearch.Filter.ClearAll"
-										href="http://www.vkwit.com/search?wd=${vo.wd!}"><i
-										class="tic tic-ash-can icon"></i>清除全部</a>
-								</div>
-							</div>
-						</#if>
-							<div class="filter-scope">
-						<span class="scope-title">搜索范围</span>
-						<div class="scope-box scope-content-box">
-						<a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.company" class="item " href="http://www.vkwit.com/search?wd=${vo.wd!}&searchType=company&amp;key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">企业名称</a>
-						<a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.human" class="item " href="https://www.tianyancha.com/search?searchType=human&amp;key=%E6%88%90%E9%83%BD%E9%93%B6&amp;base=bj" rel="nofollow">法人/股东/高管</a>
-						<a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.service" class="item " href="https://www.tianyancha.com/search?searchType=service&amp;key=%E6%88%90%E9%83%BD%E9%93%B6&amp;base=bj" rel="nofollow">产品服务</a>
-						<a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.trademark" class="item " href="https://www.tianyancha.com/search?searchType=trademark&amp;key=%E6%88%90%E9%83%BD%E9%93%B6&amp;base=bj" rel="nofollow">商标</a>
-						<a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.similarAddr" class="item " href="https://www.tianyancha.com/search?searchType=similarAddr&amp;key=%E6%88%90%E9%83%BD%E9%93%B6&amp;base=bj" rel="nofollow">联系方式</a>
-						<a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.scope" class="item " href="https://www.tianyancha.com/search?searchType=scope&amp;key=%E6%88%90%E9%83%BD%E9%93%B6&amp;base=bj" rel="nofollow">经营范围</a>
-						</div>
-						</div>
-						<div class="filter-scope">
-						<span class="scope-title">机构类型</span>
-						<div class="scope-box scope-content-box"><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.normal_company" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=normal_company" rel="nofollow">企业</a><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.institution" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=institution" rel="nofollow">事业单位</a><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.npo_foundation" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=npo_foundation" rel="nofollow">基金会</a><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.npo" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=npo" rel="nofollow">社会组织</a><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.lawFirm" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=lawFirm" rel="nofollow">律所</a><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.hk" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=hk" rel="nofollow">香港特别行政区企业</a><a tyc-event-click="" tyc-event-ch="CompanySearch.Filter.SearchWide.tw" class="item " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;companyType=tw" rel="nofollow">台湾省企业</a></div>
-						</div>
-												<div class="filter-scope">
-						<span class="scope-title">省份地区</span>
-						<div class="scope-box scope-content-box">
-						<a class="item  " href="https://www.tianyancha.com/search?key=%E6%88%90%E9%83%BD%E9%93%B6&amp;base=bj" rel="nofollow">北京市</a>
-						</div>
-						</div>
-						<div class="filter-scope">
-						<span class="scope-title">注册资本</span>
-						<div class="scope-box scope-content-box">
-						<a class="item -line " href="https://www.tianyancha.com/search/or0100?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">0～100万</a>
-						</div>
-						</div>
-						<div class="filter-scope">
-						<span class="scope-title">成立时间</span>
-						<div class="scope-box scope-content-box">
-						<a class="item -line " href="https://www.tianyancha.com/search/oe01?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">成立1年内</a>
-						</div>
-						</div>
-												<div class="filter-scope">
-						<span class="scope-title">行业分类</span>
-						<div class="scope-box scope-content-box">
-						<a class="item   " href="https://www.tianyancha.com/search/ocD?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">电力、热力、燃气及水生产和供应业</a>
-						</div>
-						</div>
-												<div class="filter-scope">
-						<span class="scope-title">企业描述</span>
-						<div class="scope-box scope-content-box">
-						<div class="filter-sel" tyc-event-click="" tyc-event-ch="CompanySearch.Filter.Qiyezhuantai"><div class="filter-btn"><span class="filter-btn-title">企业状态</span><span class="tic tic-caret-down"></span></div><div class="content"><div class="item"><a class="item-click " href="https://www.tianyancha.com/search/os1?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">在业</a></div><div class="item"><a class="item-click " href="https://www.tianyancha.com/search/os2?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">存续</a></div><div class="item"><a class="item-click " href="https://www.tianyancha.com/search/os3?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">吊销</a></div><div class="item"><a class="item-click " href="https://www.tianyancha.com/search/os4?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">注销</a></div><div class="item"><a class="item-click " href="https://www.tianyancha.com/search/os5?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">迁出</a></div></div></div>
-						</div>
-						</div>
-						<div class="filter-scope -expand">
-						<span class="scope-title -vip">高级筛选</span>
-						<div class="scope-box scope-content-box">
-						<div class="filter-sel -vip" tyc-event-click="" tyc-event-ch="CompanySearch.Filter.Contact"><div class="filter-btn"><span class="filter-btn-title">联系方式</span><span class="tic tic-caret-down"></span></div><div class="content"><div class="item"><span class="item-click " onclick="searchNeedVip({isNeedLogin:true,loginUrl:'https://www.tianyancha.com/search/ohp1?key=%E6%88%90%E9%83%BD%E9%93%B6'})">有联系方式</span></div><div class="item"><span class="item-click " onclick="searchNeedVip({isNeedLogin:true,loginUrl:'https://www.tianyancha.com/search/ohp0?key=%E6%88%90%E9%83%BD%E9%93%B6'})">无联系方式</span></div></div></div>
-						</div>
-						</div>
+			
+							
 						</div>
 						<div class="search-expand-btn">
 							<div class="expand" onclick="window1.toggleFilter(this)">收起</div>

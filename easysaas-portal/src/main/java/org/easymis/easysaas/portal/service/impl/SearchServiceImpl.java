@@ -32,14 +32,11 @@ import org.easymis.easysaas.common.result.PageVO;
 import org.easymis.easysaas.common.result.exception.ElasticSearchMaxRecordException;
 import org.easymis.easysaas.common.utils.PayUtils;
 import org.easymis.easysaas.portal.config.ElasticSearchConfig;
-import org.easymis.easysaas.portal.entitys.mybatis.dto.CompanyDto;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.CompanyExport;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.CompanyExportHistory;
-import org.easymis.easysaas.portal.entitys.vo.DishonestOto;
 import org.easymis.easysaas.portal.entitys.vo.ExportQueryVo;
 import org.easymis.easysaas.portal.entitys.vo.SearchOutput;
 import org.easymis.easysaas.portal.entitys.vo.SearchVo;
-import org.easymis.easysaas.portal.entitys.vo.SecurityUserDetails;
 import org.easymis.easysaas.portal.service.CompanyExportHistoryService;
 import org.easymis.easysaas.portal.service.CompanyExportService;
 import org.easymis.easysaas.portal.service.GeneralTaskService;
@@ -293,7 +290,7 @@ public class SearchServiceImpl implements SearchService {
         if (outList.size() == 0)
             total = 0L;
         pageData.setInfo(outList);
-        PageVO<SearchOutput> pageVO = new PageVO<SearchOutput>(outList,searchVo.getPageNo(),searchVo.getPageSize(),total);
+        PageVO<SearchOutput> pageInfo = new PageVO<SearchOutput>(outList,searchVo.getPageNo(),searchVo.getPageSize(),total);
 /*        PageVO pageVO = new PageVO();
         pageVO.setTotal(total);
         pageVO.setPageSize(searchVo.getPageSize());
@@ -302,7 +299,7 @@ public class SearchServiceImpl implements SearchService {
         if (total % searchVo.getPageSize() > 0)
             pages = pages + 1;
         pageVO.setPages(pages.intValue());*/
-        pageData.setPage(pageVO);     
+        pageData.setPageInfo(pageInfo);     
 		return pageData;
 	}
 

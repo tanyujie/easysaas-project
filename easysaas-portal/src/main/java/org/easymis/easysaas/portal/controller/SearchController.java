@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.apache.commons.lang3.StringUtils;
 import org.easymis.easysaas.common.contant.RegexConstant;
 import org.easymis.easysaas.common.result.PageData;
 import org.easymis.easysaas.common.result.RestResult;
@@ -27,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -56,13 +58,26 @@ public class SearchController extends IdentityRepository{
 		@ApiImplicitParam(name = "city", value = "市名称", dataType = "string", required = false),
 		@ApiImplicitParam(name = "district", value = "区名称", dataType = "string", required = false),
     })
-    @RequestMapping("/search")
-	public String search(SearchVo searchVo, ModelMap map) throws IOException, ElasticSearchMaxRecordException {
-		PageData pageData = searchService.esQuery(searchVo);
+    @RequestMapping(value = {"/search", "/search/{t}"})
+	public String search(SearchVo searchVo,  @PathVariable(required = false)String t,ModelMap map) throws IOException, ElasticSearchMaxRecordException {
+		Integer term=0;
+    	if(StringUtils.isNotEmpty(t))
+    		term=new Integer(t.substring(1));
+    	searchVo.setTerm(term);
+    	PageData pageData = searchService.esQuery(searchVo);
 
+		map.put("vo", searchVo);
 		map.put("pageData", pageData);
-		return "/search";
-
+		if (term < 100)
+			return "/search";
+		else if (term >= 100 && term < 200)
+			return "/search/searchT100";
+		else if (term >= 100 && term < 300)
+			return "/search/searchT200";
+		else if (term >= 300 && term < 400)
+			return "/search/searchT300";
+		else
+			return "/search/searchT400";
 	}
     @ApiOperation(value = "根据各种条件查询公司信息并导出", response = SearchOutput.class)
 	@ApiImplicitParams(value = {

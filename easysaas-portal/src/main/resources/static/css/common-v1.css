@@ -247,9 +247,6 @@ a {
     text-decoration: none;
     cursor: pointer;
 }
-.mt74 {
-    margin-top: 74px!important;
-}
 .bread {
     padding: 20px 0 18px;
     margin: 0;
@@ -702,3 +699,44 @@ img.lazy-img {
 .logo-text.-bg2{background:#d1ae9d}.logo-text.-bg3{background:#84cab0}.logo-text.-bg4{background:#8ca3cd}
 .logo-text.-bg5{background:#bc9edd}.logo-text.-bg6{background:#76b3ec}
 .mt74{margin-top:74px!important}
+.mt84{margin-top:84px!important}
+.vkwit-footer{background:#2b343d;color:rgba(255,255,255,.56);font-size:12px}
+.vkwit-footer .vcontainer{line-height:24px}
+.vkwit-footer .footer-top{padding-top:30px;height:268px;border-bottom:1px solid rgba(255,255,255,.1)}
+.vkwit-footer .footer-middle{line-height:18px;padding:12px 0 14px;border-bottom:1px solid rgba(255,255,255,.1)}
+.vkwit-footer .footer-middle .web{padding-right:12px}
+.vkwit-footer .foot-block{float:left;color:rgba(255,255,255,.56)}
+.vkwit-footer .foot-block .header{display:inline-block;color:#fff;font-weight:700;padding-left:8px;margin-bottom:14px;font-size:14px;line-height:14px;border-left:4px solid #0084ff}
+.vkwit-footer .foot-block .content{font-size:12px}
+.vkwit-footer .foot-block .content .col{width:104px;float:left;padding-right: 0px;  padding-left: 0px;}
+.vkwit-footer .foot-block.-site{width:452px}.vkwit-footer .foot-block.-contact{width:262px}
+.vkwit-footer .foot-block.-ext{width:200px}.vkwit-footer .foot-block.-property{width:182px}
+.vkwit-footer .foot-block.-weixin{float:right;width:352px;}
+.vkwit-footer .foot-block .weixin::after,.vkwit-footer .foot-block .weixin::before{display:table;content:" "}
+.vkwit-footer .foot-block .weixin::after{clear:both}
+.vkwit-footer .foot-block .weixin .col{width:128px;padding-right: 0px;  padding-left: 0px;}
+.vkwit-footer .foot-block .weixin .col+.col{width:128px;}
+.vkwit-footer .foot-block .weixin .qrcode{margin-top:8px;width:96px;height:96px}
+.vkwit-footer .foot-block .link-btn{display:inline-block;width:80px;margin-top:32px;border:1px solid #fff;border-radius:2px;font-size:12px;text-align:center;line-height:26px;color:#fff;cursor:pointer;opacity:.56}
+.vkwit-footer .foot-block .link-btn:hover{border-color:#fff;color:#fff;opacity:1}
+.vkwit-footer .foot-block .link-btn+.link-btn{margin-left:16px}
+.vkwit-footer .beian-block{font-size:0;text-align:center;padding:10px 0 10px 0}
+.vkwit-footer .beian-block .beian{height:20px;width:20px;display:inline-block;background-image:url(https://cdn.tianyancha.com/web-require-js/public/sprite/spritesheet-4a09195f88.png);background-position:-465px -103px;background-repeat:no-repeat}
+.vkwit-footer .beian-block .img{opacity:0}
+.vkwit-footer .beian-block .text{font-size:12px;height:24px;vertical-align:middle;margin:0px 0 0 0;display:inline-block}
+.vkwit-footer .beian-block .id-check{display:inline-block;margin-left:32px;margin-right:33px}
+.vkwit-footer .friendly-footer .friendly-title{display:inline-block;width:60px;vertical-align:top}
+.vkwit-footer .friendly-footer .friendly-content{display:inline-block;max-width:1180px}
+.vkwit-footer .friendly-footer .friendly-content .link-footer{display:inline-block}
+
+.link-footer{color:rgba(255,255,255,.56);cursor:pointer}
+.link-footer:hover{color:#fff}
+.link-footer.-block{display:block}
+.bottom-yyzz{display:inline-block;line-height:26px;cursor:pointer;position:relative}
+.bottom-yyzz .icon{width:40px;height:26px;margin-bottom:-1px;margin-left:2px;margin-right:9px}
+.bottom-yyzz .text{line-height:26px;font-size:12px}
+.bottom-yyzz .inner{position:absolute;bottom:50px;left:-250px;display:none}
+.bottom-yyzz:hover .inner{display:block}.bottom-yyzz:hover .text{color:#fff}
+.bottom-yyzz .triangle{position:absolute;display:block;width:30px;height:16px;margin-left:-15px;overflow:hidden;-webkit-box-shadow:0 16px 10px -17px #e0e0e0;box-shadow:0 16px 10px -17px #e0e0e0}
+.bottom-yyzz .triangle:after{display:block;content:" ";position:absolute;width:15px;height:15px;top:10px;left:5px;border:1px solid #e0e0e0;-webkit-transform:rotate(45deg);transform:rotate(45deg);background:#fff;-webkit-box-shadow:-1px -1px 10px -2px #e0e0e0;box-shadow:-1px -1px 10px -2px #e0e0e0}
+.bottom-yyzz .triangle{bottom:-16px;-webkit-transform:rotate(180deg);transform:rotate(180deg);left:270px}

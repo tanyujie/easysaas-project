@@ -1,0 +1,1103 @@
+ul{margin:0}
+li,ul{list-style:none}
+.claim-package-container{background:url(https://cdn.tianyancha.com/web-require-js/themes/18blue/images/background/claim-bg.png) 0 0 no-repeat;background-size:100%}
+.claim-package-container .vcontainer.-package-none{width:1246px}
+.claim-package-container .vcontainer .claim-package-table .coupons-title{ width:100%;height:20px;margin-bottom:16px}
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text
+	{
+	width: 146px;
+	height: 20px;
+	margin: 0 auto;
+	font-size: 0;
+	border-radius: 2px;
+	position: relative
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text.w154
+	{
+	width: 154px
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text.w154 .til-text-right
+	{
+	width: 134px
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text:hover .til-text-hover
+	{
+	opacity: 1;
+	pointer-events: auto;
+	display: block;
+	-webkit-transform: scale(1);
+	transform: scale(1)
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text .til-text-left
+	{
+	display: inline-block;
+	width: 20px;
+	height: 100%;
+	color: #fff;
+	font-size: 12px;
+	text-align: center;
+	border-radius: 2px 0 0 2px;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ff827c),
+		to(#fc5951));
+	background-image: linear-gradient(180deg, #ff827c 0, #fc5951 100%)
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text .til-text-right
+	{
+	display: inline-block;
+	background: rgba(255, 59, 48, .1);
+	width: 126px;
+	height: 100%;
+	font-size: 12px;
+	color: #ff3b30;
+	border-radius: 0 2px 2px 0;
+	text-align: center;
+	cursor: pointer
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text .til-text-hover
+	{
+	position: absolute;
+	left: -28%;
+	top: 20px;
+	margin-top: 12px;
+	width: 237px;
+	height: 395px;
+	padding: 16px 0;
+	background: #fff;
+	-webkit-box-shadow: 0 8px 24px 0 rgba(0, 0, 0, .2);
+	box-shadow: 0 8px 24px 0 rgba(0, 0, 0, .2);
+	z-index: 10;
+	border-radius: 4px;
+	opacity: 0;
+	-webkit-transform-origin: 50% 0;
+	transform-origin: 50% 0;
+	-webkit-transition: all .3s ease-out;
+	transition: all .3s ease-out;
+	-webkit-transform: scale(0);
+	transform: scale(0)
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text .til-text-hover .til-text-triangle
+	{
+	position: absolute;
+	top: -16px;
+	left: 50%;
+	display: block;
+	width: 30px;
+	height: 16px;
+	margin-left: -15px;
+	overflow: hidden;
+	-webkit-box-shadow: 0 16px 10px -17px rgba(0, 0, 0, .2);
+	box-shadow: 0 16px 10px -17px rgba(0, 0, 0, .2)
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text .til-text-hover .til-text-triangle::after
+	{
+	display: block;
+	content: " ";
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	top: 10px;
+	left: 5px;
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	background: #fff;
+	-webkit-box-shadow: -1px -1px 10px -2px rgba(0, 0, 0, .2);
+	box-shadow: -1px -1px 10px -2px rgba(0, 0, 0, .2)
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text .til-text-hover .til-text-hover-top
+	{
+	width: 182px;
+	height: 36px;
+	margin: 0 auto
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text .til-text-hover .til-text-hover-top .hover-text
+	{
+	font-size: 12px;
+	color: #666;
+	letter-spacing: 0;
+	line-height: 16px
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text .til-text-hover .til-text-hover-top .hover-link
+	{
+	margin-top: 4px;
+	font-size: 12px;
+	color: #fcac24;
+	letter-spacing: 0;
+	line-height: 18px
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text .til-text-hover .til-text-hover-bottom
+	{
+	width: 100%;
+	height: 312px;
+	margin-top: 10px
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text .til-text-hover .til-text-hover-bottom.til-text-bg-one
+	{
+	background:
+		url(https://cdn.tianyancha.com/web-require-js/public/images/container/coupons-web-200.jpg)
+		no-repeat no-repeat;
+	background-size: 100% 100%
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text .til-text-hover .til-text-hover-bottom.til-text-bg-two
+	{
+	background:
+		url(https://cdn.tianyancha.com/web-require-js/public/images/container/coupons-web-500.jpg)
+		no-repeat no-repeat;
+	background-size: 100% 100%
+}
+
+.claim-package-container .vcontainer .claim-package-table .coupons-title .til-text .til-text-hover .til-text-hover-bottom.til-text-bg-three
+	{
+	background:
+		url(https://cdn.tianyancha.com/web-require-js/public/images/container/coupons-web-1000.jpg)
+		no-repeat no-repeat;
+	background-size: 100% 100%
+}
+
+.claim-package-container .vcontainer .claim-package-table .-r1 .col-list,
+	.claim-package-container .vcontainer .claim-package-table .-r3 .col-list,
+	.claim-package-container .vcontainer .claim-package-table .-r4 .col-list
+	{
+	border-bottom: 1px solid #f3f3f3;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box
+}
+
+.claim-package-container .vcontainer .claim-package-table .package-col {
+	height: 942px
+}
+
+.claim-package-container .vcontainer .claim-package-table .package-col.-none-baidu
+	{
+	height: 942px
+}
+
+.claim-package-container .vcontainer .claim-package-table .package-col.-none-baidu.-none-coupons
+	{
+	height: 1053px
+}
+
+.claim-package-container .vcontainer .claim-package-table .package-col.-none-baidu.-none-coupons .claim-position-box
+	{
+	height: 1051px
+}
+
+.claim-package-container .vcontainer .claim-package-table .package-col.-bid-package
+	{
+	height: 1150px
+}
+
+.claim-package-container .vcontainer .claim-package-table .claim-btn.-default
+	{
+	margin-bottom: 23px;
+	font-style: normal
+}
+
+.claim-package-container .vcontainer .claim-package-table .claim-btn.-default.-btn-coupons
+	{
+	margin-bottom: 38px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col2 .package-img.-cjrz,
+	.claim-package-container .vcontainer .claim-package-table .-col4 .package-img.-cjrz
+	{
+	padding-top: 0;
+	height: 26px;
+	margin-top: 31px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col2 .package-img.-gjrz,
+	.claim-package-container .vcontainer .claim-package-table .-col4 .package-img.-gjrz
+	{
+	padding-top: 0;
+	height: 26px;
+	margin-top: 31px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col2 .row.title,
+	.claim-package-container .vcontainer .claim-package-table .-col4 .row.title
+	{
+	padding-bottom: 0;
+	position: relative
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col2 .row.title .lhrz-logo,
+	.claim-package-container .vcontainer .claim-package-table .-col4 .row.title .lhrz-logo
+	{
+	width: 51px;
+	height: 24px;
+	margin-top: 15px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col2 .row.title .name,
+	.claim-package-container .vcontainer .claim-package-table .-col4 .row.title .name
+	{
+	height: 19px;
+	font-family: MicrosoftYaHei;
+	font-size: 14px;
+	color: #333;
+	text-align: center;
+	margin-top: 8px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col2 .-baidu .price,
+	.claim-package-container .vcontainer .claim-package-table .-col4 .-baidu .price
+	{
+	margin: 7px 0 16px 0
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col2 .-baidu .price.coupons-baidu,
+	.claim-package-container .vcontainer .claim-package-table .-col4 .-baidu .price.coupons-baidu
+	{
+	margin-bottom: 44px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col1 .title
+	{
+	height: 190px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col1 .title.-title-none-coupons
+	{
+	height: 232px;
+	line-height: 232px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3 {
+	width: 278px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3 .claim-bgc
+	{
+	background: rgba(255, 175, 37, .08)
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3 .claim-tag
+	{
+	position: absolute;
+	top: -8px;
+	left: -1px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3 .claim-tag img
+	{
+	width: 110px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3 .-r1 .col-list,
+	.claim-package-container .vcontainer .claim-package-table .-col3 .-r3 .col-list,
+	.claim-package-container .vcontainer .claim-package-table .-col3 .-r4 .col-list
+	{
+	border-bottom: 1px solid rgba(255, 175, 37, .16)
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3.-hover .claim-position-box
+	{
+	height: 1150px;
+	top: 0
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3.-hover .claim-position-box.col-list
+	{
+	border-bottom: 1px solid rgba(255, 175, 37, .16)
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3.-hover .claim-position-box.-none
+	{
+	height: 942px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3.-hover .claim-position-box.-none.-coupons-none
+	{
+	height: 982px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3.-hover .claim-position-box.-bid
+	{
+	height: 1030px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3.-hover .claim-position-box.-bid.-bid-coupons
+	{
+	height: 1070px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3.-hover .claim-position-box .package-img.-cjrz
+	{
+	padding-top: 0;
+	margin-top: 31px;
+	height: 26px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3.-hover.-none-baidu .claim-position-box
+	{
+	height: 1053px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3.-hover .price
+	{
+	height: 40px;
+	margin-bottom: 16px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3.-hover .price.price-coupons
+	{
+	margin-bottom: 8px
+}
+
+.claim-package-container .vcontainer .claim-package-table .-col3.-hover .price .price-num
+	{
+	font-family: MicrosoftYaHei-Bold;
+	color: #333
+}
+
+.claim-package-container .vcontainer .claim-package-table .claim-btn.-putong
+	{
+	margin: 0 auto;
+	font-weight: 500;
+	background-color: #ffaf25;
+	margin-bottom: 23px
+}
+
+.claim-package-container .vcontainer .claim-package-table .claim-btn.-putong:hover
+	{
+	background: #f19900
+}
+
+.claim-package-container .vcontainer .claim-package-table .claim-btn.-putong.-btn-coupons
+	{
+	margin-bottom: 38px
+}
+
+.claim-sample-guide {
+	position: relative;
+	height: 1755px
+}
+
+.claim-sample-guide .img {
+	width: 100%;
+	vertical-align: middle
+}
+
+.claim-sample-guide .box {
+	position: absolute;
+	top: 76px;
+	width: 100%;
+	text-align: center
+}
+
+.claim-sample-guide .box .content {
+	font-size: 16px;
+	color: #333;
+	line-height: 24px
+}
+
+.claim-sample-guide .box .tip {
+	color: #666
+}
+
+.claim-sample-guide .box .btn {
+	margin-top: 17px
+}
+
+.claim-baidu-banner {
+	display: block;
+	width: 100%;
+	height: 280px;
+	background:
+		url(https://cdn.tianyancha.com/web-require-js/public/images/claim_pkg_baidu_banner-5.png)
+		center no-repeat;
+	background-size: auto 280px
+}
+
+.modal .modal-user-claimList {
+	padding: 16px 16px 32px
+}
+
+.modal .modal-user-claimList .table tbody {
+	max-height: 290px;
+	overflow-y: auto
+}
+
+.modal .modal-user-claimList .company-claim {
+	display: inline-block;
+	width: 71px;
+	height: 20px;
+	vertical-align: top;
+	background-image:
+		url(https://static.tianyancha.com/web-require-js/public/images/user-company-claim-pkg-0.png);
+	background-size: 100% 100%
+}
+
+.modal .modal-user-claimList .company-claim.-pkg-1 {
+	background-image:
+		url(https://static.tianyancha.com/web-require-js/public/images/user-company-claim-pkg-1.png)
+}
+
+.modal .modal-user-claimList .company-claim.-pkg-2 {
+	background-image:
+		url(https://static.tianyancha.com/web-require-js/public/images/user-company-claim-pkg-2.png)
+}
+
+.modal .modal-user-claimList .company-claim.-pkg-3 {
+	width: 89px;
+	background-image:
+		url(https://static.tianyancha.com/web-require-js/public/images/user-company-claim-pkg-3.png)
+}
+
+.modal .modal-user-claimList .btn-container {
+	margin-top: 20px;
+	text-align: center
+}
+
+.modal .modal-user-claimList .btn-container .btn {
+	width: 130px;
+	height: 36px;
+	padding: 8px 0;
+	font-size: 14px
+}
+
+.claim-package-container {
+	padding-bottom: 60px;
+	background-color: #fff
+}
+
+.claim-package-container .claim-package-table {
+	background-color: #fff
+}
+
+.claim-package-container .claim-package-table::after,
+	.claim-package-container .claim-package-table::before {
+	display: table;
+	content: " "
+}
+
+.claim-package-container .claim-package-table::after {
+	clear: both
+}
+
+.claim-package-container .claim-package-table .package-col {
+	position: relative;
+	width: 199px;
+	height: 959px;
+	float: left
+}
+
+.claim-package-container .claim-package-table .row {
+	width: 100%
+}
+
+.claim-package-container .claim-package-table .row::after,
+	.claim-package-container .claim-package-table .row::before {
+	display: table;
+	content: " "
+}
+
+.claim-package-container .claim-package-table .row::after {
+	clear: both
+}
+
+.claim-package-container .claim-package-table .package-img {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	height: 26px;
+	margin-top: 31px;
+	font-size: 20px;
+	color: #333
+}
+
+.claim-package-container .claim-package-table .package-img img {
+	width: 24px;
+	margin-right: 4px
+}
+
+.claim-package-container .claim-package-table .package-img .claim-recommend-icon
+	{
+	position: absolute;
+	top: -1px;
+	left: 20px;
+	display: inline-block;
+	width: 42px;
+	height: 53px;
+	background-image:
+		url(https://cdn.tianyancha.com/web-require-js/public/images/claim-recommend-icon.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 100%
+}
+
+.claim-package-container .claim-package-table .package-img .contact-service-btn
+	{
+	position: absolute;
+	top: 8px;
+	right: 10px;
+	height: 19px;
+	line-height: 19px;
+	font-size: 14px;
+	color: #ffaf25;
+	cursor: pointer
+}
+
+.claim-package-container .claim-package-table .package-img .contact-service-btn .tic
+	{
+	margin-right: 4px;
+	font-size: 16px;
+	color: #ffaf25
+}
+
+.claim-package-container .claim-package-table .package-img .contact-service-btn:hover
+	{
+	color: #f19901
+}
+
+.claim-package-container .claim-package-table .package-img .contact-service-btn:hover .tic
+	{
+	color: #f19901
+}
+
+.claim-package-container .claim-package-table .package-img .tic-chaojirenzhengicon
+	{
+	margin-right: 6px;
+	font-size: 22px;
+	vertical-align: middle
+}
+
+.claim-package-container .claim-package-table .package-img .tic-chaojirenzhengicon.-super
+	{
+	color: #ff7d18
+}
+
+.claim-package-container .claim-package-table .package-img .tic-chaojirenzhengicon.-advanced
+	{
+	color: #ffaf25
+}
+
+.claim-package-container .claim-package-table .package-img .tic-chaojirenzhengicon.-free
+	{
+	color: #0084ff
+}
+
+.claim-package-container .claim-package-table .package-img.-lhrz {
+	height: 35px;
+	padding: 0
+}
+
+.claim-package-container .claim-package-table .price {
+	display: inline-block;
+	width: 100%;
+	height: 40px;
+	margin-bottom: 16px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #333
+}
+
+.claim-package-container .claim-package-table .price .price-num {
+	display: inline-block;
+	margin: 0 4px;
+	font-weight: 700;
+	font-style: normal;
+	font-size: 30px
+}
+
+.claim-package-container .claim-package-table .claim-btn {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	width: 130px;
+	height: 36px;
+	border-radius: 2px;
+	line-height: 36px;
+	font-size: 14px;
+	color: #fff;
+	cursor: pointer
+}
+
+.claim-package-container .claim-package-table .claim-btn.-default {
+	margin: 0 auto;
+	border: 1px solid #ffaf25;
+	color: #ffaf25
+}
+
+.claim-package-container .claim-package-table .claim-btn.-default:hover
+	{
+	background-color: #fff8ed
+}
+
+.claim-package-container .claim-package-table .claim-btn.-baidu {
+	margin: 0 auto;
+	font-weight: 500;
+	background-color: #ffaf25
+}
+
+.claim-package-container .claim-package-table .claim-btn.-baidu:hover {
+	background-color: #f19901
+}
+
+.claim-package-container .claim-package-table .claim-btn.-baidu.-border
+	{
+	margin-right: 16px;
+	background: #fff;
+	border: 1px solid #c6cbff;
+	color: #c6cbff
+}
+
+.claim-package-container .claim-package-table .claim-btn.-baidu.-border:hover
+	{
+	background-color: rgba(64, 88, 239, .05)
+}
+
+.claim-package-container .claim-package-table .claim-btn.-disable {
+	color: #666;
+	margin: 0 auto;
+	border: 1px solid #e0e0e0;
+	margin-bottom: 23px;
+	cursor: no-drop
+}
+
+.claim-package-container .claim-package-table .claim-btn.-disable.-btn-coupons
+	{
+	margin-bottom: 38px
+}
+
+.claim-package-container .claim-package-table .claim-btn-group {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center
+}
+
+.claim-package-container .claim-package-table .col-list {
+	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	color: #333
+}
+
+.claim-package-container .claim-package-table .col-list .item {
+	width: 100%;
+	height: 48px;
+	padding-left: 24px;
+	line-height: 48px
+}
+
+.claim-package-container .claim-package-table .claim-bgc {
+	background-color: #fafafa
+}
+
+.claim-package-container .claim-package-table .bd-bgc {
+	background-color: rgba(64, 80, 239, .04)
+}
+
+.claim-package-container .claim-package-table .-r2::after,
+	.claim-package-container .claim-package-table .-r2::before {
+	display: table;
+	content: " "
+}
+
+.claim-package-container .claim-package-table .-r2::after {
+	clear: both
+}
+
+.claim-package-container .claim-package-table .-r2 .col-list {
+	border-bottom: 1px solid #f3f3f3
+}
+
+.claim-package-container .claim-package-table .-col1 .row.title,
+	.claim-package-container .claim-package-table .-col2 .row.title,
+	.claim-package-container .claim-package-table .-col4 .row.title {
+	border-bottom: 1px solid #f3f3f3
+}
+
+.claim-package-container .claim-package-table .-r4 {
+	border-bottom: none
+}
+
+.claim-package-container .claim-package-table .-col2,
+	.claim-package-container .claim-package-table .-col3,
+	.claim-package-container .claim-package-table .-col4 {
+	text-align: center
+}
+
+.claim-package-container .claim-package-table .-col2 .row.title .name,
+	.claim-package-container .claim-package-table .-col3 .row.title .name,
+	.claim-package-container .claim-package-table .-col4 .row.title .name {
+	display: inline-block;
+	width: 100%;
+	margin-top: 12px;
+	font-size: 20px;
+	color: #333;
+	line-height: 26px
+}
+
+.claim-package-container .claim-package-table .-col2 .row.title .lhrz-logo,
+	.claim-package-container .claim-package-table .-col3 .row.title .lhrz-logo,
+	.claim-package-container .claim-package-table .-col4 .row.title .lhrz-logo
+	{
+	width: 64px;
+	height: 30px;
+	margin: 0 auto;
+	background:
+		url(https://cdn.tianyancha.com/web-require-js/public/images/union-logo.png)
+		0 0 no-repeat;
+	background-size: 100%
+}
+
+.claim-package-container .claim-package-table .-col2 .row.title em,
+	.claim-package-container .claim-package-table .-col3 .row.title em,
+	.claim-package-container .claim-package-table .-col4 .row.title em {
+	float: left;
+	width: 100%;
+	margin-top: 11px;
+	line-height: 19px;
+	font-size: 14px;
+	color: #ff3b30
+}
+
+.claim-package-container .claim-package-table .-col2 .row.title del,
+	.claim-package-container .claim-package-table .-col3 .row.title del,
+	.claim-package-container .claim-package-table .-col4 .row.title del {
+	line-height: 19px;
+	font-size: 14px;
+	color: #999;
+	-webkit-text-decoration-color: #666;
+	text-decoration-color: #666
+}
+
+.claim-package-container .claim-package-table .-col2 .row.title .claim-txt,
+	.claim-package-container .claim-package-table .-col3 .row.title .claim-txt,
+	.claim-package-container .claim-package-table .-col4 .row.title .claim-txt
+	{
+	height: 36px;
+	line-height: 36px
+}
+
+.claim-package-container .claim-package-table .-col2 .row.title .claim-txt .tic-icon_right,
+	.claim-package-container .claim-package-table .-col3 .row.title .claim-txt .tic-icon_right,
+	.claim-package-container .claim-package-table .-col4 .row.title .claim-txt .tic-icon_right
+	{
+	margin-right: 10px;
+	color: #ffaf25
+}
+
+.claim-package-container .claim-package-table .-col2 .col-list,
+	.claim-package-container .claim-package-table .-col3 .col-list,
+	.claim-package-container .claim-package-table .-col4 .col-list {
+	width: 100%;
+	text-align: center
+}
+
+.claim-package-container .claim-package-table .-col2 .col-list .item,
+	.claim-package-container .claim-package-table .-col3 .col-list .item,
+	.claim-package-container .claim-package-table .-col4 .col-list .item {
+	padding: 0
+}
+
+.claim-package-container .claim-package-table .-col2 .tic-icon_right,
+	.claim-package-container .claim-package-table .-col2 .tic-icon_wrong,
+	.claim-package-container .claim-package-table .-col3 .tic-icon_right,
+	.claim-package-container .claim-package-table .-col3 .tic-icon_wrong,
+	.claim-package-container .claim-package-table .-col4 .tic-icon_right,
+	.claim-package-container .claim-package-table .-col4 .tic-icon_wrong {
+	font-size: 16px
+}
+
+.claim-package-container .claim-package-table .-col2 .tic-icon_right,
+	.claim-package-container .claim-package-table .-col3 .tic-icon_right,
+	.claim-package-container .claim-package-table .-col4 .tic-icon_right {
+	color: #14b500;
+	font-size: 24px
+}
+
+.claim-package-container .claim-package-table .-col2 .tic-icon_wrong,
+	.claim-package-container .claim-package-table .-col3 .tic-icon_wrong,
+	.claim-package-container .claim-package-table .-col4 .tic-icon_wrong {
+	color: #ff3b30;
+	font-size: 24px
+}
+
+.claim-package-container .claim-package-table .-col1 {
+	width: 320px;
+	border: 1px solid #e0e0e0;
+	border-right: none
+}
+
+.claim-package-container .claim-package-table .-col1 .title {
+	width: 100%;
+	height: 206px;
+	line-height: 206px;
+	text-align: center;
+	font-size: 20px;
+	color: #666
+}
+
+.claim-package-container .claim-package-table .-col1 .title span {
+	line-height: 26px
+}
+
+.claim-package-container .claim-package-table .-col1 .num {
+	float: left;
+	width: 80px;
+	height: 100%;
+	padding-left: 24px
+}
+
+.claim-package-container .claim-package-table .-col1 .num .tic {
+	font-size: 29px;
+	line-height: 48px;
+	color: #ffaf25
+}
+
+.claim-package-container .claim-package-table .-col1 .col-list .item {
+	position: relative;
+	cursor: pointer
+}
+
+.claim-package-container .claim-package-table .-col1 .col-list .item .tic-new-bg
+	{
+	position: absolute;
+	top: -7px;
+	margin-left: 6px;
+	font-size: 12px
+}
+
+.claim-package-container .claim-package-table .-col1 .col-list .item .tic-new-bg:before
+	{
+	position: relative;
+	z-index: 1;
+	color: #ff3b30
+}
+
+.claim-package-container .claim-package-table .-col1 .col-list .item .tic-new-bg:after
+	{
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #fff
+}
+
+.claim-package-container .claim-package-table .-col1 .col-list .item .tic-new-bg.-hot:before
+	{
+	content: "\e717"
+}
+
+.claim-package-container .claim-package-table .-col1 .col-list .item .tic-new-bg.-hot:after
+	{
+	content: "\e702"
+}
+
+.claim-package-container .claim-package-table .-col1 .col-list .item .tic-new-bg.-new
+	{
+	font-size: 16px
+}
+
+.claim-package-container .claim-package-table .-col1 .col-list .item .tic-new-bg.-new:before
+	{
+	content: "\e793"
+}
+
+.claim-package-container .claim-package-table .-col1 .col-list .item .tic-new-bg.-new:after
+	{
+	content: "\e702"
+}
+
+.claim-package-container .claim-package-table .-col1 .col-list .item em
+	{
+	font-style: normal;
+	color: #999
+}
+
+.claim-package-container .claim-package-table .-col1 .col-list .item:hover
+	{
+	color: #e09109
+}
+
+.claim-package-container .claim-package-table .-col1 .col-list .item:hover em
+	{
+	color: #e09109
+}
+
+.claim-package-container .claim-package-table .claim-position-box {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-transition: top .2s ease-in-out, -webkit-box-shadow .2s
+		ease-in-out;
+	transition: top .2s ease-in-out, -webkit-box-shadow .2s ease-in-out;
+	transition: top .2s ease-in-out, box-shadow .2s ease-in-out;
+	transition: top .2s ease-in-out, box-shadow .2s ease-in-out,
+		-webkit-box-shadow .2s ease-in-out;
+	background-color: #fff
+}
+
+.claim-package-container .claim-package-table .-col2,
+	.claim-package-container .claim-package-table .-col4 {
+	width: 216px;
+	border: 1px solid #e0e0e0;
+	border-left: 1px solid #f3f3f3
+}
+
+.claim-package-container .claim-package-table .-col2.-none-baidu,
+	.claim-package-container .claim-package-table .-col4.-none-baidu {
+	width: 295px;
+	border-right: 1px solid #e0e0e0 !important
+}
+
+.claim-package-container .claim-package-table .-col2:nth-child(2),
+	.claim-package-container .claim-package-table .-col4:nth-child(2) {
+	border-right: none
+}
+
+.claim-package-container .claim-package-table .-col2:nth-child(4),
+	.claim-package-container .claim-package-table .-col4:nth-child(4) {
+	border-left: none;
+	border-right: none
+}
+
+.claim-package-container .claim-package-table .-col2:nth-child(5),
+	.claim-package-container .claim-package-table .-col4:nth-child(5) {
+	border: 1px solid #e0e0e0;
+	border-left: 1px solid #f3f3f3
+}
+
+.claim-package-container .claim-package-table .-col2 .price,
+	.claim-package-container .claim-package-table .-col4 .price {
+	margin-top: 16px
+}
+
+.claim-package-container .claim-package-table .-col2 .price.price-coupons,
+	.claim-package-container .claim-package-table .-col4 .price.price-coupons
+	{
+	margin-bottom: 8px
+}
+
+.claim-package-container .claim-package-table .-col4 {
+	width: 274px
+}
+
+.claim-package-container .claim-package-table .-col3 {
+	width: 328px
+}
+
+.claim-package-container .claim-package-table .-col3.-none-baidu {
+	width: 336px
+}
+
+.claim-package-container .claim-package-table .-col3 .price {
+	margin-top: 16px
+}
+
+.claim-package-container .claim-package-table .-col3 .price.price-coupons
+	{
+	margin-bottom: 8px
+}
+
+.claim-package-container .claim-package-table .-col3 .claim-position-box
+	{
+	border: 1px solid #c6cbff
+}
+
+.claim-package-container .claim-package-table .-col3 .row {
+	border-bottom-color: #c6cbff
+}
+
+.claim-package-container .claim-package-table .-col3 .row.title {
+	border-bottom: 1px solid rgba(255, 175, 37, .16)
+}
+
+.claim-package-container .claim-package-table .-col3 .-r2 .col-list {
+	border-bottom-color: rgba(255, 175, 37, .16)
+}
+
+.claim-package-container .claim-package-table .-col3.-hover .claim-position-box
+	{
+	z-index: 1;
+	border: 1px solid #ffaf25;
+	background: rgba(255, 175, 37, .04);
+	-webkit-box-shadow: 0 0 16px 0 rgba(0, 0, 0, .08);
+	box-shadow: 0 0 16px 0 rgba(0, 0, 0, .08)
+}
+
+.claim-detail-hover-item {
+	position: absolute;
+	left: 321px;
+	display: none;
+	width: 900px;
+	height: 475px;
+	padding: 20px 23px 30px;
+	border-radius: 6px;
+	-webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .2);
+	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .2);
+	z-index: 2;
+	background-color: #fff
+}
+
+.claim-detail-hover-item .title {
+	margin-bottom: 5px;
+	font-size: 22px;
+	line-height: 29px;
+	font-weight: 700;
+	color: #e09109
+}
+
+.claim-detail-hover-item .des {
+	margin-bottom: 18px;
+	font-size: 16px;
+	color: #666;
+	line-height: 21px
+}
+
+.claim-detail-hover-item .lazy-img.-image {
+	display: inline-block;
+	width: 852px;
+	height: 352px;
+	border-radius: 4px
+}
+
+.claim-sample-guide {position:relative;height:1755px}.claim-sample-guide .img{width:100%;vertical-align:middle}
+.claim-sample-guide .box{position:absolute;top:76px;width:100%;text-align:center}
+.claim-sample-guide .box .content{font-size:16px;color:#333;line-height:24px}
+.claim-sample-guide .box .tip{color:#666}
+.claim-sample-guide .box .btn{margin-top:17px}
+.claim-baidu-banner{display:block;width:100%;height:280px;background:url(https://cdn.tianyancha.com/web-require-js/public/images/claim_pkg_baidu_banner-5.png) center no-repeat;background-size:auto 280px}.modal .modal-user-claimList{padding:16px 16px 32px}
+.modal .modal-user-claimList .table tbody{max-height:290px;overflow-y:auto}
+.modal .modal-user-claimList .company-claim{display:inline-block;width:71px;height:20px;vertical-align:top;background-image:url(https://static.tianyancha.com/web-require-js/public/images/user-company-claim-pkg-0.png);background-size:100% 100%}
+.modal .modal-user-claimList .company-claim.-pkg-1{background-image:url(https://static.tianyancha.com/web-require-js/public/images/user-company-claim-pkg-1.png)}.modal .modal-user-claimList .company-claim.-pkg-2{background-image:url(https://static.tianyancha.com/web-require-js/public/images/user-company-claim-pkg-2.png)}.modal .modal-user-claimList .company-claim.-pkg-3{width:89px;background-image:url(https://static.tianyancha.com/web-require-js/public/images/user-company-claim-pkg-3.png)}.modal .modal-user-claimList .btn-container{margin-top:20px;text-align:center}.modal .modal-user-claimList .btn-container .btn{width:130px;height:36px;padding:8px 0;font-size:14px}.claim-package-container{padding-bottom:60px;background-color:#fff}
+
+.package-title{padding-bottom:14px}
+.package-title{width:100%}
+.package-title .pack-tit{width:1248px;height:94px;position:relative;margin:0 auto}
+.package-title .pack-tit .pack-tit-bg{position:absolute;left:50%;top:50%;width:496px;height:30px;margin-left:-248px;margin-top:-15px;background:url(https://cdn.tianyancha.com/web-require-js/public/images/taocan-title.png) 0 0 no-repeat;background-size:100%}
