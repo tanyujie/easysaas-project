@@ -1,17 +1,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="${request.contextPath}/plugin/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="${request.contextPath}/css/dishonest/resultPerson.css">
+<!-- <script src="${request.contextPath}/js/jquery-3.2.0.min.js"> </script> -->
 <!-- 新 Bootstrap4 核心 CSS 文件 -->
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="${request.contextPath}/assets/bootstrap-4.3.1-dist/css/bootstrap.min.css">
  
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
  
 <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
-<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="${request.contextPath}/assets/js/popper.min.js"></script>
  
 <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="${request.contextPath}/assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+
 <link rel="stylesheet" href="${request.contextPath}/css/common-v1.css">
 <style>
 em {
@@ -50,7 +55,7 @@ line-height: 22px;
     font-size: 18px;
 }
 </style>
-<link rel="stylesheet" href="${request.contextPath}/css/common.css">
+
 <link rel="stylesheet" href="${request.contextPath}/css/search.css">
 
 <script src="${request.contextPath}/js/search.js"></script>
@@ -162,7 +167,7 @@ line-height: 22px;
 							class="fa fa-caret-down"></i>
 							
 							<!-- <i
-							class="tic tic-caret-down nav-icon"></i> --></a>
+							class="fa fa-caret-down nav-icon"></i> --></a>
 						<div class="block content">
 							<div class="triangle"></div>
 							<div class="block-content">
@@ -334,11 +339,11 @@ line-height: 22px;
 									<span class="scope-title">已选条件</span><a
 										class="btn -h24 btn-primary-bd"
 										href="http://www.vkwit.com/search?wd=北京">搜索范围：企业名称&nbsp;<i
-										class="tic tic-close-xs"></i></a><a class="scope-more link-click"
+										class="fa fa-close"></i></a><a class="scope-more link-click"
 										tyc-event-click=""
 										tyc-event-ch="CompanySearch.Filter.ClearAll"
 										href="http://www.vkwit.com/search?wd=${vo.wd!}"><i
-										class="tic tic-ash-can icon"></i>清除全部</a>
+										class="fa fa-trash-o"></i>清除全部</a>
 								</div>
 							</div>
 						</#if>
@@ -381,18 +386,403 @@ line-height: 22px;
 						<a class="item   " href="https://www.tianyancha.com/search/ocD?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">电力、热力、燃气及水生产和供应业</a>
 						</div>
 						</div>
-												<div class="filter-scope">
-						<span class="scope-title">企业描述</span>
-						<div class="scope-box scope-content-box">
-						<div class="filter-sel" tyc-event-click="" tyc-event-ch="CompanySearch.Filter.Qiyezhuantai"><div class="filter-btn"><span class="filter-btn-title">企业状态</span><span class="tic tic-caret-down"></span></div><div class="content"><div class="item"><a class="item-click " href="https://www.tianyancha.com/search/os1?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">在业</a></div><div class="item"><a class="item-click " href="https://www.tianyancha.com/search/os2?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">存续</a></div><div class="item"><a class="item-click " href="https://www.tianyancha.com/search/os3?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">吊销</a></div><div class="item"><a class="item-click " href="https://www.tianyancha.com/search/os4?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">注销</a></div><div class="item"><a class="item-click " href="https://www.tianyancha.com/search/os5?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">迁出</a></div></div></div>
-						</div>
-						</div>
-						<div class="filter-scope -expand">
-						<span class="scope-title -vip">高级筛选</span>
-						<div class="scope-box scope-content-box">
-						<div class="filter-sel -vip" tyc-event-click="" tyc-event-ch="CompanySearch.Filter.Contact"><div class="filter-btn"><span class="filter-btn-title">联系方式</span><span class="tic tic-caret-down"></span></div><div class="content"><div class="item"><span class="item-click " onclick="searchNeedVip({isNeedLogin:true,loginUrl:'https://www.tianyancha.com/search/ohp1?key=%E6%88%90%E9%83%BD%E9%93%B6'})">有联系方式</span></div><div class="item"><span class="item-click " onclick="searchNeedVip({isNeedLogin:true,loginUrl:'https://www.tianyancha.com/search/ohp0?key=%E6%88%90%E9%83%BD%E9%93%B6'})">无联系方式</span></div></div></div>
-						</div>
-						</div>
+						<!--企业描述-->
+							<div class="filter-scope -qyms">
+								<span class="scope-title">企业描述</span>
+								<div class="scope-box">
+									<!--行业分类-->
+									<!--注册资本-->
+									<!--注册时间-->
+									<!--企业状态-->
+									<div class="filter-sel" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.Qiyezhuantai">
+										<div class="filter-btn">
+											<span class="filter-btn-title">企业状态</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/os1?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">在业</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/os2?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">存续</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/os3?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">吊销</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/os4?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">注销</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/os5?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">迁出</a>
+											</div>
+										</div>
+									</div>
+									<!--资本类型-->
+									<div class="filter-sel" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.MoneyType">
+										<div class="filter-btn">
+											<span class="filter-btn-title">资本类型</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/ot1?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">人民币</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/ot2?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">美元</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/ot3?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">其他</a>
+											</div>
+										</div>
+									</div>
+									<!--企业类型-->
+									<div class="filter-sel" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.CompanyType">
+										<div class="filter-btn">
+											<span class="filter-btn-title">企业类型</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oot1?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">有限责任公司</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oot2?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">股份有限公司</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oot3?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">集体所有制</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oot4?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">国有企业</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oot5?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">个体工商户</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oot12?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">个人独资企业</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oot6?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">有限合伙</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oot7?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">普通合伙</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oot8?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">外商投资企业</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oot9?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">港、澳、台</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oot10?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">联营企业</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oot11?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">私营企业</a>
+											</div>
+										</div>
+									</div>
+									<!--人员规模-->
+									<div class="filter-sel" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SocialSecurity">
+										<div class="filter-btn">
+											<span class="filter-btn-title">参保人数</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oss050?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">小于50人</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oss5099?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">50-99人</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oss100499?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">100-499人</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oss500999?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">500-999人</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oss4999?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">1000-4999人</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oss9999?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">5000-9999人</a>
+											</div>
+											<div class="item">
+												<a class="item-click "
+													href="https://www.tianyancha.com/search/oss10000?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													rel="nofollow">10000人以上</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="filter-scope -expand ">
+								<span class="scope-title -vip">高级筛选</span>
+								<div class="scope-box">
+									<!--联系方式-->
+									<div class="filter-sel -vip" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.Contact">
+										<div class="filter-btn">
+											<span class="filter-btn-title">联系方式</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">有联系方式</span>
+											</div>
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">无联系方式</span>
+											</div>
+										</div>
+									</div>
+									<!--手机号码-->
+									<div class="filter-sel -vip" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.PhoneNum">
+										<div class="filter-btn">
+											<span class="filter-btn-title">手机号码</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">有手机号码</span>
+											</div>
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">无手机号码</span>
+											</div>
+										</div>
+									</div>
+									<!--联系邮箱-->
+									<div class="filter-sel -vip" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.Mail">
+										<div class="filter-btn">
+											<span class="filter-btn-title">联系邮箱</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">有联系邮箱</span>
+											</div>
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">无联系邮箱</span>
+											</div>
+										</div>
+									</div>
+									<!--商标-->
+									<div class="filter-sel -vip" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.Shangbiao">
+										<div class="filter-btn">
+											<span class="filter-btn-title">商标信息</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">有商标信息</span>
+											</div>
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">无商标信息</span>
+											</div>
+										</div>
+									</div>
+									<!--专利-->
+									<div class="filter-sel -vip" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.Patent">
+										<div class="filter-btn">
+											<span class="filter-btn-title">专利信息</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">有专利信息</span>
+											</div>
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">无专利信息</span>
+											</div>
+										</div>
+									</div>
+									<!--融资信息-->
+									<div class="filter-sel -vip" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.Rongzi">
+										<div class="filter-btn">
+											<span class="filter-btn-title">融资信息</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">有融资信息</span>
+											</div>
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">无融资信息</span>
+											</div>
+										</div>
+									</div>
+									<!--上市状态-->
+									<div class="filter-sel -vip" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.Shangshi">
+										<div class="filter-btn">
+											<span class="filter-btn-title">上市状态</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">已上市</span>
+											</div>
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">未上市</span>
+											</div>
+										</div>
+									</div>
+									<!--失信信息-->
+									<div class="filter-sel -vip" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.Shixin">
+										<div class="filter-btn">
+											<span class="filter-btn-title">失信信息</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">有失信信息</span>
+											</div>
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">无失信信息</span>
+											</div>
+										</div>
+									</div>
+									<!--网址信息-->
+									<div class="filter-sel -vip" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.Website">
+										<div class="filter-btn">
+											<span class="filter-btn-title">网址信息</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">有网址信息</span>
+											</div>
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">无网址信息</span>
+											</div>
+										</div>
+									</div>
+									<!--动产抵押-->
+									<div class="filter-sel -vip" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.Mortgage">
+										<div class="filter-btn">
+											<span class="filter-btn-title">动产抵押</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">有动产抵押</span>
+											</div>
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">无动产抵押</span>
+											</div>
+										</div>
+									</div>
+									<!--500强-->
+									<div class="filter-sel -vip" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.Top500">
+										<div class="filter-btn">
+											<span class="filter-btn-title">500强</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">中国500强</span>
+											</div>
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">世界500强</span>
+											</div>
+										</div>
+									</div>
+									<!--作品著作权-->
+									<div class="filter-sel -vip" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.CopyrightWorks">
+										<div class="filter-btn">
+											<span class="filter-btn-title">作品著作权</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">有作品著作权</span>
+											</div>
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">无作品著作权</span>
+											</div>
+										</div>
+									</div>
+									<!--软件著作权-->
+									<div class="filter-sel -vip" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.CopyrightSoftware">
+										<div class="filter-btn">
+											<span class="filter-btn-title">软件著作权</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content">
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">有软件著作权</span>
+											</div>
+											<div class="item">
+												<span class="item-click " onclick="searchNeedVip()">无软件著作权</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 						<div class="search-expand-btn">
 							<div class="expand" onclick="window1.toggleFilter(this)">收起</div>
@@ -503,6 +893,9 @@ line-height: 22px;
 									<#if (pageData.pageInfo.getPageNum()>1)>
 									<li><a class="num -prev" href="http://www.vkwit.com/search?wd=${vo.wd!}&pageNo=${pageData.pageInfo.prePage}">&lt;</a></li>
 									</#if>
+									<#if (pageData.pageInfo.navigateFirstPage>1)>
+									<li><a class="num -first" href="http://www.vkwit.com/search?wd=${vo.wd!}&pageNo=1">1...</a></li>
+									</#if>
 									<#list pageData.pageInfo.getNavigatepageNums() as element>
 									<#if element==pageData.pageInfo.getPageNum()>
 									<li><a class="num -current"
@@ -513,8 +906,10 @@ line-height: 22px;
 										href="http://www.vkwit.com/search?wd=${vo.wd!}&pageNo=${element}">${element}</a></li>
 										</#if>
 									</#list>
+									<#if (pageData.pageInfo.pages-pageData.pageInfo.navigateLastPage>0)>
 									<li><a class="num -end"
-										href="https://www.tianyancha.com/search/p250?key=%E6%88%90%E9%83%BD%E9%93%B6">...250</a></li>
+										href="http://www.vkwit.com/search?wd=${vo.wd!}&pageNo=${pageData.pageInfo.pages}">...${pageData.pageInfo.pages}</a></li>
+										</#if>
 									<#if !(pageData.pageInfo.isLastPage)>
 										<li><a class="num -next"
 											href="http://www.vkwit.com/search?wd=${vo.wd!}&pageNo=${pageData.pageInfo.nextPage}">&gt;</a></li>

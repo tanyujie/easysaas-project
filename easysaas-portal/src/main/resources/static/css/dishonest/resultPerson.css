@@ -75,7 +75,8 @@ body.-ready .no-data .img{background-image:url(https://cdn.tianyancha.com/web-re
 .nav-item:hover .title .fa-caret-down{-webkit-transform:rotate(180deg);transform:rotate(180deg)}
 
 .nav-item .content{position:absolute;top:47px;z-index:501;border:1px solid #e0e0e0}
-.nav-item .content .triangle{position:absolute;top:-16px;left:50%;display:block;width:30px;height:16px;margin-left:-15px;overflow:hidden;-webkit-box-shadow:0 16px 10px -17px #e0e0e0;box-shadow:0 16px 10px -17px #e0e0e0}.nav-item .content .triangle:after{display:block;content:" ";position:absolute;width:15px;height:15px;top:10px;left:5px;border:1px solid #e0e0e0;transform:rotate(45deg);-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);background:#fff;-webkit-box-shadow:-1px -1px 10px -2px #e0e0e0;box-shadow:-1px -1px 10px -2px #e0e0e0}
+.nav-item .content .triangle{position:absolute;top:-16px;left:50%;display:block;width:30px;height:16px;margin-left:-15px;overflow:hidden;-webkit-box-shadow:0 16px 10px -17px #e0e0e0;box-shadow:0 16px 10px -17px #e0e0e0}
+.nav-item .content .triangle:after{display:block;content:" ";position:absolute;width:15px;height:15px;top:10px;left:5px;border:1px solid #e0e0e0;transform:rotate(45deg);-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);background:#fff;-webkit-box-shadow:-1px -1px 10px -2px #e0e0e0;box-shadow:-1px -1px 10px -2px #e0e0e0}
 .nav-item .content .item{text-align:center}
 .nav-item .content.-box{width:314px;margin-left:-157px;border-radius:4px}
 .nav-item .content.-box .block-content{padding:25px 23px 25px 25px}

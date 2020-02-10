@@ -330,7 +330,40 @@ line-height: 22px;
 						</div>
 						<div class="filter-body">
 
-					
+							<div class="folder-body">
+								<div class="filter-scope">
+									<span class="scope-title">搜索范围</span>
+									<a class="item ${(vo.term==200)?string('selected','')}"
+										tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.200"
+										href="http://www.vkwit.com/search/t200?wd=${vo.wd!}"
+										rel="nofollow">全部</a>
+										<a class="item ${(vo.term==201)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.201"
+										href="http://www.vkwit.com/search/t201?wd=${vo.wd!}"
+										rel="nofollow">经营异常</a>
+										<a class="item ${(vo.term==202)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.202"
+										href="http://www.vkwit.com/search/t202?wd=${vo.wd!}"
+										rel="nofollow">行政处罚</a>
+										<a class="item ${(vo.term==203)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.203"
+										href="http://www.vkwit.com/search/t203?wd=${vo.wd!}"
+										rel="nofollow">严重违法</a>
+										<a class="item ${(vo.term==204)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.204"
+										href="http://www.vkwit.com/search/t204?wd=${vo.wd!}"
+										rel="nofollow">股权出质</a>
+										<a class="item ${(vo.term==205)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.205"
+										href="http://www.vkwit.com/search/t205?wd=${vo.wd!}"
+										rel="nofollow">动产抵押</a>
+										<a class="item ${(vo.term==206)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.206"
+										href="http://www.vkwit.com/search/t206?wd=${vo.wd!}"
+										rel="nofollow">欠税公告</a>
+								</div>
+							</div>
 						</div>
 						<div class="search-expand-btn">
 							<div class="expand" onclick="window1.toggleFilter(this)">收起</div>
@@ -344,26 +377,7 @@ line-height: 22px;
 								<div class="num-title  align-middle">
 									<span class="text-center">威客智库为你找到</span><span class="tips-num">${pageData.pageInfo.total!}</span>家公司
 								</div>
-								<div class="float-right">
-									<div class="btn-group">
-										<div class="dropdown">
-											<a
-												class="btn btn-outline-white  dropdown-toggle m-1 border-1"
-												data-toggle="dropdown"> 默认排序 </a>
-											<div class="dropdown-menu">
-												<a class="dropdown-item" href="#">Link 1</a> <a
-													class="dropdown-item" href="#">Link 2</a> <a
-													class="dropdown-item" href="#">Link 3</a>
-											</div>
-										</div>
 
-
-
-										<a class="btn btn-outline-warning m-1 border-1">批量联系</a> <a
-											class="btn btn-warning m-1 border-0" onclick="window1.companyExport()">导出数据</a>
-										<!-- <span class="pull-left m-l btn btn-default" data-toggle="modal" data-target="#loginModal" onclick="getCaptcha()"> <span class="sortDesc">默认排序</span> <span class="caret m-l"></span> </span> -->
-									</div>
-								</div>
 
 							</div>
 						</div>

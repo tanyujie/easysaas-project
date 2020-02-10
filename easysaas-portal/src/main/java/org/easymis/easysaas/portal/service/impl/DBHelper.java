@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 
 public class DBHelper {
 
-	public static final String url = "jdbc:mysql://127.0.0.1:3307/easymis_dbview?useSSL=false";
-	public static final String name = "com.mysql.jdbc.Driver";
+	public static final String url = "jdbc:mysql://127.0.0.1:3307/easycompany?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull";
+	public static final String name = "com.mysql.cj.jdbc.Driver";
 	public static final String user = "root";
 	public static final String password = "root";
 

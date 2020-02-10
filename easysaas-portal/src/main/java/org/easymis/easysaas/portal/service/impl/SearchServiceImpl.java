@@ -291,14 +291,6 @@ public class SearchServiceImpl implements SearchService {
             total = 0L;
         pageData.setInfo(outList);
         PageVO<SearchOutput> pageInfo = new PageVO<SearchOutput>(outList,searchVo.getPageNo(),searchVo.getPageSize(),total);
-/*        PageVO pageVO = new PageVO();
-        pageVO.setTotal(total);
-        pageVO.setPageSize(searchVo.getPageSize());
-        pageVO.setPageNum(searchVo.getPageNo());
-        Long pages = total / searchVo.getPageSize();
-        if (total % searchVo.getPageSize() > 0)
-            pages = pages + 1;
-        pageVO.setPages(pages.intValue());*/
         pageData.setPageInfo(pageInfo);     
 		return pageData;
 	}

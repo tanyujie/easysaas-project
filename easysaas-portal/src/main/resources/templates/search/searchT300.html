@@ -329,8 +329,49 @@ line-height: 22px;
 								rel="nofollow">知识产权</a>
 						</div>
 						<div class="filter-body">
-			
-							
+
+							<div class="folder-body">
+								<div class="filter-scope">
+									<span class="scope-title">搜索范围</span>
+									<a class="item ${(vo.term==300)?string('selected','')}"
+										tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.300"
+										href="http://www.vkwit.com/search/t300?wd=${vo.wd!}"
+										rel="nofollow">全部</a>
+										<a class="item  ${(vo.term==301)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.301"
+										href="http://www.vkwit.com/search/t301?wd=${vo.wd!}"
+										rel="nofollow">招投标</a>
+										<a class="item  ${(vo.term==302)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.302"
+										href="http://www.vkwit.com/search/t302?wd=${vo.wd!}"
+										rel="nofollow">债券信息</a>
+										<a class="item  ${(vo.term==303)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.303"
+										href="http://www.vkwit.com/search/t303?wd=${vo.wd!}"
+										rel="nofollow">购地信息</a>
+										<a class="item  ${(vo.term==304)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.304"
+										href="http://www.vkwit.com/search/t304?wd=${vo.wd!}"
+										rel="nofollow">招聘信息</a>
+										<a class="item  ${(vo.term==305)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.305"
+										href="http://www.vkwit.com/search/t305?wd=${vo.wd!}"
+										rel="nofollow">税务评级</a>
+										<a class="item  ${(vo.term==306)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.306"
+										href="http://www.vkwit.com/search/t306?wd=${vo.wd!}"
+										rel="nofollow">抽查检查</a>
+										<a class="item  ${(vo.term==307)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.307"
+										href="http://www.vkwit.com/search/t307?wd=${vo.wd!}"
+										rel="nofollow">产品信息</a>
+										<a class="item  ${(vo.term==308)?string('selected','')}" tyc-event-click=""
+										tyc-event-ch="CompanySearch.Filter.SearchWide.308"
+										href="http://www.vkwit.com/search/t308?wd=${vo.wd!}"
+										rel="nofollow">资质证书</a>
+								</div>
+							</div>
 						</div>
 						<div class="search-expand-btn">
 							<div class="expand" onclick="window1.toggleFilter(this)">收起</div>
@@ -343,26 +384,6 @@ line-height: 22px;
 							<div class="tips-content clearfix">
 								<div class="num-title  align-middle">
 									<span class="text-center">威客智库为你找到</span><span class="tips-num">${pageData.pageInfo.total!}</span>家公司
-								</div>
-								<div class="float-right">
-									<div class="btn-group">
-										<div class="dropdown">
-											<a
-												class="btn btn-outline-white  dropdown-toggle m-1 border-1"
-												data-toggle="dropdown"> 默认排序 </a>
-											<div class="dropdown-menu">
-												<a class="dropdown-item" href="#">Link 1</a> <a
-													class="dropdown-item" href="#">Link 2</a> <a
-													class="dropdown-item" href="#">Link 3</a>
-											</div>
-										</div>
-
-
-
-										<a class="btn btn-outline-warning m-1 border-1">批量联系</a> <a
-											class="btn btn-warning m-1 border-0" onclick="window1.companyExport()">导出数据</a>
-										<!-- <span class="pull-left m-l btn btn-default" data-toggle="modal" data-target="#loginModal" onclick="getCaptcha()"> <span class="sortDesc">默认排序</span> <span class="caret m-l"></span> </span> -->
-									</div>
 								</div>
 
 							</div>

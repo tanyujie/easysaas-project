@@ -330,7 +330,33 @@ line-height: 22px;
 						</div>
 						<div class="filter-body">
 
+							<div class="folder-body">
+								<div class="filter-scope">
+									<span class="scope-title">搜索范围</span> 
+									<a class="item ${(vo.term==100)?string('selected','')}" 
+										tyc-event-ch="CompanySearch.Filter.SearchWide.100"
+										href="http://www.vkwit.com/search/t100?key=%E6%88%90%E9%83%BD%E7%88%B1"
+										rel="nofollow">全部</a>
 
+										<a class="item ${(vo.term==101)?string('selected','')} " 
+										tyc-event-ch="CompanySearch.Filter.SearchWide.101"
+										href="http://www.vkwit.com/search/t101?wd=${vo.wd!}"
+										rel="nofollow">法律诉讼</a>
+										
+										<a class="item ${(vo.term==104)?string('selected','')}" 
+										tyc-event-ch="CompanySearch.Filter.SearchWide.104"
+										href="http://www.vkwit.com/search/t104?wd=${vo.wd!}"
+										rel="nofollow">法院公告</a>
+										<a class="item ${(vo.term==102)?string('selected','')}" 
+										tyc-event-ch="CompanySearch.Filter.SearchWide.102"
+										href="http://www.vkwit.com/search/t102?wd=${vo.wd!}"
+										rel="nofollow">失信人</a>
+										<a class="item ${(vo.term==103)?string('selected','')}" 
+										tyc-event-ch="CompanySearch.Filter.SearchWide.103"
+										href="http://www.vkwit.com/search/t103?wd=${vo.wd!}"
+										rel="nofollow">被执行人</a>
+								</div>
+							</div>
 
 						</div>
 						<div class="search-expand-btn">
@@ -345,26 +371,7 @@ line-height: 22px;
 								<div class="num-title  align-middle">
 									<span class="text-center">威客智库为你找到</span><span class="tips-num">${pageData.pageInfo.total!}</span>家公司
 								</div>
-								<div class="float-right">
-									<div class="btn-group">
-										<div class="dropdown">
-											<a
-												class="btn btn-outline-white  dropdown-toggle m-1 border-1"
-												data-toggle="dropdown"> 默认排序 </a>
-											<div class="dropdown-menu">
-												<a class="dropdown-item" href="#">Link 1</a> <a
-													class="dropdown-item" href="#">Link 2</a> <a
-													class="dropdown-item" href="#">Link 3</a>
-											</div>
-										</div>
 
-
-
-										<a class="btn btn-outline-warning m-1 border-1">批量联系</a> <a
-											class="btn btn-warning m-1 border-0" onclick="window1.companyExport()">导出数据</a>
-										<!-- <span class="pull-left m-l btn btn-default" data-toggle="modal" data-target="#loginModal" onclick="getCaptcha()"> <span class="sortDesc">默认排序</span> <span class="caret m-l"></span> </span> -->
-									</div>
-								</div>
 
 							</div>
 						</div>
@@ -384,7 +391,7 @@ line-height: 22px;
 									</div>
 									<div class="srs-content">
 										<div class="header row">
-											<a class="name select-none" tyc-event-click=""
+											<a class="name select-none" 
 												tyc-event-ch="CompanySearch.Company"
 												href="/company/${company.companyId!}.html" target="_blank"><text
 													class="tyc-num lh24 ">${company.nameHighlight!}</text></a>
@@ -406,10 +413,10 @@ line-height: 22px;
 										<div class="contact row ">
 											<div class="col p-0">
 												<span class="label">电话：</span><span class="link-hover"
-													onclick="openPhonePopup(this)" tyc-event-click=""
+													onclick="openPhonePopup(this)" 
 													tyc-event-ch="CompanySearch.MoreTel">1862816****</span><span
 													class="link-click" onclick="openPhonePopup(this)"
-													tyc-event-click="" tyc-event-ch="CompanySearch.MoreTel">登录查看</span>
+													 tyc-event-ch="CompanySearch.MoreTel">登录查看</span>
 											</div>
 										</div>
 										<div class="match row text-ellipsis">
@@ -481,7 +488,7 @@ line-height: 22px;
 						data-scroll-fix="299px">
 						<a class="image-click"
 							href="https://www.tianyancha.com/claim/entry" href-event=""
-							event-name="VIP广告" tyc-event-click=""
+							event-name="VIP广告" 
 							tyc-event-ch="CompanySearch.Right.claimtuiguang" target="_blank"
 							rel="nofollow"><img class="lazy-img -image"
 							data-src="https://image.tianyancha.com/37f6c37d9b4c4d8199b76c830879a3ee.jpg"
@@ -490,7 +497,7 @@ line-height: 22px;
 					</div>
 					<div class="right-block">
 						<a class="image-click" href="https://open.tianyancha.com/"
-							tyc-event-click="" tyc-event-ch="CompanySearch.Right.RightApi"
+							 tyc-event-ch="CompanySearch.Right.RightApi"
 							target="_blank" rel="nofollow"><img class="lazy-img -image"
 							data-src="https://cdn.tianyancha.com/web-require-js/public/images/ad/right-open-api-2.png"
 							alt="数据开放平台"
@@ -512,7 +519,7 @@ line-height: 22px;
 									<div class="data-describe mr-auto">
 									<a class="link-click"
 										style="color: #FFAE25;"
-										tyc-event-click=""
+										
 										tyc-event-ch="CompanySearch.Right.ShowMyCompany"
 										href="javascript:void(0);"
 										onclick="common.show_search_modal()">展示我的企业</a>
@@ -526,7 +533,7 @@ line-height: 22px;
 					<div class="card-body">
 										<div class="company-item"
 											onclick="window.open('https://own.tianyancha.com/company/3357424405h4cc3','_blank')"
-											tyc-event-click=""
+											
 											tyc-event-ch="CompanySearch.Right.RenzhengCompany">
 											<div class="company-item-left">
 												<div class="logo-warp">
