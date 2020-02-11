@@ -33,7 +33,7 @@ public class SysServletContextListener implements ServletContextListener {
 	private Object provinceJson() {
 		Object obj = new Object();
 		try {
-			obj = readFile("paramDictJson/DistrictV2.json");
+			obj = readFile("paramDictJson/districtJson.json");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,7 +43,7 @@ public class SysServletContextListener implements ServletContextListener {
 	private Object districtJson() {
 		Object obj = new Object();
 		try {
-			obj = readFile("paramDictJson/DistrictV2.json");
+			obj = readFile("paramDictJson/districtJson.json");
 
 		} catch (Exception e) {
 			e.printStackTrace();

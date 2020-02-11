@@ -1,5 +1,7 @@
 package org.easymis.easysaas.portal.service.impl;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -57,12 +59,12 @@ public class BulkProcessImpl implements BulkProcessService{
 			long startTime = System.currentTimeMillis();
 			String tableName = "company";
 //			String tableName = "TBL_ORG";
-			createIndex(tableName);
+			//createIndex(tableName);
 			BulkProcessImpl bulk = new BulkProcessImpl();
-			bulk.writeMysqlDataToES(tableName);
+			//bulk.writeMysqlDataToES(tableName);
 			//锟斤拷锟斤拷锟斤拷锟皆硷拷锟绞记憋拷锟斤拷锟皆碉拷Eclipse锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟捷ｏ拷 1800000 ,use time: 186s,5锟斤拷锟竭程ｏ拷5000一锟斤拷锟斤拷锟轿ｏ拷未锟斤拷锟斤拷锟斤拷刷锟斤拷时锟斤拷锟诫副锟斤拷锟斤拷
 			//锟斤拷锟斤拷锟斤拷锟斤拷锟捷ｏ拷 1800000 ,use time: 168s,5锟斤拷锟竭程ｏ拷5000一锟斤拷锟斤拷锟轿ｏ拷锟斤拷锟斤拷锟斤拷刷锟斤拷时锟戒（-1锟斤拷锟诫副锟斤拷锟斤拷锟斤拷0锟斤拷
-
+			bulk.writeJsonString("district");
 			logger.info(" use time: " + (System.currentTimeMillis() - startTime) / 1000 + "s");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -355,7 +357,6 @@ public class BulkProcessImpl implements BulkProcessService{
 			int count = 0;
 			String c = null;
 			String v = null;
-			 BulkRequest request = new BulkRequest();
 			while (rs.next()) {
 				count++;
 				map = new HashMap<String, String>(100);
@@ -365,19 +366,20 @@ public class BulkProcessImpl implements BulkProcessService{
 					map.put(lineToHump(c), v);
 				}
 				dataList.add(map);
-				//
-				if (count % 200000 == 0) {
-					logger.info("Mysql handle data number : " + count);
-					// 写锟斤拷ES
-					for (HashMap<String, String> hashMap2 : dataList) {
-						JSON.toJSONString(hashMap2);
-						 //bulkProcessor.add(new IndexRequest(indexesName).id(hashMap2.get("id")).source(JSON.toJSONString(hashMap2),XContentType.JSON));
-					}
-
-					map.clear();
-					dataList.clear();
-				}
 			}
+			// 封装目的地
+			BufferedWriter bw = new BufferedWriter(new FileWriter("e:/districtJson.json"));
+			bw.write(JSON.toJSONString(dataList));
+			bw.newLine();
+			bw.flush();
+			// 遍历集合
+/*			for (HashMap<String, String> jMap : dataList) {				
+			// 写数据			
+			}*/
+			// 释放资源
+			bw.close();
+
+			System.out.println(dataList.size());
 			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -391,6 +393,5 @@ public class BulkProcessImpl implements BulkProcessService{
 			}
 		}
 	}
-
 
 }

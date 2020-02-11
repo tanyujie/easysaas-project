@@ -1,7 +1,15 @@
 package org.easymis.easysaas.portal.entitys.vo;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.validation.constraints.Min;
 
+import org.apache.commons.lang.StringUtils;
+import org.easymis.easysaas.portal.utils.DistrictUtil;
 import org.hibernate.validator.constraints.Range;
 
 import com.github.pagehelper.util.StringUtil;
@@ -17,13 +25,29 @@ public class SearchVo {
 	private Integer term;
 	//搜索范围
 	private String searchType;
+	private String searchTypeDepict;
 	//机构类型
 	private String companyType;
+	private String companyTypeDepict;
 	//省份地区
+	private boolean filterProvince=true;
+	private List provinceList;
 	private String province;
+	private String provinceDepict;
+	
+	private boolean filterCity=true;
+	private List cityList;
+	private String city;
+	private String cityDepict;
+	
 	//区县
+	private boolean filterDistrict=true;
+	private List districtList;
+	private String district;
 	private String areaCode;
+	private String districtDepict;
 	//注册资本
+	
 	//成立时间,成立时间范围
     private Integer estiblishTimeYearType;
 	//行业分类
@@ -76,6 +100,7 @@ public class SearchVo {
     @Min(value = 1, message = "pageNo大于等于1")
     public Integer pageNo = 1;
 	private boolean filterScope=false;
+
 	public boolean isFilterScope() {
 		if(StringUtil.isNotEmpty(searchType)||StringUtil.isNotEmpty(companyType)||StringUtil.isNotEmpty(province))
 			return true;
@@ -84,6 +109,209 @@ public class SearchVo {
 	public void setFilterScope(boolean filterScope) {
 		this.filterScope = filterScope;
 	}
-	
+
+	public String getSearchType() {
+		if (StringUtils.isEmpty(searchType))
+			return null;
+		return searchType;
+	}
+
+	public String getSearchTypeDepict() {
+		if(null!=searchType) {
+			if(searchType.equals("company"))
+				return "企业名称";
+			else if(searchType.equals("human"))
+				return "法人/股东/高管";
+			else if(searchType.equals("service"))
+				return "产品服务";
+			else if(searchType.equals("trademark"))
+				return "商标";
+			else if(searchType.equals("similarAddr"))
+				return "联系方式";
+			else if(searchType.equals("scope"))
+				return "经营范围";
+			return null;
+		}			
+		else
+			return null;
+	}
+	public String getCompanyTypeDepict() {
+		if(null!=companyType) {
+			if(companyType.equals("normal_company"))
+				return "企业";
+			else if(companyType.equals("institution"))
+				return "事业单位";
+			else if(companyType.equals("npo_foundation"))
+				return "基金会";
+			else if(companyType.equals("npo"))
+				return "社会组织";
+			else if(companyType.equals("lawFirm"))
+				return "律所";
+			else if(companyType.equals("hk"))
+				return "香港特别行政区企业";
+			else if(companyType.equals("tw"))
+				return "台湾省企业";
+			return null;
+		}			
+		else
+			return null;
+	}
+
+	public boolean isFilterProvince() {
+		if(StringUtil.isNotEmpty(province))
+			return false;
+		return filterProvince;
+	}
+	 
+	public List getProvinceList() {
+		return DistrictUtil.getProvinceList();
+	}
+
+	public String getProvinceDepict() {
+		if(StringUtil.isNotEmpty(province)) {
+			return DistrictUtil.getProvince(province).getProvince();
+		}			
+		else
+			return null;
+	}
+
+	public boolean isFilterCity() {
+		if(StringUtil.isEmpty(province)||province.equals("bj")||province.equals("tj")||province.equals("sh")||province.equals("cq"))
+			return false;
+		if(StringUtil.isNotEmpty(city))
+			return false;
+		return filterCity;
+	}
+	public List getCityList() {
+		if(StringUtil.isNotEmpty(province))
+			return DistrictUtil.getCityList(province);
+		return cityList;
+	}
+
+
+	public String getCityDepict() {
+		if(StringUtil.isNotEmpty(city)) {
+			return DistrictUtil.getCity(city).getCity();
+		}			
+		else
+			return null;
+	}
+	public boolean isFilterDistrict() {
+		if(StringUtil.isEmpty(province))
+			return false;
+		if((StringUtil.isEmpty(city)&&(province.equals("bj")||province.equals("tj")||province.equals("sh")||province.equals("cq")))&&StringUtil.isEmpty(district))
+			return true;
+		if(StringUtil.isEmpty(city)||StringUtil.isNotEmpty(district))
+			return false;
+		return filterCity;
+	}
+	public List getDistrictList() {
+		if(StringUtil.isNotEmpty(province)&&(province.equals("bj")||province.equals("tj")||province.equals("sh")||province.equals("cq")))
+			return DistrictUtil.getDistrictList(province);
+		else if(StringUtil.isNotEmpty(city))
+			return DistrictUtil.getDistrictList(city);			
+		return districtList;
+	}
+/*	public String getDistrict() {
+		if(StringUtil.isEmpty(province)) {
+			return null;
+		}else if(StringUtil.isEmpty(city)&&(province.equals("bj")||province.equals("tj")||province.equals("sh")||province.equals("cq"))) {
+			return district;
+		}				
+		else
+			return district;
+	}*/
+	public String getDistrictDepict() {
+		if(StringUtil.isNotEmpty(district)) {
+			return DistrictUtil.getDistrict(district).getDistrict();
+		}			
+		else
+			return null;
+	}
+	public String increaseParameter(String filterString) {
+		StringBuffer url=new StringBuffer();
+		String filter=filterString.split("=")[0];
+		if(StringUtils.isNotEmpty(wd)) {
+			url.append("wd=");
+			url.append(wd);
+		}
+		
+		if(StringUtils.isNotEmpty(searchType)&&!filter.equals("searchType")) {
+			url.append("&searchType=");
+			url.append(searchType);
+		}else if(filter.equals("searchType")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if(StringUtils.isNotEmpty(companyType)&&!filter.equals("companyType")) {
+			url.append("&companyType=");
+			url.append(companyType);
+		}else if(filter.equals("companyType")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		
+		if(StringUtils.isNotEmpty(province)&&!filter.equals("province")) {
+			url.append("&province=");
+			url.append(province);
+		}else if(filter.equals("province")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (StringUtils.isNotEmpty(city) && !filter.equals("city")) {
+			url.append("&city=");
+			url.append(city);
+		} else if (filter.equals("city")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (StringUtils.isNotEmpty(district) && !filter.equals("district")) {
+			url.append("&district=");
+			url.append(district);
+		} else if (filter.equals("district")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		return url.toString();		
+		
+	}
+
+	public String minusParameter(String filter) {
+		Set<String> vFilter = null;
+		if (filter.split(",").length > 0)
+			vFilter = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(filter.split(","))));
+		else
+			vFilter = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("filter")));
+			
+		StringBuffer url = new StringBuffer();
+		if (StringUtils.isNotEmpty(wd)) {
+			url.append("wd=");
+			url.append(wd);
+		}
+
+		if (StringUtils.isNotEmpty(searchType) && !vFilter.contains("searchType")) {
+			url.append("&searchType=");
+			url.append(searchType);
+		}
+		if (StringUtils.isNotEmpty(companyType) && !vFilter.contains("companyType")) {
+			url.append("&companyType=");
+			url.append(companyType);
+		}
+
+		if (StringUtils.isNotEmpty(province) && !vFilter.contains("province")) {
+			url.append("&province=");
+			url.append(province);
+		}
+		if (StringUtils.isNotEmpty(city) && !vFilter.contains("city")) {
+			url.append("&city=");
+			url.append(city);
+		}
+		if (StringUtils.isNotEmpty(district) && !vFilter.contains("district")) {
+			url.append("&district=");
+			url.append(district);
+		}
+		return url.toString();
+
+	}	
 
 }

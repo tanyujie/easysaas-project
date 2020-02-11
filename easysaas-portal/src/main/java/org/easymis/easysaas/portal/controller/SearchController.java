@@ -66,6 +66,7 @@ public class SearchController extends IdentityRepository{
     	searchVo.setTerm(term);
     	PageData pageData = searchService.esQuery(searchVo);
 
+
 		map.put("vo", searchVo);
 		map.put("pageData", pageData);
 		if (term < 100)

@@ -5,10 +5,10 @@ system:
   name: easymis
   icp: 蜀ICP备17043811号-1
   auth: www.easymis.org
-server:
-  tomcat:
-    access_log_enabled: true
-    basedir: target/tomcat
+#server:
+#  tomcat:
+#    access_log_enabled: true
+#    basedir: target/tomcat
 spring:
   profiles:
     include: pay,mail,param
