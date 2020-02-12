@@ -14,12 +14,18 @@ em{font-style:normal}
 .btn-vip:hover{color:#fff;background-color:#e46400;border-color:#e46400}
 .btn-vip:active{color:#fff;background-color:#ff7d18;border-color:#ff7d18}
 
+.btn-default{color:#333;background-color:#fff;border-color:#e0e0e0}
+.btn-default:hover{color:#333;background-color:rgba(32,32,32,.05) !important;border-color:rgba(32,32,32,.05)}
+.btn-default:active{color:#333;background-color:#fff;border-color:#e0e0e0}
+
 .button.-normal{color:#0084ff;background-color:#fff;border-color:#0084ff}
 .button.-normal:focus,.button.-normal:hover{color:#0084ff;background-color:rgba(0,132,255,.05);border-color:#0084ff}
 .button.-normal:active{color:#0084ff;background-color:rgba(0,132,255,.15);border-color:#0084ff}
 .button.-active{color:#fff;background-color:#0084ff;border-color:#0084ff}
 .button.-active:hover{color:#fff;background-color:#006acc;border-color:#006acc}
 .button.-active:active{color:#fff;background-color:#005cb3;border-color:#005cb3}
+
+.input.-h28,.input.-sm{height:28px;line-height:26px;padding:0 10px;font-size:12px}
 
 .fa-caret-down{ margin-left: 5px;font-size:16px;font-style:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 body{margin:0}

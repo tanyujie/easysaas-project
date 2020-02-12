@@ -1,9 +1,11 @@
 package org.easymis.easysaas.portal.utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.easymis.easysaas.portal.entitys.mybatis.dto.IdentityCardAddress;
+import org.easymis.easysaas.portal.entitys.vo.CategoryThreeLevelVo;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -14,6 +16,7 @@ public class DistrictUtil {
         String districtJson = System.getProperty("categoryThreeLevelJson");
         return JSON.parse(districtJson);
     }
+
     public static List<IdentityCardAddress> getProvinceList(){
         JSONArray districtArray= JSON.parseArray(System.getProperty("provinceJson"));
         ArrayList<IdentityCardAddress> provinceList = new ArrayList<IdentityCardAddress>();
@@ -98,4 +101,39 @@ public class DistrictUtil {
     	}
 		return district;
 	}
+    public static List<CategoryThreeLevelVo> getCategoryFirstList(){
+    	List<CategoryThreeLevelVo> categoryFirstList = new ArrayList<CategoryThreeLevelVo>();
+        JSONArray cateArray= JSON.parseArray(System.getProperty("categoryThreeLevelJson"));
+    	for (int i = 0; i < cateArray.size(); i++) {    
+   		//"cateName":"公共管理、社会保障和社会组织","cateCode":"","nickName":"社会组织"
+    		CategoryThreeLevelVo vo = new CategoryThreeLevelVo();
+    		vo.setName(cateArray.getJSONObject(i).getString("cateName"));
+    		vo.setNickName(cateArray.getJSONObject(i).getString("nickName"));
+    		categoryFirstList.add(vo);
+    	}
+    	return categoryFirstList;
+    }
+    String convertCategorySecond(String name){
+        JSONArray cateArray= JSON.parseArray(System.getProperty("categoryThreeLevelJson"));
+        HashMap<String,String> cateSecondMap= new HashMap<String, String>();
+        JSONArray cateSecondArray=new JSONArray();
+    	for (int i = 0; i < cateArray.size(); i++) {    
+   		JSONArray secondArray=cateArray.getJSONObject(i).getJSONArray("categoryList");
+    		if(secondArray!=null&&secondArray.size()>0) {
+        		for(int j=0;j<secondArray.size();j++)
+        		{
+            		cateSecondArray.add(secondArray.getJSONObject(j));
+        		}
+            		
+    		}
+
+    	}
+		for (int j = 0; j < cateSecondArray.size(); j++) {
+			cateSecondMap.put(cateSecondArray.getJSONObject(j).getString("cateName"),cateSecondArray.getJSONObject(j).getString("nickName"));
+		}
+		if (cateSecondMap.get(name) != null)
+			return cateSecondMap.get(name);
+		else
+			return name;
+    }
 }

@@ -16,11 +16,22 @@ public class SystemContextInitializing implements InitializingBean {
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
 		System.setProperty("provinceJson",this.provinceJson().toString());
+		System.setProperty("categoryThreeLevelJson",this.categoryThreeLevelJson().toString());
 	}
 	private Object provinceJson() {
 		Object obj = new Object();
 		try {
 			obj = readFile("paramDictJson/districtJson.json");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return obj;
+	}
+	private Object categoryThreeLevelJson() {
+		Object obj = new Object();
+		try {
+			obj = readFile("paramDictJson/CategoryThreeLevel.json");
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -344,10 +344,10 @@ line-height: 22px;
 										href="http://www.vkwit.com/search?${vo.minusParameter('searchType')!}">搜索范围：${searchVo.searchTypeDepict!}&nbsp;<i
 										class="fa fa-close"></i></a>
 									</#if>	
-									<#if searchVo.companyType??>
+									<#if searchVo.organizationType??>
 									<a
 										class="btn -h24 btn-primary-bd"
-										href="http://www.vkwit.com/search?${vo.minusParameter('companyType')!}">搜索范围：${searchVo.companyTypeDepict!}&nbsp;<i
+										href="http://www.vkwit.com/search?${vo.minusParameter('organizationType')!}">搜索范围：${searchVo.organizationTypeDepict!}&nbsp;<i
 										class="fa fa-close"></i></a>
 									</#if>
 									<#if searchVo.province??>
@@ -368,6 +368,98 @@ line-height: 22px;
 										href="http://www.vkwit.com/search?${vo.minusParameter('district')!}">区县：${searchVo.districtDepict!}&nbsp;<i
 										class="fa fa-close"></i></a>
 									</#if>
+									<#if searchVo.registerCapitalType??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('registerCapitalType')!}">注册资本：${searchVo.registerCapitalType!}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.estiblishYearType??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('estiblishYearType')!}">注册时间：${searchVo.districtDepict!}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.categoryFirst??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('categoryFirst')!}">行业分类：${searchVo.categoryFirst!}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.categorySecond??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('categorySecond')!}">行业分类：${searchVo.categoryFirst!}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.categoryThird??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('categoryThird')!}">行业分类：${searchVo.categoryFirst!}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.companyStatus??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('companyStatus')!}">企业状态：${searchVo.categoryFirst!}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.moneyType??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('moneyType')!}">资本类型：${searchVo.categoryFirst!}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.companyType??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('moneyType')!}">企业类型：${searchVo.categoryFirst!}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.socialSecurityType??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('socialSecurityType')!}">参保人数：${searchVo.categoryFirst!}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.haveContact??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('haveContact')!}">联系方式：${(vo.haveContact==1)?string('有','无')}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.havePhone??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('havePhone')!}">手机号码：${(vo.havePhone==1)?string('有','无')}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.haveMail??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('haveMail')!}">联系邮箱：${(vo.haveMail==1)?string('有','无')}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.haveTrademark??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('haveTrademark')!}">商标信息：${(vo.haveTrademark==1)?string('有','无')}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									
+									<#if searchVo.havePatent??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('havePatent')!}">专利信息：${(vo.havePatent==1)?string('有','无')}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.haveFinance??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('haveFinance')!}">融资信息：${(vo.haveFinance==1)?string('有','无')}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+																		
 										<a class="scope-more link-click"
 										
 										tyc-event-ch="CompanySearch.Filter.ClearAll"
@@ -389,38 +481,38 @@ line-height: 22px;
 						</div>						
 						</div>
 						</#if>
-						<#if !searchVo.companyType??>
+						<#if !searchVo.organizationType??>
 							<div class="filter-scope">
 								<span class="scope-title">机构类型</span>
 								<div class="scope-box scope-content-box">
 									<a
 										tyc-event-ch="CompanySearch.Filter.SearchWide.normal_company"
 										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('companyType=normal_company')!}"
+										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=normal_company')!}"
 										rel="nofollow">企业</a><a
 										tyc-event-ch="CompanySearch.Filter.SearchWide.institution"
 										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('companyType=institution')!}"
+										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=institution')!}"
 										rel="nofollow">事业单位</a><a
 										tyc-event-ch="CompanySearch.Filter.SearchWide.npo_foundation"
 										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('companyType=npo_foundation')!}"
+										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=npo_foundation')!}"
 										rel="nofollow">基金会</a><a
 										tyc-event-ch="CompanySearch.Filter.SearchWide.npo"
 										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('companyType=npo')!}"
+										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=npo')!}"
 										rel="nofollow">社会组织</a><a
 										tyc-event-ch="CompanySearch.Filter.SearchWide.lawFirm"
 										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('companyType=lawFirm')!}"
+										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=lawFirm')!}"
 										rel="nofollow">律所</a><a
 										tyc-event-ch="CompanySearch.Filter.SearchWide.hk"
 										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('companyType=hk')!}"
+										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=hk')!}"
 										rel="nofollow">香港特别行政区企业</a><a
 										tyc-event-ch="CompanySearch.Filter.SearchWide.tw"
 										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('companyType=tw')!}"
+										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=tw')!}"
 										rel="nofollow">台湾省企业</a>
 								</div>
 							</div>
@@ -456,32 +548,95 @@ line-height: 22px;
 									</div>
 								</div>
 							</#if>
-						<div class="filter-scope">
-						<span class="scope-title">注册资本</span>
-						<div class="scope-box scope-content-box">
-						<a class="item -line " href="https://www.tianyancha.com/search/or0100?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">0～100万</a>
-						</div>
-						</div>
-						<div class="filter-scope">
-						<span class="scope-title">成立时间</span>
-						<div class="scope-box scope-content-box">
-						<a class="item -line " href="https://www.tianyancha.com/search/oe01?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">成立1年内</a>
-						</div>
-						</div>
-												<div class="filter-scope">
-						<span class="scope-title">行业分类</span>
-						<div class="scope-box scope-content-box">
-						<a class="item   " href="https://www.tianyancha.com/search/ocD?key=%E6%88%90%E9%83%BD%E9%93%B6" rel="nofollow">电力、热力、燃气及水生产和供应业</a>
-						</div>
-						</div>
+							<#if !vo.registerCapitalType??>
+								<div class="filter-scope">
+							<span class="scope-title">注册资本</span>
+								<div class="scope-box">
+									<#list vo.registerCapitalList as e>
+									<a class="item -line "
+										href="http://www.vkwit.com/search?${vo.increaseParameter('registerCapitalType=${e.key}')!}"
+										rel="nofollow">${e.title!}</a>
+										</#list>
+									<div class="filter-sel -line">
+										<div class="filter-btn">
+											<span class="filter-btn-title ">自定义</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content expand">
+											<div class="">
+												<div class="row">
+													<span class="label">从</span><input class="input -h28"
+														id="customCapitalFromInput" type="text"><span
+														class="unit">万</span>
+												</div>
+												<div class="row">
+													<span class="label">至</span><input class="input -h28"
+														type="text" id="customCapitalToInput"><span
+														class="unit">万</span>
+												</div>
+												<div class="row " >
+													<div class="filter-btn btn -h28 btn-default" 
+														onclick="jumpToCustomCapital(&quot;https://www.tianyancha.com/search/orqaq1208?key=%E6%88%90%E9%83%BD%E5%86%9B&quot;);">确定</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							
+							</div>
+							</#if>
+							<#if !vo.estiblishYearType??>
+							<div class="filter-scope">
+								<span class="scope-title">成立时间</span>
+								<div class="scope-box">
+								<#list vo.estiblishYearList as e>
+									<a class="item -line "
+										href="http://www.vkwit.com/search?${vo.increaseParameter('estiblishYearType=${e.key}')!}"
+										rel="nofollow">${e.title!}</a>
+								</#list>
+									<div class="filter-sel -line">
+										<div class="filter-btn">
+											<span class="filter-btn-title ">自定义</span><span
+												class="fa fa-caret-down"></span>
+										</div>
+										<div class="content expand">
+											<div class="row">
+												<span class="label">从</span><input class="input -h28"
+													id="customTimeFromInput" type="text"><span
+													class="unit">年</span>
+											</div>
+											<div class="row">
+												<span class="label">至</span><input class="input -h28"
+													id="customTimeToInput" type="text"><span
+													class="unit">年</span>
+											</div>
+											<div class="row">
+												<div class="filter-btn btn -h28 btn-default"
+													onclick="jumpToCustomTime(&quot;https://www.tianyancha.com/search/or0100-eqaq1208?key=%E6%88%90%E9%83%BD%E5%86%9B&quot;);">确定</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							</#if>
+						<#if (vo.filterCategoryFirst)>
+							<div class="filter-scope">
+								<span class="scope-title">行业分类</span>
+								<div class="scope-box scope-content-box">
+									<#list vo.categoryFirstList as f>
+									<a class="item   " href="http://www.vkwit.com/search?${vo.increaseParameter('categoryFirst=${f.name}')!}" rel="nofollow">${f.name}</a>
+									</#list>
+								</div>
+								<div class="scope-more" onclick="window1.toggleMore(this)" tyc-event-click="" tyc-event-ch="CompanySearch.Filter.Hangye.More">更多<span class="tic tic-shang"></span></div>
+							</div>
+						</#if>
 						<!--企业描述-->
+						<#if vo.filterDepict>
 							<div class="filter-scope -qyms">
 								<span class="scope-title">企业描述</span>
 								<div class="scope-box">
-									<!--行业分类-->
-									<!--注册资本-->
-									<!--注册时间-->
 									<!--企业状态-->
+									<#if !(vo.companyStatus??)>
 									<div class="filter-sel" 
 										tyc-event-ch="CompanySearch.Filter.Qiyezhuantai">
 										<div class="filter-btn">
@@ -491,7 +646,7 @@ line-height: 22px;
 										<div class="content">
 											<div class="item">
 												<a class="item-click "
-													href="https://www.tianyancha.com/search/os1?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													href="http://www.vkwit.com/search?${vo.increaseParameter('companyStatus=1')!}"
 													rel="nofollow">在业</a>
 											</div>
 											<div class="item">
@@ -516,7 +671,9 @@ line-height: 22px;
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--资本类型-->
+									<#if !(vo.moneyType??)>
 									<div class="filter-sel" 
 										tyc-event-ch="CompanySearch.Filter.MoneyType">
 										<div class="filter-btn">
@@ -526,7 +683,7 @@ line-height: 22px;
 										<div class="content">
 											<div class="item">
 												<a class="item-click "
-													href="https://www.tianyancha.com/search/ot1?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													href="http://www.vkwit.com/search?${vo.increaseParameter('moneyType=1')!}"
 													rel="nofollow">人民币</a>
 											</div>
 											<div class="item">
@@ -541,9 +698,11 @@ line-height: 22px;
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--企业类型-->
+									<#if !(vo.companyType??)>
 									<div class="filter-sel" 
-										tyc-event-ch="CompanySearch.Filter.CompanyType">
+										tyc-event-ch="CompanySearch.Filter.companyType">
 										<div class="filter-btn">
 											<span class="filter-btn-title">企业类型</span><span
 												class="fa fa-caret-down"></span>
@@ -551,7 +710,7 @@ line-height: 22px;
 										<div class="content">
 											<div class="item">
 												<a class="item-click "
-													href="https://www.tianyancha.com/search/oot1?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													href="http://www.vkwit.com/search?${vo.increaseParameter('companyType=1')!}"
 													rel="nofollow">有限责任公司</a>
 											</div>
 											<div class="item">
@@ -611,7 +770,9 @@ line-height: 22px;
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--人员规模-->
+									<#if !(vo.socialSecurityType??)>
 									<div class="filter-sel" 
 										tyc-event-ch="CompanySearch.Filter.SocialSecurity">
 										<div class="filter-btn">
@@ -621,7 +782,7 @@ line-height: 22px;
 										<div class="content">
 											<div class="item">
 												<a class="item-click "
-													href="https://www.tianyancha.com/search/oss050?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
+													href="http://www.vkwit.com/search?${vo.increaseParameter('socialSecurityType=1')!}"
 													rel="nofollow">小于50人</a>
 											</div>
 											<div class="item">
@@ -656,12 +817,16 @@ line-height: 22px;
 											</div>
 										</div>
 									</div>
+									</#if>
 								</div>
 							</div>
+						</#if>
 							<div class="filter-scope -expand ">
 								<span class="scope-title -vip">高级筛选</span>
 								<div class="scope-box">
 									<!--联系方式-->
+									
+									<#if !(vo.haveContact??)>
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.Contact">
 										<div class="filter-btn">
@@ -670,14 +835,22 @@ line-height: 22px;
 										</div>
 										<div class="content">
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">有联系方式</span>
+											<a class="item-click "
+													href="http://www.vkwit.com/search?${vo.increaseParameter('haveContact=1')!}"
+													rel="nofollow">有联系方式</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">haveContact</span> -->
 											</div>
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">无联系方式</span>
+											<a class="item-click "
+													href="http://www.vkwit.com/search?${vo.increaseParameter('haveContact=2')!}"
+													rel="nofollow">无联系方式</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">无联系方式</span> -->
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--手机号码-->
+									<#if !(vo.havePhone??)>
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.PhoneNum">
 										<div class="filter-btn">
@@ -686,14 +859,19 @@ line-height: 22px;
 										</div>
 										<div class="content">
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">有手机号码</span>
+											<a class="item-click "
+													href="http://www.vkwit.com/search?${vo.increaseParameter('havePhone=1')!}"
+													rel="nofollow">有手机号码</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">有手机号码</span> -->
 											</div>
 											<div class="item">
 												<span class="item-click " onclick="searchNeedVip()">无手机号码</span>
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--联系邮箱-->
+									<#if !(vo.haveMail??)>
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.Mail">
 										<div class="filter-btn">
@@ -702,14 +880,19 @@ line-height: 22px;
 										</div>
 										<div class="content">
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">有联系邮箱</span>
+											<a class="item-click "
+													href="http://www.vkwit.com/search?${vo.increaseParameter('haveMail=1')!}"
+													rel="nofollow">有联系邮箱</a>
+											<!-- 	<span class="item-click " onclick="searchNeedVip()">有联系邮箱</span> -->
 											</div>
 											<div class="item">
 												<span class="item-click " onclick="searchNeedVip()">无联系邮箱</span>
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--商标-->
+									<#if !(vo.haveTrademark??)>
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.Shangbiao">
 										<div class="filter-btn">
@@ -718,14 +901,22 @@ line-height: 22px;
 										</div>
 										<div class="content">
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">有商标信息</span>
+											<a class="item-click "
+													href="http://www.vkwit.com/search?${vo.increaseParameter('haveTrademark=1')!}"
+													rel="nofollow">有商标信息</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">有商标信息</span> -->
 											</div>
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">无商标信息</span>
+											<a class="item-click "
+													href="http://www.vkwit.com/search?${vo.increaseParameter('haveTrademark=2')!}"
+													rel="nofollow">无商标信息</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">无商标信息</span> -->
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--专利-->
+									<#if !(vo.havePatent??)>
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.Patent">
 										<div class="filter-btn">
@@ -734,14 +925,22 @@ line-height: 22px;
 										</div>
 										<div class="content">
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">有专利信息</span>
+												<a class="item-click "
+														href="http://www.vkwit.com/search?${vo.increaseParameter('havePatent=1')!}"
+														rel="nofollow">有专利信息</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">有专利信息</span> -->
 											</div>
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">无专利信息</span>
+											<a class="item-click "
+														href="http://www.vkwit.com/search?${vo.increaseParameter('havePatent=2')!}"
+														rel="nofollow">无专利信息</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">无专利信息</span> -->
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--融资信息-->
+									<#if !(vo.haveFinance??)>
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.Rongzi">
 										<div class="filter-btn">
@@ -750,13 +949,20 @@ line-height: 22px;
 										</div>
 										<div class="content">
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">有融资信息</span>
+											<a class="item-click "
+														href="http://www.vkwit.com/search?${vo.increaseParameter('havePatent=1')!}"
+														rel="nofollow">有融资信息</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">有融资信息</span> -->
 											</div>
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">无融资信息</span>
+												<!-- <span class="item-click " onclick="searchNeedVip()">无融资信息</span> -->
+												<a class="item-click "
+														href="http://www.vkwit.com/search?${vo.increaseParameter('havePatent=1')!}"
+														rel="nofollow">无融资信息</a>
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--上市状态-->
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.Shangshi">

@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.validation.constraints.Min;
 
 import org.apache.commons.lang.StringUtils;
+import org.easymis.easysaas.portal.service.impl.DictionaryServiceImpl;
 import org.easymis.easysaas.portal.utils.DistrictUtil;
 import org.hibernate.validator.constraints.Range;
 
@@ -27,8 +28,8 @@ public class SearchVo {
 	private String searchType;
 	private String searchTypeDepict;
 	//机构类型
-	private String companyType;
-	private String companyTypeDepict;
+	private String organizationType;
+	private String organizationTypeDepict;
 	//省份地区
 	private boolean filterProvince=true;
 	private List provinceList;
@@ -47,14 +48,30 @@ public class SearchVo {
 	private String areaCode;
 	private String districtDepict;
 	//注册资本
-	
+	private List registerCapitalList;
+	private Integer registerCapitalType;
 	//成立时间,成立时间范围
-    private Integer estiblishTimeYearType;
+    private List estiblishYearList;
+    private Integer estiblishYearType;
 	//行业分类
-    private String cateFirst;
-    private String cateSecond;
-    private String cateThird;
-//企业描述
+	private boolean filterCategoryFirst=true;
+	private List categoryFirstList;
+    private String categoryFirst;
+    private String categoryFirstDepict;
+    
+	private boolean filterCategorySecond=true;
+	private List categorySecondList;
+    private String categorySecond;
+    private String categorySecondDepict;
+    
+	private boolean filterCategoryThird=true;
+	private List categoryThirdList;
+    private String categoryThird;
+    private String categoryThirdDepict;
+
+ 
+    //企业描述
+    private boolean filterDepict=true;
 	//企业状态:在业
     private String companyStatus;
 	//资本类型,注册资本金额范围
@@ -66,34 +83,68 @@ public class SearchVo {
     @Min(value = 1, message = "注册资本金额范围不合法,请检查")
     private Long registerCapitalTo;
     //资本币种：人民币，美元，其他
-    private String registerCapitalType;
+    private String moneyType;
+    //企业类型
+    private String companyType;
     //参保人数范围
-    private Integer  insurancePersonNumberType;
+    private Integer  socialSecurityType;
     //参保人数范围-开始
     @Min(0)
     private Integer insurancePersonNumberFrom;
     //参保人数范围-结束
     @Range(min = 0, max = 100000000, message = "参保人数范围不合法，请检查")
     private Integer insurancePersonNumberTo;
+    
+    
     //联系方式1,有联系方式0无联系方式
     public Integer haveContact;
     //手机号码
-    private Integer haveMobile;
+    private Integer havePhone;
     //是否有email
     @Range(min = 0, max = 1)
-    public Integer haveEmail;
-    //是否有网址
-    @Range(min = 0, max = 1)
-    public Integer haveWebSite;
+    public Integer haveMail;
+
     //是否有商标
     @Range(min = 0, max = 1)
     public Integer haveTrademark;
-    //软件著作权
+    //专利信息
     @Range(min = 0, max = 1)
-    public Integer haveSoftwareCopyright;
+    public Integer havePatent;
+    //融资信息
+    @Range(min = 0, max = 1)
+    public Integer haveFinance;
+    //上市状态
+    @Range(min = 0, max = 1)
+    public Integer haveIpo;
+    //失信信息
+    @Range(min = 0, max = 1)
+    public Integer haveDishonest;
+    
+    //是否有网址
+    @Range(min = 0, max = 1)
+    public Integer haveWebSite;
+    //动产抵押
+    @Range(min = 0, max = 1)
+    public Integer haveMpledge;
+    //500强
+    @Range(min = 0, max = 1)
+    public Integer haveTop500;
     //作品著作权
     @Range(min = 0, max = 1)
     public Integer haveCopyrightWorks;
+    //软件著作权
+    @Range(min = 0, max = 1)
+    public Integer haveSoftwareCopyright;
+    //高新企业
+    @Range(min = 0, max = 1)
+    public Integer haveHighTech;
+    //招投标
+    @Range(min = 0, max = 1)
+    public Integer haveTender;
+    //清算信息
+    @Range(min = 0, max = 1)
+    public Integer haveClearing;
+   
     
     @Range(min = 1, max = 30, message = "每页最大数量为30")
     public Integer pageSize = 10;
@@ -102,7 +153,15 @@ public class SearchVo {
 	private boolean filterScope=false;
 
 	public boolean isFilterScope() {
-		if(StringUtil.isNotEmpty(searchType)||StringUtil.isNotEmpty(companyType)||StringUtil.isNotEmpty(province))
+		if(StringUtil.isNotEmpty(searchType)||StringUtil.isNotEmpty(organizationType)||StringUtil.isNotEmpty(province)
+				||registerCapitalType!=null||estiblishYearType!=null||StringUtil.isNotEmpty(categoryFirst)
+				||companyStatus!=null||moneyType!=null||companyType!=null||socialSecurityType!=null
+				||haveContact!=null||havePhone!=null||haveMail!=null||haveTrademark!=null||havePatent!=null
+				||haveFinance!=null||haveIpo!=null||haveDishonest!=null||haveWebSite!=null||haveMpledge!=null
+				||haveTop500!=null||haveCopyrightWorks!=null||haveSoftwareCopyright!=null||haveHighTech!=null
+				||haveTender!=null||haveClearing!=null
+
+				)
 			return true;
 		return filterScope;
 	}
@@ -135,21 +194,21 @@ public class SearchVo {
 		else
 			return null;
 	}
-	public String getCompanyTypeDepict() {
-		if(null!=companyType) {
-			if(companyType.equals("normal_company"))
+	public String getOrganizationTypeDepict() {
+		if(null!=organizationType) {
+			if(organizationType.equals("normal_company"))
 				return "企业";
-			else if(companyType.equals("institution"))
+			else if(organizationType.equals("institution"))
 				return "事业单位";
-			else if(companyType.equals("npo_foundation"))
+			else if(organizationType.equals("npo_foundation"))
 				return "基金会";
-			else if(companyType.equals("npo"))
+			else if(organizationType.equals("npo"))
 				return "社会组织";
-			else if(companyType.equals("lawFirm"))
+			else if(organizationType.equals("lawFirm"))
 				return "律所";
-			else if(companyType.equals("hk"))
+			else if(organizationType.equals("hk"))
 				return "香港特别行政区企业";
-			else if(companyType.equals("tw"))
+			else if(organizationType.equals("tw"))
 				return "台湾省企业";
 			return null;
 		}			
@@ -196,6 +255,7 @@ public class SearchVo {
 		else
 			return null;
 	}
+
 	public boolean isFilterDistrict() {
 		if(StringUtil.isEmpty(province))
 			return false;
@@ -212,21 +272,34 @@ public class SearchVo {
 			return DistrictUtil.getDistrictList(city);			
 		return districtList;
 	}
-/*	public String getDistrict() {
-		if(StringUtil.isEmpty(province)) {
-			return null;
-		}else if(StringUtil.isEmpty(city)&&(province.equals("bj")||province.equals("tj")||province.equals("sh")||province.equals("cq"))) {
-			return district;
-		}				
-		else
-			return district;
-	}*/
+
 	public String getDistrictDepict() {
 		if(StringUtil.isNotEmpty(district)) {
 			return DistrictUtil.getDistrict(district).getDistrict();
 		}			
 		else
 			return null;
+	}
+	public List getEstiblishYearList() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getEstiblishYearType();
+	}
+	public List getRegisterCapitalList() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getRegisteredCapitalType();
+	}
+	public boolean isfilterCategoryFirst() {
+		if(StringUtil.isNotEmpty(categoryFirst))
+			return false;
+		return filterCategoryFirst;
+	}
+	public List getCategoryFirstList() {
+		return DistrictUtil.getCategoryFirstList();
+	}
+	public boolean isFilterDepict(){
+		if(StringUtil.isNotEmpty(companyStatus)&&StringUtil.isNotEmpty(moneyType)&&StringUtil.isNotEmpty(companyType)&&socialSecurityType!=null)
+			return false;
+		return filterDepict;
 	}
 	public String increaseParameter(String filterString) {
 		StringBuffer url=new StringBuffer();
@@ -243,10 +316,10 @@ public class SearchVo {
 			url.append("&");
 			url.append(filterString);
 		}
-		if(StringUtils.isNotEmpty(companyType)&&!filter.equals("companyType")) {
-			url.append("&companyType=");
-			url.append(companyType);
-		}else if(filter.equals("companyType")) {
+		if(StringUtils.isNotEmpty(organizationType)&&!filter.equals("organizationType")) {
+			url.append("&organizationType=");
+			url.append(organizationType);
+		}else if(filter.equals("organizationType")) {
 			url.append("&");
 			url.append(filterString);
 		}
@@ -272,6 +345,162 @@ public class SearchVo {
 			url.append("&");
 			url.append(filterString);
 		}
+		if (registerCapitalType!=null && !filter.equals("registerCapitalType")) {
+			url.append("&registerCapitalType=");
+			url.append(registerCapitalType);
+		} else if (filter.equals("registerCapitalType")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (estiblishYearType!=null && !filter.equals("estiblishYearType")) {
+			url.append("&estiblishYearType=");
+			url.append(estiblishYearType);
+		} else if (filter.equals("estiblishYearType")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (categoryFirst!=null && !filter.equals("categoryFirst")) {
+			url.append("&categoryFirst=");
+			url.append(categoryFirst);
+		} else if (filter.equals("categoryFirst")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		
+		if (categoryFirst!=null && !filter.equals("companyStatus")) {
+			url.append("&companyStatus=");
+			url.append(companyStatus);
+		} else if (filter.equals("companyStatus")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (moneyType!=null && !filter.equals("moneyType")) {
+			url.append("&moneyType=");
+			url.append(moneyType);
+		} else if (filter.equals("moneyType")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (companyType!=null && !filter.equals("companyType")) {
+			url.append("&companyType=");
+			url.append(companyType);
+		} else if (filter.equals("companyType")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (socialSecurityType!=null && !filter.equals("socialSecurityType")) {
+			url.append("&socialSecurityType=");
+			url.append(socialSecurityType);
+		} else if (filter.equals("socialSecurityType")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (haveContact!=null && !filter.equals("haveContact")) {
+			url.append("&haveContact=");
+			url.append(haveContact);
+		} else if (filter.equals("haveContact")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (havePhone!=null && !filter.equals("havePhone")) {
+			url.append("&havePhone=");
+			url.append(havePhone);
+		} else if (filter.equals("havePhone")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (haveMail!=null && !filter.equals("haveMail")) {
+			url.append("&haveMail=");
+			url.append(haveMail);
+		} else if (filter.equals("haveMail")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (haveTrademark!=null && !filter.equals("haveTrademark")) {
+			url.append("&haveTrademark=");
+			url.append(haveTrademark);
+		} else if (filter.equals("haveTrademark")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (havePatent!=null && !filter.equals("havePatent")) {
+			url.append("&havePatent=");
+			url.append(havePatent);
+		} else if (filter.equals("havePatent")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (haveFinance!=null && !filter.equals("haveFinance")) {
+			url.append("&haveFinance=");
+			url.append(haveFinance);
+		} else if (filter.equals("haveFinance")) {
+			url.append("&");
+			url.append(filterString);
+		}
+
+		if (haveIpo!=null && !filter.equals("haveIpo")) {
+			url.append("&haveIpo=");
+			url.append(haveIpo);
+		} else if (filter.equals("haveIpo")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (haveDishonest!=null && !filter.equals("haveDishonest")) {
+			url.append("&haveDishonest=");
+			url.append(haveDishonest);
+		} else if (filter.equals("haveDishonest")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (haveWebSite!=null && !filter.equals("haveWebSite")) {
+			url.append("&haveWebSite=");
+			url.append(haveWebSite);
+		} else if (filter.equals("haveWebSite")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (haveWebSite!=null && !filter.equals("haveMpledge")) {
+			url.append("&haveMpledge=");
+			url.append(haveMpledge);
+		} else if (filter.equals("haveMpledge")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (haveTop500!=null && !filter.equals("haveTop500")) {
+			url.append("&haveTop500=");
+			url.append(haveTop500);
+		} else if (filter.equals("haveTop500")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (haveCopyrightWorks!=null && !filter.equals("haveCopyrightWorks")) {
+			url.append("&haveCopyrightWorks=");
+			url.append(haveCopyrightWorks);
+		} else if (filter.equals("haveCopyrightWorks")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (haveSoftwareCopyright!=null && !filter.equals("haveSoftwareCopyright")) {
+			url.append("&haveSoftwareCopyright=");
+			url.append(haveSoftwareCopyright);
+		} else if (filter.equals("haveSoftwareCopyright")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (haveTender!=null && !filter.equals("haveTender")) {
+			url.append("&haveTender=");
+			url.append(haveTender);
+		} else if (filter.equals("haveTender")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (haveClearing!=null && !filter.equals("haveClearing")) {
+			url.append("&haveClearing=");
+			url.append(haveClearing);
+		} else if (filter.equals("haveClearing")) {
+			url.append("&");
+			url.append(filterString);
+		}
 		return url.toString();		
 		
 	}
@@ -293,9 +522,9 @@ public class SearchVo {
 			url.append("&searchType=");
 			url.append(searchType);
 		}
-		if (StringUtils.isNotEmpty(companyType) && !vFilter.contains("companyType")) {
-			url.append("&companyType=");
-			url.append(companyType);
+		if (StringUtils.isNotEmpty(organizationType) && !vFilter.contains("organizationType")) {
+			url.append("&organizationType=");
+			url.append(organizationType);
 		}
 
 		if (StringUtils.isNotEmpty(province) && !vFilter.contains("province")) {
@@ -310,6 +539,101 @@ public class SearchVo {
 			url.append("&district=");
 			url.append(district);
 		}
+		if (registerCapitalType!=null && !vFilter.contains("registerCapitalType")) {
+			url.append("&registerCapitalType=");
+			url.append(registerCapitalType);
+		}
+		if (estiblishYearType!=null && !vFilter.contains("estiblishYearType")) {
+			url.append("&estiblishYearType=");
+			url.append(estiblishYearType);
+		}
+		if (StringUtils.isNotEmpty(categoryFirst) && !vFilter.contains("categoryFirst")) {
+			url.append("&categoryFirst=");
+			url.append(categoryFirst);
+		}
+		if (StringUtils.isNotEmpty(companyStatus) && !vFilter.contains("companyStatus")) {
+			url.append("&companyStatus=");
+			url.append(companyStatus);
+		}
+		if (StringUtils.isNotEmpty(moneyType) && !vFilter.contains("moneyType")) {
+			url.append("&moneyType=");
+			url.append(moneyType);
+		}
+		
+		if (StringUtils.isNotEmpty(companyType) && !vFilter.contains("companyType")) {
+			url.append("&companyType=");
+			url.append(companyType);
+		}
+		if (socialSecurityType!=null && !vFilter.contains("socialSecurityType")) {
+			url.append("&socialSecurityType=");
+			url.append(socialSecurityType);
+		}
+		if (haveContact!=null && !vFilter.contains("haveContact")) {
+			url.append("&haveContact=");
+			url.append(haveContact);
+		}
+		if (havePhone!=null && !vFilter.contains("havePhone")) {
+			url.append("&havePhone=");
+			url.append(havePhone);
+		}
+		if (haveMail!=null && !vFilter.contains("haveMail")) {
+			url.append("&haveMail=");
+			url.append(haveMail);
+		}
+		if (haveTrademark!=null && !vFilter.contains("haveTrademark")) {
+			url.append("&haveTrademark=");
+			url.append(haveTrademark);
+		}
+		if (havePatent!=null && !vFilter.contains("havePatent")) {
+			url.append("&havePatent=");
+			url.append(havePatent);
+		}
+		if (haveFinance!=null && !vFilter.contains("haveFinance")) {
+			url.append("&haveFinance=");
+			url.append(haveFinance);
+		}
+
+		if (haveIpo!=null && !vFilter.contains("haveIpo")) {
+			url.append("&haveIpo=");
+			url.append(haveIpo);
+		}
+		if (haveDishonest!=null && !vFilter.contains("haveDishonest")) {
+			url.append("&haveDishonest=");
+			url.append(haveDishonest);
+		}
+		if (haveWebSite!=null && !vFilter.contains("haveWebSite")) {
+			url.append("&haveWebSite=");
+			url.append(haveWebSite);
+		}
+		if (haveMpledge!=null && !vFilter.contains("haveMpledge")) {
+			url.append("&haveMpledge=");
+			url.append(haveMpledge);
+		}
+		if (haveTop500!=null && !vFilter.contains("haveTop500")) {
+			url.append("&haveTop500=");
+			url.append(haveTop500);
+		}
+		if (haveCopyrightWorks!=null && !vFilter.contains("haveCopyrightWorks")) {
+			url.append("&haveCopyrightWorks=");
+			url.append(haveCopyrightWorks);
+		}
+		if (haveSoftwareCopyright!=null && !vFilter.contains("haveSoftwareCopyright")) {
+			url.append("&haveSoftwareCopyright=");
+			url.append(haveSoftwareCopyright);
+		}
+		if (haveHighTech!=null && !vFilter.contains("haveHighTech")) {
+			url.append("&haveHighTech=");
+			url.append(haveHighTech);
+		}
+		if (haveTender!=null && !vFilter.contains("haveTender")) {
+			url.append("&haveTender=");
+			url.append(haveTender);
+		}
+		if (haveClearing!=null && !vFilter.contains("haveClearing")) {
+			url.append("&haveClearing=");
+			url.append(haveClearing);
+		}
+
 		return url.toString();
 
 	}	

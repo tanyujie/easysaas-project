@@ -107,50 +107,50 @@ public class SearchServiceImpl implements SearchService {
 
 		}
 		/** 成立时间范围 */
-		if (Objects.nonNull(searchVo.getEstiblishTimeYearType())) {
+		if (Objects.nonNull(searchVo.getEstiblishYearType())) {
 			// list.add(processParamlist("注册时间", "estiblishTimeYearType",
 			// "1年内=1-2年=2-3年=3-5年=5-10年=10年以上", "1=2=3=4=5=6"));
 			LocalDate now = LocalDate.now();
 			DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd");
 			Integer estiblishTimeFrom = new Integer(now.minus(1, ChronoUnit.YEARS).format(format));
 			Integer estiblishTimeTo = new Integer(now.format(format));
-			if (searchVo.getEstiblishTimeYearType() == 1)
+			if (searchVo.getEstiblishYearType() == 1)
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
-			if (searchVo.getEstiblishTimeYearType() == 2) {
+			if (searchVo.getEstiblishYearType() == 2) {
 				estiblishTimeFrom = new Integer(now.minus(2, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.YEARS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
 			}
 
-			if (searchVo.getEstiblishTimeYearType() == 3) {
+			if (searchVo.getEstiblishYearType() == 3) {
 				estiblishTimeFrom = new Integer(now.minus(3, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(2, ChronoUnit.YEARS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
 			}
-			if (searchVo.getEstiblishTimeYearType() == 4) {
+			if (searchVo.getEstiblishYearType() == 4) {
 				estiblishTimeFrom = new Integer(now.minus(5, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(3, ChronoUnit.YEARS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
 			}
-			if (searchVo.getEstiblishTimeYearType() == 5) {
+			if (searchVo.getEstiblishYearType() == 5) {
 				estiblishTimeFrom = new Integer(now.minus(10, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(5, ChronoUnit.YEARS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
 
 			}
-			if (searchVo.getEstiblishTimeYearType() == 5) {
+			if (searchVo.getEstiblishYearType() == 5) {
 				estiblishTimeFrom = new Integer(now.minus(10, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(5, ChronoUnit.YEARS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
 
 			}
-			if (searchVo.getEstiblishTimeYearType() == 6) {
+			if (searchVo.getEstiblishYearType() == 6) {
 				estiblishTimeFrom = new Integer(now.minus(1000, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(10, ChronoUnit.YEARS).format(format));
 				boolQueryBuilder.filter()
@@ -158,32 +158,32 @@ public class SearchServiceImpl implements SearchService {
 
 			}
 			// 21-7天内22-15天内23-1个月内24-3个月内25-半年内26-一年内
-			if (searchVo.getEstiblishTimeYearType() == 21) {
+			if (searchVo.getEstiblishYearType() == 21) {
 				estiblishTimeFrom = new Integer(now.minus(7, ChronoUnit.DAYS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.DAYS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
-			} else if (searchVo.getEstiblishTimeYearType() == 22) {
+			} else if (searchVo.getEstiblishYearType() == 22) {
 				estiblishTimeFrom = new Integer(now.minus(15, ChronoUnit.DAYS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.DAYS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
-			} else if (searchVo.getEstiblishTimeYearType() == 23) {
+			} else if (searchVo.getEstiblishYearType() == 23) {
 				estiblishTimeFrom = new Integer(now.minus(1, ChronoUnit.MONTHS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.DAYS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
-			} else if (searchVo.getEstiblishTimeYearType() == 24) {
+			} else if (searchVo.getEstiblishYearType() == 24) {
 				estiblishTimeFrom = new Integer(now.minus(3, ChronoUnit.MONTHS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.DAYS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
-			} else if (searchVo.getEstiblishTimeYearType() == 25) {
+			} else if (searchVo.getEstiblishYearType() == 25) {
 				estiblishTimeFrom = new Integer(now.minus(6, ChronoUnit.MONTHS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.DAYS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
-			} else if (searchVo.getEstiblishTimeYearType() == 26) {
+			} else if (searchVo.getEstiblishYearType() == 26) {
 				estiblishTimeFrom = new Integer(now.minus(1, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.DAYS).format(format));
 				boolQueryBuilder.filter()
@@ -218,10 +218,10 @@ public class SearchServiceImpl implements SearchService {
 
 		}
 		/** 手机 */
-		if (new Integer(1).equals(searchVo.getHaveMobile())) {
+		if (new Integer(1).equals(searchVo.getHavePhone())) {
 
 		}
-		if (new Integer(0).equals(searchVo.getHaveMobile())) {
+		if (new Integer(0).equals(searchVo.getHavePhone())) {
 
 		}
 		/** 商标 */
@@ -232,12 +232,12 @@ public class SearchServiceImpl implements SearchService {
 
 		}
 		/** 邮箱 */
-		if (new Integer(1).equals(searchVo.getHaveEmail())) {
+		if (new Integer(1).equals(searchVo.getHaveMail())) {
 			boolQueryBuilder.filter(QueryBuilders.boolQuery().must(QueryBuilders.existsQuery("email"))
 					.must(QueryBuilders.boolQuery().mustNot(QueryBuilders.termQuery("email", ""))
 							.mustNot(QueryBuilders.termsQuery("email", "无"))));
 		}
-		if (new Integer(0).equals(searchVo.getHaveEmail())) {
+		if (new Integer(0).equals(searchVo.getHaveMail())) {
 			boolQueryBuilder.filter(QueryBuilders.boolQuery().should(QueryBuilders.termQuery("email", ""))
 					.should(QueryBuilders.termsQuery("email", "无"))
 					.should(QueryBuilders.boolQuery().mustNot(QueryBuilders.existsQuery("email"))));
