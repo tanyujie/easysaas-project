@@ -49,10 +49,12 @@ public class SearchVo {
 	private String districtDepict;
 	//注册资本
 	private List registerCapitalList;
-	private Integer registerCapitalType;
+	private String registerCapitalType;
+	private String registerCapitalDepict;
 	//成立时间,成立时间范围
     private List estiblishYearList;
-    private Integer estiblishYearType;
+    private String estiblishYearType;
+	private String estiblishYearDepict;
 	//行业分类
 	private boolean filterCategoryFirst=true;
 	private List categoryFirstList;
@@ -72,8 +74,7 @@ public class SearchVo {
  
     //企业描述
     private boolean filterDepict=true;
-	//企业状态:在业
-    private String companyStatus;
+
 	//资本类型,注册资本金额范围
     private Integer registerCapitalNumberType;
     //注册资本金额范围-开始
@@ -82,12 +83,23 @@ public class SearchVo {
     //注册资本金额范围-结束
     @Min(value = 1, message = "注册资本金额范围不合法,请检查")
     private Long registerCapitalTo;
+	//企业状态列表
+    private String companyStatusList;
+	//企业状态:在业
+    private String companyStatus;
+    //资本币种列表
+    private List  moneyList;
     //资本币种：人民币，美元，其他
     private String moneyType;
+    //企业类型列表
+    private List  companyTypeList;
     //企业类型
     private String companyType;
+    //参保人数范围列表
+    private List  socialSecurityList;
     //参保人数范围
-    private Integer  socialSecurityType;
+    private String  socialSecurityType;
+
     //参保人数范围-开始
     @Min(0)
     private Integer insurancePersonNumberFrom;
@@ -95,7 +107,8 @@ public class SearchVo {
     @Range(min = 0, max = 100000000, message = "参保人数范围不合法，请检查")
     private Integer insurancePersonNumberTo;
     
-    
+    //企业描述
+    private boolean filterAdvanced=true;
     //联系方式1,有联系方式0无联系方式
     public Integer haveContact;
     //手机号码
@@ -144,8 +157,10 @@ public class SearchVo {
     //清算信息
     @Range(min = 0, max = 1)
     public Integer haveClearing;
-   
-    
+    //排序类型
+	private List sortList;
+    private String sortType;
+    private String sortDepict;
     @Range(min = 1, max = 30, message = "每页最大数量为30")
     public Integer pageSize = 10;
     @Min(value = 1, message = "pageNo大于等于1")
@@ -160,6 +175,7 @@ public class SearchVo {
 				||haveFinance!=null||haveIpo!=null||haveDishonest!=null||haveWebSite!=null||haveMpledge!=null
 				||haveTop500!=null||haveCopyrightWorks!=null||haveSoftwareCopyright!=null||haveHighTech!=null
 				||haveTender!=null||haveClearing!=null
+				||sortType!=null
 
 				)
 			return true;
@@ -296,11 +312,73 @@ public class SearchVo {
 	public List getCategoryFirstList() {
 		return DistrictUtil.getCategoryFirstList();
 	}
+	//企业状态列表
+	public List getCompanyStatusList() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getCompanyStatusList();
+	}
+	//企业状态:在业
+    public String getCompanyStatusDepict() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getCompanyStatus(companyStatus);
+    }
+    //资本币种列表
+    public List getMoneyList() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getMoneyList();
+    }
+    public String getRegisterCapitalDepict() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getRegisteredCapital(registerCapitalType);
+    }
+
+    public String getEstiblishYearDepict() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getEstiblishYear(estiblishYearType);
+    }
+    //资本币种：人民币，美元，其他
+    public String getMoneyTypeDepict() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getMoney(moneyType);
+    }
+    //企业类型列表
+    public List getCompanyTypeList() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getCompanyTypeList();
+    }
+    //企业类型
+    public String getCompanyTypeDepict() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getCompanyType(companyType);
+    }
+    //参保人数范围列表
+    public List getSocialSecurityList() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getSocialSecurityList();
+    }
+    public String getSocialSecurityDepict() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getSocialSecurity(socialSecurityType);
+    }
 	public boolean isFilterDepict(){
 		if(StringUtil.isNotEmpty(companyStatus)&&StringUtil.isNotEmpty(moneyType)&&StringUtil.isNotEmpty(companyType)&&socialSecurityType!=null)
 			return false;
 		return filterDepict;
 	}
+	
+	public boolean isFilterAdvanced() {
+		if(haveContact!=null&&havePhone!=null&&haveMail!=null&&haveTrademark!=null&&havePatent!=null&&haveFinance!=null&&haveDishonest!=null&&haveIpo!=null&&haveWebSite!=null&&haveMpledge!=null&&haveTop500!=null&&haveCopyrightWorks!=null&&haveSoftwareCopyright!=null)
+			return false;
+		return filterAdvanced;
+	}
+	public List getSortList() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getSortList();
+    }
+    public String getSortDepict(){
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getSortDepict(sortType);
+    }
 	public String increaseParameter(String filterString) {
 		StringBuffer url=new StringBuffer();
 		String filter=filterString.split("=")[0];
@@ -367,7 +445,7 @@ public class SearchVo {
 			url.append(filterString);
 		}
 		
-		if (categoryFirst!=null && !filter.equals("companyStatus")) {
+		if (companyStatus!=null && !filter.equals("companyStatus")) {
 			url.append("&companyStatus=");
 			url.append(companyStatus);
 		} else if (filter.equals("companyStatus")) {
@@ -459,7 +537,7 @@ public class SearchVo {
 			url.append("&");
 			url.append(filterString);
 		}
-		if (haveWebSite!=null && !filter.equals("haveMpledge")) {
+		if (haveMpledge!=null && !filter.equals("haveMpledge")) {
 			url.append("&haveMpledge=");
 			url.append(haveMpledge);
 		} else if (filter.equals("haveMpledge")) {
@@ -501,6 +579,21 @@ public class SearchVo {
 			url.append("&");
 			url.append(filterString);
 		}
+		if (sortType!=null && !filter.equals("sortType")) {
+			url.append("&sortType=");
+			url.append(sortType);
+		} else if (filter.equals("sortType")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (pageNo!=null && !filter.equals("pageNo")) {
+			url.append("&pageNo=");
+			url.append(pageNo);
+		} else if (filter.equals("pageNo")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		
 		return url.toString();		
 		
 	}
@@ -633,7 +726,11 @@ public class SearchVo {
 			url.append("&haveClearing=");
 			url.append(haveClearing);
 		}
-
+		if (sortType!=null && !vFilter.contains("sortType")) {
+			url.append("&sortType=");
+			url.append(sortType);
+		}
+		
 		return url.toString();
 
 	}	

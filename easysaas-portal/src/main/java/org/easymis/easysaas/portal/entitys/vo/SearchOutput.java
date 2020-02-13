@@ -34,6 +34,10 @@ public class SearchOutput {
     private String city;
     @ApiModelProperty(value = "区")
     private String district;
+    @ApiModelProperty(value = "注册地")
+    private String registerLocation;
+    @ApiModelProperty(value = "注册地(高亮)")
+    private String registerLocationHighlight;
     
     @ApiModelProperty(value = "统一社会信用代码")
     private String  creditCode;

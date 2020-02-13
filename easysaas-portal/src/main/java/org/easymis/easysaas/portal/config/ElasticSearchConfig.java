@@ -102,11 +102,11 @@ public class ElasticSearchConfig {
                                 }
                             })
             		);
-            CreateIndexRequest request;
+            CreateIndexRequest request = null;
             if (this.indexExist(INDEX_NAME)) {
                 //DeleteIndexRequest deleteIndexRequest= new DeleteIndexRequest(INDEX_NAME);
                 //client.indices().delete(deleteIndexRequest,  RequestOptions.DEFAULT);
-                //return;
+                return;
             }else {
                 request = new CreateIndexRequest(INDEX_NAME);
                 request.settings(Settings.builder().put("index.number_of_shards", 3).put("index.number_of_replicas", 2));
@@ -115,9 +115,9 @@ public class ElasticSearchConfig {
             }
             //查老赖索引
             if (this.indexExist(INDEX_NAME_DISHONEST)) {
-                //DeleteIndexRequest deleteIndexRequest= new DeleteIndexRequest(INDEX_NAME_DISHONEST);
+               // DeleteIndexRequest deleteIndexRequest= new DeleteIndexRequest(INDEX_NAME_DISHONEST);
                 //client.indices().delete(deleteIndexRequest,  RequestOptions.DEFAULT);
-                return;
+                //return;
             }else {
             	 request = new CreateIndexRequest(INDEX_NAME_DISHONEST);
             	 request.mapping(buildIndexDishonestMapping(),XContentType.JSON);
@@ -286,8 +286,14 @@ public class ElasticSearchConfig {
 		name.put("analyzer", "ik_max_word");
 		name.put("search_analyzer", "ik_max_word");
 		
+		Map<String, Object> registerLocation = new HashMap<>();
+		registerLocation.put("type", "text");
+		registerLocation.put("analyzer", "ik_max_word");
+		registerLocation.put("search_analyzer", "ik_max_word");
+
 		Map<String, Object> properties = new HashMap<>();
 		properties.put("companyName", name);
+		properties.put("registerLocation", registerLocation);
 		Map<String, Object> indexMapping = new HashMap<>();
 		indexMapping.put("properties", properties);
 		//jsonMap.put("books", book);
@@ -300,6 +306,7 @@ public class ElasticSearchConfig {
 		name.put("type", "text");
 		name.put("analyzer", "ik_max_word");
 		name.put("search_analyzer", "ik_max_word");
+
 		
 		Map<String, Object> publishDate = new HashMap<>();
 		publishDate.put("type", "date");

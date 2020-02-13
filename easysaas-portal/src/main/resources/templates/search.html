@@ -371,13 +371,13 @@ line-height: 22px;
 									<#if searchVo.registerCapitalType??>
 									<a
 										class="btn -h24 btn-primary-bd"
-										href="http://www.vkwit.com/search?${vo.minusParameter('registerCapitalType')!}">注册资本：${searchVo.registerCapitalType!}&nbsp;<i
+										href="http://www.vkwit.com/search?${vo.minusParameter('registerCapitalType')!}">注册资本：${searchVo.registerCapitalDepict!}&nbsp;<i
 										class="fa fa-close"></i></a>
 									</#if>
 									<#if searchVo.estiblishYearType??>
 									<a
 										class="btn -h24 btn-primary-bd"
-										href="http://www.vkwit.com/search?${vo.minusParameter('estiblishYearType')!}">注册时间：${searchVo.districtDepict!}&nbsp;<i
+										href="http://www.vkwit.com/search?${vo.minusParameter('estiblishYearType')!}">注册时间：${searchVo.estiblishYearDepict!}&nbsp;<i
 										class="fa fa-close"></i></a>
 									</#if>
 									<#if searchVo.categoryFirst??>
@@ -401,25 +401,25 @@ line-height: 22px;
 									<#if searchVo.companyStatus??>
 									<a
 										class="btn -h24 btn-primary-bd"
-										href="http://www.vkwit.com/search?${vo.minusParameter('companyStatus')!}">企业状态：${searchVo.categoryFirst!}&nbsp;<i
+										href="http://www.vkwit.com/search?${vo.minusParameter('companyStatus')!}">企业状态：${searchVo.companyStatusDepict!}&nbsp;<i
 										class="fa fa-close"></i></a>
 									</#if>
 									<#if searchVo.moneyType??>
 									<a
 										class="btn -h24 btn-primary-bd"
-										href="http://www.vkwit.com/search?${vo.minusParameter('moneyType')!}">资本类型：${searchVo.categoryFirst!}&nbsp;<i
+										href="http://www.vkwit.com/search?${vo.minusParameter('moneyType')!}">资本类型：${searchVo.moneyTypeDepict!}&nbsp;<i
 										class="fa fa-close"></i></a>
 									</#if>
 									<#if searchVo.companyType??>
 									<a
 										class="btn -h24 btn-primary-bd"
-										href="http://www.vkwit.com/search?${vo.minusParameter('moneyType')!}">企业类型：${searchVo.categoryFirst!}&nbsp;<i
+										href="http://www.vkwit.com/search?${vo.minusParameter('companyType')!}">企业类型：${searchVo.companyTypeDepict!}&nbsp;<i
 										class="fa fa-close"></i></a>
 									</#if>
 									<#if searchVo.socialSecurityType??>
 									<a
 										class="btn -h24 btn-primary-bd"
-										href="http://www.vkwit.com/search?${vo.minusParameter('socialSecurityType')!}">参保人数：${searchVo.categoryFirst!}&nbsp;<i
+										href="http://www.vkwit.com/search?${vo.minusParameter('socialSecurityType')!}">参保人数：${searchVo.socialSecurityDepict!}&nbsp;<i
 										class="fa fa-close"></i></a>
 									</#if>
 									<#if searchVo.haveContact??>
@@ -459,6 +459,54 @@ line-height: 22px;
 										href="http://www.vkwit.com/search?${vo.minusParameter('haveFinance')!}">融资信息：${(vo.haveFinance==1)?string('有','无')}&nbsp;<i
 										class="fa fa-close"></i></a>
 									</#if>
+									<#if searchVo.haveIpo??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('haveIpo')!}">上市状态：${(vo.haveIpo==1)?string('有','无')}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.haveDishonest??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('haveDishonest')!}">失信信息：${(vo.haveDishonest==1)?string('有','无')}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.haveWebSite??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('haveWebSite')!}">网址信息：${(vo.haveWebSite==1)?string('有','无')}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.haveMpledge??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('haveMpledge')!}">动产抵押：${(vo.haveMpledge==1)?string('有','无')}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.haveTop500??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('haveTop500')!}">500强：${(vo.haveTop500==1)?string('有','无')}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.haveCopyrightWorks??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('haveCopyrightWorks')!}">作品著作权：${(vo.haveCopyrightWorks==1)?string('有','无')}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.haveSoftwareCopyright??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('haveSoftwareCopyright')!}">软件著作权：${(vo.haveSoftwareCopyright==1)?string('有','无')}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
+									<#if searchVo.sortType??>
+									<a
+										class="btn -h24 btn-primary-bd"
+										href="http://www.vkwit.com/search?${vo.minusParameter('sortType')!}">排序方式：${vo.sortDepict!}&nbsp;<i
+										class="fa fa-close"></i></a>
+									</#if>
 																		
 										<a class="scope-more link-click"
 										
@@ -476,7 +524,7 @@ line-height: 22px;
 						<a  tyc-event-ch="CompanySearch.Filter.SearchWide.human" class="item " href="http://www.vkwit.com/search?${vo.increaseParameter('searchType=human')!}" rel="nofollow">法人/股东/高管</a>
 						<a  tyc-event-ch="CompanySearch.Filter.SearchWide.service" class="item " href="http://www.vkwit.com/search?${vo.increaseParameter('searchType=service')!}" rel="nofollow">产品服务</a>
 						<a  tyc-event-ch="CompanySearch.Filter.SearchWide.trademark" class="item " href="http://www.vkwit.com/search?${vo.increaseParameter('searchType=trademark')!}" rel="nofollow">商标</a>
-						<a  tyc-event-ch="CompanySearch.Filter.SearchWide.similarAddr" class="item " href="http://www.vkwit.com/search?${vo.increaseParameter('searchType=similarAddr')!}" rel="nofollow">联系方式</a>
+						<a  tyc-event-ch="CompanySearch.Filter.SearchWide.similarAddr" class="item " href="http://www.vkwit.com/search?${vo.increaseParameter('searchType=similarAddress')!}" rel="nofollow">联系方式</a>
 						<a  tyc-event-ch="CompanySearch.Filter.SearchWide.scope" class="item " href="http://www.vkwit.com/search?${vo.increaseParameter('searchType=scope')!}" rel="nofollow">经营范围</a>
 						</div>						
 						</div>
@@ -644,31 +692,13 @@ line-height: 22px;
 												class="fa fa-caret-down"></span>
 										</div>
 										<div class="content">
+										<#list vo.companyStatusList as c>
 											<div class="item">
 												<a class="item-click "
-													href="http://www.vkwit.com/search?${vo.increaseParameter('companyStatus=1')!}"
-													rel="nofollow">在业</a>
+													href="http://www.vkwit.com/search?${vo.increaseParameter('companyStatus=${c.key!}')!}"
+													rel="nofollow">${c.title!}</a>
 											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/os2?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">存续</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/os3?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">吊销</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/os4?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">注销</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/os5?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">迁出</a>
-											</div>
+										</#list>	
 										</div>
 									</div>
 									</#if>
@@ -681,21 +711,13 @@ line-height: 22px;
 												class="fa fa-caret-down"></span>
 										</div>
 										<div class="content">
+										<#list vo.moneyList as t>
 											<div class="item">
 												<a class="item-click "
-													href="http://www.vkwit.com/search?${vo.increaseParameter('moneyType=1')!}"
-													rel="nofollow">人民币</a>
+													href="http://www.vkwit.com/search?${vo.increaseParameter('moneyType=${t.key!}')!}"
+													rel="nofollow">${t.title!}</a>
 											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/ot2?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">美元</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/ot3?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">其他</a>
-											</div>
+											</#list>
 										</div>
 									</div>
 									</#if>
@@ -708,66 +730,13 @@ line-height: 22px;
 												class="fa fa-caret-down"></span>
 										</div>
 										<div class="content">
+										<#list vo.companyTypeList as t>
 											<div class="item">
 												<a class="item-click "
-													href="http://www.vkwit.com/search?${vo.increaseParameter('companyType=1')!}"
-													rel="nofollow">有限责任公司</a>
+													href="http://www.vkwit.com/search?${vo.increaseParameter('companyType=${t.key!}')!}"
+													rel="nofollow">${t.title!}</a>
 											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oot2?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">股份有限公司</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oot3?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">集体所有制</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oot4?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">国有企业</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oot5?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">个体工商户</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oot12?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">个人独资企业</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oot6?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">有限合伙</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oot7?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">普通合伙</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oot8?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">外商投资企业</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oot9?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">港、澳、台</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oot10?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">联营企业</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oot11?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">私营企业</a>
-											</div>
+										</#list>
 										</div>
 									</div>
 									</#if>
@@ -780,47 +749,21 @@ line-height: 22px;
 												class="fa fa-caret-down"></span>
 										</div>
 										<div class="content">
+											<#list vo.socialSecurityList as t>
 											<div class="item">
 												<a class="item-click "
-													href="http://www.vkwit.com/search?${vo.increaseParameter('socialSecurityType=1')!}"
-													rel="nofollow">小于50人</a>
+													href="http://www.vkwit.com/search?${vo.increaseParameter('socialSecurityType=${t.key!}')!}"
+													rel="nofollow">${t.title!}</a>
 											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oss5099?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">50-99人</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oss100499?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">100-499人</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oss500999?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">500-999人</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oss4999?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">1000-4999人</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oss9999?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">5000-9999人</a>
-											</div>
-											<div class="item">
-												<a class="item-click "
-													href="https://www.tianyancha.com/search/oss10000?searchType=company&amp;key=%E5%8C%97%E4%BA%AC%E5%86%9B"
-													rel="nofollow">10000人以上</a>
-											</div>
+											</#list>
 										</div>
 									</div>
 									</#if>
 								</div>
 							</div>
 						</#if>
+						<#if vo.filterAdvanced>
+						
 							<div class="filter-scope -expand ">
 								<span class="scope-title -vip">高级筛选</span>
 								<div class="scope-box">
@@ -865,7 +808,10 @@ line-height: 22px;
 												<!-- <span class="item-click " onclick="searchNeedVip()">有手机号码</span> -->
 											</div>
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">无手机号码</span>
+											<a class="item-click "
+													href="http://www.vkwit.com/search?${vo.increaseParameter('havePhone=2')!}"
+													rel="nofollow">无手机号码</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">无手机号码</span> -->
 											</div>
 										</div>
 									</div>
@@ -886,7 +832,10 @@ line-height: 22px;
 											<!-- 	<span class="item-click " onclick="searchNeedVip()">有联系邮箱</span> -->
 											</div>
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">无联系邮箱</span>
+											<a class="item-click "
+													href="http://www.vkwit.com/search?${vo.increaseParameter('haveMail=2')!}"
+													rel="nofollow">无联系邮箱</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">无联系邮箱</span> -->
 											</div>
 										</div>
 									</div>
@@ -950,20 +899,21 @@ line-height: 22px;
 										<div class="content">
 											<div class="item">
 											<a class="item-click "
-														href="http://www.vkwit.com/search?${vo.increaseParameter('havePatent=1')!}"
+														href="http://www.vkwit.com/search?${vo.increaseParameter('haveFinance=1')!}"
 														rel="nofollow">有融资信息</a>
 												<!-- <span class="item-click " onclick="searchNeedVip()">有融资信息</span> -->
 											</div>
 											<div class="item">
 												<!-- <span class="item-click " onclick="searchNeedVip()">无融资信息</span> -->
 												<a class="item-click "
-														href="http://www.vkwit.com/search?${vo.increaseParameter('havePatent=1')!}"
+														href="http://www.vkwit.com/search?${vo.increaseParameter('haveFinance=2')!}"
 														rel="nofollow">无融资信息</a>
 											</div>
 										</div>
 									</div>
 									</#if>
 									<!--上市状态-->
+									<#if !(vo.haveIpo??)>
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.Shangshi">
 										<div class="filter-btn">
@@ -972,14 +922,22 @@ line-height: 22px;
 										</div>
 										<div class="content">
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">已上市</span>
+											<a class="item-click "
+														href="http://www.vkwit.com/search?${vo.increaseParameter('haveIpo=1')!}"
+														rel="nofollow">已上市</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">已上市</span> -->
 											</div>
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">未上市</span>
+											<a class="item-click "
+														href="http://www.vkwit.com/search?${vo.increaseParameter('haveIpo=2')!}"
+														rel="nofollow">未上市</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">未上市</span> -->
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--失信信息-->
+									<#if !(vo.haveDishonest??)>
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.Shixin">
 										<div class="filter-btn">
@@ -988,14 +946,22 @@ line-height: 22px;
 										</div>
 										<div class="content">
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">有失信信息</span>
+											<a class="item-click "
+														href="http://www.vkwit.com/search?${vo.increaseParameter('haveDishonest=1')!}"
+														rel="nofollow">有失信信息</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">有失信信息</span> -->
 											</div>
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">无失信信息</span>
+											<a class="item-click "
+														href="http://www.vkwit.com/search?${vo.increaseParameter('haveDishonest=2')!}"
+														rel="nofollow">无失信信息</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">无失信信息</span> -->
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--网址信息-->
+									<#if !(vo.haveWebSite??)>
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.Website">
 										<div class="filter-btn">
@@ -1004,14 +970,22 @@ line-height: 22px;
 										</div>
 										<div class="content">
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">有网址信息</span>
+												<a class="item-click "
+															href="http://www.vkwit.com/search?${vo.increaseParameter('haveWebSite=1')!}"
+															rel="nofollow">有网址信息</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">有网址信息</span> -->
 											</div>
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">无网址信息</span>
+											<a class="item-click "
+															href="http://www.vkwit.com/search?${vo.increaseParameter('haveWebSite=2')!}"
+															rel="nofollow">无网址信息</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">无网址信息</span> -->
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--动产抵押-->
+									<#if !(vo.haveMpledge??)>
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.Mortgage">
 										<div class="filter-btn">
@@ -1020,14 +994,22 @@ line-height: 22px;
 										</div>
 										<div class="content">
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">有动产抵押</span>
+											<a class="item-click "
+															href="http://www.vkwit.com/search?${vo.increaseParameter('haveMpledge=1')!}"
+															rel="nofollow">有动产抵押</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">有动产抵押</span> -->
 											</div>
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">无动产抵押</span>
+											<a class="item-click "
+															href="http://www.vkwit.com/search?${vo.increaseParameter('haveMpledge=2')!}"
+															rel="nofollow">无动产抵押</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">无动产抵押</span> -->
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--500强-->
+									<#if !(vo.haveTop500??)>
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.Top500">
 										<div class="filter-btn">
@@ -1036,14 +1018,22 @@ line-height: 22px;
 										</div>
 										<div class="content">
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">中国500强</span>
+											<a class="item-click "
+															href="http://www.vkwit.com/search?${vo.increaseParameter('haveTop500=1')!}"
+															rel="nofollow">中国500强</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">中国500强</span> -->
 											</div>
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">世界500强</span>
+											<a class="item-click "
+															href="http://www.vkwit.com/search?${vo.increaseParameter('haveTop500=2')!}"
+															rel="nofollow">中国500强</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">世界500强</span> -->
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--作品著作权-->
+									<#if !(vo.haveCopyrightWorks??)>
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.CopyrightWorks">
 										<div class="filter-btn">
@@ -1052,14 +1042,22 @@ line-height: 22px;
 										</div>
 										<div class="content">
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">有作品著作权</span>
+											<a class="item-click "
+															href="http://www.vkwit.com/search?${vo.increaseParameter('haveCopyrightWorks=1')!}"
+															rel="nofollow">有作品著作权</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">有作品著作权</span> -->
 											</div>
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">无作品著作权</span>
+											<a class="item-click "
+															href="http://www.vkwit.com/search?${vo.increaseParameter('haveCopyrightWorks=2')!}"
+															rel="nofollow">无作品著作权</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">无作品著作权</span> -->
 											</div>
 										</div>
 									</div>
+									</#if>
 									<!--软件著作权-->
+									<#if !(vo.haveSoftwareCopyright??)>
 									<div class="filter-sel -vip" 
 										tyc-event-ch="CompanySearch.Filter.CopyrightSoftware">
 										<div class="filter-btn">
@@ -1068,15 +1066,23 @@ line-height: 22px;
 										</div>
 										<div class="content">
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">有软件著作权</span>
+											<a class="item-click "
+															href="http://www.vkwit.com/search?${vo.increaseParameter('haveSoftwareCopyright=1')!}"
+															rel="nofollow">有软件著作权</a>
+												<!-- <span class="item-click " onclick="searchNeedVip()">有软件著作权</span> -->
 											</div>
 											<div class="item">
-												<span class="item-click " onclick="searchNeedVip()">无软件著作权</span>
+												<!-- <span class="item-click " onclick="searchNeedVip()">无软件著作权</span> -->
+												<a class="item-click "
+															href="http://www.vkwit.com/search?${vo.increaseParameter('haveSoftwareCopyright=2')!}"
+															rel="nofollow">无软件著作权</a>
 											</div>
 										</div>
 									</div>
+									</#if>
 								</div>
 							</div>
+						</#if>
 						</div>
 						<div class="search-expand-btn">
 							<div class="expand" onclick="window1.toggleFilter(this)">收起</div>
@@ -1097,9 +1103,10 @@ line-height: 22px;
 												class="btn btn-outline-white  dropdown-toggle m-1 border-1"
 												data-toggle="dropdown"> 默认排序 </a>
 											<div class="dropdown-menu">
-												<a class="dropdown-item" href="#">Link 1</a> <a
-													class="dropdown-item" href="#">Link 2</a> <a
-													class="dropdown-item" href="#">Link 3</a>
+											<#list vo.sortList as t>
+											<a class="dropdown-item" href="http://www.vkwit.com/search?${vo.increaseParameter('sortType=${t.key}')!}">${t.title!}</a> 
+											</#list>
+
 											</div>
 										</div>
 
@@ -1157,9 +1164,12 @@ line-height: 22px;
 													 tyc-event-ch="CompanySearch.MoreTel">登录查看</span>
 											</div>
 										</div>
+										<#if !(vo.searchType??) ||(vo.searchType='similarAddress') >
 										<div class="match row text-ellipsis">
-											<i class="tic tic-match"></i><span class="label">地址信息：</span><span>${company.address!}</span>
+											<i class="tic tic-match"></i>
+											<span class="label">地址信息：</span><span>${company.registerLocationHighlight!}</span>
 										</div>
+										</#if>
 									</div>
 
 
@@ -1185,28 +1195,29 @@ line-height: 22px;
 								<ul class="pagination" page-total="5000" change-type=""
 									line-type-name="" line-type-val="">
 									<#if (pageData.pageInfo.getPageNum()>1)>
-									<li><a class="num -prev" href="http://www.vkwit.com/search?wd=${vo.wd!}&pageNo=${pageData.pageInfo.prePage}">&lt;</a></li>
+									
+									<li><a class="num -prev" href="http://www.vkwit.com/search?${vo.increaseParameter('pageNo=${pageData.pageInfo.prePage}')!}">&lt;</a></li>
 									</#if>
 									<#if (pageData.pageInfo.navigateFirstPage>1)>
-									<li><a class="num -first" href="http://www.vkwit.com/search?wd=${vo.wd!}&pageNo=1">1...</a></li>
+									<li><a class="num -first" href="http://www.vkwit.com/search?${vo.increaseParameter('pageNo=1')!}">1...</a></li>
 									</#if>
 									<#list pageData.pageInfo.getNavigatepageNums() as element>
 									<#if element==pageData.pageInfo.getPageNum()>
 									<li><a class="num -current"
-										href="http://www.vkwit.com/search?wd=${vo.wd!}&pageNo=${element}">${element}</a></li>
+										href="http://www.vkwit.com/search?${vo.increaseParameter('pageNo=${element}')!}">${element}</a></li>
 										</#if>
 										<#if element!=pageData.pageInfo.getPageNum()>
 									<li><a class="num "
-										href="http://www.vkwit.com/search?wd=${vo.wd!}&pageNo=${element}">${element}</a></li>
+										href="http://www.vkwit.com/search?${vo.increaseParameter('pageNo=${element}')!}">${element}</a></li>
 										</#if>
 									</#list>
 									<#if (pageData.pageInfo.pages-pageData.pageInfo.navigateLastPage>0)>
 									<li><a class="num -end"
-										href="http://www.vkwit.com/search?wd=${vo.wd!}&pageNo=${pageData.pageInfo.pages}">...${pageData.pageInfo.pages}</a></li>
+										href="http://www.vkwit.com/search?${vo.increaseParameter('pageNo=${pageData.pageInfo.prePage}')}">...${pageData.pageInfo.pages}</a></li>
 										</#if>
 									<#if !(pageData.pageInfo.isLastPage)>
 										<li><a class="num -next"
-											href="http://www.vkwit.com/search?wd=${vo.wd!}&pageNo=${pageData.pageInfo.nextPage}">&gt;</a></li>
+											href="http://www.vkwit.com/search?${vo.increaseParameter('pageNo=${pageData.pageInfo.nextPage}')}">&gt;</a></li>
 									</#if>
 								</ul>
 								<div id="customize" class="customize">

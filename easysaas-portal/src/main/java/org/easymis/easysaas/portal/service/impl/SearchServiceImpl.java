@@ -73,26 +73,39 @@ public class SearchServiceImpl implements SearchService {
 		BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
 		PageData pageData = new PageData();
 
-		if (!StringUtils.isEmpty(searchVo.getWd())) {
-            boolQueryBuilder.must(QueryBuilders.matchQuery("companyName", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
-			// boolQueryBuilder.must(QueryBuilders.matchQuery("name", wd.trim()));
-		}
-		// 搜索范围
-		if (!StringUtils.isEmpty(searchVo.getSearchType())) {
-			if ("company".equals(searchVo.getSearchType())) {
 
+		// 搜索范围
+		if (StringUtils.isNotEmpty(searchVo.getSearchType())) {
+			if ("company".equals(searchVo.getSearchType())) {
+				if (!StringUtils.isEmpty(searchVo.getWd())) {
+		            boolQueryBuilder.must(QueryBuilders.matchQuery("companyName", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
+		            boolQueryBuilder.should(QueryBuilders.matchQuery("registerLocation", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
+				}
 			} else if ("human".equals(searchVo.getSearchType())) {
+	            boolQueryBuilder.should(QueryBuilders.matchQuery("companyName", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
+	            boolQueryBuilder.should(QueryBuilders.matchQuery("legalPersonName", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
 
 			} else if ("service".equals(searchVo.getSearchType())) {
-
+				boolQueryBuilder.should(QueryBuilders.matchQuery("companyName", searchVo.getWd().trim()).operator(Operator.OR).analyzer("ik_max_word"));
+				
 			} else if ("trademark".equals(searchVo.getSearchType())) {
-
-			} else if ("contact".equals(searchVo.getSearchType())) {
+				boolQueryBuilder.should(QueryBuilders.matchQuery("companyName", searchVo.getWd().trim()).operator(Operator.OR).analyzer("ik_max_word"));
+				//boolQueryBuilder.must(QueryBuilders.matchQuery("trademark", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
+			} else if ("similarAddress".equals(searchVo.getSearchType())) {
+				//QueryBuilders.constantScoreQuery(queryBuilder)
+		
+				boolQueryBuilder.should(QueryBuilders.matchQuery("companyName", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
+				boolQueryBuilder.must(QueryBuilders.matchQuery("registerLocation", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
 
 			} else if ("scope".equals(searchVo.getSearchType())) {
 
 			}
-
+		}else {
+			if (!StringUtils.isEmpty(searchVo.getWd())) {
+	            boolQueryBuilder.should(QueryBuilders.matchQuery("companyName", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
+	            boolQueryBuilder.should(QueryBuilders.matchQuery("registerLocation", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
+				// boolQueryBuilder.must(QueryBuilders.matchQuery("name", wd.trim()));
+			}
 		}
 		// 机构类型
 		if (!StringUtils.isEmpty(searchVo.getCompanyType())) {
@@ -114,43 +127,43 @@ public class SearchServiceImpl implements SearchService {
 			DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd");
 			Integer estiblishTimeFrom = new Integer(now.minus(1, ChronoUnit.YEARS).format(format));
 			Integer estiblishTimeTo = new Integer(now.format(format));
-			if (searchVo.getEstiblishYearType() == 1)
+			if (searchVo.getEstiblishYearType().equals("1"))
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
-			if (searchVo.getEstiblishYearType() == 2) {
+			if (searchVo.getEstiblishYearType().equals("2")) {
 				estiblishTimeFrom = new Integer(now.minus(2, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.YEARS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
 			}
 
-			if (searchVo.getEstiblishYearType() == 3) {
+			if (searchVo.getEstiblishYearType().equals("3")) {
 				estiblishTimeFrom = new Integer(now.minus(3, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(2, ChronoUnit.YEARS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
 			}
-			if (searchVo.getEstiblishYearType() == 4) {
+			if (searchVo.getEstiblishYearType().equals("4")) {
 				estiblishTimeFrom = new Integer(now.minus(5, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(3, ChronoUnit.YEARS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
 			}
-			if (searchVo.getEstiblishYearType() == 5) {
+			if (searchVo.getEstiblishYearType().equals("5")) {
 				estiblishTimeFrom = new Integer(now.minus(10, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(5, ChronoUnit.YEARS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
 
 			}
-			if (searchVo.getEstiblishYearType() == 5) {
+			if (searchVo.getEstiblishYearType().equals("5")) {
 				estiblishTimeFrom = new Integer(now.minus(10, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(5, ChronoUnit.YEARS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
 
 			}
-			if (searchVo.getEstiblishYearType() == 6) {
+			if (searchVo.getEstiblishYearType().equals("6")) {
 				estiblishTimeFrom = new Integer(now.minus(1000, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(10, ChronoUnit.YEARS).format(format));
 				boolQueryBuilder.filter()
@@ -158,32 +171,32 @@ public class SearchServiceImpl implements SearchService {
 
 			}
 			// 21-7天内22-15天内23-1个月内24-3个月内25-半年内26-一年内
-			if (searchVo.getEstiblishYearType() == 21) {
+			if (searchVo.getEstiblishYearType().equals("26")) {
 				estiblishTimeFrom = new Integer(now.minus(7, ChronoUnit.DAYS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.DAYS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
-			} else if (searchVo.getEstiblishYearType() == 22) {
+			} else if (searchVo.getEstiblishYearType().equals("22")) {
 				estiblishTimeFrom = new Integer(now.minus(15, ChronoUnit.DAYS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.DAYS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
-			} else if (searchVo.getEstiblishYearType() == 23) {
+			} else if (searchVo.getEstiblishYearType().equals("23")) {
 				estiblishTimeFrom = new Integer(now.minus(1, ChronoUnit.MONTHS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.DAYS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
-			} else if (searchVo.getEstiblishYearType() == 24) {
+			} else if (searchVo.getEstiblishYearType().equals("24")) {
 				estiblishTimeFrom = new Integer(now.minus(3, ChronoUnit.MONTHS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.DAYS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
-			} else if (searchVo.getEstiblishYearType() == 25) {
+			} else if (searchVo.getEstiblishYearType().equals("25")) {
 				estiblishTimeFrom = new Integer(now.minus(6, ChronoUnit.MONTHS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.DAYS).format(format));
 				boolQueryBuilder.filter()
 						.add(QueryBuilders.rangeQuery("estiblish_time").gte(estiblishTimeFrom).lt(estiblishTimeTo));
-			} else if (searchVo.getEstiblishYearType() == 26) {
+			} else if (searchVo.getEstiblishYearType().equals("26")) {
 				estiblishTimeFrom = new Integer(now.minus(1, ChronoUnit.YEARS).format(format));
 				estiblishTimeTo = new Integer(now.minus(1, ChronoUnit.DAYS).format(format));
 				boolQueryBuilder.filter()
@@ -256,6 +269,8 @@ public class SearchServiceImpl implements SearchService {
 		/** 高亮公司名 */
 		HighlightBuilder highlightBuilder = new HighlightBuilder();
 		highlightBuilder.field("companyName");
+		highlightBuilder.field("registerLocation");
+		
 		searchSourceBuilder.query(boolQueryBuilder);
 		searchSourceBuilder.highlighter(highlightBuilder);
 
@@ -275,11 +290,22 @@ public class SearchServiceImpl implements SearchService {
 
 		List<SearchOutput> outList = new ArrayList<>();
 		try {
-			for (SearchResult.Hit<SearchOutput, Void> esQueryOutputDTOVoidHit : hits) {
-				SearchOutput out = esQueryOutputDTOVoidHit.source;
+			for (SearchResult.Hit<SearchOutput, Void> queryOutputDTO : hits) {
+				log.info(queryOutputDTO.index);
+				SearchOutput out = queryOutputDTO.source;
 				if (StringUtils.isNotEmpty(out.getCompanyName())) {
-					out.setNameHighlight(esQueryOutputDTOVoidHit.highlight.get("companyName").get(0));
+					if(queryOutputDTO.highlight.get("companyName")!=null)
+						out.setNameHighlight(queryOutputDTO.highlight.get("companyName").get(0));
+					else
+						out.setNameHighlight(out.getCompanyName());
 				}
+				if (StringUtils.isNotEmpty(out.getRegisterLocation())) {
+					if(queryOutputDTO.highlight.get("registerLocation")!=null)
+						out.setRegisterLocationHighlight(queryOutputDTO.highlight.get("registerLocation").get(0));
+					else
+						out.setNameHighlight(out.getRegisterLocation());
+				}
+				
 
 				outList.add(out);
 			}
