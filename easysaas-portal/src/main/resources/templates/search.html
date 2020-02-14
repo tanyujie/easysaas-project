@@ -4,11 +4,13 @@
 <link href="${request.contextPath}/plugin/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="${request.contextPath}/css/common-v1.css">
 <link rel="stylesheet" href="${request.contextPath}/css/search.css">
+
 <!-- 新 Bootstrap4 核心 CSS 文件 -->
 <link rel="stylesheet" href="${request.contextPath}/assets/bootstrap-4.3.1-dist/css/bootstrap.min.css">
 <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<script src="${request.contextPath}/assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 <script src="${request.contextPath}/assets/js/popper.min.js"></script>
+<script src="${request.contextPath}/assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+
 <script src="${request.contextPath}/js/search.js"></script>
 </head>
 <body>
@@ -265,9 +267,9 @@
 			</div>
 		</div>
 	</div>
-	<div class="mt84" id="web-content">
-<div class="vcontainer">
-	<div class="row">
+	<div class="mt84" id="web-content" style="background:#f6f6f6;">
+<div class="vcontainer" >
+	<div class="row" >
 		<div class="col-md-9 pr-0">
 					<div class="search-filter " id="search-filter">
 						<div class="filter-type">
@@ -1065,13 +1067,13 @@
 												tyc-event-ch="CompanySearch.Company"
 												href="/company/${company.companyId!}.html" target="_blank"><text
 													class="tyc-num lh24 ">${company.nameHighlight!}</text></a>
-											<div class="tag-common -risk-bg">吊销，未注销</div>
+											<div class="tag-common -risk-bg">${company.registerStatus!}</div>
 										</div>
 										<div class="info row text-ellipsis">
 											<div class="title -wider text-ellipsis">
-												法定代表人：<a title="周小强" class="legalPersonName link-click"
+												法定代表人：<a title="${company.legalPersonName!}" class="legalPersonName link-click"
 													target="_blank"
-													href="https://www.tianyancha.com/human/1853979566-c3089059637">周小强</a>
+													href="http://www.vkwit.com/human/detail/${company.legalPersonId!}.html">${company.legalPersonName!}</a>
 											</div>
 											<div class="title -narrow text-ellipsis">
 												注册资本：<span title="5000万人民币">5000万人民币</span>
@@ -1089,11 +1091,29 @@
 													 tyc-event-ch="CompanySearch.MoreTel">登录查看</span>
 											</div>
 										</div>
-										<#if !(vo.searchType??) ||(vo.searchType='similarAddress') >
-										<div class="match row text-ellipsis">
-											<i class="tic tic-match"></i>
-											<span class="label">地址信息：</span><span>${company.registerLocationHighlight!}</span>
-										</div>
+										<#if (vo.searchType??) >
+										
+											<#if (vo.searchType='company')>
+											
+											<#elseif (vo.searchType='human')>
+											<#elseif (vo.searchType='service')>
+											<#elseif (vo.searchType='trademark')>
+											
+											
+											<#elseif (vo.searchType='similarAddress')>
+												<div class="match row text-ellipsis">
+													<i class="tic tic-match"></i>
+													<span class="label">地址信息：</span><span>${company.registerLocationHighlight!}</span>
+												</div>
+											<#elseif (vo.searchType='scope')>
+												<div class="match row text-ellipsis">
+													<i class="tic tic-match"></i>
+													<span class="label">经营范围：</span><span>${company.businessScopeHighlight!}</span>
+												</div>
+											</#if>
+											<#else>
+											
+											
 										</#if>
 									</div>
 

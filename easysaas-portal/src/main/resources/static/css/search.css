@@ -1,5 +1,9 @@
 a{background-color:transparent}
 a{color:#0084ff;text-decoration:none !important;cursor:pointer}
+em {
+    font-style: normal;
+    color: red;
+}
 .search-filter {
     position: relative;
     border-width: 0;
@@ -300,13 +304,13 @@ vertical-align: middle;
     margin-right: 16px;
 }
 
-.pagination {
+/* .pagination {
     display: inline-block;
     vertical-align: middle;
     padding-left: 0;
     margin: 20px 0 0 0;
     font-size: 0;
-}
+} */
 .pagination li {
     list-style: none;
     display: inline;

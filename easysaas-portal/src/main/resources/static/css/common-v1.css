@@ -10,6 +10,7 @@ em{font-style:normal}
 .btn-primary{color:#fff !important;background-color:#0084ff;border-color:#0084ff}
 .btn-primary:hover{color:#fff;background-color:#006acc;border-color:#006acc}
 .btn-primary:active{color:#fff;background-color:#0084ff;border-color:#0084ff}
+.btn-icon{padding-right:4px}
 .btn-vip{color:#fff;background-color:#ff7d18;border-color:#ff7d18}
 .btn-vip:hover{color:#fff;background-color:#e46400;border-color:#e46400}
 .btn-vip:active{color:#fff;background-color:#ff7d18;border-color:#ff7d18}
@@ -17,7 +18,9 @@ em{font-style:normal}
 .btn-default{color:#333;background-color:#fff;border-color:#e0e0e0}
 .btn-default:hover{color:#333;background-color:rgba(32,32,32,.05) !important;border-color:rgba(32,32,32,.05)}
 .btn-default:active{color:#333;background-color:#fff;border-color:#e0e0e0}
-
+.button{display:inline-block;height:36px;padding:0 8px;border:1px solid #f3f3f3;border-radius:2px;font-size:14px;text-align:center;line-height:34px;font-weight:400;background-color:#fff;color:#333;cursor:pointer;-webkit-transition:all .1s ease-in-out;transition:all .1s ease-in-out;min-width:62px;color:#333;background-color:#fff;border-color:#e0e0e0}
+.button .button-icon{padding-right:4px;font-size:20px;display:inline-block;vertical-align:top}
+.button.-h28,.button.-sm{font-size:12px;line-height:26px;height:28px}
 .button.-normal{color:#0084ff;background-color:#fff;border-color:#0084ff}
 .button.-normal:focus,.button.-normal:hover{color:#0084ff;background-color:rgba(0,132,255,.05);border-color:#0084ff}
 .button.-normal:active{color:#0084ff;background-color:rgba(0,132,255,.15);border-color:#0084ff}
@@ -530,7 +533,7 @@ img {
 
 
 .pagination {
-    display: inline-block;
+    display: inline-block !important;
     vertical-align: middle;
     padding-left: 0;
     margin: 20px 0 0 0;

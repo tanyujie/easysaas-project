@@ -98,7 +98,10 @@ public class SearchServiceImpl implements SearchService {
 				boolQueryBuilder.must(QueryBuilders.matchQuery("registerLocation", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
 
 			} else if ("scope".equals(searchVo.getSearchType())) {
+				boolQueryBuilder.should(QueryBuilders.matchQuery("companyName", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
+				boolQueryBuilder.must(QueryBuilders.matchQuery("businessScope", searchVo.getWd().trim()).operator(Operator.AND).analyzer("ik_max_word"));
 
+				
 			}
 		}else {
 			if (!StringUtils.isEmpty(searchVo.getWd())) {
@@ -270,6 +273,7 @@ public class SearchServiceImpl implements SearchService {
 		HighlightBuilder highlightBuilder = new HighlightBuilder();
 		highlightBuilder.field("companyName");
 		highlightBuilder.field("registerLocation");
+		highlightBuilder.field("businessScope");
 		
 		searchSourceBuilder.query(boolQueryBuilder);
 		searchSourceBuilder.highlighter(highlightBuilder);
@@ -294,17 +298,24 @@ public class SearchServiceImpl implements SearchService {
 				log.info(queryOutputDTO.index);
 				SearchOutput out = queryOutputDTO.source;
 				if (StringUtils.isNotEmpty(out.getCompanyName())) {
-					if(queryOutputDTO.highlight.get("companyName")!=null)
+					if(queryOutputDTO.highlight!=null&&queryOutputDTO.highlight.get("companyName")!=null)
 						out.setNameHighlight(queryOutputDTO.highlight.get("companyName").get(0));
 					else
 						out.setNameHighlight(out.getCompanyName());
 				}
 				if (StringUtils.isNotEmpty(out.getRegisterLocation())) {
-					if(queryOutputDTO.highlight.get("registerLocation")!=null)
+					if(queryOutputDTO.highlight!=null&&queryOutputDTO.highlight.get("registerLocation")!=null)
 						out.setRegisterLocationHighlight(queryOutputDTO.highlight.get("registerLocation").get(0));
 					else
-						out.setNameHighlight(out.getRegisterLocation());
+						out.setRegisterLocationHighlight(out.getRegisterLocation());
 				}
+				if (StringUtils.isNotEmpty(out.getBusinessScope())) {
+					if(queryOutputDTO.highlight!=null&&queryOutputDTO.highlight.get("businessScope")!=null)
+						out.setBusinessScopeHighlight(queryOutputDTO.highlight.get("businessScope").get(0));
+					else
+						out.setBusinessScopeHighlight(out.getBusinessScopeHighlight());
+				}
+				
 				
 
 				outList.add(out);

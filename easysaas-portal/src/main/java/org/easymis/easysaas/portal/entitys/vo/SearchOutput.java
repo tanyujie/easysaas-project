@@ -10,8 +10,15 @@ public class SearchOutput {
     private String companyId;
     @ApiModelProperty(value = "公司简称")
     private String alias;
+    
+    @ApiModelProperty(value = "企业状态")
+    private String registerStatus;
+    
     @ApiModelProperty(value = "公司名称")
     private String companyName;
+    
+    @ApiModelProperty(value = "法人id")
+    private String legalPersonId;
     @ApiModelProperty(value = "法人姓名")
     private String legalPersonName;
     @ApiModelProperty(value = "公司名称(高亮)")
@@ -38,6 +45,11 @@ public class SearchOutput {
     private String registerLocation;
     @ApiModelProperty(value = "注册地(高亮)")
     private String registerLocationHighlight;
+    
+    @ApiModelProperty(value = "经营范围")
+    private String businessScope;
+    @ApiModelProperty(value = "经营范围(高亮)")
+    private String businessScopeHighlight;
     
     @ApiModelProperty(value = "统一社会信用代码")
     private String  creditCode;

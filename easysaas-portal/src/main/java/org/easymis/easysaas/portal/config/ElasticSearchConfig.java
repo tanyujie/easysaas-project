@@ -285,15 +285,25 @@ public class ElasticSearchConfig {
 		name.put("type", "text");
 		name.put("analyzer", "ik_max_word");
 		name.put("search_analyzer", "ik_max_word");
+		//法人/股东/高管
 		
+		//产品服务
+		//商标
+		//联系方式
 		Map<String, Object> registerLocation = new HashMap<>();
 		registerLocation.put("type", "text");
 		registerLocation.put("analyzer", "ik_max_word");
 		registerLocation.put("search_analyzer", "ik_max_word");
-
+		//经营范围
+		Map<String, Object> businessScope = new HashMap<>();
+		businessScope.put("type", "text");
+		businessScope.put("analyzer", "ik_max_word");
+		businessScope.put("search_analyzer", "ik_max_word");
+		
 		Map<String, Object> properties = new HashMap<>();
 		properties.put("companyName", name);
 		properties.put("registerLocation", registerLocation);
+		properties.put("businessScope", businessScope);
 		Map<String, Object> indexMapping = new HashMap<>();
 		indexMapping.put("properties", properties);
 		//jsonMap.put("books", book);

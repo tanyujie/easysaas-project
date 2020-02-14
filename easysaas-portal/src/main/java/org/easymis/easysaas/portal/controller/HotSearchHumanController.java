@@ -11,6 +11,7 @@ import org.apache.commons.lang.StringUtils;
 import org.easymis.easysaas.common.result.PageData;
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.common.result.exception.ElasticSearchMaxRecordException;
+import org.easymis.easysaas.portal.config.SpringBootBeanUtil;
 import org.easymis.easysaas.portal.entitys.vo.SearchOutput;
 import org.easymis.easysaas.portal.entitys.vo.SearchVo;
 import org.easymis.easysaas.portal.service.SearchService;
@@ -26,13 +27,13 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 
-@Api(description = "热门搜索接口")
+@Api(description = "热门搜索(股东/法人/高管)接口")
 @RestController
-@RequestMapping("/topSearch/company")
+@RequestMapping("/hotSearch/human")
 @Slf4j
-public class TopSearchCompanyController {
-	@Autowired
-	RedisTemplate<String, Object> redisTemplate;
+public class HotSearchHumanController {
+	
+	RedisTemplate<String, Object> redisTemplate=(RedisTemplate) SpringBootBeanUtil.getBean("redisTemplate");
 	@Autowired
 	SearchService searchService;
 

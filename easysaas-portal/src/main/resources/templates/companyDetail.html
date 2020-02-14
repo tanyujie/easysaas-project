@@ -14,6 +14,61 @@
 <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${request.contextPath}/css/common.css">
 <link rel="stylesheet" href="${request.contextPath}/css/companyDetail.css">
+<script type="text/javascript">
+$(document).ready(function(){ 
+	var t="${company.companyId!}"+"|"+"${company.alias!}";
+	var vData={"key":t}; 
+	 $.ajax({
+           type:"POST",
+           url:"/hotSearch/company/incrementScore",
+           dataType:"json",      
+           contentType:"application/json",               
+           data:JSON.stringify(vData),
+           success:function(data){
+        	   //alert(data);                                      
+           }
+        });
+});
+function CompanyDetail(){
+	var vSearch = new Object;
+	vSearch.loginLink = function(event){
+		alert("w");
+	};
+	vSearch.clearKey= function(){		
+		$(".name").val("");
+	};
+	vSearch.confirm= function(){
+		var t=$(".name").val().trim();
+
+	};
+	vSearch.toggleFilter = function(i){
+		var t=$("#search-filter").hasClass("-folder");
+		if(t){
+			$(".expand").html("收起");
+			$(".search-filter").removeClass("-folder");
+		}									
+		else{
+			$(".expand").html("更多");
+			$(".search-filter").addClass("-folder");
+		}
+	};
+
+	vSearch.toggleMore = function(vThis){
+		var expandStatus=$(vThis).parent().hasClass("-expand");
+		if(expandStatus){
+			$(vThis).html("更多");
+			$(vThis).parent().removeClass("-expand");
+		}									
+		else{
+			$(vThis).html("收起");
+			$(vThis).parent().addClass("-expand");
+		}
+	}
+		//e(i).closest(".search-filter").hasClass("-folder")||e(i).closest(".search-filter").hasClass("-showfilter")?(e(i).closest(".search-filter").removeClass("-folder").removeClass("-showfilter"),e(i).html("收起"),t.stget&&t.stget("CompanySearch.Filter.More")):(e(i).closest(".search-filter").find(".filter-select").length?e(i).closest(".search-filter").addClass("-showfilter"):e(i).closest(".search-filter").addClass("-folder"),e(i).html("更多"),t.stget&&t.stget("CompanySearch.Filter.Close"))},
+	 return vSearch;
+}
+var companyDetailObj = CompanyDetail();
+</script>
 </head>
 <body>
 <header class="navi-header">

@@ -11,6 +11,7 @@ import org.apache.commons.lang.StringUtils;
 import org.easymis.easysaas.common.result.PageData;
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.common.result.exception.ElasticSearchMaxRecordException;
+import org.easymis.easysaas.portal.config.SpringBootBeanUtil;
 import org.easymis.easysaas.portal.entitys.vo.SearchOutput;
 import org.easymis.easysaas.portal.entitys.vo.SearchVo;
 import org.easymis.easysaas.portal.service.SearchService;
@@ -26,17 +27,18 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 
-@Api(description = "热门搜索接口")
+@Api(description = "热门搜索(公司)接口")
 @RestController
-@RequestMapping("/topSearch/dishonest")
+@RequestMapping("/hotSearch/company")
 @Slf4j
-public class TopSearchDishonestController {
-	@Autowired
-	RedisTemplate<String, Object> redisTemplate;
+public class HotSearchCompanyController {
+	
+	RedisTemplate<String, Object> redisTemplate=(RedisTemplate) SpringBootBeanUtil.getBean("redisTemplate");
+	
 	@Autowired
 	SearchService searchService;
 
-	@RequestMapping(value = "/getTopTen", method = RequestMethod.POST)
+	@RequestMapping(value = "/getTopTen")
 	public RestResult redisGetTop10() {
 
 		Long now = System.currentTimeMillis();
@@ -51,8 +53,9 @@ public class TopSearchDishonestController {
 				break;
 			}
 			Long time = (Long) valueOperations.get(val);
+			if(time!=null)
 			if ((now - time) < 2592000000L) {// 返回最近一个月的数据
-				HashMap map = new HashMap();
+				HashMap<String,Object> map = new HashMap();
 				if (val.split("\\|").length > 1) {
 					map.put("alias", val.split("\\|")[0]);
 					map.put("id", val.split("\\|")[1]);
@@ -118,7 +121,7 @@ public class TopSearchDishonestController {
 	 * @throws IOException
 	 * @throws ElasticSearchMaxRecordException
 	 */
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/add")
 	public RestResult redisAdd() throws IOException, ElasticSearchMaxRecordException {
 		PageData pageData = new PageData();
 		SearchVo dto = new SearchVo();
