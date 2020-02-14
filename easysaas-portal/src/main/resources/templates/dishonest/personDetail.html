@@ -20,6 +20,20 @@
 <script src="${request.contextPath}/assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
 <!-- https://static.tianyancha.com/web-require-js/public/styles/dishonest_result-4894471b97.css -->
 <script type="text/javascript">
+$(document).ready(function(){ 
+	var t="${dishonest.id!}"+"|"+"${dishonest.name!}";
+	var vData={"key":t}; 
+	 $.ajax({
+           type:"POST",
+           url:"/hotSearch/dishonest/incrementScore",
+           dataType:"json",      
+           contentType:"application/json",               
+           data:JSON.stringify(vData),
+           success:function(data){
+        	   //alert(data);                                      
+           }
+        });
+});
 function Header(){
 	var p = new Object;
 	p.loginLink = function(event){

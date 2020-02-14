@@ -8,22 +8,22 @@
 	content="爱依客专注服务于个人与企业信息查询,都在用的商业安全工具,为您提供公司查询,工商信息查询,企业查询,工商查询,企业信用信息查询等相关信息,帮您快速了解企业信息,企业工商信息,企业信用信息等企业经营和人员投资状况,查询更多企业信息就到爱依客官网！">
 <meta name="keywords"
 	content="爱依客,企业查询,公司查询,工商查询,信用查询,企业信息查询,企业工商信息查询,企业信用查询,企业信用信息查询系统,启信宝,企查查,红盾网">
-<!-- <script src="${request.contextPath}/js/jquery-3.2.0.min.js"> </script> -->
+<!-- <script src="http://www.vkwit.com/js/jquery-3.2.0.min.js"> </script> -->
 <!-- 新 Bootstrap4 核心 CSS 文件 -->
-<link rel="stylesheet" href="${request.contextPath}/assets/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://www.vkwit.com/assets/bootstrap-4.3.1-dist/css/bootstrap.min.css">
  
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="http://www.vkwit.com/assets/js/jquery.min.js"></script>
  
 <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
-<script src="${request.contextPath}/assets/js/popper.min.js"></script>
+<script src="http://www.vkwit.com/assets/js/popper.min.js"></script>
  
 <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
-<script src="${request.contextPath}/assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-<link href="${request.contextPath}/plugin/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="${request.contextPath}/css/common-v1.css">
-<link rel="stylesheet" href="${request.contextPath}/css/login.css">
-<link rel="stylesheet" href="${request.contextPath}/css/index.css">
+<script src="http://www.vkwit.com/assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<link href="http://www.vkwit.com/plugin/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://www.vkwit.com/css/common-v1.css">
+<link rel="stylesheet" href="http://www.vkwit.com/css/login.css">
+<link rel="stylesheet" href="http://www.vkwit.com/css/index.css">
 <script type="text/javascript">
 function Header(){
 	var p = new Object;
@@ -39,7 +39,7 @@ function Header(){
 			//$("#js-company-tooltip").removeClass("hidden");
 			return;
 		}
-		location.href="${request.contextPath}/search?wd="+companyName;
+		location.href="http://www.vkwit.com/search?wd="+companyName;
 	};
 	p.actionHuman = function(){
 		$("#js-human-tab").addClass("active");
@@ -55,10 +55,10 @@ function Header(){
 			//$("#js-company-tooltip").removeClass("hidden");
 			return;
 		}
-		location.href="${request.contextPath}/human/result?name="+humanName;
+		location.href="http://www.vkwit.com/human/result?name="+humanName;
 	};
 	p.jumpToPath = function(){
-		location.href="${request.contextPath}/dishonest";
+		location.href="http://www.vkwit.com/dishonest";
 	};
 	return p;
 }
@@ -67,6 +67,25 @@ function Header(){
 var header = Header();
 
 $(function() {
+/* 	 $.ajax({
+         type:"POST",
+         url:"http://www.vkwit.com/hotSearch/company/getTop20",
+         dataType:"json",      
+         contentType:"application/json",               
+         success:function(result){
+        	 console.log(result.data);
+        	 var data= result.data;
+        	 var keys="";
+        	 for(var i=0;i<data.length;i++){
+        		// alert(data[i].id);
+        		 keys=keys+'<a target="_blank" class="key" bak-href="" href="http://www.vkwit.com/company/'+data[i].id+'.html">'+data[i].alias+'</a>'
+        		}
+        	 
+            
+        	$(".keys").text("");
+        	$(".keys").append(keys);                                    
+         }
+      }); */
 	 $('[data-toggle="tooltip"]').tooltip();	 
 	$("#home-company-search").keyup(function(){
 		 //alert("eeee");
@@ -76,27 +95,6 @@ $(function() {
 </script>
 </head>
 <body>
-
-<!-- <header class="navi-header">
-		<div class="container">
-			<div class="navi-brand">
-				<a class="logo" onclick="zhugeTrack('顶栏按钮点击',{'按钮名称':'LOGO'});"
-					href="/"> <img
-					src="https://www.qichacha.com/material/theme/chacha/cms/v2/images/logo4.png"
-					class="m-r-sm" alt="企查查">
-				</a>
-			</div>
-
-
-			<ul class="navi-nav mr-auto">
-			<li class=""> <a rel="nofollow" onclick="zhugeTrack('顶栏按钮点击',{'按钮名称':'VIP服务'});" href="/vip.html">VIP服务</a> </li>
-			<li class="head-line">|</li>
-				<li><a rel="nofollow" class="navi-btn"
-					data-toggle="modal" data-target="#myModal"> <span class="">登录 | 注册</span>
-				</a></li>
-			</ul>
-		</div>
-	</header> -->
 	<div class="vkwit-header ">
 		<div class="vcontainer rel">
 			<div class="left">
@@ -130,7 +128,7 @@ $(function() {
 				<div class="vkwit-nav ">
 					<div class="nav-item nav-line-right -vip ">
 						<a class="title link-vip-noline -nav"
-							href="${request.contextPath}/vipintro.html" target="_blank"
+							href="http://www.vkwit.com/vipintro.html" target="_blank"
 							tyc-event-click="" tyc-event-ch="DaoHang.Vip"><span>VIP会员</span>
 							<i
 							class="fa fa-caret-down"></i>
@@ -140,10 +138,10 @@ $(function() {
 						<div class="block content">
 							<div class="triangle"></div>
 							<div class="block-content">
-								<a class="item" href="${request.contextPath}/vipintro.html"
+								<a class="item" href="http://www.vkwit.com/vipintro.html"
 									target="_blank" tyc-event-click=""
 									tyc-event-ch="DaoHang.PersonVIP" rel="nofollow">个人VIP</a><a
-									class="item" href="${request.contextPath}/vipbusiness.html"
+									class="item" href="http://www.vkwit.com/vipbusiness.html"
 									target="_blank" tyc-event-click=""
 									tyc-event-ch="DaoHang.CompanyVIP" rel="nofollow">企业套餐</a>
 							</div>
@@ -158,7 +156,7 @@ $(function() {
 								<div class="nav-box-group">
 									<div class="nav-box-title">热门服务</div>
 									<div>
-										<a class="nav-box" href="${request.contextPath}/dishonest"
+										<a class="nav-box" href="http://www.vkwit.com/dishonest"
 											target="_blank" tyc-event-click=""
 											tyc-event-ch="DaoHang.Baibaoxiang.Chalaolai"><span
 											class="nav-new-tag"><i class="tic tic-hot"></i></span><img
@@ -168,7 +166,7 @@ $(function() {
 											src="https://cdn.tianyancha.com/web-require-js/public/images/dishonest/nav-box-dishonest.png"><span
 											class="box-title">查老赖</span></a>
 											<a class="nav-box"
-											href="${request.contextPath}/batch" target="_blank"
+											href="http://www.vkwit.com/batch" target="_blank"
 											tyc-event-click="" tyc-event-ch="DaoHang.Box.LargeSearch"><img
 											class="lazy-img -image"
 											data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-batch-1.png"
@@ -176,7 +174,7 @@ $(function() {
 											src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-batch-1.png"><span
 											class="box-title">批量查询</span></a>
 											<a class="nav-box"
-											href="${request.contextPath}/map" target="_blank"
+											href="http://www.vkwit.com/map" target="_blank"
 											tyc-event-click="" tyc-event-ch="DaoHang.Box.Map"><img
 											class="lazy-img -image"
 											data-src="https://cdn.tianyancha.com/web-require-js/public/images/nav-box-map-1.png"
@@ -347,152 +345,9 @@ $(function() {
 										<div>公司</div>
 									</div>
 									<div class="keys">
-										<a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/699895405">
-											<!--href="">-->武汉仁爱医院
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/543169249">
-											<!--href="">-->武汉华南海鲜
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/2352987806">
-											<!--href="">-->字节跳动
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href="" href="https://www.tianyancha.com/company/9519792">
-											<!--href="">-->腾讯
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href="" href="https://www.tianyancha.com/company/588162">
-											<!--href="">-->联想控股
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/24416401">
-											<!--href="">-->华为
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/490952627">
-											<!--href="">-->熊猫互娱
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/23537076">
-											<!--href="">-->爱奇艺
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/41526136">
-											<!--href="">-->滴滴
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href="" href="https://www.tianyancha.com/company/22822">
-											<!--href="">-->百度
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/33822284">
-											<!--href="">-->格力电器
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/12562796">
-											<!--href="">-->京东
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/23719700">
-											<!--href="">-->美团
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/2320401496">
-											<!--href="">-->笑果文化
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/30651638">
-											<!--href="">-->金立
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/26891031">
-											<!--href="">-->茅台
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/2944619591">
-											<!--href="">-->ofo
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/2310177594">
-											<!--href="">-->斗鱼直播
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/3118313364">
-											<!--href="">-->贝壳找房
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/15964459">
-											<!--href="">-->网银在线
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/514149211">
-											<!--href="">-->易果生鲜
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/88403202">
-											<!--href="">-->链家
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href="" href="https://www.tianyancha.com/company/2670211">
-											<!--href="">-->7天连锁酒店
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/2314879089">
-											<!--href="">-->蔚来汽车
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/79273195">
-											<!--href="">-->青年汽车
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href="" href="https://www.tianyancha.com/company/114155">
-											<!--href="">-->唐德影视
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/3120686035">
-											<!--href="">-->喝风辟谷
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/3053060784">
-											<!--href="">-->淘集集
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/21475430">
-											<!--href="">-->马蜂窝
-										</a><a target="_blank" tyc-event-click=""
-											tyc-event-ch="shouye.CompanySearch.HotSearch" class="key"
-											bak-href=""
-											href="https://www.tianyancha.com/company/23464079">
-											<!--href="">-->当当网
-										</a>
+										<#list hotSearchCompanyList as c>
+											<a target="_blank"  class="key" bak-href="" href="http://www.vkwit.com/company/${c.id!}.html">${c.alias!}</a>
+										</#list>
 									</div>
 								</div>
 							</div>
@@ -526,146 +381,15 @@ $(function() {
 										<div>热门</div>
 										<div>人物</div>
 									</div>
-									<a tyc-event-click=""
-										tyc-event-ch="shouye.HumanSearch.HotSearch" target="_blank"
-										href="https://www.tianyancha.com/human/2277807374-c9519792"
+									<#list hotSearchHumanList as c>
+									<a  target="_blank"
+										href="http://www.vkwit.com/human/detail/${c.id!}.html"
 										bak-href="" class="man"><img class="lazy-img -image"
 										data-src="https://imgh.tianyancha.com/logo/human/9657e68b874004f0830a49ad3b352e75_d200x200.png"
-										alt="马化腾"
-										src="https://imgh.tianyancha.com/logo/human/9657e68b874004f0830a49ad3b352e75_d200x200.png"><span>马化腾</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/1811121487-c12562752"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://imgh.tianyancha.com/logo/human/49865390025f0e7168cb26fef67b4f52_d200x200.png"
-										alt="刘强东"
-										src="https://imgh.tianyancha.com/logo/human/49865390025f0e7168cb26fef67b4f52_d200x200.png"><span>刘强东</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/2014823297-c22198920"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://imgh.tianyancha.com/logo/human/6841628001e0b5b8e09460ce243e873c_d200x200.png"
-										alt="柳传志"
-										src="https://imgh.tianyancha.com/logo/human/6841628001e0b5b8e09460ce243e873c_d200x200.png"><span>柳传志</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/2056625183-c13308970"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://imgh.tianyancha.com/logo/human/99b675787bf0a845c0f08e1b0f937295_d200x200.png"
-										alt="潘石屹"
-										src="https://imgh.tianyancha.com/logo/human/99b675787bf0a845c0f08e1b0f937295_d200x200.png"><span>潘石屹</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/2070787865-c651442"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://imgh.tianyancha.com/logo/human/559fafdd7ab3bee41afe891810f50ce2_d200x200.png"
-										alt="王思聪"
-										src="https://imgh.tianyancha.com/logo/human/559fafdd7ab3bee41afe891810f50ce2_d200x200.png"><span>王思聪</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/2113622145-c2352882447"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://imgh.tianyancha.com/logo/human/d0bcb8289ace745cdff1e29037736bc0_d200x200.png"
-										alt="罗永浩"
-										src="https://imgh.tianyancha.com/logo/human/d0bcb8289ace745cdff1e29037736bc0_d200x200.png"><span>罗永浩</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/1981556957-c24500110"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://imgh.tianyancha.com/logo/human/31bf2bb5350043f7b4eb731cc3403db7_d200x200.png"
-										alt="李国庆"
-										src="https://imgh.tianyancha.com/logo/human/31bf2bb5350043f7b4eb731cc3403db7_d200x200.png"><span>李国庆</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/2281867530-c2335791307"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://imgh.tianyancha.com/logo/human/b63cd5ac0e6b1ffd6de18c8959825eb8_d200x200.png"
-										alt="马铭泽"
-										src="https://imgh.tianyancha.com/logo/human/b63cd5ac0e6b1ffd6de18c8959825eb8_d200x200.png"><span>马铭泽</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/1926410339-c414350981"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://imgh.tianyancha.com/logo/human/44f67d61abd9f971ca2a1f8abeca8c37_d200x200.png"
-										alt="张振新"
-										src="https://imgh.tianyancha.com/logo/human/44f67d61abd9f971ca2a1f8abeca8c37_d200x200.png"><span>张振新</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/2263357360-c2321484555"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://imgh.tianyancha.com/logo/human/716a17368037a9d5e22a7929083516da_d200x200.png"
-										alt="雷军"
-										src="https://imgh.tianyancha.com/logo/human/716a17368037a9d5e22a7929083516da_d200x200.png"><span>雷军</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/1953310971-c1647600566"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://img5.tianyancha.com/logo/human2/3ae931197051776ef3caccc07e1dc0d7.png@!z_200x200"
-										alt="文章"
-										src="https://img5.tianyancha.com/logo/human2/3ae931197051776ef3caccc07e1dc0d7.png@!z_200x200"><span>文章</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/2277208969-c1737415061"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://img5.tianyancha.com/logo/human2/91ce6441d95424fdbdcea6ba819c5fbb.png@!z_200x200"
-										alt="马伊琍"
-										src="https://img5.tianyancha.com/logo/human2/91ce6441d95424fdbdcea6ba819c5fbb.png@!z_200x200"><span>马伊琍</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/1984012283-c3225536271"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://imgh.tianyancha.com/logo/human/2c89a37665fe7374a23694bad46330ba_d200x200.png"
-										alt="李彦宏"
-										src="https://imgh.tianyancha.com/logo/human/2c89a37665fe7374a23694bad46330ba_d200x200.png"><span>李彦宏</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/1971455045-c3104844275"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://imgh.tianyancha.com/logo/human/47dd356a6a67daced9975ac8e85d263b_d200x200.png"
-										alt="朱一旦"
-										src="https://imgh.tianyancha.com/logo/human/47dd356a6a67daced9975ac8e85d263b_d200x200.png"><span>朱一旦</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/1879167326-c50846197"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://img5.tianyancha.com/logo/human/2/ca47ed8c3ae827f534cfd4444a185162.png@!z_200x200"
-										alt="孙宇晨"
-										src="https://img5.tianyancha.com/logo/human/2/ca47ed8c3ae827f534cfd4444a185162.png@!z_200x200"><span>孙宇晨</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/1839080315-c23289175"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://img5.tianyancha.com/logo/human/2/57a4e623227df05c7c328e51da7fce92.png@!z_200x200"
-										alt="向海龙"
-										src="https://img5.tianyancha.com/logo/human/2/57a4e623227df05c7c328e51da7fce92.png@!z_200x200"><span>向海龙</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/2127598357-c3088804363"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://img5.tianyancha.com/logo/human/2/e9988090d0b313236b23b9a1c91579bd.png@!z_200x200"
-										alt="胡玮炜"
-										src="https://img5.tianyancha.com/logo/human/2/e9988090d0b313236b23b9a1c91579bd.png@!z_200x200"><span>胡玮炜</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/1974369019-c2357948284"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://img5.tianyancha.com/logo/human2/b9792bb9482502afe141a150ddbb98f8.png@!z_200x200"
-										alt="朱晟卿"
-										src="https://img5.tianyancha.com/logo/human2/b9792bb9482502afe141a150ddbb98f8.png@!z_200x200"><span>朱晟卿</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/2195496404-c109190694"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://img5.tianyancha.com/logo/human2/7252138c33091ec076b8070e435c9dab.png@!z_200x200"
-										alt="赵薇"
-										src="https://img5.tianyancha.com/logo/human2/7252138c33091ec076b8070e435c9dab.png@!z_200x200"><span>赵薇</span></a><a
-										tyc-event-click="" tyc-event-ch="shouye.HumanSearch.HotSearch"
-										target="_blank"
-										href="https://www.tianyancha.com/human/2285600057-c2348955739"
-										bak-href="" class="man"><img class="lazy-img -image"
-										data-src="https://img5.tianyancha.com/logo/human2/d5d9e9f3be2e55b78d131fa21e5e3733.png@!z_200x200"
-										alt="高晓松"
-										src="https://img5.tianyancha.com/logo/human2/d5d9e9f3be2e55b78d131fa21e5e3733.png@!z_200x200"><span>高晓松</span></a>
+										alt="${c.name!}"
+										src="https://imgh.tianyancha.com/logo/human/9657e68b874004f0830a49ad3b352e75_d200x200.png"><span>${c.name!}</span></a>
+									</#list>
+										
 								</div>
 							</div>
 							<div class="js-search-container" tab="js-dishonest"></div>
@@ -676,7 +400,7 @@ $(function() {
 			<div class="recommend-area">
 				 <div class="container">
 				<a class="recommend-area-item -col-4"
-					href="${request.contextPath}/dishonest" target="_blank"
+					href="http://www.vkwit.com/dishonest" target="_blank"
 					tyc-event-click="" tyc-event-ch="shouye.Company.chalaolai"><div
 						class="img-warp">
 						<img class="lazy-img img -image"
@@ -687,7 +411,7 @@ $(function() {
 					<div class="recommend-area-title">查老赖</div>
 					<div class="recommend-area-intro">快速识别老赖，保障安全</div></a><a
 					class="recommend-area-item -col-4"
-					href="${request.contextPath}/batch" target="_blank"
+					href="http://www.vkwit.com/batch" target="_blank"
 					tyc-event-click="" tyc-event-ch="shouye.Company.piliangchaxun"><div
 						class="img-warp">
 						<img class="lazy-img img -image"
@@ -698,7 +422,7 @@ $(function() {
 					<div class="recommend-area-title">批量查询</div>
 					<div class="recommend-area-intro">一键上传，批量获取企业信息</div></a><a
 					class="recommend-area-item -col-4"
-					href="${request.contextPath}/map" target="_blank"
+					href="http://www.vkwit.com/map" target="_blank"
 					tyc-event-click="" tyc-event-ch="shouye.Company.tianyanditu"><div
 						class="img-warp">
 						<img class="lazy-img img -image"
@@ -709,7 +433,7 @@ $(function() {
 					<div class="recommend-area-title">天眼地图</div>
 					<div class="recommend-area-intro">圈定目标区域，获得企业名单</div></a><a
 					class="recommend-area-item -col-4"
-					href="${request.contextPath}/claim/entry" target="_blank"
+					href="http://www.vkwit.com/claim/entry" target="_blank"
 					tyc-event-click="" tyc-event-ch="shouye.Company.qiyerenzheng"><div
 						class="img-warp">
 						<img class="lazy-img img -image"
