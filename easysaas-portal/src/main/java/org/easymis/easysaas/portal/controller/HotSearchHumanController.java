@@ -44,7 +44,7 @@ public class HotSearchHumanController {
 		List<HashMap> result = new ArrayList<>();
 		ZSetOperations zSetOperations = redisTemplate.opsForZSet();
 		ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
-		Set<String> value = zSetOperations.reverseRangeByScore("alias", 1, Double.MAX_VALUE);
+		Set<String> value = zSetOperations.reverseRangeByScore("hotSearchHuman", 1, Double.MAX_VALUE);
 
 		// key不为空的时候 推荐相关的最热前十名
 		for (String val : value) {
@@ -63,7 +63,7 @@ public class HotSearchHumanController {
 				}
 
 			} else {// 时间超过一个月没搜索就把这个词热度归0
-				zSetOperations.add("alias", val, 0);
+				zSetOperations.add("hotSearchHuman", val, 0);
 			}
 
 		}
@@ -92,7 +92,7 @@ public class HotSearchHumanController {
 				if ((now - time) < 2592000000L) {// 返回最近一个月的数据
 					result.add(val);
 				} else {// 时间超过一个月没搜索就把这个词热度归0
-					zSetOperations.add("alias", val, 0);
+					zSetOperations.add("hotSearchHuman", val, 0);
 				}
 			}
 		}
@@ -108,7 +108,7 @@ public class HotSearchHumanController {
 		Long now = System.currentTimeMillis();
 		ZSetOperations zSetOperations = redisTemplate.opsForZSet();
 		ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
-		zSetOperations.incrementScore("alias", key, 1);
+		zSetOperations.incrementScore("hotSearchHuman", key, 1);
 		valueOperations.getAndSet(key, now);
 		return RestResult.buildSuccess();
 	}
@@ -136,12 +136,12 @@ public class HotSearchHumanController {
 		for (int i = 0, lengh = outList.size(); i < lengh; i++) {
 			String alias = outList.get(i).getAlias() + "|" + outList.get(i).getCompanyId();
 			try {
-				if (zSetOperations.score("alias", alias) <= 0) {
-					zSetOperations.add("alias", alias, 0);
+				if (zSetOperations.score("hotSearchHuman", alias) <= 0) {
+					zSetOperations.add("hotSearchHuman", alias, 0);
 					valueOperations.set(alias, now);
 				}
 			} catch (Exception e) {
-				zSetOperations.add("alias", alias, 0);
+				zSetOperations.add("hotSearchHuman", alias, 0);
 				valueOperations.set(alias, now);
 			}
 		}

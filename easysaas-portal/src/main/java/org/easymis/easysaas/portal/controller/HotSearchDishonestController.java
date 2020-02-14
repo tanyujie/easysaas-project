@@ -37,14 +37,14 @@ public class HotSearchDishonestController {
 	@Autowired
 	SearchService searchService;
 
-	@RequestMapping(value = "/getTopTen", method = RequestMethod.POST)
+	@RequestMapping(value = "/getTopTen")
 	public RestResult redisGetTop10() {
 
 		Long now = System.currentTimeMillis();
 		List<HashMap> result = new ArrayList<>();
 		ZSetOperations zSetOperations = redisTemplate.opsForZSet();
 		ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
-		Set<String> value = zSetOperations.reverseRangeByScore("alias", 1, Double.MAX_VALUE);
+		Set<String> value = zSetOperations.reverseRangeByScore("hotSearchDishonest", 1, Double.MAX_VALUE);
 
 		// key不为空的时候 推荐相关的最热前十名
 		for (String val : value) {
@@ -80,7 +80,7 @@ public class HotSearchDishonestController {
 		List<String> result = new ArrayList<>();
 		ZSetOperations zSetOperations = redisTemplate.opsForZSet();
 		ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
-		Set<String> value = zSetOperations.reverseRangeByScore("alias", 0, Double.MAX_VALUE);
+		Set<String> value = zSetOperations.reverseRangeByScore("hotSearchDishonest", 0, Double.MAX_VALUE);
 		// key不为空的时候 推荐相关的最热前十名
 		for (String val : value) {
 			val = val.split("\\|")[0];
@@ -92,7 +92,7 @@ public class HotSearchDishonestController {
 				if ((now - time) < 2592000000L) {// 返回最近一个月的数据
 					result.add(val);
 				} else {// 时间超过一个月没搜索就把这个词热度归0
-					zSetOperations.add("alias", val, 0);
+					zSetOperations.add("hotSearchDishonest", val, 0);
 				}
 			}
 		}
@@ -108,7 +108,7 @@ public class HotSearchDishonestController {
 		Long now = System.currentTimeMillis();
 		ZSetOperations zSetOperations = redisTemplate.opsForZSet();
 		ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
-		zSetOperations.incrementScore("alias", key, 1);
+		zSetOperations.incrementScore("hotSearchDishonest", key, 1);
 		valueOperations.getAndSet(key, now);
 		return RestResult.buildSuccess();
 	}

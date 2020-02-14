@@ -18,9 +18,7 @@ import java.io.Serializable;
 import java.net.URLDecoder;
 import java.util.Objects;
 
-/**
- * @author guochunyuan * @create on 2018-12-20 14:43
- */
+
 @Aspect
 @Component//定义一个切面
 public class GolbalControllerRequestAndResponseAdvice {

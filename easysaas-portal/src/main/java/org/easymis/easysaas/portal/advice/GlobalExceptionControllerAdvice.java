@@ -33,7 +33,6 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 /**
  * 处理全局异常 <br/>
  *
- * @author zh
  */
 
 @RestControllerAdvice
