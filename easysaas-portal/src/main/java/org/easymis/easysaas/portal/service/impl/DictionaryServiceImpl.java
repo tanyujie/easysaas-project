@@ -12,7 +12,16 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class DictionaryServiceImpl implements DictionaryService {
-
+	public List getSearchTypeList() {
+		 List<Map> list = new ArrayList<>();
+         list.addAll(processParamlist("企业名称=法人/股东/高管=产品服务=商标=联系方式=经营范围", "company=human=service=trademark=similarAddress=scope"));
+		return list;
+	}
+	public List getOrganizationTypeList() {
+		 List<Map> list = new ArrayList<>();
+         list.addAll(processParamlist("企业=事业单位=基金会=社会组织=律所=香港特别行政区企业=台湾省企业", "normal_company=institution=npo_foundation=npo=lawFirm=hk=tw"));
+		return list;
+	}
 	@Override
 	public List getEstiblishYearType() {
 		 List<Map> list = new ArrayList<>();

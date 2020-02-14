@@ -25,9 +25,11 @@ public class SearchVo {
 	//t100经营风险,t200经营风险,t300经营状况,t400知识产权
 	private Integer term;
 	//搜索范围
+	private List searchTypeList;
 	private String searchType;
 	private String searchTypeDepict;
 	//机构类型
+	private List organizationTypeList;
 	private String organizationType;
 	private String organizationTypeDepict;
 	//省份地区
@@ -184,7 +186,10 @@ public class SearchVo {
 	public void setFilterScope(boolean filterScope) {
 		this.filterScope = filterScope;
 	}
-
+	public List getSearchTypeList() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getSearchTypeList();
+	}
 	public String getSearchType() {
 		if (StringUtils.isEmpty(searchType))
 			return null;
@@ -201,7 +206,7 @@ public class SearchVo {
 				return "产品服务";
 			else if(searchType.equals("trademark"))
 				return "商标";
-			else if(searchType.equals("similarAddr"))
+			else if(searchType.equals("similarAddress"))
 				return "联系方式";
 			else if(searchType.equals("scope"))
 				return "经营范围";
@@ -209,6 +214,10 @@ public class SearchVo {
 		}			
 		else
 			return null;
+	}
+	public List getOrganizationTypeList() {
+		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
+		return dictionaryService.getOrganizationTypeList();
 	}
 	public String getOrganizationTypeDepict() {
 		if(null!=organizationType) {

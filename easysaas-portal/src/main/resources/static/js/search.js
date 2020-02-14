@@ -19,8 +19,18 @@ $("#btnCompanyExport").click(function(){
 }); 
 });
 
-function jwindow(){
+function Search(){
 	var vSearch = new Object;
+	vSearch.loginLink = function(event){
+		alert("w");
+	};
+	vSearch.clearKey= function(){		
+		$(".name").val("");
+	};
+	vSearch.confirm= function(){
+		var t=$(".name").val().trim();
+		location.href="/search?wd="+t;
+	};
 	vSearch.toggleFilter = function(i){
 		var t=$("#search-filter").hasClass("-folder");
 		if(t){
@@ -62,4 +72,5 @@ function jwindow(){
 		//e(i).closest(".search-filter").hasClass("-folder")||e(i).closest(".search-filter").hasClass("-showfilter")?(e(i).closest(".search-filter").removeClass("-folder").removeClass("-showfilter"),e(i).html("收起"),t.stget&&t.stget("CompanySearch.Filter.More")):(e(i).closest(".search-filter").find(".filter-select").length?e(i).closest(".search-filter").addClass("-showfilter"):e(i).closest(".search-filter").addClass("-folder"),e(i).html("更多"),t.stget&&t.stget("CompanySearch.Filter.Close"))},
 	 return vSearch;
 }
-var window1 = jwindow();
+var headerSearchObj = Search();
+

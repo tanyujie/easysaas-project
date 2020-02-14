@@ -2,64 +2,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="${request.contextPath}/plugin/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet"
-	href="${request.contextPath}/css/dishonest/resultPerson.css">
-<!-- <script src="${request.contextPath}/js/jquery-3.2.0.min.js"> </script> -->
+<link rel="stylesheet" href="${request.contextPath}/css/common-v1.css">
+<link rel="stylesheet" href="${request.contextPath}/css/search.css">
 <!-- 新 Bootstrap4 核心 CSS 文件 -->
 <link rel="stylesheet" href="${request.contextPath}/assets/bootstrap-4.3.1-dist/css/bootstrap.min.css">
- 
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
- 
-<!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
-<script src="${request.contextPath}/assets/js/popper.min.js"></script>
- 
-<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 <script src="${request.contextPath}/assets/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-
-<link rel="stylesheet" href="${request.contextPath}/css/common-v1.css">
-<style>
-em {
-    font-style: normal;
-    color: red;
-}
-.m_search_head {
-    padding: 12px 0 44px;
-    margin-bottom: -1px;
-    line-height: 31px;
-    background: #fcfcfc;
-}
-.m-l {
-    margin-left: 15px;
-}
-.font-15 {
-    font-size: 15px !important;
-}
-.pull-left {
-    float: left !important;
-}
-.logo img {
-    width: 80px;
-    max-height: 80px;
-    border-radius: 4px;
-}
-.searchList{
-}
-.company-title{
-line-height: 22px;
-}
-.font-f1 {
-    color: #333 !important;
-}
-.font-18 {
-    font-size: 18px;
-}
-</style>
-
-<link rel="stylesheet" href="${request.contextPath}/css/search.css">
-
+<script src="${request.contextPath}/assets/js/popper.min.js"></script>
 <script src="${request.contextPath}/js/search.js"></script>
-
 </head>
 <body>
 
@@ -76,16 +26,16 @@ line-height: 22px;
 					<div class="head">
 						<div class="item company active" 
 							tyc-event-ch="Daohang.DishonestSearch.Company"
-							onclick="headerDishonestObj.clearInputVal(event,'company')">
+							onclick="headerSearchObj.clearInputVal(event,'company')">
 							<div class="top">查公司</div>
 						</div>
 						<div class="item human " 
 							tyc-event-ch="Daohang.DishonestSearch.Human"
-							onclick="headerDishonestObj.clearInputVal(event,'human')">
+							onclick="headerSearchObj.clearInputVal(event,'human')">
 							<div class="top">搜老板</div>
 						</div>
 						<div class="item dishonest "
-							onclick="headerDishonestObj.clearInputVal(event,'dishonest')">
+							onclick="headerSearchObj.clearInputVal(event,'dishonest')">
 							<div class="top">查老赖</div>
 						</div>
 					</div>
@@ -97,17 +47,17 @@ line-height: 22px;
 								<input type="text" class="input name -sm"
 									id="header-dishonest-search"
 									placeholder="请输入人名/公司名/身份证号码/组织机构代码"
-									onclick="headerDishonestObj.clickInputWrapper()"
-									onkeyup="headerDishonestObj.checkVal(event,'.name')"
+									onclick="headerSearchObj.clickInputWrapper()"
+									onkeyup="headerSearchObj.checkVal(event,'.name')"
 									autofocus="autofocus" maxlength="50" value="${vo.wd!}"
 									autocomplete="off"> <img alt="搜索"
-									onclick="headerDishonestObj.clearKey(event,'.name',this);"
+									onclick="headerSearchObj.clearKey(event,'.name',this);"
 									src="https://cdn.tianyancha.com/wap/images/close.png"
 									class="clear-input">
 								<div class="input-group-btn btn -sm btn-primary"
 									
 									tyc-event-ch="Daohang.DishonestSearch.Search"
-									onclick="headerDishonestObj.confirm()">查一下</div>
+									onclick="headerSearchObj.confirm()">查一下</div>
 							</div>
 						</div>
 						<div class="input-group search-group company"
@@ -123,7 +73,7 @@ line-height: 22px;
 								</div>
 							</form>
 							<img alt="搜索"
-								onclick="headerDishonestObj.clearKey(event,'#header-company-search',this);"
+								onclick="headerSearchObj.clearKey(event,'#header-company-search',this);"
 								src="https://cdn.tianyancha.com/wap/images/close.png"
 								class="clear-input hidden">
 							<div class="input-group-btn btn -sm btn-primary"
@@ -142,7 +92,7 @@ line-height: 22px;
 								</div>
 							</form>
 							<img alt="搜索"
-								onclick="headerDishonestObj.clearKey(event,'#header-human-search',this);"
+								onclick="headerSearchObj.clearKey(event,'#header-human-search',this);"
 								src="https://cdn.tianyancha.com/wap/images/close.png"
 								class="clear-input hidden">
 							<div class="input-group-btn btn -sm btn-primary"
@@ -520,12 +470,9 @@ line-height: 22px;
 							<div class="filter-scope">
 						<span class="scope-title">搜索范围</span>
 						<div class="scope-box scope-content-box">
-						<a  tyc-event-ch="CompanySearch.Filter.SearchWide.company" class="item " href="http://www.vkwit.com/search?${vo.increaseParameter('searchType=company')!}" rel="nofollow">企业名称</a>
-						<a  tyc-event-ch="CompanySearch.Filter.SearchWide.human" class="item " href="http://www.vkwit.com/search?${vo.increaseParameter('searchType=human')!}" rel="nofollow">法人/股东/高管</a>
-						<a  tyc-event-ch="CompanySearch.Filter.SearchWide.service" class="item " href="http://www.vkwit.com/search?${vo.increaseParameter('searchType=service')!}" rel="nofollow">产品服务</a>
-						<a  tyc-event-ch="CompanySearch.Filter.SearchWide.trademark" class="item " href="http://www.vkwit.com/search?${vo.increaseParameter('searchType=trademark')!}" rel="nofollow">商标</a>
-						<a  tyc-event-ch="CompanySearch.Filter.SearchWide.similarAddr" class="item " href="http://www.vkwit.com/search?${vo.increaseParameter('searchType=similarAddress')!}" rel="nofollow">联系方式</a>
-						<a  tyc-event-ch="CompanySearch.Filter.SearchWide.scope" class="item " href="http://www.vkwit.com/search?${vo.increaseParameter('searchType=scope')!}" rel="nofollow">经营范围</a>
+							<#list vo.searchTypeList as c>
+								<a  tyc-event-ch="CompanySearch.Filter.SearchWide.company" class="item " href="http://www.vkwit.com/search?${vo.increaseParameter('searchType=${c.key!}')!}" rel="nofollow">${c.title!}</a>
+							</#list>
 						</div>						
 						</div>
 						</#if>
@@ -533,35 +480,13 @@ line-height: 22px;
 							<div class="filter-scope">
 								<span class="scope-title">机构类型</span>
 								<div class="scope-box scope-content-box">
+									<#list vo.organizationTypeList as c>
 									<a
 										tyc-event-ch="CompanySearch.Filter.SearchWide.normal_company"
 										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=normal_company')!}"
-										rel="nofollow">企业</a><a
-										tyc-event-ch="CompanySearch.Filter.SearchWide.institution"
-										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=institution')!}"
-										rel="nofollow">事业单位</a><a
-										tyc-event-ch="CompanySearch.Filter.SearchWide.npo_foundation"
-										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=npo_foundation')!}"
-										rel="nofollow">基金会</a><a
-										tyc-event-ch="CompanySearch.Filter.SearchWide.npo"
-										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=npo')!}"
-										rel="nofollow">社会组织</a><a
-										tyc-event-ch="CompanySearch.Filter.SearchWide.lawFirm"
-										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=lawFirm')!}"
-										rel="nofollow">律所</a><a
-										tyc-event-ch="CompanySearch.Filter.SearchWide.hk"
-										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=hk')!}"
-										rel="nofollow">香港特别行政区企业</a><a
-										tyc-event-ch="CompanySearch.Filter.SearchWide.tw"
-										class="item "
-										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=tw')!}"
-										rel="nofollow">台湾省企业</a>
+										href="http://www.vkwit.com/search?${vo.increaseParameter('organizationType=${c.key!}')!}"
+										rel="nofollow">${c.title!}</a>
+									</#list>
 								</div>
 							</div>
 							</#if>
@@ -573,7 +498,7 @@ line-height: 22px;
 										<a class="item  " href="http://www.vkwit.com/search?${vo.increaseParameter('province=${p.base}')!}" rel="nofollow">${p.province!}</a>
 									</#list>
 									</div>
-									<div class="scope-more" onclick="window1.toggleMore(this)" tyc-event-click="" tyc-event-ch="CompanySearch.Filter.Shengfen.More">更多<span class="tic tic-xia"></span></div>
+									<div class="scope-more" onclick="headerSearchObj.toggleMore(this)" tyc-event-click="" tyc-event-ch="CompanySearch.Filter.Shengfen.More">更多<span class="tic tic-xia"></span></div>
 								</div>
 							</#if>
 							<#if (vo.filterCity)>
@@ -675,7 +600,7 @@ line-height: 22px;
 									<a class="item   " href="http://www.vkwit.com/search?${vo.increaseParameter('categoryFirst=${f.name}')!}" rel="nofollow">${f.name}</a>
 									</#list>
 								</div>
-								<div class="scope-more" onclick="window1.toggleMore(this)" tyc-event-click="" tyc-event-ch="CompanySearch.Filter.Hangye.More">更多<span class="tic tic-shang"></span></div>
+								<div class="scope-more" onclick="headerSearchObj.toggleMore(this)" tyc-event-click="" tyc-event-ch="CompanySearch.Filter.Hangye.More">更多<span class="tic tic-shang"></span></div>
 							</div>
 						</#if>
 						<!--企业描述-->
@@ -1085,7 +1010,7 @@ line-height: 22px;
 						</#if>
 						</div>
 						<div class="search-expand-btn">
-							<div class="expand" onclick="window1.toggleFilter(this)">收起</div>
+							<div class="expand" onclick="headerSearchObj.toggleFilter(this)">收起</div>
 						</div>
 
 					</div>
@@ -1113,7 +1038,7 @@ line-height: 22px;
 
 
 										<a class="btn btn-outline-warning m-1 border-1">批量联系</a> <a
-											class="btn btn-warning m-1 border-0" onclick="window1.companyExport()">导出数据</a>
+											class="btn btn-warning m-1 border-0" onclick="headerSearchObj.companyExport()">导出数据</a>
 										<!-- <span class="pull-left m-l btn btn-default" data-toggle="modal" data-target="#loginModal" onclick="getCaptcha()"> <span class="sortDesc">默认排序</span> <span class="caret m-l"></span> </span> -->
 									</div>
 								</div>
