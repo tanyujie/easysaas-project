@@ -57,8 +57,8 @@ public class HotSearchCompanyController {
 			if ((now - time) < 2592000000L) {// 返回最近一个月的数据
 				HashMap<String,Object> map = new HashMap();
 				if (val.split("\\|").length > 1) {
-					map.put("alias", val.split("\\|")[0]);
-					map.put("id", val.split("\\|")[1]);
+					map.put("id", val.split("\\|")[0]);
+					map.put("alias", val.split("\\|")[1]);
 					map.put("count", zSetOperations.score("alias", val));
 					result.add(map);
 
@@ -71,7 +71,39 @@ public class HotSearchCompanyController {
 		}
 		return RestResult.buildSuccess(result);
 	}
+	@RequestMapping(value = "/getTop20")
+	public RestResult redisGetTop20() {
 
+		Long now = System.currentTimeMillis();
+		List<HashMap> result = new ArrayList<>();
+		ZSetOperations zSetOperations = redisTemplate.opsForZSet();
+		ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
+		Set<String> value = zSetOperations.reverseRangeByScore("alias", 1, Double.MAX_VALUE);
+
+		// key不为空的时候 推荐相关的最热前十名
+		for (String val : value) {
+			if (result.size() > 23) {// 只返回最热的前十名
+				break;
+			}
+			Long time = (Long) valueOperations.get(val);
+			if(time!=null)
+			if ((now - time) < 2592000000L) {// 返回最近一个月的数据
+				HashMap<String,Object> map = new HashMap();
+				if (val.split("\\|").length > 1) {
+					map.put("id", val.split("\\|")[0]);
+					map.put("alias", val.split("\\|")[1]);
+					map.put("count", zSetOperations.score("alias", val));
+					result.add(map);
+
+				}
+
+			} else {// 时间超过一个月没搜索就把这个词热度归0
+				zSetOperations.add("alias", val, 0);
+			}
+
+		}
+		return RestResult.buildSuccess(result);
+	}
 	/**
 	 * 根据key搜索相关最热的前十名
 	 */
