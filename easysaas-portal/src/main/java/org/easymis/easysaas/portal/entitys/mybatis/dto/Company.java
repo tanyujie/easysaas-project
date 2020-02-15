@@ -23,7 +23,7 @@ public class Company implements Serializable {
     @ApiModelProperty(value = "公司名称") 
     private String companyName; 
     @ApiModelProperty(value = "法人ID")
-    private Integer legalPersonId; 
+    private String legalPersonId; 
     @ApiModelProperty(value = "法人姓名") 
     private String legalPersonName; 
     @ApiModelProperty(value = "法人类型，1 人 2 公司")

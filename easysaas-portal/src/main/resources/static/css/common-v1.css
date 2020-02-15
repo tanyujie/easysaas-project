@@ -749,3 +749,12 @@ img.lazy-img {
 .bottom-yyzz .triangle{position:absolute;display:block;width:30px;height:16px;margin-left:-15px;overflow:hidden;-webkit-box-shadow:0 16px 10px -17px #e0e0e0;box-shadow:0 16px 10px -17px #e0e0e0}
 .bottom-yyzz .triangle:after{display:block;content:" ";position:absolute;width:15px;height:15px;top:10px;left:5px;border:1px solid #e0e0e0;-webkit-transform:rotate(45deg);transform:rotate(45deg);background:#fff;-webkit-box-shadow:-1px -1px 10px -2px #e0e0e0;box-shadow:-1px -1px 10px -2px #e0e0e0}
 .bottom-yyzz .triangle{bottom:-16px;-webkit-transform:rotate(180deg);transform:rotate(180deg);left:270px}
+.box-container{border:0;background:#fff;-webkit-box-shadow:0 0 2px rgba(0,0,0,.1);box-shadow:0 0 2px rgba(0,0,0,.1);margin:0;padding:0 16px 16px}
+.box-container.-no-padding-tb{padding-top:0;padding-bottom:0}
+.box-container.-no-padding{padding:0}
+.box-container.-padding-bottom{padding:0 0 16px}
+.box-container.-content{padding:16px}
+.box-container.-hashead{padding:0}
+.box-container.-hashead .body{padding:0 16px 16px}
+.box-container.-hashead .body-seo{padding:16px 30px 16px}
+.box-container+.box-container,.box-container+.header-block-container,.header-block-container+.box-container,.header-block-container+.header-block-container{margin-top:16px}
