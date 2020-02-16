@@ -113,6 +113,53 @@ public class DistrictUtil {
     	}
     	return categoryFirstList;
     }
+    public static List<CategoryThreeLevelVo> getCategorySecondList(String name){
+    	List<CategoryThreeLevelVo> secondFirstList = new ArrayList<CategoryThreeLevelVo>();
+        JSONArray cateArray= JSON.parseArray(System.getProperty("categoryThreeLevelJson"));
+    	for (int i = 0; i < cateArray.size(); i++) {    
+       		JSONArray secondArray=cateArray.getJSONObject(i).getJSONArray("categoryList");
+    		if(secondArray!=null&&secondArray.size()>0&&cateArray.getJSONObject(i).getString("cateName").equals(name)) {
+        		for(int j=0;j<secondArray.size();j++)
+				{
+					CategoryThreeLevelVo vo = new CategoryThreeLevelVo();
+					vo.setName(secondArray.getJSONObject(j).getString("cateName"));
+					vo.setNickName(secondArray.getJSONObject(j).getString("nickName"));
+					secondFirstList.add(vo);
+
+				}
+            		
+    		}
+
+    	}
+    	return secondFirstList;
+    }
+    public static List<CategoryThreeLevelVo> getCategoryThirdList(String name){
+    	List<CategoryThreeLevelVo> thirdList = new ArrayList<CategoryThreeLevelVo>();
+        JSONArray cateArray= JSON.parseArray(System.getProperty("categoryThreeLevelJson"));
+    	for (int i = 0; i < cateArray.size(); i++) {    
+       		JSONArray secondArray=cateArray.getJSONObject(i).getJSONArray("categoryList");
+    		if(secondArray!=null&&secondArray.size()>0) {
+        		for(int j=0;j<secondArray.size();j++)
+				{
+        	  		JSONArray thirdArray=cateArray.getJSONObject(i).getJSONArray("categoryList");
+            		if(thirdArray!=null&&thirdArray.size()>0&&secondArray.getJSONObject(j).getString("cateName").equals(name)) {
+            			for(int k=0;k<thirdArray.size();k++)
+        				{
+        					CategoryThreeLevelVo vo = new CategoryThreeLevelVo();
+        					vo.setName(thirdArray.getJSONObject(k).getString("cateName"));
+        					vo.setNickName(thirdArray.getJSONObject(k).getString("nickName"));
+        					thirdList.add(vo);
+        				}
+            		}
+
+
+				}
+            		
+    		}
+
+    	}
+    	return thirdList;
+    }
     String convertCategorySecond(String name){
         JSONArray cateArray= JSON.parseArray(System.getProperty("categoryThreeLevelJson"));
         HashMap<String,String> cateSecondMap= new HashMap<String, String>();

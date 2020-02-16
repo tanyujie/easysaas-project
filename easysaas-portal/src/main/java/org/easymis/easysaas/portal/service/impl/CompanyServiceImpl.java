@@ -13,6 +13,7 @@ import org.easymis.easysaas.portal.config.datasource.DataSourceType;
 import org.easymis.easysaas.portal.config.datasource.EasymisDataSource;
 import org.easymis.easysaas.portal.entitys.bean.EsEntity;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.Company;
+import org.easymis.easysaas.portal.entitys.mybatis.dto.CompanyChangeInfo;
 import org.easymis.easysaas.portal.entitys.mybatis.mapper.CompanyMapper;
 import org.easymis.easysaas.portal.service.CompanyService;
 import org.elasticsearch.action.bulk.BulkRequest;
@@ -23,6 +24,9 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 import lombok.extern.slf4j.Slf4j;
 @Service
@@ -177,6 +181,14 @@ public class CompanyServiceImpl implements CompanyService {
 	@EasymisDataSource(DataSourceType.Slave)
 	public List<Company> findByIds(List<String> companyIds) {
 		return mapper.findByIds(companyIds);
+	}
+
+	@Override
+	public PageInfo getBranchList(String companyId, Integer pageNum, Integer pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		List<Company> list = mapper.getBranchList(companyId);
+		PageInfo<Company> page = new PageInfo<Company>(list);
+		return page;
 	}
 
 

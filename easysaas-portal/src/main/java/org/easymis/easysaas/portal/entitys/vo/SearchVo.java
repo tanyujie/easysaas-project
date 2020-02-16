@@ -313,7 +313,7 @@ public class SearchVo {
 		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
 		return dictionaryService.getRegisteredCapitalType();
 	}
-	public boolean isfilterCategoryFirst() {
+	public boolean isFilterCategoryFirst() {
 		if(StringUtil.isNotEmpty(categoryFirst))
 			return false;
 		return filterCategoryFirst;
@@ -321,6 +321,33 @@ public class SearchVo {
 	public List getCategoryFirstList() {
 		return DistrictUtil.getCategoryFirstList();
 	}
+	public boolean isFilterCategorySecond() {
+		if(StringUtil.isEmpty(categoryFirst))
+			return false;
+		if(StringUtil.isNotEmpty(categorySecond))
+			return false;
+		return filterCategorySecond;
+	}
+	public List getCategorySecondList() {
+		if(StringUtil.isNotEmpty(categoryFirst))
+			return DistrictUtil.getCategorySecondList(categoryFirst);
+		return categorySecondList;
+	}
+	public boolean isFilterCategoryThird() {
+		if(StringUtil.isEmpty(categoryFirst)||StringUtil.isEmpty(categorySecond))
+			return false;
+/*		if(StringUtil.isNotEmpty(categorySecond))
+			return true;*/
+		if(StringUtil.isNotEmpty(categoryThird))
+			return false;
+		return filterCategoryThird;
+	}
+	public List getCategoryThirdList() {
+		if(StringUtil.isNotEmpty(categorySecond))
+			return DistrictUtil.getCategoryThirdList(categorySecond);
+		return categoryThirdList;
+	}
+	
 	//企业状态列表
 	public List getCompanyStatusList() {
 		DictionaryServiceImpl dictionaryService= new DictionaryServiceImpl();
@@ -453,7 +480,20 @@ public class SearchVo {
 			url.append("&");
 			url.append(filterString);
 		}
-		
+		if (categorySecond!=null && !filter.equals("categorySecond")) {
+			url.append("&categorySecond=");
+			url.append(categorySecond);
+		} else if (filter.equals("categorySecond")) {
+			url.append("&");
+			url.append(filterString);
+		}
+		if (categoryThird!=null && !filter.equals("categoryThird")) {
+			url.append("&categoryThird=");
+			url.append(categoryThird);
+		} else if (filter.equals("categoryThird")) {
+			url.append("&");
+			url.append(filterString);
+		}
 		if (companyStatus!=null && !filter.equals("companyStatus")) {
 			url.append("&companyStatus=");
 			url.append(companyStatus);
@@ -652,6 +692,14 @@ public class SearchVo {
 		if (StringUtils.isNotEmpty(categoryFirst) && !vFilter.contains("categoryFirst")) {
 			url.append("&categoryFirst=");
 			url.append(categoryFirst);
+		}
+		if (StringUtils.isNotEmpty(categorySecond) && !vFilter.contains("categorySecond")) {
+			url.append("&categorySecond=");
+			url.append(categorySecond);
+		}
+		if (StringUtils.isNotEmpty(categoryThird) && !vFilter.contains("categoryThird")) {
+			url.append("&categoryThird=");
+			url.append(categoryThird);
 		}
 		if (StringUtils.isNotEmpty(companyStatus) && !vFilter.contains("companyStatus")) {
 			url.append("&companyStatus=");

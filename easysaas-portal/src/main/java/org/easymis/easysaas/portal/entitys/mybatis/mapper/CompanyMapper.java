@@ -44,4 +44,7 @@ public interface CompanyMapper {
           "</foreach>",
         "</script>"}) 
 	public List<Company> findByIds(@Param("ids")List<String> ids);
+	@Select("select * from company t WHERE t.parent_id = #{companyId}")
+	public List<Company> getBranchList(@Param("companyId") String companyId);
+	
 }

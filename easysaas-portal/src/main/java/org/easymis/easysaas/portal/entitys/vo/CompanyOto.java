@@ -1,7 +1,12 @@
-package org.easymis.easysaas.portal.entitys.mybatis.dto;
+package org.easymis.easysaas.portal.entitys.vo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
+import org.easymis.easysaas.portal.entitys.mybatis.dto.CompanyInvestor;
+
+import com.github.pagehelper.PageInfo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -12,7 +17,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Company implements Serializable {
+public class CompanyOto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,11 +35,10 @@ public class Company implements Serializable {
     private Integer legalPersonType; 
     @ApiModelProperty(value = "注册号")
     private String registerNumber; 
-    @ApiModelProperty(value = "公司类型")
+    @ApiModelProperty(value = "公司类型代码")
     private String companyType; 
     @ApiModelProperty(value = "公司类型")
     private String companyTypeDepict; 
-    
     @ApiModelProperty(value = "注册地址")
     private String registerLocation; 
     @ApiModelProperty(value = "成立日期")
@@ -110,4 +114,19 @@ public class Company implements Serializable {
     private String alias; 
     @ApiModelProperty(value = "参保人数") 
     private Integer socialSecurity; 
+    
+	@ApiModelProperty("是否是小微企业 0不是 1是")
+	private Integer isMicroEnt;
+	@ApiModelProperty("纳税人资质")
+	private String taxQualification;
+	@ApiModelProperty("人员规模（如1000-4999）")
+	private String staffNumRange;
+	
+	@ApiModelProperty("logo地址")
+	private String logoUrl;
+	@ApiModelProperty("对外投资列表")
+	private PageInfo inverstPageInfo;
+	@ApiModelProperty("股东信息列表")
+	private List<CompanyInvestor> investorList;
+    
 }

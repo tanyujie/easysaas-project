@@ -6,6 +6,7 @@ import org.easymis.easysaas.portal.config.datasource.DataSourceType;
 import org.easymis.easysaas.portal.config.datasource.EasymisDataSource;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.CompanyInvestor;
 import org.easymis.easysaas.portal.entitys.mybatis.mapper.CompanyInvestorMapper;
+import org.easymis.easysaas.portal.entitys.vo.CompanyInverstVo;
 import org.easymis.easysaas.portal.entitys.vo.CompanyInvestorVo;
 import org.easymis.easysaas.portal.service.CompanyInvestorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class CompanyInvestorServiceImpl implements CompanyInvestorService {
 		return null;
 	}
 	@EasymisDataSource(DataSourceType.Slave)
-	public List<CompanyInvestor> findListByCompanyId(String companyId) {
+	public List<CompanyInvestor> findByCompanyId(String companyId) {
 		// TODO Auto-generated method stub
 		return mapper.findListByCompanyId(companyId);
 	}
@@ -38,6 +39,14 @@ public class CompanyInvestorServiceImpl implements CompanyInvestorService {
 		PageHelper.startPage(page.getPageNum(), page.getPageSize());
 		List<CompanyInvestor> list = mapper.findListByCompanyId(companyId);
 		PageInfo<CompanyInvestor> pageInfo = new PageInfo<CompanyInvestor>(list);
+		return pageInfo;
+
+	}
+	@Override
+	public PageInfo getInverstList(String companyId,Page page) {
+		PageHelper.startPage(page.getPageNum(), page.getPageSize());
+		List<CompanyInverstVo> list = mapper.getInverstList(companyId);
+		PageInfo<CompanyInverstVo> pageInfo = new PageInfo<CompanyInverstVo>(list);
 		return pageInfo;
 
 	}

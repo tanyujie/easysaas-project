@@ -335,19 +335,19 @@
 									<#if searchVo.categoryFirst??>
 									<a
 										class="btn -h24 btn-primary-bd"
-										href="http://www.vkwit.com/search?${vo.minusParameter('categoryFirst')!}">行业分类：${searchVo.categoryFirst!}&nbsp;<i
+										href="http://www.vkwit.com/search?${vo.minusParameter('categoryFirst,categorySecond,categoryThird')!}">行业分类：${searchVo.categoryFirst!}&nbsp;<i
 										class="fa fa-close"></i></a>
 									</#if>
 									<#if searchVo.categorySecond??>
 									<a
 										class="btn -h24 btn-primary-bd"
-										href="http://www.vkwit.com/search?${vo.minusParameter('categorySecond')!}">行业分类：${searchVo.categoryFirst!}&nbsp;<i
+										href="http://www.vkwit.com/search?${vo.minusParameter('categorySecond,categoryThird')!}">行业大类：${searchVo.categorySecond!}&nbsp;<i
 										class="fa fa-close"></i></a>
 									</#if>
 									<#if searchVo.categoryThird??>
 									<a
 										class="btn -h24 btn-primary-bd"
-										href="http://www.vkwit.com/search?${vo.minusParameter('categoryThird')!}">行业分类：${searchVo.categoryFirst!}&nbsp;<i
+										href="http://www.vkwit.com/search?${vo.minusParameter('categoryThird')!}">行业：${searchVo.categoryThird!}&nbsp;<i
 										class="fa fa-close"></i></a>
 									</#if>
 									<#if searchVo.companyStatus??>
@@ -604,6 +604,26 @@
 								</div>
 								<div class="scope-more" onclick="headerSearchObj.toggleMore(this)" tyc-event-click="" tyc-event-ch="CompanySearch.Filter.Hangye.More">更多<span class="tic tic-shang"></span></div>
 							</div>
+						</#if>
+						<#if (vo.filterCategorySecond)>
+								<div class="filter-scope -expand">
+									<span class="scope-title">行业大类</span>
+									<div class="scope-box scope-content-box">									
+									<#list vo.categorySecondList as c>
+										<a class="item  " href="http://www.vkwit.com/search?${vo.increaseParameter('categorySecond=${c.name}')!}" rel="nofollow">${c.name!}</a>
+									</#list>
+									</div>
+								</div>
+						</#if>
+						<#if (vo.filterCategoryThird)>
+								<div class="filter-scope -expand">
+									<span class="scope-title">行业</span>
+									<div class="scope-box scope-content-box">									
+									<#list vo.categoryThirdList as c>
+										<a class="item  " href="http://www.vkwit.com/search?${vo.increaseParameter('categoryThird=${c.name}')!}" rel="nofollow">${c.name!}</a>
+									</#list>
+									</div>
+								</div>
 						</#if>
 						<!--企业描述-->
 						<#if vo.filterDepict>

@@ -26,7 +26,7 @@ public class CompanyInvestor implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private String id;
 
     /**
      * 公司id
@@ -42,6 +42,8 @@ public class CompanyInvestor implements Serializable {
      * 投资人id，根据投资人类型的不同分别对应human_id或者company_id
      */
     private String investorId;
+    private String investorName;
+    
 
     /**
      * 认缴金额
@@ -76,7 +78,7 @@ public class CompanyInvestor implements Serializable {
     /**
      * 控股比例
      */
-    private String ownershipStake;
+    private String holdProportion;
 
 
 }

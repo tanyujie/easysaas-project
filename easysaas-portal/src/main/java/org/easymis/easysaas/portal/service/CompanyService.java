@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.easymis.easysaas.portal.entitys.mybatis.dto.Company;
 
+import com.github.pagehelper.PageInfo;
+
 public interface CompanyService {
 
 	/**
@@ -28,6 +30,7 @@ public interface CompanyService {
 	 */
 	public List<Company> getAll();
 	List<Company> findByIds(List<String> companyIds);
+	PageInfo getBranchList(String companyId,Integer pageNum, Integer pageSize);
 	/**
 	 * 
 	 * <p>

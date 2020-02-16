@@ -3,14 +3,20 @@ package org.easymis.easysaas.portal.controller;
 import org.apache.commons.lang3.StringUtils;
 import org.easymis.easysaas.portal.config.ElasticSearchConfig;
 import org.easymis.easysaas.portal.entitys.mybatis.dto.Company;
+import org.easymis.easysaas.portal.entitys.vo.CompanyOto;
 import org.easymis.easysaas.portal.service.BulkProcessService;
+import org.easymis.easysaas.portal.service.CompanyChangeInfoService;
+import org.easymis.easysaas.portal.service.CompanyInvestorService;
 import org.easymis.easysaas.portal.service.CompanyService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.github.pagehelper.Page;
 
 /**
  * 
@@ -26,6 +32,10 @@ public class CompanyController {
 	
     @Autowired
     private CompanyService service;
+    @Autowired
+    private CompanyInvestorService companyInvestorService;
+    @Autowired
+    private CompanyChangeInfoService companyChangeInfoService;
     @Autowired
     private BulkProcessService bulkProcessService;
     
@@ -57,7 +67,17 @@ public class CompanyController {
     }
     @GetMapping("/{id}.html")
     public String getByIdHtml(@PathVariable("id") String id,ModelMap map) {
-    	Company company=service.getById(id);
+    	Company detail=service.getById(id);
+    	CompanyOto company = new CompanyOto();
+		BeanUtils.copyProperties(detail, company);
+		company.setInvestorList(companyInvestorService.findByCompanyId(id));
+		
+		map.put("inverstPageInfo", companyInvestorService.getInverstList(id, new Page(1,10)));
+		map.put("companyChangeInfoPageInfo", companyChangeInfoService.findByPage(id, 1, 10));
+		//分支机构
+		map.put("branchPageInfo", service.getBranchList(id, 1, 10));
+		
+
         map.put("company", company);
     	return "/companyDetail";
     }
