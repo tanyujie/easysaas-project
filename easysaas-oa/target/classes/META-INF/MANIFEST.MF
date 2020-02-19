@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: web
+Implementation-Version: 1.0.0.RELEASE
+Built-By: Administrator
+Implementation-Vendor-Id: org.easymis.easysaas
+Build-Jdk: 1.8.0_181
+Implementation-URL: http://www.easymis.org
+Created-By: Maven Integration for Eclipse
+
