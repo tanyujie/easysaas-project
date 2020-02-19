@@ -108,7 +108,7 @@ public class IosVerifyUtil {
         byte[] b = str.getBytes();
         String s = null;
         if (b != null) {
-            s = new sun.misc.BASE64Encoder().encode(b);
+           // s = new sun.misc.BASE64Encoder().encode(b);
         }
         return s;
     }
