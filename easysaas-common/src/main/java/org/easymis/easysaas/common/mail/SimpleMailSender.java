@@ -63,6 +63,7 @@ public class SimpleMailSender {
 		log.info("发送成功！");
 		return true;
 	}
+	
 
 	/**
 	 * 以HTML格式发送邮件
