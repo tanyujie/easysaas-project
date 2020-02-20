@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.easymis.easysaas.common.result.RestResult;
-import org.easymis.easysaas.portal.utils.JwtTokenUtil;
+import org.easymis.easysaas.crm.config.JwtTokenUtil;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;

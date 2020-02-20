@@ -3,9 +3,8 @@ package org.easymis.easysaas.crm.config;
 import java.util.Arrays;
 import java.util.List;
 
-import org.easymis.easysaas.portal.config.filter.LoginInterceptor;
+import org.easymis.easysaas.crm.config.filter.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
