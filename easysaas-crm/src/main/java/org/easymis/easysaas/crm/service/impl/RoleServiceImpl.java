@@ -2,11 +2,11 @@ package org.easymis.easysaas.crm.service.impl;
 
 import java.util.List;
 
-import org.easymis.easysaas.gateway.config.datasource.DataSourceType;
-import org.easymis.easysaas.gateway.config.datasource.EasymisDataSource;
-import org.easymis.easysaas.gateway.entitys.mybatis.dto.Role;
-import org.easymis.easysaas.gateway.entitys.mybatis.mapper.RoleMapper;
-import org.easymis.easysaas.gateway.service.RoleService;
+import org.easymis.easysaas.crm.config.datasource.DataSourceType;
+import org.easymis.easysaas.crm.config.datasource.EasymisDataSource;
+import org.easymis.easysaas.crm.entitys.mybatis.dto.Role;
+import org.easymis.easysaas.crm.entitys.mybatis.mapper.RoleMapper;
+import org.easymis.easysaas.crm.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
