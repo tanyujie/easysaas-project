@@ -35,7 +35,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 					"/css/login.css",
 					"/css/common.css",
 					"*.css",
-					"/js", "/favicon.ico", "/assets/**", "/search",
+					"/js", "/favicon.ico", "/assets/**", "/search","/login",
 					"/user/login", "/auth/logout", "/health", "/api/socket/**")));
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

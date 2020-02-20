@@ -27,8 +27,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LoginInterceptor implements HandlerInterceptor{
 	private static final Set<String> ALLOWED_PATHS = Collections
-			.unmodifiableSet(new HashSet<>(Arrays.asList("/", "/login/login", "/search",
-					"/user/login", "/auth/logout", "/health", "/api/socket/**")));
+			.unmodifiableSet(new HashSet<>(Arrays.asList("/", "/login","/login/login", "/search",
+					"/member/login", "/auth/logout", "/health", "/api/socket/**")));
     private static final String tokenHeader = "Authorization";
 
     private static final String tokenHead = "Bearer ";
