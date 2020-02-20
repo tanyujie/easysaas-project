@@ -152,7 +152,7 @@
 
 
 	<build>
-		<finalName>web-v3</finalName>
+		<finalName>easysaas-crawler</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
