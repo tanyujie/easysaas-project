@@ -2,9 +2,9 @@ package org.easymis.easysaas.crm.controller;
 
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.common.utils.MD5Util;
-import org.easymis.easysaas.gateway.entitys.mybatis.dto.Member;
-import org.easymis.easysaas.gateway.entitys.vo.AuthRequest;
-import org.easymis.easysaas.gateway.service.MemberService;
+import org.easymis.easysaas.crm.entitys.mybatis.dto.Member;
+import org.easymis.easysaas.crm.entitys.vo.LoginVo;
+import org.easymis.easysaas.crm.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +23,8 @@ public class LoginController {
 
 
 
-/*	@Autowired
-	private MemberService userRepository;*/
+	@Autowired
+	private MemberService userRepository;
     //
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public RestResult login(LoginVo ar) {
