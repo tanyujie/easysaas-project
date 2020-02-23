@@ -61,15 +61,6 @@ public class CrmBusinessController {
     	crmBusinessService.update(bean);
     }
 
-    /**
-     
-     * 新增或更新商机
-     */
-    @RequestMapping(value = {"/update"}, method = {RequestMethod.GET, RequestMethod.POST})
-    @ResponseBody
-    public RestResult update(){
-    	return RestResult.buildSuccess();
-    }
 
     /**
      
