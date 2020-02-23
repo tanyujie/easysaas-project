@@ -14,4 +14,7 @@ public class BaseUtil {
 		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy年MM月dd日 hh:mm:ss");
 		return now.format(formatter2);
 	}
+    public static String getUserId(){
+        return "";//getUser().getUserId();
+    }
 }

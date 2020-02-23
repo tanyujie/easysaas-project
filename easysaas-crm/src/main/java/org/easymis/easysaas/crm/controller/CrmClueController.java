@@ -4,19 +4,12 @@ import java.util.List;
 
 import org.apache.poi.hssf.record.Record;
 import org.easymis.easysaas.common.parameter.BasePageRequest;
-import org.easymis.easysaas.crm.common.CrmEnum;
+import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmClue;
 import org.easymis.easysaas.crm.service.CrmClueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-
-import com.alibaba.fastjson.JSONObject;
-import com.jfinal.core.paragetter.Para;
-import com.kakarote.crm9.erp.admin.entity.AdminRecord;
-import com.kakarote.crm9.erp.crm.entity.CrmLeads;
-import com.kakarote.crm9.utils.AuthUtil;
-import com.kakarote.crm9.utils.R;
 
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
@@ -60,16 +53,16 @@ public class CrmClueController {
      */
     //@Permissions("crm:leads:read")
     //@NotNullValidate(value = "leadsId",message = "线索id不能为空")
-    public void queryById(String leadsId){
-        //renderJson(R.ok().put("data",crmLeadsService.queryById(leadsId)));
+    public RestResult queryById(String leadsId){
+    	return RestResult.buildSuccess(crmClueService.findById(leadsId));
     }
 
     /**
      
      * 根据线索名称查询
      */
-    public void queryByName( String name){
-        renderJson(R.ok().put("data",crmLeadsService.queryByName(name)));
+    public RestResult queryByName( String name){
+    	return RestResult.buildSuccess(crmClueService.queryByName(name));
     }
 
     /**
@@ -78,8 +71,8 @@ public class CrmClueController {
      */
     //@Permissions("crm:leads:delete")
     //@NotNullValidate(value = "leadsIds",message = "线索id不能为空")
-    public void deleteByIds(String leadsIds){
-        renderJson(crmLeadsService.deleteByIds(leadsIds));
+    public RestResult deleteByIds(String leadsIds){
+    	return crmClueService.deleteByIds(leadsIds);
     }
 
     /**
@@ -89,8 +82,8 @@ public class CrmClueController {
     //@Permissions("crm:leads:transfer")
     //@NotNullValidate(value = "leadsIds",message = "线索id不能为空")
     //@NotNullValidate(value = "newOwnerUserId",message = "新负责人id不能为空")
-    public void changeOwnerUser(String leadsIds,@Para("newOwnerUserId")Long newOwnerUserId){
-        renderJson(crmLeadsService.updateOwnerUserId(leadsIds,newOwnerUserId));
+    public void changeOwnerUser(String leadsIds,String newOwnerUserId){
+    	RestResult.buildSuccess(crmClueService.updateOwnerUserId(leadsIds,newOwnerUserId));
     }
 
     /**
@@ -99,8 +92,8 @@ public class CrmClueController {
      */
     //@Permissions("crm:leads:transform")
     //@NotNullValidate(value = "leadsIds",message = "线索id不能为空")
-    public void transfer(String leadsIds){
-        renderJson(crmLeadsService.translate(leadsIds));
+    public RestResult transfer(String leadsIds){
+        return crmClueService.translate(leadsIds);
     }
 
     /**
@@ -110,31 +103,31 @@ public class CrmClueController {
     //@NotNullValidate(value = "typesId",message = "线索id不能为空")
     //@NotNullValidate(value = "content",message = "内容不能为空")
     //@NotNullValidate(value = "category",message = "跟进类型不能为空")
-    public void addRecord(@Para("")AdminRecord adminRecord){
+/*    public void addRecord(AdminRecord adminRecord){
         boolean auth = AuthUtil.isCrmAuth(AuthUtil.getCrmTablePara(CrmEnum.CRM_LEADS), adminRecord.getTypesId());
         if(auth){
             renderJson(R.noAuth());
             return;
         }
-        renderJson(crmLeadsService.addRecord(adminRecord));
-    }
+        renderJson(crmClueService.addRecord(adminRecord));
+    }*/
 
     /**
      
      * 查看跟进记录
      */
-    public void getRecord(BasePageRequest<CrmLeads> basePageRequest){
+/*    public void getRecord(BasePageRequest<CrmLeads> basePageRequest){
         boolean auth = AuthUtil.isCrmAuth(AuthUtil.getCrmTablePara(CrmEnum.CRM_LEADS), basePageRequest.getData().getLeadsId());
         if(auth){renderJson(R.noAuth()); return; }
         renderJson(R.ok().put("data",crmLeadsService.getRecord(basePageRequest)));
-    }
+    }*/
 
     /**
      
      * 批量导出线索
      */
     //@Permissions("crm:leads:excelexport")
-    public void batchExportExcel(BasePageRequest basePageRequest){
+/*    public void batchExportExcel(BasePageRequest basePageRequest){
         JSONObject jsonObject=basePageRequest.getJsonObject();
         String ids=jsonObject.getString("ids");
         JSONObject data =new JSONObject();
@@ -145,7 +138,7 @@ public class CrmClueController {
         List<Record> recordList = resultData.getJSONArray("list").toJavaList(Record.class);
         export(recordList);
         renderNull();
-    }
+    }*/
 
     /**
      
