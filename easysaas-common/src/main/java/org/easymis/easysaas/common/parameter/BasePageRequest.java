@@ -3,14 +3,13 @@ package org.easymis.easysaas.common.parameter;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.util.TypeUtils;
-import com.jfinal.kit.Kv;
 
 /**
- * 通用分页插件
- * date 2019年1月28日18:06:10
- *
- * @param <T>
- * @author zhangzhiwei
+ * 
+　 * <p>Title: 通用分页插件</p>
+　 * <p>Description: </p>
+　 * @author 谭宇杰
+　 * @date 2020年2月21日
  */
 public class BasePageRequest<T> {
     /**
