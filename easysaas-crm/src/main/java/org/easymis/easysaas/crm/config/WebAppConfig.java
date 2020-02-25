@@ -31,6 +31,7 @@ public class WebAppConfig implements WebMvcConfigurer {
 			"/map",
 			"/claim/entry",
 			"/indexes/**",
+			"/school/**",
 			"/user/login", "/error");
 
 	public void addInterceptors(InterceptorRegistry registry) {

@@ -10,7 +10,8 @@ import org.easymis.easysaas.crm.service.CrmBusinessService;
 import org.springframework.stereotype.Service;
 @Service
 public class CrmBusinessServiceImpl implements CrmBusinessService {
-
+/*	@Autowired
+	private CrmBusinessMapper mapper;*/
 	@Override
 	public CrmBusiness findById(String id) {
 		// TODO Auto-generated method stub
