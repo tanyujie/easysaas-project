@@ -1,5 +1,5 @@
 package org.easymis.easysaas.crm.service;
 
-public interface CrmCustomerHighseaService {
+public interface CrmCluePoolService {
 
 }
