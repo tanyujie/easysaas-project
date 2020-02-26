@@ -90,11 +90,7 @@
 			<artifactId>springfox-staticdocs</artifactId>
 			<version>${springfox-staticdocs.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.easymis.easysaas</groupId>
-			<artifactId>easysaas-common</artifactId>
-			<version>1.0.0.RELEASE</version>
-		</dependency>
+
 	</dependencies>
 
 
