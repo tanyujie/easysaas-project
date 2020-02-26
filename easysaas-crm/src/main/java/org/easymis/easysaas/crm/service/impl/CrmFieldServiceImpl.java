@@ -2,6 +2,7 @@ package org.easymis.easysaas.crm.service.impl;
 
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
+import org.easymis.easysaas.crm.entitys.mybatis.mapper.CrmFieldMapper;
 import org.easymis.easysaas.crm.service.CrmFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
