@@ -2,7 +2,9 @@ package org.easymis.easysaas.crm.controller;
 
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.common.utils.MD5Util;
+import org.easymis.easysaas.crm.config.JwtTokenUtil;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.Member;
+import org.easymis.easysaas.crm.entitys.vo.LoginOto;
 import org.easymis.easysaas.crm.entitys.vo.LoginVo;
 import org.easymis.easysaas.crm.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +30,20 @@ public class LoginController {
     //
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public RestResult login(LoginVo ar) {
-		Member userDetails=userRepository.findByMobile(ar.getUsername());
-		if(userDetails!=null) {
+		
+		
+		Member member=userRepository.findByMobile(ar.getUsername());
+		if(member!=null) {
 			System.out.println(MD5Util.md5(ar.getPassword()));
-			if (MD5Util.md5(ar.getPassword()).equals(userDetails.getPassword())) {
-				//return RestResult.buildSuccess(new AuthResponse(jwtUtil.generateToken(userDetails),ar.getUsername()));
+			if (MD5Util.md5(ar.getPassword()).equals(member.getPassword())) {
+				LoginOto loginOto= new LoginOto();
+				loginOto.setEasysaasToken(JwtTokenUtil.generateToken(member.getMemberId()));
+		        return RestResult.buildSuccess(loginOto);
 			} else {
 				return RestResult.buildFail("密码错误");
 			}
 		}		
 		return RestResult.buildFail();
 	}
+
 }

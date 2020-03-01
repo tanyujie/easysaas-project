@@ -1,6 +1,7 @@
 package org.easymis.easysaas.crm.controller;
 
 import org.easymis.easysaas.common.result.RestResult;
+import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.School;
 import org.easymis.easysaas.crm.service.CrmFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class CrmFieldController {
 	})
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult add(School bean) {
+	public RestResult add(CrmField bean) {
 		if (service.save(bean))
 			return RestResult.buildSuccess();
 		else
@@ -77,7 +78,7 @@ public class CrmFieldController {
 	})
 	@RequestMapping(value = { "/update.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult update(School bean) {
+	public RestResult update(CrmField bean) {
 		if (service.update(bean))
 			return RestResult.buildSuccess();
 		else

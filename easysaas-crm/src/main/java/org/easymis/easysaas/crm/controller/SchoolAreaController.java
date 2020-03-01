@@ -2,6 +2,7 @@ package org.easymis.easysaas.crm.controller;
 
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.School;
+import org.easymis.easysaas.crm.entitys.mybatis.dto.SchoolArea;
 import org.easymis.easysaas.crm.service.SchoolAreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,7 +50,7 @@ public class SchoolAreaController {
 	})
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult add(School bean) {
+	public RestResult add(SchoolArea bean) {
 		if (service.save(bean))
 			return RestResult.buildSuccess();
 		else
@@ -70,7 +71,7 @@ public class SchoolAreaController {
 	})
 	@RequestMapping(value = { "/update.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult update(School bean) {
+	public RestResult update(SchoolArea bean) {
 		if (service.update(bean))
 			return RestResult.buildSuccess();
 		else

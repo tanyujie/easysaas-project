@@ -1,10 +1,8 @@
 package org.easymis.easysaas.crm.controller;
 
+import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmAchievement;
 import org.easymis.easysaas.crm.service.CrmAchievementService;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.jfinal.core.paragetter.Para;
-import com.kakarote.crm9.erp.admin.entity.CrmAchievement;
 
 /**
  * 

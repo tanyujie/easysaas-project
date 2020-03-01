@@ -66,8 +66,7 @@ public class Member implements Serializable{
      * 创建时间
      */
     private LocalDateTime createTime;
-
-
+    
     private Boolean enabled;
 	private List<Role> roles;
 }
