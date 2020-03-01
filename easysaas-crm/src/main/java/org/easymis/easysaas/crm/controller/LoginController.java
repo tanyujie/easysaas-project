@@ -37,7 +37,7 @@ public class LoginController {
 			System.out.println(MD5Util.md5(ar.getPassword()));
 			if (MD5Util.md5(ar.getPassword()).equals(member.getPassword())) {
 				LoginOto loginOto= new LoginOto();
-				loginOto.setEasysaasToken(JwtTokenUtil.generateToken(member.getMemberId()));
+				loginOto.setEasysaasToken(JwtTokenUtil.generateToken(member.getMemberId(),"2016110202340575"));
 		        return RestResult.buildSuccess(loginOto);
 			} else {
 				return RestResult.buildFail("密码错误");

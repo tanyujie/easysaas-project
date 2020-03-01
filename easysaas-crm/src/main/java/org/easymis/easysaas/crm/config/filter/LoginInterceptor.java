@@ -21,6 +21,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.util.StringUtil;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;
@@ -29,9 +30,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 	private static final Set<String> ALLOWED_PATHS = Collections
 			.unmodifiableSet(new HashSet<>(Arrays.asList("/", "/login","/login/login", "/search",
 					"/member/login", "/auth/logout", "/health", "/api/socket/**")));
-    private static final String tokenHeader = "Authorization";
-
-    private static final String tokenHead = "Bearer ";
+    private static final String tokenHeader = "easysaasToken";
 	/**
 	 * 进入controller层之前拦截请求
 	 * @param httpServletRequest
@@ -47,20 +46,20 @@ public class LoginInterceptor implements HandlerInterceptor{
         boolean allowedPath = ALLOWED_PATHS.contains(url);
 
         if (!allowedPath) {
-			String token = request.getHeader("Authorization");
+			String authToken = request.getHeader("easysaasToken");
 
-			if(StringUtils.isNotEmpty(token)) {
+			if(StringUtils.isNotEmpty(authToken)) {
 				try {
 					String authHeader = this.getTokenByRequest(request);
-					if (authHeader != null && authHeader.startsWith(tokenHead)) {
-						String authToken = authHeader.substring(tokenHead.length());
+					if (StringUtil.isNotEmpty(authHeader)) {
 						String memberId = JwtTokenUtil.getUserNameFromToken(authToken);
-						
+						String orgId = JwtTokenUtil.getOrgId(authToken);
 						if (JwtTokenUtil.validateToken(authToken, memberId)) {
 							if (!JwtTokenUtil.isTokenExpired(authToken)) {
 								checkTokenFromCache(authToken, memberId);
 								  //设置 identityId 用户身份ID
 						        request.setAttribute("memberId", memberId);
+						        request.setAttribute("orgId", orgId);
 								// 检查角色权限
 								log.info("memberId:{}",memberId);
 							}else {
@@ -128,9 +127,8 @@ public class LoginInterceptor implements HandlerInterceptor{
         if (Objects.isNull(authHeader)) {
             authHeader = request.getHeader(tokenHeader);
             return authHeader;
-        } else {
-            return tokenHead + authHeader;
         }
+        return null;
     }
     public void checkTokenFromCache(String authToken, String username) {
         

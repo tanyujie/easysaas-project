@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/crmField")
 @Validated
 @Slf4j
-public class CrmFieldController {
+public class CrmFieldController extends IdentityRepository{
 	@Autowired
 	private CrmFieldService service;
 
@@ -40,7 +40,7 @@ public class CrmFieldController {
 	@RequestMapping(value = { "/findByOrgId.json" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult findByOrgId(Integer pageNum, Integer pageSize) {
-		String orgId="";
+		String orgId=getOrgId();
 		return RestResult.buildSuccess(service.findByOrgId(orgId, pageNum, pageSize));
 	}
 	
