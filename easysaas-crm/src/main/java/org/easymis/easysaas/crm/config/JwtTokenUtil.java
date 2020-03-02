@@ -27,6 +27,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class JwtTokenUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
     private static final String CLAIM_KEY_USERNAME = "sub";
+    private static final String ORG_ID = "org_id";
     private static final String CLAIM_KEY_CREATED = "created";
     private static  final  String secret = "banza";
 
@@ -86,7 +87,19 @@ public class JwtTokenUtil {
         }
         return username;
     }
-
+    public static  String getOrgId(String token) {
+        String orgId;
+        try {
+            Claims claims = getClaimsFromToken(token);
+            orgId =  claims.get(ORG_ID).toString();
+        }catch (ExpiredJwtException e){
+            throw  e;
+        }
+        catch (Exception e) {
+        	orgId = null;
+        }
+        return orgId;
+    }
     /**
      * 验证token是否还有效
      *
@@ -123,7 +136,13 @@ public class JwtTokenUtil {
         claims.put(CLAIM_KEY_CREATED, new Date());
         return generateToken(claims);
     }
-
+    public static   String generateToken(String phoneNum,String orgId) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put(CLAIM_KEY_USERNAME, phoneNum);
+        claims.put(ORG_ID, orgId);
+        claims.put(CLAIM_KEY_CREATED, new Date());
+        return generateToken(claims);
+    }
     /**
      * 判断token是否可以被刷新
      */
