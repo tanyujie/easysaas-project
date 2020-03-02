@@ -1,5 +1,7 @@
 package org.easymis.easysaas.crm.service.impl;
 
+import java.util.List;
+
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
 import org.easymis.easysaas.crm.entitys.mybatis.mapper.CrmFieldMapper;
@@ -7,6 +9,7 @@ import org.easymis.easysaas.crm.service.CrmFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 @Service
@@ -32,9 +35,11 @@ public class CrmFieldServiceImpl implements CrmFieldService{
 	}
 
 	@Override
-	public PageInfo findByOrgId(String orgId, Integer pageNum, Integer pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+	public PageInfo findByOrgId(String orgId,Integer pageNum, Integer pageSize) {
+    	PageHelper.startPage(pageNum, pageSize);
+    	List<CrmField> fieldList = mapper.findByOrgId(orgId);
+		PageInfo<CrmField> p = new PageInfo<CrmField>(fieldList);
+        return p;
 	}
 
 	@Override

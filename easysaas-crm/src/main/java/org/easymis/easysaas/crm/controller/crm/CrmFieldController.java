@@ -3,13 +3,13 @@ package org.easymis.easysaas.crm.controller.crm;
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.crm.controller.IdentityRepository;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.School;
 import org.easymis.easysaas.crm.service.CrmFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.swagger.annotations.Api;
@@ -33,15 +33,14 @@ public class CrmFieldController extends IdentityRepository{
 	@Autowired
 	private CrmFieldService service;
 
-	@ApiOperation(value = "查询接口", response = School.class)
+	@ApiOperation(value = "查询接口", response = CrmField.class)
 	@ApiImplicitParams({
 		@ApiImplicitParam(name = "pageNum", value = "页码", dataType = "int", required = false),
 		@ApiImplicitParam(name = "pageSize", value = "每页显示记录", dataType = "int", required = false),
 	})
-	@RequestMapping(value = { "/findByOrgId.json" }, method = { RequestMethod.GET, RequestMethod.POST })
-	@ResponseBody
-	public RestResult findByOrgId(Integer pageNum, Integer pageSize) {
-		String orgId=getOrgId();
+	public RestResult findByOrgId(@RequestParam(defaultValue = "1") Integer pageNum,
+			@RequestParam(defaultValue = "10") Integer pageSize) {
+		String orgId = getOrgId();
 		return RestResult.buildSuccess(service.findByOrgId(orgId, pageNum, pageSize));
 	}
 	
