@@ -1,4 +1,4 @@
-package org.easymis.easysaas.crm.controller;
+package org.easymis.easysaas.crm.controller.crm;
 
 import org.easymis.easysaas.common.parameter.BasePageRequest;
 import org.easymis.easysaas.crm.service.CrmCustomerService;

@@ -1,4 +1,4 @@
-package org.easymis.easysaas.crm.entitys.mybatis.mapper;
+package org.easymis.easysaas.crm.controller.crm;
 
 import java.util.HashMap;
 import java.util.List;

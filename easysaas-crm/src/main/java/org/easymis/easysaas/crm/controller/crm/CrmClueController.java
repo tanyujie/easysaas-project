@@ -1,4 +1,4 @@
-package org.easymis.easysaas.crm.controller;
+package org.easymis.easysaas.crm.controller.crm;
 
 import java.util.List;
 

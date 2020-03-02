@@ -1,4 +1,4 @@
-package org.easymis.easysaas.crm.controller;
+package org.easymis.easysaas.crm.controller.crm;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
-　 * <p>Title: 客户公海</p>
+　 * <p>Title: 标签数据</p>
 　 * <p>Description: </p>
 　 * @author 谭宇杰
 　 * @date 2020年2月21日
@@ -17,6 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Validated
 @Slf4j
-public class CrmCustomerPoolController {
+public class CrmTagDataController {
 
 }

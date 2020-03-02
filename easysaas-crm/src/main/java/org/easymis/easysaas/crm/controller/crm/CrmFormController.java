@@ -1,9 +1,9 @@
-package org.easymis.easysaas.crm.controller;
+package org.easymis.easysaas.crm.controller.crm;
 
 import org.easymis.easysaas.common.result.RestResult;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
+import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmForm;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.School;
-import org.easymis.easysaas.crm.service.CrmFieldService;
+import org.easymis.easysaas.crm.service.CrmFormService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -16,21 +16,22 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+
 /**
  * 
-　 * <p>Title: 字段信息 </p>
+　 * <p>Title: 表单信息</p>
 　 * <p>Description: </p>
 　 * @author 谭宇杰
 　 * @date 2020年2月21日
  */
-@Api(description = "客户预约")
+@Api(description = " 表单信息")
 @Controller
-@RequestMapping("/crmField")
+@RequestMapping("/crmForm")
 @Validated
 @Slf4j
-public class CrmFieldController extends IdentityRepository{
+public class CrmFormController {
 	@Autowired
-	private CrmFieldService service;
+	private CrmFormService service;
 
 	@ApiOperation(value = "查询接口", response = School.class)
 	@ApiImplicitParams({
@@ -40,7 +41,7 @@ public class CrmFieldController extends IdentityRepository{
 	@RequestMapping(value = { "/findByOrgId.json" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult findByOrgId(Integer pageNum, Integer pageSize) {
-		String orgId=getOrgId();
+		String orgId="";
 		return RestResult.buildSuccess(service.findByOrgId(orgId, pageNum, pageSize));
 	}
 	
@@ -57,7 +58,7 @@ public class CrmFieldController extends IdentityRepository{
 	})
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult add(CrmField bean) {
+	public RestResult add(CrmForm bean) {
 		if (service.save(bean))
 			return RestResult.buildSuccess();
 		else
@@ -78,7 +79,7 @@ public class CrmFieldController extends IdentityRepository{
 	})
 	@RequestMapping(value = { "/update.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult update(CrmField bean) {
+	public RestResult update(CrmForm bean) {
 		if (service.update(bean))
 			return RestResult.buildSuccess();
 		else

@@ -1,4 +1,4 @@
-package org.easymis.easysaas.crm.controller;
+package org.easymis.easysaas.crm.controller.crm;
 
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmAchievement;
 import org.easymis.easysaas.crm.service.CrmAchievementService;
