@@ -1,4 +1,4 @@
-package org.easymis.easysaas.crm.controller;
+package org.easymis.easysaas.crm.controller.education;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;

@@ -1,4 +1,4 @@
-package org.easymis.easysaas.crm.controller;
+package org.easymis.easysaas.crm.controller.education;
 /**
  * 
 　 * <p>Title: 作业管理</p>
