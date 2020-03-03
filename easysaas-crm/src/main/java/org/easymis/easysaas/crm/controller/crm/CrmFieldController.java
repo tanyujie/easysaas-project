@@ -1,6 +1,7 @@
 package org.easymis.easysaas.crm.controller.crm;
 
 import org.easymis.easysaas.common.result.RestResult;
+import org.easymis.easysaas.crm.common.CrmEnum;
 import org.easymis.easysaas.crm.controller.IdentityRepository;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
 import org.easymis.easysaas.crm.service.CrmFieldService;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.jfinal.core.paragetter.Para;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -38,13 +41,13 @@ public class CrmFieldController extends IdentityRepository{
 		@ApiImplicitParam(name = "pageNum", value = "页码", dataType = "int", required = false),
 		@ApiImplicitParam(name = "pageSize", value = "每页显示记录", dataType = "int", required = false),
 	})
-	public RestResult findByOrgId(@RequestParam(defaultValue = "1") Integer pageNum,
+	public RestResult queryPageList(@RequestParam(defaultValue = "1") Integer pageNum,
 			@RequestParam(defaultValue = "10") Integer pageSize) {
 		String orgId = getOrgId();
 		return RestResult.buildSuccess(service.findByOrgId(orgId, pageNum, pageSize));
 	}
 	
-	@ApiOperation(value = "保存校区")
+	@ApiOperation(value = "保存字段")
 	@ApiImplicitParams({
 		@ApiImplicitParam(name = "name", value = "学校名称", dataType = "string", required = false),
 		@ApiImplicitParam(name = "schoolType", value = "类型1直营2合作3加盟4代理", dataType = "int", required = false),
@@ -64,7 +67,7 @@ public class CrmFieldController extends IdentityRepository{
 			return RestResult.buildFail();
 	}
 	
-	@ApiOperation(value = "修改校区信息")
+	@ApiOperation(value = "修改字段信息")
 	@ApiImplicitParams({
 		@ApiImplicitParam(name = "schoolId", value = "学校Id", dataType = "string", required = false),
 		@ApiImplicitParam(name = "name", value = "学校名称", dataType = "string", required = false),
@@ -85,9 +88,9 @@ public class CrmFieldController extends IdentityRepository{
 			return RestResult.buildFail();
 	}
 	
-	@ApiOperation(value = "查看校区信息")
+	@ApiOperation(value = "查看字段信息")
 	@ApiImplicitParams({
-		@ApiImplicitParam(name = "ids", value = "校区id", dataType = "string", required = false),
+		@ApiImplicitParam(name = "ids", value = "字段id", dataType = "string", required = false),
 	})
 	@RequestMapping(value = { "/read.json" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
@@ -95,13 +98,57 @@ public class CrmFieldController extends IdentityRepository{
 		return RestResult.buildSuccess(service.findById(schoolId));
 	}
 	
-	@ApiOperation(value = "删除校区信息")
+	@ApiOperation(value = "删除字段信息")
 	@ApiImplicitParams({
-		@ApiImplicitParam(name = "ids", value = "校区id列表", dataType = "string", required = false),
+		@ApiImplicitParam(name = "ids", value = "字段id列表", dataType = "string", required = false),
 	})
 	@RequestMapping(value = { "/delete.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult delete(String ids) {
 		return service.deleteByIds(ids);
 	}
+    /**
+     * @author wyq
+     * 查询新增或编辑字段
+     */
+    public void queryField(String label,String id){
+      //  List<Record> recordList = new LinkedList<>();
+        CrmEnum crmEnum = CrmEnum.parse(label);
+        if (id != null){
+            if (CrmEnum.CRM_LEADS.equals(crmEnum)){
+                recordList = crmLeadsService.queryField(id);
+            }
+/*            if (CrmEnum.CRM_CUSTOMER.equals(crmEnum)){
+                recordList = crmCustomerService.queryField(id);
+            }
+            if (CrmEnum.CRM_CONTACTS.equals(crmEnum)){
+                recordList = crmContactsService.queryField(id);
+            }
+            if (CrmEnum.CRM_PRODUCT.equals(crmEnum)){
+                recordList = crmProductService.queryField(id);
+            }
+            if (CrmEnum.CRM_BUSINESS.equals(crmEnum)){
+                recordList = crmBusinessService.queryField(id);
+            }
+            if (CrmEnum.CRM_CONTRACT.equals(crmEnum)){
+                recordList = crmContractService.queryField(id);
+            }
+            if (CrmEnum.CRM_RECEIVABLES.equals(crmEnum)){
+                recordList = crmReceivablesService.queryField(id);
+            }
+            if (CrmEnum.CRM_RECEIVABLES_PLAN.equals(crmEnum)){
+                recordList = crmReceivablesPlanService.queryField(id);
+            }
+            if(10 == label){
+                recordList = oaExamineCategoryService.queryField(id);
+            }*/
+        }else {
+/*            if (CrmEnum.CRM_RECEIVABLES_PLAN.equals(crmEnum)){
+                recordList = crmReceivablesPlanService.queryField();
+            }else {
+                recordList = adminFieldService.queryAddField(crmEnum);
+            }*/
+        }
+/*        renderJson(R.ok().put("data",recordList));*/
+    }
 }
