@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
+import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmFieldSort;
 import org.easymis.easysaas.crm.entitys.mybatis.mapper.CrmFieldMapper;
+import org.easymis.easysaas.crm.entitys.vo.ColumnHeadVo;
 import org.easymis.easysaas.crm.service.CrmFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +46,12 @@ public class CrmFieldServiceImpl implements CrmFieldService{
 
 	@Override
 	public RestResult deleteByIds(String ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ColumnHeadVo> queryListHead(CrmFieldSort adminFieldSort) {
 		// TODO Auto-generated method stub
 		return null;
 	}
