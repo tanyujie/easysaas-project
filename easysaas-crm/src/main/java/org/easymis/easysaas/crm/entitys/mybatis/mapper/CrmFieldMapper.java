@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
+import org.easymis.easysaas.crm.entitys.vo.ColumnHeadVo;
 
 public interface CrmFieldMapper {
 	@Select("select * from crm_field")
@@ -37,6 +38,10 @@ public interface CrmFieldMapper {
 
 	@Select(" SELECT t.* FROM crm_field t")
 	public List<CrmField> findByIds(List<String> list);
+	
 	@Select(" SELECT t.* FROM crm_field t where org_id=#{orgId}")
 	public List<CrmField> findByOrgId(@Param("orgId")String orgId);
+	
+	@Select("select field_name,name,type,field_id from crm_field_sort where is_hide = 0 and org_id=#{orgId} and label = #{label} and staff_id = #{staffId} order by sort asc")
+	public List<ColumnHeadVo> getColumnHead(@Param("orgId") String orgId,@Param("label") String label, @Param("staffId") String staffId);
 }

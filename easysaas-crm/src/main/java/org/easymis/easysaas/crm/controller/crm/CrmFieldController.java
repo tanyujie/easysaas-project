@@ -1,9 +1,15 @@
 package org.easymis.easysaas.crm.controller.crm;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.crm.common.CrmEnum;
 import org.easymis.easysaas.crm.controller.IdentityRepository;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
+import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmFieldSort;
+import org.easymis.easysaas.crm.entitys.vo.ColumnHeadVo;
 import org.easymis.easysaas.crm.service.CrmFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.jfinal.core.paragetter.Para;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -107,6 +111,33 @@ public class CrmFieldController extends IdentityRepository{
 	public RestResult delete(String ids) {
 		return service.deleteByIds(ids);
 	}
+	/**
+    * 查询客户管理列表页字段
+    */
+   //@NotNullValidate(value = "label",message = "label不能为空")
+	@RequestMapping(value = { "/queryListHead" }, method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+   public RestResult queryListHead(@Valid CrmFieldSort adminFieldSort){
+       List<ColumnHeadVo> records = null;
+       if (adminFieldSort.getLabel()!=null&&adminFieldSort.getLabel().equals("10")) {
+           //records = oaExamineCategoryService.queryFieldList();
+       }else {
+           records = service.queryListHead(adminFieldSort);
+       }
+/*       List<AdminFieldStyle> fieldStyles = adminFieldService.queryFieldStyle(adminFieldSort.getLabel().toString());
+       records.forEach(record -> {
+           for (AdminFieldStyle fieldStyle:fieldStyles){
+               if(record.get("fieldName")!=null&&fieldStyle.getFieldName().equals(record.get("fieldName"))){
+                   record.set("width",fieldStyle.getStyle());
+                   break;
+               }
+           }
+           if(!record.getColumns().containsKey("width")){
+               record.set("width",100);
+           }
+       });*/
+       return RestResult.buildSuccess(records);
+   }
     /**
      * @author wyq
      * 查询新增或编辑字段
@@ -116,7 +147,7 @@ public class CrmFieldController extends IdentityRepository{
         CrmEnum crmEnum = CrmEnum.parse(label);
         if (id != null){
             if (CrmEnum.CRM_LEADS.equals(crmEnum)){
-                recordList = crmLeadsService.queryField(id);
+               // recordList = crmLeadsService.queryField(id);
             }
 /*            if (CrmEnum.CRM_CUSTOMER.equals(crmEnum)){
                 recordList = crmCustomerService.queryField(id);
