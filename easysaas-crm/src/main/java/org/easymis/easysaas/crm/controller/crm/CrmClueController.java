@@ -7,9 +7,12 @@ import org.easymis.easysaas.common.parameter.BasePageRequest;
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmClue;
 import org.easymis.easysaas.crm.service.CrmClueService;
+import org.easymis.easysaas.crm.service.CrmSceneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
+
+import com.alibaba.fastjson.JSONObject;
 
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
@@ -28,13 +31,15 @@ import lombok.extern.slf4j.Slf4j;
 public class CrmClueController {
 	@Autowired
     private CrmClueService crmClueService;
+	@Autowired
+    private CrmSceneService crmSceneService;
 	//查看列表页
     ////@Permissions({"crm:leads:index"})
-    public void queryPageList(BasePageRequest basePageRequest){/*
+    public RestResult queryPageList(BasePageRequest basePageRequest){
         JSONObject jsonObject = basePageRequest.getJsonObject().fluentPut("type",1);
         basePageRequest.setJsonObject(jsonObject);
-        renderJson(adminSceneService.filterConditionAndGetPageList(basePageRequest));
-    */}
+    	return crmSceneService.filterConditionAndGetPageList(basePageRequest);
+    }
     /**
      * 全局搜索查询线索
      */
