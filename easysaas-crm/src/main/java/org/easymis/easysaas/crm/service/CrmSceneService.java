@@ -1,5 +1,6 @@
 package org.easymis.easysaas.crm.service;
 
+import org.easymis.easysaas.common.parameter.BasePageRequest;
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmScene;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.School;
@@ -16,4 +17,5 @@ public interface CrmSceneService {
 	public PageInfo findByOrgId(String orgId, Integer pageNum, Integer pageSize);
 
 	public RestResult deleteByIds(String ids);
+	public RestResult filterConditionAndGetPageList(BasePageRequest basePageRequest);
 }
