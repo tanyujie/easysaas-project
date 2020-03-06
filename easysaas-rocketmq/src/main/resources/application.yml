@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: easysaas-rocketmq
+  redis:
+    database: 0
+    host: 119.23.153.227
+    port: 6379
+    password: 
+    pool:
+      maxActive: 50
+      maxWait: 100000
+      maxIdle: 20
+      minIdle: 10
+    timeout: 20000
+rocketmq:
+  name-server: 127.0.0.1
+  producer:
+    group: my-group
+  topic: string-topic
+  orderTopic: order-paid-topic
+  msgExtTopic: message-ext-topic
+  transTopic: spring-transaction-topic
+  producer:
+    retry-next-server: true 
+  
