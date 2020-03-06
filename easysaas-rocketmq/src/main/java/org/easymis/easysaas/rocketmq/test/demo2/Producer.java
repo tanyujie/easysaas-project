@@ -1,4 +1,4 @@
-package org.easymis.easysaas.rocketmq.test;
+package org.easymis.easysaas.rocketmq.test.demo2;
 import java.util.concurrent.TimeUnit;
 
 
@@ -15,7 +15,7 @@ public class Producer {
 		 * 因为服务器会回查这个Group下的任意一个Producer
 		 */
 		DefaultMQProducer producer = new DefaultMQProducer("ProducerGroupName");
-		producer.setNamesrvAddr("192.168.0.123:9876");
+		producer.setNamesrvAddr("127.0.0.1:9876");
 		/**
 		 * 默认情况下，一台服务器只能启动一个Producer或Consumer实例，所以如果需要在一台服务器启 动多个实例，需要设置实例的名称
 		 */

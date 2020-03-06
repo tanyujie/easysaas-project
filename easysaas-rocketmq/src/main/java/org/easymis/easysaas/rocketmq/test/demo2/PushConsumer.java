@@ -1,4 +1,4 @@
-package org.easymis.easysaas.rocketmq.test;
+package org.easymis.easysaas.rocketmq.test.demo2;
 
 import java.util.List;
 
