@@ -20,7 +20,7 @@ public class AsyncProducer {
         for (int i = 0; i < 100; i++) {
                 final int index = i;
                 //Create a message instance, specifying topic, tag and message body.
-                Message msg = new Message("TopicTest",
+                Message msg = new Message("BenchmarkTest",
                     "TagA",
                     "OrderID188",
                     "Hello world".getBytes(RemotingHelper.DEFAULT_CHARSET));
