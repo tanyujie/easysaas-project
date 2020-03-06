@@ -16,7 +16,7 @@ public class SyncProducer {
         producer.setNamesrvAddr("localhost:9876");
         //Launch the instance.
         producer.start();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1; i++) {
             //Create a message instance, specifying topic, tag and message body.
             Message msg = new Message("BenchmarkTest" /* Topic */,
                 "TagA" /* Tag */,
@@ -25,7 +25,7 @@ public class SyncProducer {
             );
             //Call send message to deliver message to one of brokers.
             SendResult sendResult = producer.send(msg);
-            System.out.printf("%s%n", sendResult);
+            System.out.printf("接收时间返回%s%n", sendResult);
         }
         //Shut down once the producer instance is not longer in use.
         producer.shutdown();
