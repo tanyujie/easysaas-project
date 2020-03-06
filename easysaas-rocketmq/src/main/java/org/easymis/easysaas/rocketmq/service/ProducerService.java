@@ -10,6 +10,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
+
+/**
+ * 
+ Producer:生产者
+ *
+ */
 @Service
 public class ProducerService {
   @Autowired
@@ -62,9 +68,15 @@ public class ProducerService {
   public void testTransaction(String[] tags) {
     for(int i=0;i<10;i++){
       Message msg = MessageBuilder.withPayload("rocketmq ni hao " + i).setHeader(RocketMQHeaders.KEYS,"KEYS_" + i).build();
+      //SendResult sendResult=rocketMQTemplate.sendMessageInTransaction(springTransTopic+":"+tags[i%tags.length], msg, null);
       SendResult sendResult = rocketMQTemplate.sendMessageInTransaction(TX_PGROUP_NAME, springTransTopic+":"+tags[i%tags.length], msg, null);
+      
       System.out.printf("------ send Transactional msg body = %s , sendResult=%s %n",
           msg.getPayload(), sendResult.getSendStatus());
+    //  public TransactionSendResult sendMessageInTransaction(final String txProducerGroup, final String destination, final Message<?> message, final Object arg) throws MessagingException {
+      
+     // public TransactionSendResult sendMessageInTransaction(final String destination, final Message<?> message, final Object arg) throws MessagingException 
+
 //      try {
 //        Thread.sleep(10);
 //      } catch (InterruptedException e) {
