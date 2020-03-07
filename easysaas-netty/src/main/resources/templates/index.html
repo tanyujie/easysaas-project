@@ -18,7 +18,7 @@
 			socket: null,
 			init:function(){
 				if(window.WebSocket){
-					CHAT.socket = new WebSocket("ws://127.0.0.1:8088/ws")
+					CHAT.socket = new WebSocket("ws://127.0.0.1:9088/ws")
 					CHAT.socket.onopen = function(){
 						console.log("链接建立成功...")
 					},
