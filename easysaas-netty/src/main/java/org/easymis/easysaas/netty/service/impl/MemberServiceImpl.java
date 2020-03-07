@@ -1,7 +1,12 @@
 package org.easymis.easysaas.netty.service.impl;
 
+import java.util.List;
+
+import org.easymis.easysaas.netty.config.netty.ChatMsg;
 import org.easymis.easysaas.netty.entitys.mybatis.dto.Member;
 import org.easymis.easysaas.netty.entitys.mybatis.mapper.MemberMapper;
+import org.easymis.easysaas.netty.entitys.vo.FriendRequestVO;
+import org.easymis.easysaas.netty.entitys.vo.MyFriendsVO;
 import org.easymis.easysaas.netty.n3r.idworker.Sid;
 import org.easymis.easysaas.netty.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +44,71 @@ public class MemberServiceImpl implements MemberService {
 		user.setId(userId);
 		userMapper.insertByBean(user);
 		return user;
+	}
+
+	@Override
+	public Member updateUserInfo(Member user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer preconditionSearchFriends(String myUserId, String friendUsername) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Member queryUserInfoByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void sendFriendRequest(String myUserId, String friendUsername) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<FriendRequestVO> queryFriendRequestList(String acceptUserId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteFriendRequest(String sendUserId, String acceptUserId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void passFriendRequest(String sendUserId, String acceptUserId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<MyFriendsVO> queryMyFriends(String userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String saveMsg(ChatMsg chatMsg) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateMsgSigned(List<String> msgIdList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<org.easymis.easysaas.netty.entitys.mybatis.dto.ChatMsg> getUnReadMsgList(String acceptUserId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

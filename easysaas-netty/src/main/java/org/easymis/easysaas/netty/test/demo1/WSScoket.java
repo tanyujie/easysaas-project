@@ -1,7 +1,5 @@
 package org.easymis.easysaas.netty.test.demo1;
 
-import org.easymis.easysaas.netty.config.scoket.WSServerInitialzer;
-
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
@@ -18,7 +16,7 @@ public class WSScoket {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(mainGroup, subGroup)
                             .channel(NioServerSocketChannel.class)
-                            .childHandler(new WSServerInitialzer());
+                            .childHandler(new Demo1WSServerInitialzer());
 
             ChannelFuture channelFuture = serverBootstrap.bind(8088).sync();
             channelFuture.channel().closeFuture().sync();

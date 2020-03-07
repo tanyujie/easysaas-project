@@ -2,6 +2,8 @@ package org.easymis.easysaas.netty.entitys.mybatis.dto;
 
 import java.util.Date;
 
+import lombok.Data;
+@Data
 public class ChatMsg {
 
 	private String id;
