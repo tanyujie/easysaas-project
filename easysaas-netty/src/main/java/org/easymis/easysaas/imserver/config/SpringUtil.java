@@ -3,10 +3,12 @@ package org.easymis.easysaas.imserver.config;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 
 /**
  * @Description: 提供手动获取被spring管理的bean对象
  */
+@Component
 public class SpringUtil implements ApplicationContextAware {
 	
 	private static ApplicationContext applicationContext;

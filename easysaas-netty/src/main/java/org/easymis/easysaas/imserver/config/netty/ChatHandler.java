@@ -59,7 +59,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			String senderId = chatMsg.getSenderId();
 			
 			// 保存消息到数据库，并且标记为 未签收
-			MemberService userService = (MemberService)SpringUtil.getBean("userServiceImpl");
+			MemberService userService = (MemberService)SpringUtil.getBean("memberServiceImpl");
 			String msgId = userService.saveMsg(chatMsg);
 			chatMsg.setMsgId(msgId);
 			

@@ -36,7 +36,7 @@ import io.netty.channel.Channel;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import springfox.documentation.schema.Example;
 
-@Service
+@Service("memberServiceImpl")  
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
@@ -224,10 +224,11 @@ public class MemberServiceImpl implements MemberService {
 	public String saveMsg(ChatMsg chatMsg) {
 		
 		org.easymis.easysaas.imserver.entitys.mybatis.dto.ChatMsg msgDB = new org.easymis.easysaas.imserver.entitys.mybatis.dto.ChatMsg();
-		String msgId = sid.nextShort();
+		String msgId = sid.nextShort();		
 		msgDB.setId(msgId);
-		msgDB.setAcceptUserId(chatMsg.getReceiverId());
-		msgDB.setSendUserId(chatMsg.getSenderId());
+		msgDB.setOrgId(chatMsg.getOrgId());
+		msgDB.setAcceptMemberId(chatMsg.getReceiverId());
+		msgDB.setSendMemberId(chatMsg.getSenderId());
 		msgDB.setCreateTime(new Date());
 		msgDB.setSignFlag(MsgSignFlagEnum.unsign.type);
 		msgDB.setMsg(chatMsg.getMsg());
