@@ -1,4 +1,4 @@
-package org.easymis.easysaas.netty;
+package org.easymis.easysaas.netty.config;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
