@@ -1,4 +1,4 @@
-package org.easymis.easysaas.netty.test.demo1;
+package org.easymis.easysaas.netty.test.demo2;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

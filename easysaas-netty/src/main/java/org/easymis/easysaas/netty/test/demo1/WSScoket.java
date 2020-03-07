@@ -1,4 +1,6 @@
-package org.easymis.easysaas.netty.test.demo1.webscoket;
+package org.easymis.easysaas.netty.test.demo1;
+
+import org.easymis.easysaas.netty.config.scoket.WSServerInitialzer;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

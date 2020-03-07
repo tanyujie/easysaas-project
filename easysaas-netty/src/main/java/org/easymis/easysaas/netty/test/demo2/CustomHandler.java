@@ -1,4 +1,4 @@
-package org.easymis.easysaas.netty.test.demo1;
+package org.easymis.easysaas.netty.test.demo2;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

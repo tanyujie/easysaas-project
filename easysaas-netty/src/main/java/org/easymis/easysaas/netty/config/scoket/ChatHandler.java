@@ -1,4 +1,4 @@
-package org.easymis.easysaas.netty.test.demo1.webscoket;
+package org.easymis.easysaas.netty.config.scoket;
 import java.time.LocalDateTime;
 
 import io.netty.channel.Channel;

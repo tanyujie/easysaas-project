@@ -1,6 +1,5 @@
-package org.easymis.easysaas.netty.config;
+package org.easymis.easysaas.netty.config.scoket;
 
-import org.easymis.easysaas.netty.test.demo1.webscoket.WSServerInitialzer;
 import org.springframework.stereotype.Component;
 
 import io.netty.bootstrap.ServerBootstrap;

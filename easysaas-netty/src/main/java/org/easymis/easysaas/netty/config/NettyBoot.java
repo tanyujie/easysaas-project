@@ -1,5 +1,6 @@
 package org.easymis.easysaas.netty.config;
 
+import org.easymis.easysaas.netty.config.scoket.WSServer;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
