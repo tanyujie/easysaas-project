@@ -32,8 +32,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.jayway.jsonpath.Criteria;
-
 import io.netty.channel.Channel;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import springfox.documentation.schema.Example;
@@ -136,11 +134,7 @@ public class UserServiceImpl implements MemberService {
 		}
 		
 		// 3. 搜索的朋友已经是你的好友，返回[该用户已经是你的好友]
-		Example mfe = new Example(MyFriends.class);
-		Criteria mfc = mfe.createCriteria();
-		mfc.andEqualTo("myUserId", myUserId);
-		mfc.andEqualTo("myFriendUserId", user.getId());
-		MyFriends myFriendsRel = myFriendsMapper.selectOneByExample(mfe);
+		MyFriends myFriendsRel = myFriendsMapper.find(myUserId, user.getId());
 		if (myFriendsRel != null) {
 			return SearchFriendsStatusEnum.ALREADY_FRIENDS.status;
 		}
@@ -150,36 +144,30 @@ public class UserServiceImpl implements MemberService {
 	
 	@Transactional(propagation = Propagation.SUPPORTS)
 	@Override
-	public Member queryUserInfoByUsername(String username) {
-		Example ue = new Example(Member.class);
-		Criteria uc = ue.createCriteria();
-		uc.andEqualTo("username", username);
-		return userMapper.selectOneByExample(ue);
+	public Member queryUserInfoByUsername(String phoneNumber) {
+		return userMapper.findByPhoneNumber(phoneNumber);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public void sendFriendRequest(String myUserId, String friendUsername) {
-		
+
 		// 根据用户名把朋友信息查询出来
 		Member friend = queryUserInfoByUsername(friendUsername);
-		
+
 		// 1. 查询发送好友请求记录表
 		Example fre = new Example(FriendsRequest.class);
-		Criteria frc = fre.createCriteria();
-		frc.andEqualTo("sendUserId", myUserId);
-		frc.andEqualTo("acceptUserId", friend.getId());
-		FriendsRequest friendRequest = friendsRequestMapper.selectOneByExample(fre);
+		FriendsRequest friendRequest = friendsRequestMapper.find(myUserId, friend.getId());
 		if (friendRequest == null) {
 			// 2. 如果不是你的好友，并且好友记录没有添加，则新增好友请求记录
 			String requestId = sid.nextShort();
-			
+
 			FriendsRequest request = new FriendsRequest();
 			request.setId(requestId);
 			request.setSendUserId(myUserId);
 			request.setAcceptUserId(friend.getId());
 			request.setRequestDateTime(new Date());
-			friendsRequestMapper.insert(request);
+			friendsRequestMapper.insertByBean(request);
 		}
 	}
 
@@ -192,11 +180,7 @@ public class UserServiceImpl implements MemberService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public void deleteFriendRequest(String sendUserId, String acceptUserId) {
-		Example fre = new Example(FriendsRequest.class);
-		Criteria frc = fre.createCriteria();
-		frc.andEqualTo("sendUserId", sendUserId);
-		frc.andEqualTo("acceptUserId", acceptUserId);
-		friendsRequestMapper.deleteByExample(fre);
+		friendsRequestMapper.delete(sendUserId, acceptUserId);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -225,7 +209,7 @@ public class UserServiceImpl implements MemberService {
 		myFriends.setId(recordId);
 		myFriends.setMyFriendUserId(acceptUserId);
 		myFriends.setMyUserId(sendUserId);
-		myFriendsMapper.insert(myFriends);
+		myFriendsMapper.insertByBean(myFriends);
 	}
 
 	@Transactional(propagation = Propagation.SUPPORTS)
@@ -263,12 +247,7 @@ public class UserServiceImpl implements MemberService {
 	@Override
 	public List<org.easymis.easysaas.netty.entitys.mybatis.dto.ChatMsg> getUnReadMsgList(String acceptUserId) {
 		
-		Example chatExample = new Example(org.easymis.easysaas.netty.entitys.mybatis.dto.ChatMsg.class);
-		Criteria chatCriteria = chatExample.createCriteria();
-		chatCriteria.andEqualTo("signFlag", 0);
-		chatCriteria.andEqualTo("acceptUserId", acceptUserId);
-		
-		List<org.easymis.easysaas.netty.entitys.mybatis.dto.ChatMsg> result = chatMsgMapper.selectByExample(chatExample);
+		List<org.easymis.easysaas.netty.entitys.mybatis.dto.ChatMsg> result = chatMsgMapper.find(0, acceptUserId);
 		
 		return result;
 	}

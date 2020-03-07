@@ -2,6 +2,8 @@ package org.easymis.easysaas.netty.entitys.mybatis.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.easymis.easysaas.netty.entitys.mybatis.dto.Member;
 
@@ -9,6 +11,7 @@ public interface MemberMapper {
 	@Select("<script>" + "SELECT * FROM member WHERE phone_number=#{phoneNumber}" + "</script>")
 	Member findByPhoneNumber(@Param("phoneNumber") String phoneNumber);
 
+    
 	@Select("select * from member t WHERE t.member_id = #{memberId}")
 	Member get(@Param("phoneNumber") String phoneNumber, @Param("password") String password);
 
@@ -16,4 +19,7 @@ public interface MemberMapper {
 			+ "values"
 			+ "(#{id},#{MemberNo},#{sex},#{age},#{companyName},#{department},#{position},#{password},#{headUrl},#{phoneNumber},#{email},#{modifyTime},#{createTime},#{name},#{enabled})")
 	int insertByBean(Member bean);
+	
+	 @Select("select * from member t WHERE t.member_id = #{memberId}")  
+	 Member findById(@Param("memberId") String memberId);
 }
