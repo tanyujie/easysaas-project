@@ -7,11 +7,15 @@ import org.easymis.easysaas.crm.entitys.mybatis.dto.Member;
 import org.easymis.easysaas.crm.entitys.vo.LoginOto;
 import org.easymis.easysaas.crm.entitys.vo.LoginVo;
 import org.easymis.easysaas.crm.service.MemberService;
+import org.easymis.easysaas.crm.service.QrCodeLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.alibaba.fastjson.JSONObject;
 
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +31,8 @@ public class LoginController {
 
 	@Autowired
 	private MemberService userRepository;
+    @Autowired
+    QrCodeLoginService qrCodeLoginService;
     //
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public RestResult login(LoginVo ar) {

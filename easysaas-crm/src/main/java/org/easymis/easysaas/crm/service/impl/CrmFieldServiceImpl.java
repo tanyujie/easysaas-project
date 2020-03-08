@@ -1,13 +1,16 @@
 package org.easymis.easysaas.crm.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.easymis.easysaas.common.result.RestResult;
+import org.easymis.easysaas.crm.common.FormTypeEnum;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmFieldSort;
 import org.easymis.easysaas.crm.entitys.mybatis.mapper.CrmFieldMapper;
 import org.easymis.easysaas.crm.entitys.mybatis.mapper.CrmFieldSortMapper;
 import org.easymis.easysaas.crm.entitys.vo.ColumnHeadVo;
+import org.easymis.easysaas.crm.entitys.vo.CrmFieldVo;
 import org.easymis.easysaas.crm.service.CrmFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -124,4 +127,84 @@ public class CrmFieldServiceImpl implements CrmFieldService{
         return recordList;
 	}
 
+	@Override
+	public RestResult queryFieldConfig(String orgId,String staffId,CrmFieldSort crmFieldSort) {
+        //查出自定义字段，查看顺序表是否存在该字段，没有则插入，设为隐藏
+        List<CrmFieldVo> fieldList = customFieldList(orgId,crmFieldSort.getLabel());
+        for (CrmFieldVo record : fieldList) {
+            String fieldName = record.getName();
+            
+            Integer number = fieldSortMapper.getNumber(staffId, crmFieldSort.getLabel(), fieldName);
+			if (number.equals(0)) {
+				CrmFieldSort newField = new CrmFieldSort();
+				newField.setFieldName(fieldName);
+				newField.setName(fieldName);
+				newField.setLabel(crmFieldSort.getLabel());
+				newField.setIsHide(1);
+				newField.setStaffId(staffId);
+				newField.setSort(1);
+				fieldSortMapper.save(newField);
+			}
+        }
+        
+        List<CrmFieldSort> noHideList = fieldSortMapper.findNoHideList( crmFieldSort.getLabel(), staffId);
+        List<CrmFieldSort> hideList = fieldSortMapper.findHideList(crmFieldSort.getLabel(), staffId);
+        
+        HashMap hashMap= new HashMap();
+        hashMap.put("value", noHideList);
+        hashMap.put("hide_value", noHideList);        
+        return RestResult.buildSuccess(hashMap);
+    }
+
+	@Override
+	public RestResult fieldConfig(String orgId,String staffId,CrmFieldSort crmFieldSort) {
+/*        Long staffId = BaseUtil.getUser().getUserId();
+        String[] sortArr = adminFieldSort.getNoHideIds().split(",");
+        if (sortArr.length < 2) {
+            return R.error("至少显示2列");
+        }
+        for (int i = 0; i < sortArr.length; i++) {
+            Db.update(Db.getSql("admin.field.sort"), i + 1, adminFieldSort.getLabel(), userId, sortArr[i]);
+        }
+        if (null != adminFieldSort.getHideIds()) {
+            String[] hideIdsArr = adminFieldSort.getHideIds().split(",");
+            Db.update(Db.getSqlPara("admin.field.isHide", Kv.by("ids", hideIdsArr).set("label", adminFieldSort.getLabel()).set("userId", userId)));
+        }
+        CaffeineCache.ME.remove("field", "listHead:" + adminFieldSort.getLabel() + userId);
+        return R.ok();*/
+		return null;
+    }
+	/**
+    * 查询fieldType为0的字段
+    */
+   public List<CrmFieldVo> customFieldList(String orgId,String label){
+       List <CrmFieldVo> recordList = mapper.customerFieldList(orgId,label);
+       recordToFormType(recordList);
+       return recordList;
+   }
+   public void recordToFormType(List<CrmFieldVo> recordList) {
+       for (CrmFieldVo record : recordList) {
+           Integer dataType = record.getFieldType();
+           FormTypeEnum typeEnum = FormTypeEnum.parse(dataType);
+           record.setFormType(typeEnum.getFormType());
+           if(dataType == FormTypeEnum.CHECKBOX.getType()){
+               recordValueToArray(record);
+           }else if(dataType == FormTypeEnum.USER.getType()){
+               //record.set("default_value", new ArrayList<>(0));
+           }else if(dataType == FormTypeEnum.STRUCTURE.getType()){
+              // record.set("default_value", new ArrayList<>(0));
+           }
+           if (FormTypeEnum.SELECT.getType() == dataType || FormTypeEnum.CHECKBOX.getType() == dataType) {
+               if (record.getOptions() != null) {
+                  // record.set("setting", record.getOptions().split(","));
+               }
+           } else {
+              // record.set("setting", new String[]{});
+           }
+       }
+   }
+   private void recordValueToArray(CrmFieldVo record) {
+       //record.set("default_value", StrUtil.isNotEmpty(record.get("default_value")) ? record.getStr("default_value").split(",") : new String[]{});
+      // record.set("value", StrUtil.isNotEmpty(record.getStr("value")) ? record.getStr("value").split(",") : new String[]{});
+   }
 }

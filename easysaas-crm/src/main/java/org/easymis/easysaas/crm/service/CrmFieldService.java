@@ -20,6 +20,10 @@ public interface CrmFieldService {
 	public PageInfo findByOrgId(String orgId, Integer pageNum, Integer pageSize);
 
 	public RestResult deleteByIds(String ids);
-	
+
 	public List<ColumnHeadVo> queryListHead(CrmFieldSort adminFieldSort);
+
+	public RestResult queryFieldConfig(String orgId,String staffId,CrmFieldSort crmFieldSort);
+
+	public RestResult fieldConfig(String orgId,String staffId,CrmFieldSort crmFieldSort);
 }

@@ -15,6 +15,8 @@ public class WebAppConfig implements WebMvcConfigurer {
 			"/index.html",
 			"/login.html",
 			"/login",
+			"/qrcode/**",
+			"/mobile/**",			
 			"/search/**",
 			"/hotSearch/**",
 			"/company/*.html",

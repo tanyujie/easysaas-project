@@ -124,8 +124,36 @@
 			<div class="right">
 				<!-- 登陆窗口 -->
 				<div class="card">
-					<div class="card-header">用户登陆</div>
-					<div class="card-body">
+					<div class="card-header">
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#admin" role="tab" aria-controls="home"
+            aria-selected="true">
+            <h6>扫码登录</h6>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#edit" role="tab" aria-controls="profile"
+            aria-selected="false">
+            <h6>账号登录</h6>
+        </a>
+    </li>
+
+</ul>
+
+
+					
+					</div>
+ 					<div class="card-body">
+<div class="tab-content border border-top-0" id="myTabContent" >
+    <div class="tab-pane fade show active" id="admin" role="tabpanel" aria-labelledby="home-tab">
+        <ul class="list-group list-group-flush">
+            
+             <img id="qrCodeImage" alt="scan this for sign in" src=""/>
+        </ul>
+    </div>
+    <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="profile-tab">
+        <ul class="list-group list-group-flush">
 						<form>
 							<table
 								style="border-collapse: separate; border-spacing: 0px 10px;">
@@ -151,6 +179,9 @@
 								</button>
 							</div>
 						</form>
+        </ul>
+    </div>
+</div>
 					</div>
 				</div>
 			</div>
@@ -158,8 +189,12 @@
 		<div class="jumbotron bg-light jumheight2">
 			<p class="footer2">@vkwit.com</p>
 		</div>
+		<script type="text/javascript" src="http://easycrm.vkwit.com/js/qrcode-login.js"></script>
 		<script type="text/javascript">
+
 		$(function(){
+			//初始化登录二维码
+			qrcode.getQrCode();
     		/*判断上次是否勾选记住密码和自动登录*/
     		var rememberAccount=localStorage.getItem("rememberAccount");
     		var oldName=localStorage.getItem("username");
@@ -201,7 +236,8 @@
 	    				}
 	    		});
     		})
-		})
+		});
+
 		</script>
 </body>
 </html>

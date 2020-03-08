@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.easymis.easysaas.crm.common.ScanEnum;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -69,4 +71,6 @@ public class Member implements Serializable{
     
     private Boolean enabled;
 	private List<Role> roles;
+	
+    private ScanEnum scan = ScanEnum.WAIT_SCAN;
 }

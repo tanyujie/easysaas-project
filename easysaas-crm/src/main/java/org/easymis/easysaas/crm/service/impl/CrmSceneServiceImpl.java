@@ -1,39 +1,25 @@
 package org.easymis.easysaas.crm.service.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.hssf.record.Record;
 import org.easymis.easysaas.common.parameter.BasePageRequest;
 import org.easymis.easysaas.common.result.RestResult;
-import org.easymis.easysaas.crm.common.CrmEnum;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmScene;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.School;
 import org.easymis.easysaas.crm.entitys.mybatis.mapper.CrmSceneMapper;
 import org.easymis.easysaas.crm.service.CrmSceneService;
-import org.easymis.easysaas.crm.utils.BaseUtil;
 import org.easymis.easysaas.crm.utils.Kv;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.caffeine.CaffeineCache;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
-import com.jfinal.aop.Aop;
-import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.SqlPara;
-import com.kakarote.crm9.common.constant.BaseConstant;
-import com.kakarote.crm9.erp.admin.entity.AdminField;
-import com.kakarote.crm9.erp.admin.service.AdminUserService;
-import com.kakarote.crm9.utils.ParamsUtil;
-import com.kakarote.crm9.utils.R;
 
-import cn.hutool.core.util.StrUtil;
+
 @Service
 public class CrmSceneServiceImpl implements CrmSceneService {
 	@Autowired
@@ -140,12 +126,12 @@ public class CrmSceneServiceImpl implements CrmSceneService {
             default:
                 return RestResult.buildError("type不符合要求");
         }
-        JSONObject data = basePageRequest.getJsonObject().getJSONObject("data");
+       /* JSONObject data = basePageRequest.getJsonObject().getJSONObject("data");
         if (!appendSqlCondition(kv, fieldMap, queryList, data)){
             return RestResult.buildError("参数包含非法字段");
         }
         String search = basePageRequest.getJsonObject().getString("search");
-        if(StrUtil.isNotEmpty(search)){
+        if(StringUtils.isNotEmpty(search)){
             if (!appendSqlSearch(type, queryList, search)){
                 return RestResult.buildError("参数包含非法字段");
             }
@@ -155,9 +141,9 @@ public class CrmSceneServiceImpl implements CrmSceneService {
         }
 
         String camelField = basePageRequest.getJsonObject().getString("sortField");
-        String sortField = StrUtil.toUnderlineCase(camelField);
+        String sortField = StringUtils.toUnderlineCase(camelField);
         String orderNum = basePageRequest.getJsonObject().getString("order");
-        if(StrUtil.isEmpty(sortField) || StrUtil.isEmpty(orderNum)){
+        if(StringUtils.isEmpty(sortField) || StrUtil.isEmpty(orderNum)){
             kv.set("orderByKey", "update_time").set("orderByType", "desc").set("fieldType", 1);
         }else{
             if(! ParamsUtil.isValid(sortField)){
@@ -179,7 +165,7 @@ public class CrmSceneServiceImpl implements CrmSceneService {
         if((!type.equals(9) && ! type.equals(4)) && ! BaseConstant.SUPER_ADMIN_USER_ID.equals(userId) && !roles.contains(BaseConstant.SUPER_ADMIN_ROLE_ID)){
             List<Long> longs = Aop.get(AdminUserService.class).queryUserByAuth(userId, realm);
             if(longs != null && longs.size() > 0){
-                conditions.append(" and (owner_user_id in (").append(StrUtil.join(",", longs)).append(")");
+                conditions.append(" and (owner_user_id in (").append(StringUtils.join(",", longs)).append(")");
                 if(type.equals(2) || type.equals(6) || type.equals(5)){
                     conditions.append(" or ro_user_id like CONCAT('%,','").append(userId).append("',',%')").append(" or rw_user_id like CONCAT('%,','").append(userId).append("',',%')");
                 }
@@ -193,7 +179,7 @@ public class CrmSceneServiceImpl implements CrmSceneService {
             kv.set("fixed",true);
         }
         queryList.add(sqlObject);
-        if(StrUtil.isEmpty(basePageRequest.getJsonObject().getString("excel"))){
+        if(StringUtils.isEmpty(basePageRequest.getJsonObject().getString("excel"))){
             kv.set("page", (basePageRequest.getPage() - 1) * basePageRequest.getLimit()).set("limit", basePageRequest.getLimit());
         }
         String selectSql;
@@ -237,7 +223,7 @@ public class CrmSceneServiceImpl implements CrmSceneService {
         }else if (type == CrmEnum.CRM_CONTRACT.getType()){
             if(recordPage.size() > 0){
                 List<Integer> contractIds = recordPage.stream().map(record -> record.getInt("contract_id")).collect(Collectors.toList());
-                Record record = Db.findFirst("SELECT IFNULL(SUM(money),0) AS contractMoney,IFNULL(SUM(receivedMoney),0) AS receivedMoney from (SELECT a.money,(SELECT SUM(money) FROM 72crm_crm_receivables AS b where b.contract_id=a.contract_id and b.check_status = 1) as receivedMoney FROM 72crm_crm_contract AS a WHERE a.check_status = '1' AND a.contract_id IN (" + StrUtil.join(",", contractIds) + ")) as x");
+                Record record = Db.findFirst("SELECT IFNULL(SUM(money),0) AS contractMoney,IFNULL(SUM(receivedMoney),0) AS receivedMoney from (SELECT a.money,(SELECT SUM(money) FROM 72crm_crm_receivables AS b where b.contract_id=a.contract_id and b.check_status = 1) as receivedMoney FROM 72crm_crm_contract AS a WHERE a.check_status = '1' AND a.contract_id IN (" + StringUtils.join(",", contractIds) + ")) as x");
                 resultJsonObject.put("money", record);
             }
         }
@@ -246,9 +232,11 @@ public class CrmSceneServiceImpl implements CrmSceneService {
         Integer count = Db.queryInt(countSql.getSql(), countSql.getPara());
         resultJsonObject.put("totalRow", count);
         return R.ok().put("data", resultJsonObject);
+        */
+        return null;
     }
     public Map<String,CrmField> getAdminFieldMap(Integer type){
-        Map<String,CrmField> adminFieldMap = CaffeineCache.ME.get("field", type);
+    	/* Map<String,CrmField> adminFieldMap = CaffeineCache.ME.get("field", type);
         if(adminFieldMap == null){
             List<AdminField> adminFields = AdminField.dao.find("SELECT field_name,field_type,type FROM 72crm_admin_field WHERE label=?", type);
             adminFieldMap = new HashMap<>();
@@ -277,5 +265,7 @@ public class CrmSceneServiceImpl implements CrmSceneService {
             adminFieldMap.put("business_id",adminField);
         }
         return adminFieldMap;
+        */
+    	return null;
     }
 }

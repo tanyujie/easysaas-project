@@ -10,9 +10,17 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
 import org.easymis.easysaas.crm.entitys.vo.ColumnHeadVo;
+import org.easymis.easysaas.crm.entitys.vo.CrmFieldVo;
 
 public interface CrmFieldMapper {
-	@Select("select * from crm_field")
+
+	@Select({"<script>",
+        "SELECT * from crm_field",
+        " <where> " +
+        " <if test=\"orgId != null\">org_id=#{orgId}</if> " +
+        " <if test=\"label != null\"> AND label=#{label}</if> " +
+        " </where> " +
+        "</script>"}) 
 	public List<CrmField> getList(HashMap<String, Object> params);
 
 	@Insert("insert into crm_field(field_id,org_id,table_code,field_code,field_name,name,field_tip,field_type,inner_default,state,create_user_id,create_time,update_user_id,update_time,remark,sorting,max_length,default_value,is_unique,is_null,operating)values(#{fieldId},#{orgId},#{tableCode},#{fieldCode},#{fieldName},#{name},#{fieldTip},#{fieldType},#{innerDefault},#{state},#{createUserId},#{createTime},#{updateUserId},#{updateTime},#{remark},#{sorting},#{maxLength},#{defaultValue},#{isUnique},#{isNull},#{operating})")
@@ -44,4 +52,8 @@ public interface CrmFieldMapper {
 	
 	@Select("select field_name,name,type,field_id from crm_field_sort where is_hide = 0 and org_id=#{orgId} and label = #{label} and staff_id = #{staffId} order by sort asc")
 	public List<ColumnHeadVo> getColumnHead(@Param("orgId") String orgId,@Param("label") String label, @Param("staffId") String staffId);
+
+	@Select("select field_id,field_name,name,type,options from crm_field "
+			+ "where org_id=#{orgId} and field_type = 0 and label = #{label}")
+	public List<CrmFieldVo> customerFieldList(@Param("orgId") String orgId, @Param("label") String label);
 }

@@ -1,5 +1,11 @@
 package org.easymis.easysaas.crm.entitys.vo;
 
-public class CrmFieldVo {
+import lombok.Data;
 
+@Data
+public class CrmFieldVo {
+	public String name;
+	public Integer fieldType;
+	public String formType;
+	public String options;
 }

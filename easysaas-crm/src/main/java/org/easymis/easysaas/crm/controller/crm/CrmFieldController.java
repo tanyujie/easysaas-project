@@ -19,10 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jfinal.core.paragetter.Para;
-import com.kakarote.crm9.common.annotation.NotNullValidate;
-import com.kakarote.crm9.erp.admin.entity.AdminFieldSort;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -142,13 +138,26 @@ public class CrmFieldController extends IdentityRepository{
        });*/
        return RestResult.buildSuccess(records);
    }
+    /**
+     * @author wyq
+     * 查询字段排序隐藏设置
+     */
+    //@NotNullValidate(value = "label",message = "label不能为空")
+	@RequestMapping(value = { "/queryFieldConfig" }, method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+    public RestResult queryFieldConfig(CrmFieldSort adminFieldSort){
+		
+        return service.queryFieldConfig(getOrgId(),getIdentityFeature(),adminFieldSort);
+    }
 	/**
     * 设置字段排序隐藏
     */
  //  @NotNullValidate(value = "label",message = "label不能为空")
    //@NotNullValidate(value = "noHideIds",message = "显示列不能为空")
-   public void fieldConfig(@Para("")AdminFieldSort adminFieldSort){
-       renderJson(adminFieldService.fieldConfig(adminFieldSort));
+	@RequestMapping(value = { "/fieldConfig" }, method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+   public RestResult fieldConfig(CrmFieldSort adminFieldSort){
+	   return service.fieldConfig(getOrgId(),getIdentityFeature(),adminFieldSort);
    }
     /**
      * @author wyq
