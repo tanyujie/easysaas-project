@@ -11,22 +11,33 @@
       http://www.springframework.org/schema/context/spring-context.xsd
       http://www.springframework.org/schema/mvc
       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
     
+    <context:component-scan base-package="org.easymis.easysaas.mvc.rocketmq.controller" />
 
-
-    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-        <property name="ignoreAcceptHeader" value="false"/>
-        <property name="defaultContentType" value="text/html"/>
-
-        <property name="favorParameter" value="false"/>
-        <property name="viewResolvers">
+    <mvc:annotation-driven />
+       <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+    <bean
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+        p:prefix="/" p:suffix=".jsp" />
+        
+        <!-- 对josn数据的支持 -->
+    <bean id="jsonConverter"
+        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+    <bean id="stringConverter"
+        class="org.springframework.http.converter.StringHttpMessageConverter">
+        <property name="supportedMediaTypes">
             <list>
-                <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
-                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-                    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-                    <property name="prefix" value="/WEB-INF/pages/"/>
-                    <property name="suffix" value=".jsp"/>
-                </bean>
+                <value>text/plain;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <bean
+        class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="stringConverter" />
+                <ref bean="jsonConverter" />
             </list>
         </property>
     </bean>
