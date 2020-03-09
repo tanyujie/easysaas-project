@@ -1,0 +1,43 @@
+<?xml  version="1.0"  encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd"
+       default-autowire="byName">
+       
+    <!-- 登录页面 -->
+    <bean id="loginUrl" class="java.lang.String">
+    	<constructor-arg value="/login.jsp"></constructor-arg>
+    </bean>
+    
+    <!-- 登录成功跳转页面 -->
+    <bean id="loginSuccessUrl" class="java.lang.String">
+    	<constructor-arg value="/index"></constructor-arg>
+    </bean>
+    
+    <bean id="springSecurityFilterChain" class="cn.eutils.web.platform.permission.filter.SecurityRequestFilter">
+    	<!-- 不需要登录就可以访问的url -->
+    	<property name="noneFilters">
+    		<list>
+    			<value>/</value>
+    			<value>/login.jsp</value>
+                <value>/common/**</value>
+                <value>/statics/**</value>
+                <value>/logout</value>
+    			<value>/login</value>
+    			<value>/authToken</value>
+    			<value>/cardDocking/**</value>
+    			<value>/weixinBind/**</value>
+    			<value>/MP_verify_xFlEIM2ptc1d3IW1.txt</value>
+    			<value>/1.txt</value>
+    			<value>/setting/allocation/weixin.jsp</value>
+    			<value>/setting/weixinPersonal/submitConfig</value>
+    		</list>
+    	</property>
+    	<property name="loginUrl" ref="loginUrl"></property>
+	</bean>
+</beans>
