@@ -24,6 +24,22 @@ public class CrmFieldServiceImpl implements CrmFieldService{
 	private CrmFieldMapper mapper;
 	@Autowired
 	private CrmFieldSortMapper fieldSortMapper;
+
+	@Override
+	public List<CrmField> list(String orgId,String label, String categoryId) {
+		CrmField crmField = new CrmField();
+		crmField.setOrgId(orgId);
+		crmField.setLabel(label);
+        List<CrmField> recordList = mapper.getList(crmField);
+        fieldToFormType(recordList);
+        if (categoryId == null) {
+            return recordList;
+        }
+        else
+        	return null;
+/*        FieldUtil fieldUtil = new FieldUtil(recordList);
+        return fieldUtil.getRecordList();*/
+    }
 	@Override
 	public boolean save(CrmField bean) {
 		// TODO Auto-generated method stub
@@ -147,12 +163,12 @@ public class CrmFieldServiceImpl implements CrmFieldService{
 			}
         }
         
-        List<CrmFieldSort> noHideList = fieldSortMapper.findNoHideList( crmFieldSort.getLabel(), staffId);
-        List<CrmFieldSort> hideList = fieldSortMapper.findHideList(crmFieldSort.getLabel(), staffId);
+        List<HashMap> noHideList = fieldSortMapper.findNoHideList( crmFieldSort.getLabel(), staffId);
+        List<HashMap> hideList = fieldSortMapper.findHideList(crmFieldSort.getLabel(), staffId);
         
         HashMap hashMap= new HashMap();
         hashMap.put("value", noHideList);
-        hashMap.put("hide_value", noHideList);        
+        hashMap.put("hide_value", hideList);        
         return RestResult.buildSuccess(hashMap);
     }
 
@@ -203,8 +219,34 @@ public class CrmFieldServiceImpl implements CrmFieldService{
            }
        }
    }
+   public void fieldToFormType(List<CrmField> recordList) {
+       for (CrmField record : recordList) {
+           Integer dataType = record.getFieldType();
+           FormTypeEnum typeEnum = FormTypeEnum.parse(dataType);
+           record.setFormType(typeEnum.getFormType());
+           if(dataType == FormTypeEnum.CHECKBOX.getType()){
+        	   fieldValueToArray(record);
+           }else if(dataType == FormTypeEnum.USER.getType()){
+               //record.set("default_value", new ArrayList<>(0));
+           }else if(dataType == FormTypeEnum.STRUCTURE.getType()){
+              // record.set("default_value", new ArrayList<>(0));
+           }
+           if (FormTypeEnum.SELECT.getType() == dataType || FormTypeEnum.CHECKBOX.getType() == dataType) {
+               if (record.getOptions() != null) {
+                  // record.set("setting", record.getOptions().split(","));
+               }
+           } else {
+              // record.set("setting", new String[]{});
+           }
+       }
+   }
    private void recordValueToArray(CrmFieldVo record) {
        //record.set("default_value", StrUtil.isNotEmpty(record.get("default_value")) ? record.getStr("default_value").split(",") : new String[]{});
       // record.set("value", StrUtil.isNotEmpty(record.getStr("value")) ? record.getStr("value").split(",") : new String[]{});
    }
+   private void fieldValueToArray(CrmField record) {
+       //record.set("default_value", StrUtil.isNotEmpty(record.get("default_value")) ? record.getStr("default_value").split(",") : new String[]{});
+      // record.set("value", StrUtil.isNotEmpty(record.getStr("value")) ? record.getStr("value").split(",") : new String[]{});
+   }
+
 }

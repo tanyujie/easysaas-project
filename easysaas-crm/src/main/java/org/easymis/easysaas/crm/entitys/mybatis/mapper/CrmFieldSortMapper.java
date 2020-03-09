@@ -47,13 +47,13 @@ public interface CrmFieldSortMapper {
 	@Select("select count(*) from crm_field_sort where org_id =#{orgId} and staff_id =#{staffId} and label =#{label}")
 	public Integer getCount(@Param("orgId")String orgId,@Param("staffId")String staffId,@Param("label")String label);
 	
-	@Select("select count(*) as number from 72crm_admin_field_sort where staff_id = ? and label = ? and field_name = ?")
+	@Select("select count(*) as number from crm_field_sort where staff_id = #{staffId} and label = #{label} and field_name = #{fieldName}")
 	public Integer getNumber(@Param("staffId")String staffId,@Param("label")String label,@Param("fieldName")String fieldName);	
 	
 	
-	@Select("select count(*) from crm_field_sort where hide_flag =#{orgId} and staff_id =#{staffId} and label =#{label}")
-	public List<CrmFieldSort> findNoHideList(@Param("label")String label,@Param("staffId")String staffId);
+	@Select("select id,name from crm_field_sort where hide_flag =0 and staff_id =#{staffId} and label =#{label} order by sort")
+	public List<HashMap> findNoHideList(@Param("label")String label,@Param("staffId")String staffId);
 	
-	@Select("select count(*) from crm_field_sort where hide_flag =#{orgId} and staff_id =#{staffId} and label =#{label}")
-	public List<CrmFieldSort> findHideList(@Param("label")String label,@Param("staffId")String staffId);
+	@Select("select id,name from crm_field_sort where hide_flag =1 and staff_id =#{staffId} and label =#{label} order by sort")
+	public List<HashMap> findHideList(@Param("label")String label,@Param("staffId")String staffId);
 }

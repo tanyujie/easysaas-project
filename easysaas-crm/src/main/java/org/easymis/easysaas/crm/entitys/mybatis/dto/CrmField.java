@@ -12,7 +12,7 @@ public class CrmField implements Serializable {
     //@GenField(labelname="公司id",column="org_id",length=64,isnull=true) 
     private String orgId; 
     //@GenField(labelname="clue/customer/order/common（内置属性使用，自定义为null）",column="table_code",length=64,isnull=true) 
-    private String tableCode; 
+    private String label; 
     //@GenField(labelname="字段编号",column="field_code",length=64,isnull=true) 
     private String fieldCode; 
     //@GenField(labelname="字段名称(自定义字段英文标识)",column="field_name",length=64,isnull=true) 
@@ -22,7 +22,7 @@ public class CrmField implements Serializable {
     //@GenField(labelname="字段提示/输入提示",column="field_tip",length=64,isnull=true) 
     private String fieldTip; 
     //@GenField(labelname="类型",column="field_type",length=64,isnull=false) 
-    private String fieldType; 
+    private Integer fieldType; 
     //@GenField(labelname="是否内置字段",column="inner_default",isnull=false) 
     private Boolean innerDefault; 
     //@GenField(labelname="启用：on；停用：off",column="state",length=16,isnull=true) 
@@ -49,5 +49,9 @@ public class CrmField implements Serializable {
     private Integer isNull; 
     //@GenField(labelname="是否可以删除修改 0 改删 1 改 2 删 3 无",column="operating",isnull=true) 
     private Integer operating; 
+    
+    //开始自定义
+	public String formType;	
+	public String options;
  
 }

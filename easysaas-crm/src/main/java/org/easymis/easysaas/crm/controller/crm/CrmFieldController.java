@@ -39,7 +39,19 @@ import lombok.extern.slf4j.Slf4j;
 public class CrmFieldController extends IdentityRepository{
 	@Autowired
 	private CrmFieldService service;
-
+	
+	@ApiOperation(value = "查询接口", response = CrmField.class)
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "label", value = "页码", dataType = "string", required = true),
+		@ApiImplicitParam(name = "categoryId", value = "每页显示记录", dataType = "string", required = false),
+	})
+	@RequestMapping(value = { "/list" }, method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public RestResult queryList(String label,
+			String categoryId) {
+		String orgId = getOrgId();
+		return RestResult.buildSuccess(service.list(orgId,label, categoryId));
+	}
 	@ApiOperation(value = "查询接口", response = CrmField.class)
 	@ApiImplicitParams({
 		@ApiImplicitParam(name = "pageNum", value = "页码", dataType = "int", required = false),
@@ -146,7 +158,7 @@ public class CrmFieldController extends IdentityRepository{
 	@RequestMapping(value = { "/queryFieldConfig" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
     public RestResult queryFieldConfig(CrmFieldSort adminFieldSort){
-		
+		//OK
         return service.queryFieldConfig(getOrgId(),getIdentityFeature(),adminFieldSort);
     }
 	/**
@@ -163,6 +175,8 @@ public class CrmFieldController extends IdentityRepository{
      * @author wyq
      * 查询新增或编辑字段
      */
+	@RequestMapping(value = { "/queryField" }, method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
     public void queryField(String label,String id){
       //  List<Record> recordList = new LinkedList<>();
         CrmEnum crmEnum = CrmEnum.parse(label);

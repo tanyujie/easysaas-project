@@ -11,6 +11,7 @@ import com.github.pagehelper.PageInfo;
 
 
 public interface CrmFieldService {
+	public List<CrmField> list(String orgId,String label, String categoryId);
 	public boolean save(CrmField bean);
 
 	public boolean update(CrmField bean);
