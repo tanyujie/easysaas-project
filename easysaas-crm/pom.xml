@@ -129,6 +129,19 @@
 			<artifactId>jsoup</artifactId>
 			<version>1.11.2</version>
 		</dependency>
+		 <!--二维码生成依赖  begin-->
+		 <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.0.1-jre</version>
+        </dependency>
+       
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        <!--二维码生成依赖  end-->
 		<!-- 热部署 -->
 		<dependency>
 			<groupId>org.easymis.easysaas</groupId>
