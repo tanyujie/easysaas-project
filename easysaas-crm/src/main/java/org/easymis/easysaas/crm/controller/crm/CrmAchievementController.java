@@ -1,6 +1,6 @@
 package org.easymis.easysaas.crm.controller.crm;
 
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmAchievement;
+import org.easymis.easysaas.crm.entitys.dto.CrmAchievement;
 import org.easymis.easysaas.crm.service.CrmAchievementService;
 import org.springframework.beans.factory.annotation.Autowired;
 

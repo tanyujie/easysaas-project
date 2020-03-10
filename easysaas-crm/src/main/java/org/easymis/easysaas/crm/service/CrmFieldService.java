@@ -3,8 +3,8 @@ package org.easymis.easysaas.crm.service;
 import java.util.List;
 
 import org.easymis.easysaas.common.result.RestResult;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmFieldSort;
+import org.easymis.easysaas.crm.entitys.dto.CrmField;
+import org.easymis.easysaas.crm.entitys.dto.CrmFieldSort;
 import org.easymis.easysaas.crm.entitys.vo.ColumnHeadVo;
 
 import com.github.pagehelper.PageInfo;

@@ -1,6 +1,6 @@
 package org.easymis.easysaas.crm.service;
 
-import org.easymis.easysaas.crm.entitys.mybatis.dto.Member;
+import org.easymis.easysaas.crm.entitys.dto.Member;
 import org.easymis.easysaas.crm.entitys.vo.LoginQrCode;
 
 /**

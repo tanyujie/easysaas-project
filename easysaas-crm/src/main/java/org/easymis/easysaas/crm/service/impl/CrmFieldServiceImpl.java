@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.crm.common.FormTypeEnum;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmFieldSort;
-import org.easymis.easysaas.crm.entitys.mybatis.mapper.CrmFieldMapper;
-import org.easymis.easysaas.crm.entitys.mybatis.mapper.CrmFieldSortMapper;
+import org.easymis.easysaas.crm.entitys.dto.CrmField;
+import org.easymis.easysaas.crm.entitys.dto.CrmFieldSort;
 import org.easymis.easysaas.crm.entitys.vo.ColumnHeadVo;
 import org.easymis.easysaas.crm.entitys.vo.CrmFieldVo;
+import org.easymis.easysaas.crm.mapper.CrmFieldMapper;
+import org.easymis.easysaas.crm.mapper.CrmFieldSortMapper;
 import org.easymis.easysaas.crm.service.CrmFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -174,21 +174,30 @@ public class CrmFieldServiceImpl implements CrmFieldService{
 
 	@Override
 	public RestResult fieldConfig(String orgId,String staffId,CrmFieldSort crmFieldSort) {
-/*        Long staffId = BaseUtil.getUser().getUserId();
-        String[] sortArr = adminFieldSort.getNoHideIds().split(",");
+        String[] sortArr = crmFieldSort.getNoHideIds().split(",");
         if (sortArr.length < 2) {
-            return R.error("至少显示2列");
+        	return RestResult.buildError("至少显示2列");
         }
         for (int i = 0; i < sortArr.length; i++) {
-            Db.update(Db.getSql("admin.field.sort"), i + 1, adminFieldSort.getLabel(), userId, sortArr[i]);
+        	CrmFieldSort bean= new CrmFieldSort();
+        	bean.setSort(i + 1);
+        	bean.setLabel(crmFieldSort.getLabel());
+        	bean.setStaffId(staffId);
+        	bean.setId(sortArr[i]);
+        	fieldSortMapper.updateNoHide(bean);
         }
-        if (null != adminFieldSort.getHideIds()) {
-            String[] hideIdsArr = adminFieldSort.getHideIds().split(",");
-            Db.update(Db.getSqlPara("admin.field.isHide", Kv.by("ids", hideIdsArr).set("label", adminFieldSort.getLabel()).set("userId", userId)));
+        if (null != crmFieldSort.getHideIds()) {
+            String[] hideIdsArr = crmFieldSort.getHideIds().split(",");
+            for (int i = 0; i < hideIdsArr.length; i++) {
+                CrmFieldSort bean= new CrmFieldSort();
+                bean.setLabel(crmFieldSort.getLabel());
+                bean.setStaffId(staffId);
+                bean.setId(hideIdsArr[i]);
+                fieldSortMapper.updateHide(bean);
+            }
         }
-        CaffeineCache.ME.remove("field", "listHead:" + adminFieldSort.getLabel() + userId);
-        return R.ok();*/
-		return null;
+        //CaffeineCache.ME.remove("field", "listHead:" + adminFieldSort.getLabel() + userId);
+        return RestResult.buildSuccess();
     }
 	/**
     * 查询fieldType为0的字段

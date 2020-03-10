@@ -1,6 +1,6 @@
 package org.easymis.easysaas.crm.controller;
 
-import org.easymis.easysaas.crm.entitys.mybatis.dto.Member;
+import org.easymis.easysaas.crm.entitys.dto.Member;
 import org.easymis.easysaas.crm.service.QrCodeLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

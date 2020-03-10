@@ -3,7 +3,7 @@ package org.easymis.easysaas.crm.service.impl;
 import java.util.UUID;
 
 import org.easymis.easysaas.crm.common.ScanEnum;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.Member;
+import org.easymis.easysaas.crm.entitys.dto.Member;
 import org.easymis.easysaas.crm.entitys.vo.LoginQrCode;
 import org.easymis.easysaas.crm.service.QrCodeLoginService;
 import org.easymis.easysaas.crm.utils.QrCodeUtil;

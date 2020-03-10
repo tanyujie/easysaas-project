@@ -1,7 +1,7 @@
 package org.easymis.easysaas.crm.service;
 
 import org.easymis.easysaas.common.result.RestResult;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmForm;
+import org.easymis.easysaas.crm.entitys.dto.CrmForm;
 
 import com.github.pagehelper.PageInfo;
 

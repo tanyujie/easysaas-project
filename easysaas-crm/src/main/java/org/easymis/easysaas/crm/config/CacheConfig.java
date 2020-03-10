@@ -2,7 +2,7 @@ package org.easymis.easysaas.crm.config;
 
 import java.util.concurrent.TimeUnit;
 
-import org.easymis.easysaas.crm.entitys.mybatis.dto.Member;
+import org.easymis.easysaas.crm.entitys.dto.Member;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

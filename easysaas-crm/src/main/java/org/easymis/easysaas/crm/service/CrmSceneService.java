@@ -2,8 +2,8 @@ package org.easymis.easysaas.crm.service;
 
 import org.easymis.easysaas.common.parameter.BasePageRequest;
 import org.easymis.easysaas.common.result.RestResult;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmScene;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.School;
+import org.easymis.easysaas.crm.entitys.dto.CrmScene;
+import org.easymis.easysaas.crm.entitys.dto.School;
 
 import com.github.pagehelper.PageInfo;
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.poi.hssf.record.Record;
 import org.easymis.easysaas.common.result.RestResult;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmClue;
+import org.easymis.easysaas.crm.entitys.dto.CrmClue;
 import org.easymis.easysaas.crm.service.CrmClueService;
 import org.springframework.stereotype.Service;
 @Service

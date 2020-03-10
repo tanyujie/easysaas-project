@@ -7,8 +7,8 @@ import javax.validation.Valid;
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.crm.common.CrmEnum;
 import org.easymis.easysaas.crm.controller.IdentityRepository;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmField;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmFieldSort;
+import org.easymis.easysaas.crm.entitys.dto.CrmField;
+import org.easymis.easysaas.crm.entitys.dto.CrmFieldSort;
 import org.easymis.easysaas.crm.entitys.vo.ColumnHeadVo;
 import org.easymis.easysaas.crm.service.CrmFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.kakarote.crm9.utils.BaseUtil;
+import com.kakarote.crm9.utils.R;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -169,6 +172,8 @@ public class CrmFieldController extends IdentityRepository{
 	@RequestMapping(value = { "/fieldConfig" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
    public RestResult fieldConfig(CrmFieldSort adminFieldSort){
+		String staffId = this.getIdentityFeature();
+
 	   return service.fieldConfig(getOrgId(),getIdentityFeature(),adminFieldSort);
    }
     /**

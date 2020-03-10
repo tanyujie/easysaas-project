@@ -1,8 +1,8 @@
 package org.easymis.easysaas.crm.service.impl;
 
 import org.easymis.easysaas.common.result.RestResult;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.SchoolArea;
-import org.easymis.easysaas.crm.entitys.mybatis.mapper.SchoolAreaMapper;
+import org.easymis.easysaas.crm.entitys.dto.SchoolArea;
+import org.easymis.easysaas.crm.mapper.SchoolAreaMapper;
 import org.easymis.easysaas.crm.service.SchoolAreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

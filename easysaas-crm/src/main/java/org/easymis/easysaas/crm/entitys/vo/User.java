@@ -2,7 +2,7 @@ package org.easymis.easysaas.crm.entitys.vo;
 
 import java.util.List;
 
-import org.easymis.easysaas.crm.entitys.mybatis.dto.Role;
+import org.easymis.easysaas.crm.entitys.dto.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

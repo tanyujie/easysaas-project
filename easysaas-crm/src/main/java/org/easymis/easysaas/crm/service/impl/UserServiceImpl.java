@@ -2,9 +2,9 @@ package org.easymis.easysaas.crm.service.impl;
 
 import org.easymis.easysaas.crm.config.datasource.DataSourceType;
 import org.easymis.easysaas.crm.config.datasource.EasymisDataSource;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.Member;
-import org.easymis.easysaas.crm.entitys.mybatis.mapper.MemberMapper;
+import org.easymis.easysaas.crm.entitys.dto.Member;
 import org.easymis.easysaas.crm.entitys.vo.User;
+import org.easymis.easysaas.crm.mapper.MemberMapper;
 import org.easymis.easysaas.crm.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.poi.hssf.record.Record;
 import org.easymis.easysaas.common.parameter.BasePageRequest;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmContacts;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmFollowRecord;
+import org.easymis.easysaas.crm.entitys.dto.CrmContacts;
+import org.easymis.easysaas.crm.entitys.dto.CrmFollowRecord;
 import org.easymis.easysaas.crm.service.AdminFieldService;
 import org.easymis.easysaas.crm.service.CrmContactsService;
 import org.springframework.beans.factory.annotation.Autowired;

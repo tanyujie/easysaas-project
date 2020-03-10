@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.poi.hssf.record.Record;
 import org.easymis.easysaas.common.parameter.BasePageRequest;
 import org.easymis.easysaas.common.result.RestResult;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.CrmClue;
+import org.easymis.easysaas.crm.entitys.dto.CrmClue;
 import org.easymis.easysaas.crm.service.CrmClueService;
 import org.easymis.easysaas.crm.service.CrmSceneService;
 import org.springframework.beans.factory.annotation.Autowired;

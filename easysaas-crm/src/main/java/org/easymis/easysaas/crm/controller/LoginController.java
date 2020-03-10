@@ -3,7 +3,7 @@ package org.easymis.easysaas.crm.controller;
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.common.utils.MD5Util;
 import org.easymis.easysaas.crm.config.JwtTokenUtil;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.Member;
+import org.easymis.easysaas.crm.entitys.dto.Member;
 import org.easymis.easysaas.crm.entitys.vo.LoginOto;
 import org.easymis.easysaas.crm.entitys.vo.LoginVo;
 import org.easymis.easysaas.crm.service.MemberService;

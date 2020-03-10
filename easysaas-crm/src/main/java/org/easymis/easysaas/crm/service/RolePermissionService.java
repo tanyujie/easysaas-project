@@ -2,7 +2,7 @@ package org.easymis.easysaas.crm.service;
 
 import java.util.List;
 
-import org.easymis.easysaas.crm.entitys.mybatis.dto.RoleResource;
+import org.easymis.easysaas.crm.entitys.dto.RoleResource;
 
 /**
  * <p>

@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.easymis.easysaas.crm.config.datasource.DataSourceType;
 import org.easymis.easysaas.crm.config.datasource.EasymisDataSource;
-import org.easymis.easysaas.crm.entitys.mybatis.dto.Role;
-import org.easymis.easysaas.crm.entitys.mybatis.mapper.RoleMapper;
+import org.easymis.easysaas.crm.entitys.dto.Role;
+import org.easymis.easysaas.crm.mapper.RoleMapper;
 import org.easymis.easysaas.crm.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
