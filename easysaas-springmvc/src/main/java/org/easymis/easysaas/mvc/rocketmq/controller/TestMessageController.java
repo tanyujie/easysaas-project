@@ -1,27 +1,34 @@
 package org.easymis.easysaas.mvc.rocketmq.controller;
 
+import java.math.BigDecimal;
+
+import org.easymis.easysaas.mvc.rocketmq.domain.OrderPaidEvent;
+import org.easymis.easysaas.mvc.rocketmq.service.ProducerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestMessageController {
-	  
+	@Autowired
+	private ProducerService producerService;	  
 	  /**
 	   * 
 	   * @param price
 	   * @return
-	   * Ë³ĞòÏûÏ¢£¨È«¾ÖË³ĞòÏûÏ¢£¬²¿·ÖË³ĞòÏûÏ¢£©
+	   * Ë³ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½È«ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
 	   * 
-	   * È«¾ÖË³ĞòÏûÏ¢£ºÒª±£ Ö¤È«¾ÖË³ĞòÏûÏ¢£¬ ĞèÒª ÏÈ°Ñ Topic µÄ¶ÁĞ´¶ÓÁĞÊıÉèÖÃÎª Ò»£¬È»ºó Producer ºÍ Consumer µÄ²¢·¢ÉèÖÃÒ²ÒªÊÇÒ» £»
-	   * ¼òµ¥À´Ëµ£¬ÎªÁË±£Ö¤Õû¸ö Topic µÄ È«¾ÖÏûÏ¢ÓĞĞò£¬Ö»ÄÜÏû³ıËùÓĞµÄ²¢·¢´¦Àí£¬¸÷²¿·Ö¶¼ÉèÖÃ³Éµ¥Ïß³Ì´¦Àí ¡£ ÕâÊ± ¸ß²¢·¢¡¢¸ßÍÌÍÂÁ¿µÄ¹¦ÄÜÍêÈ«ÓÃ²»ÉÏÁË ¡£
-	   * ²¿·ÖË³ĞòÏûÏ¢£ºÒª±£Ö¤²¿·ÖÏûÏ¢ÓĞĞò£¬ĞèÒª·¢ËÍ¶ËºÍÏû·Ñ¶ËÅäºÏ´¦Àí ¡£ ÔÚ·¢ËÍ¶Ë£¬Òª×öµ½ °ÑÍ¬Ò»ÒµÎñ ID µÄÏûÏ¢·¢ËÍµ½Í¬Ò»¸ö Message Queue ;
-	   * ÔÚÏû·Ñ¹ı³ÌÖĞ£¬Òª×öµ½´Ó Í¬Ò»¸ö Message Queue ¶ÁÈ¡µÄÏûÏ¢²»±»²¢·¢´¦Àí£¬ÕâÑù²ÅÄÜ´ïµ½²¿·ÖÓĞĞò ¡£
+	   * È«ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Òªï¿½ï¿½ Ö¤È«ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ ï¿½ï¿½Òª ï¿½È°ï¿½ Topic ï¿½Ä¶ï¿½Ğ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª Ò»ï¿½ï¿½È»ï¿½ï¿½ Producer ï¿½ï¿½ Consumer ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²Òªï¿½ï¿½Ò» ï¿½ï¿½
+	   * ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½Îªï¿½Ë±ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ Topic ï¿½ï¿½ È«ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ĞµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½Ã³Éµï¿½ï¿½ß³Ì´ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ê± ï¿½ß²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+	   * ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Òªï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Í¶Ëºï¿½ï¿½ï¿½ï¿½Ñ¶ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ú·ï¿½ï¿½Í¶Ë£ï¿½Òªï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Í¬Ò»Òµï¿½ï¿½ ID ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Íµï¿½Í¬Ò»ï¿½ï¿½ Message Queue ;
+	   * ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½Ğ£ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Í¬Ò»ï¿½ï¿½ Message Queue ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü´ïµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	   * 
 	   */
 	  @RequestMapping(value="/test/rocketorder",method=RequestMethod.POST)
 	  public String sendOrdermessage(double price){
-
+		    OrderPaidEvent orderpaidEvent = new OrderPaidEvent("T001", BigDecimal.valueOf(price));
+		    producerService.asyncSendOrderMessage(orderpaidEvent);
 	    return "OK";
 	  }
 }

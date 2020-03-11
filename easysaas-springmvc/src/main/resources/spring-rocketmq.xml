@@ -9,7 +9,7 @@
        default-autowire="byName">
 
 
-    <bean id="messageListeners" class="com.wangxin.listener.MessageListenerImpl"></bean>
+    <bean id="messageListeners" class="org.easymis.easysaas.mvc.rocketmq.service.MessageListenerImpl"></bean>
 
     <!-- 导入Spring配置文件 -->
     <bean id="rocketmqConsumer" class="org.apache.rocketmq.client.consumer.DefaultMQPushConsumer" init-method="start" destroy-method="shutdown">
