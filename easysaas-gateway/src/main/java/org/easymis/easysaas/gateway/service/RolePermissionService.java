@@ -11,5 +11,6 @@ import org.easymis.easysaas.gateway.entitys.mybatis.dto.RoleResource;
  */
 public interface RolePermissionService {
 	List<RoleResource> list(String resourceId);
+
 	List<RoleResource> findByResourceId(String resourceId);
 }

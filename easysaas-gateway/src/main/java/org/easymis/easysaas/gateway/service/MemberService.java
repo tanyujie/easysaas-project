@@ -5,11 +5,13 @@ import org.easymis.easysaas.gateway.entitys.vo.User;
 
 import reactor.core.publisher.Mono;
 
-
 public interface MemberService {
-	public Mono<User> findByUsername(String username);	
-	public Member findById(String memberId);	
-	public Member findByMobile(String mobile);		
+	public Mono<User> findByUsername(String username);
+
+	public Member findById(String memberId);
+
+	public Member findByMobile(String mobile);
+
 	Member findByEmail(String email);
 
 	Member saveQuickRegister(String phoneNumber);
