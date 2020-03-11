@@ -129,7 +129,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 		
 		// 2. 搜索账号是你自己，返回[不能添加自己]
-		if (user.getId().equals(myUserId)) {
+		if (user.getMemberId().equals(myUserId)) {
 			return SearchFriendsStatusEnum.NOT_YOURSELF.status;
 		}
 		

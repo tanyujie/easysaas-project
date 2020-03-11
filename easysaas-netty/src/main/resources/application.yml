@@ -5,7 +5,7 @@ server:
         min-spare-threads: 30
         maxHttpHeaderSize: 10240000
         maxHttpPostSize: 10240000 
-    port: 80
+    port: 8080
     maxHttpHeaderSize: 10240000
     maxHttpPostSize: 10240000
       

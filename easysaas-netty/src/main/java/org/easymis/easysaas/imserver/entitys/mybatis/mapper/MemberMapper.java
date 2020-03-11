@@ -12,7 +12,7 @@ public interface MemberMapper {
 	Member findByPhoneNumber(@Param("phoneNumber") String phoneNumber);
 
     
-	@Select("select * from member t WHERE t.member_id = #{memberId}")
+	@Select("select * from member t WHERE t.phone_number = #{phoneNumber}")
 	Member get(@Param("phoneNumber") String phoneNumber, @Param("password") String password);
 
 	@Insert("insert into Member(id, Member_no, sex, age, company_name, department, position, password, head_url, phone_number, email, modify_time, create_time, name, enabled)"

@@ -3,6 +3,7 @@ package org.easymis.easysaas.imserver.entitys.mybatis.dto;
 public class Member {
 
 	private String id;
+	private String memberId;
 
 	/**
 	 * 用户名，账号，慕信号
@@ -45,6 +46,14 @@ public class Member {
 	 */
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 
 	/**

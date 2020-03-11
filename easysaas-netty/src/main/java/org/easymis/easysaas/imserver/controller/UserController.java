@@ -59,6 +59,7 @@ public class UserController {
         }
         MemberVO userVO = new MemberVO();
         BeanUtils.copyProperties(userResult, userVO);
+        userVO.setId(userResult.getMemberId());
         return RestResult.buildSuccess(userVO);
     }
     /**
@@ -132,6 +133,8 @@ public class UserController {
 			Member user = userService.queryUserInfoByUsername(friendUsername);
 			MemberVO userVO = new MemberVO();
 			BeanUtils.copyProperties(user, userVO);
+			//
+			userVO.setId(user.getMemberId());
 			return RestResult.buildSuccess(userVO);
 		} else {
 			String errorMsg = SearchFriendsStatusEnum.getMsgByKey(status);
