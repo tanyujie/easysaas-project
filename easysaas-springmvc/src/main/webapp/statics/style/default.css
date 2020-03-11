@@ -1,0 +1,14 @@
+*{font-size:12px;}
+form table tr td{height:30px;line-height:30px;font:12px tahoma,arial,\5b8b\4f53;}
+form table tr td{padding:5px;}
+form table tr td textarea{overflow-y:auto;}
+
+.file-list div{float:left;margin-left:20px;}
+.file-list div span{line-height:26px;display:inline-block;vertical-align:top;width:auto;}
+.file-list div span.remove{cursor:pointer;width:20px;background:url(easyui/icons/clear.png) no-repeat center center;}
+a{color:#333;text-decoration:none;outline:none;}
+a:hover{color:#f60;text-decoration:underline;}
+
+fieldset {color:#333; border:#06c dashed 1px;} 
+legend {color:#06c;font-weight:800; background:#fff;}
+fieldset p{padding:0px;margin:0px;line-height:20px;}
