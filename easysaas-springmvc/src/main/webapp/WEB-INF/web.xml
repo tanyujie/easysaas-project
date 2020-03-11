@@ -8,9 +8,14 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-        classpath*:/easysaas-application.xml
+        classpath*:/easysaas-application.xml,
+        classpath:spring/spring-rocketmq.xml
     </param-value>
   </context-param>
+<!--    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener> -->
+    
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>
