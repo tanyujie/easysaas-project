@@ -15,7 +15,7 @@ public class NettyBoot implements ApplicationListener<ContextRefreshedEvent> {
 			try {
 				WSServer.getInstance().start();
 				//本地测试实例
-				Demo1WSServer.getInstance().start();
+				//Demo1WSServer.getInstance().start();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

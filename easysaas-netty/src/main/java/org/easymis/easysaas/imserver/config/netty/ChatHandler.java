@@ -64,6 +64,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			chatMsg.setMsgId(msgId);
 			
 			DataContent dataContentMsg = new DataContent();
+			dataContentMsg.setAction(2);
 			dataContentMsg.setChatMsg(chatMsg);
 			
 			// 发送消息
@@ -86,7 +87,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			
 		} else if (action == MsgActionEnum.SIGNED.type) {
 			//  2.3  签收消息类型，针对具体的消息进行签收，修改数据库中对应消息的签收状态[已签收]
-			MemberService userService = (MemberService)SpringUtil.getBean("userServiceImpl");
+			MemberService userService = (MemberService)SpringUtil.getBean("memberServiceImpl");
 			// 扩展字段在signed类型的消息中，代表需要去签收的消息id，逗号间隔
 			String msgIdsStr = dataContent.getExtand();
 			String msgIds[] = msgIdsStr.split(",");

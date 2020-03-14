@@ -32,7 +32,7 @@ public class WSServerInitialzer extends ChannelInitializer<SocketChannel> {
 		// 如果是读空闲或者写空闲，不处理
 		pipeline.addLast(new IdleStateHandler(8, 10, 12));
 		// 自定义的空闲状态检测
-		pipeline.addLast(new HeartBeatHandler());
+	//	pipeline.addLast(new HeartBeatHandler());
 		// ====================== 增加心跳支持 end    ======================
 		
 		
