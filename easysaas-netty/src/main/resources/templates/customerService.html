@@ -40,9 +40,9 @@
 				}
 			},
 			chat:function(){
-				var msg = document.getElementById("msgContent")
-				//CHAT.socket.send(msg.value);
-				var msg='{"action":2,"chatMsg":{"orgId":"orgId","msg":"消息","msgId":"msgId","receiverId":"receiverId","senderId":"senderId"},"extand":"orgId"}';
+				var msgContent = document.getElementById("msgContent")
+				//CHAT.socket.send(msgContent.value);
+				var msg='{"action":2,"chatMsg":{"orgId":"orgId","msg":"'+msgContent.value+'","msgId":"msgId","receiverId":"1","senderId":"2"},"extand":"orgId"}';
 				CHAT.socket.send(msg);
 				console.log(msg.value + "发送成功")
 			}
