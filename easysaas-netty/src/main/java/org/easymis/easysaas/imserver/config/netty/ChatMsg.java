@@ -6,6 +6,7 @@ public class ChatMsg implements Serializable {
 
 	private static final long serialVersionUID = 3611169682695799175L;
 	private String orgId;//
+	private String groupId;//群id
 	private String senderId; // 发送者的用户id
 	private String receiverId; // 接受者的用户id
 	private String msg; // 聊天内容
@@ -49,6 +50,14 @@ public class ChatMsg implements Serializable {
 
 	public void setMsgId(String msgId) {
 		this.msgId = msgId;
+	}
+
+	public String getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
 	}
 
 }

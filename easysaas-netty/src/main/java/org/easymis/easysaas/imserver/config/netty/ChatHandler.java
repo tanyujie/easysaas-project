@@ -67,7 +67,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			dataContentMsg.setAction(2);
 			dataContentMsg.setChatMsg(chatMsg);
 			
-			// 发送消息
+			// 发送消息  参考 https://gitee.com/qiqiim/qiqiim-server
 			// 从全局用户Channel关系中获取接受方的channel
 			Channel receiverChannel = UserChannelRel.get(receiverId);
 			if (receiverChannel == null) {
@@ -85,6 +85,22 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 				}
 			}
 			
+			//后期优化，判断消息是否有接收人；
+			  //判断消息是否有接收人
+			  if(StringUtils.isNotEmpty(dataContentMsg.getChatMsg().getReceiverId())){
+				  /*				  //判断是否发消息给机器人
+				  if(message.getReceiver().equals(Constants.ImserverConfig.REBOT_SESSIONID)){
+					  MessageBodyProto.MessageBody  msg =  MessageBodyProto.MessageBody.parseFrom(message.getContent());
+					  return  rebotProxy.botMessageReply(sessionId, msg.getContent());
+				  }else{
+					  return new MessageWrapper(MessageWrapper.MessageProtocol.REPLY, sessionId,message.getReceiver(), message);
+				  }*/
+			  }else if(StringUtils.isNotEmpty(dataContentMsg.getChatMsg().getGroupId())){//群聊
+				 // return new MessageWrapper(MessageWrapper.MessageProtocol.GROUP, sessionId, null,message);
+			  }else {
+				  //return new MessageWrapper(MessageWrapper.MessageProtocol.SEND, sessionId, null,message);
+			  }
+
 		} else if (action == MsgActionEnum.SIGNED.type) {
 			//  2.3  签收消息类型，针对具体的消息进行签收，修改数据库中对应消息的签收状态[已签收]
 			MemberService userService = (MemberService)SpringUtil.getBean("memberServiceImpl");

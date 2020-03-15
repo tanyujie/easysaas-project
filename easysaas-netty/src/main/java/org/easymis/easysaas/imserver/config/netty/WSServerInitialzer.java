@@ -8,7 +8,13 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.handler.timeout.IdleStateHandler;
-
+/**
+ * 
+　 * <p>Title: 管道初始化类</p>
+　 * <p>Description: </p>
+　 * @author 谭宇杰
+　 * @date 2020年3月15日
+ */
 public class WSServerInitialzer extends ChannelInitializer<SocketChannel> {
 
 	@Override
