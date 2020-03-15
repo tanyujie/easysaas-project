@@ -5,13 +5,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.easymis.easysaas</groupId>
-		<artifactId>easysaas-project</artifactId>
+		<artifactId>easysaas-icc</artifactId>
 		<version>1.0.0.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.easymis.easysaas</groupId>
-	<artifactId>easysaas-icc-server</artifactId>
-	<name>easysaas-icc-server</name>
+	<artifactId>easysaas-icc-app-server</artifactId>
+	<name>easysaas-icc-app-server</name>
 	<url>http://www.easymis.org</url>
 	<properties>
 		<java.version>1.8</java.version>
@@ -150,5 +150,5 @@
 		</plugins>
 	</build>
 	<version>1.0.0.RELEASE</version>
-	<description>easysaas-icc</description>
+	<description>easysaas-icc-app-server</description>
 </project>
