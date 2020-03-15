@@ -23,6 +23,8 @@
 				if(window.WebSocket){
 					CHAT.socket = new WebSocket("ws://127.0.0.1:8088/ws")
 					CHAT.socket.onopen = function(){
+						var msg='{"action":1,"chatMsg":{"orgId":"orgId","msg":"'+msgContent.value+'","msgId":"msgId","receiverId":"","senderId":"2"},"extand":"orgId"}';
+						CHAT.socket.send(msg);
 						console.log("链接建立成功...")
 					},
 					CHAT.socket.onclose = function(){

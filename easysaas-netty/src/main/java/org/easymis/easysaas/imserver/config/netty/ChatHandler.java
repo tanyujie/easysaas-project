@@ -55,6 +55,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			//  2.2  聊天类型的消息，把聊天记录保存到数据库，同时标记消息的签收状态[未签收]
 			ChatMsg chatMsg = dataContent.getChatMsg();
 			String msgText = chatMsg.getMsg();
+			String groupId= chatMsg.getGroupId();
 			String receiverId = chatMsg.getReceiverId();
 			String senderId = chatMsg.getSenderId();
 			
@@ -66,28 +67,35 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			DataContent dataContentMsg = new DataContent();
 			dataContentMsg.setAction(2);
 			dataContentMsg.setChatMsg(chatMsg);
-			
 			// 发送消息  参考 https://gitee.com/qiqiim/qiqiim-server
-			// 从全局用户Channel关系中获取接受方的channel
-			Channel receiverChannel = UserChannelRel.get(receiverId);
-			if (receiverChannel == null) {
-				// TODO channel为空代表用户离线，推送消息（JPush，个推，小米推送）
-			} else {
-				// 当receiverChannel不为空的时候，从ChannelGroup去查找对应的channel是否存在
-				Channel findChannel = users.find(receiverChannel.id());
-				if (findChannel != null) {
-					// 用户在线
-					receiverChannel.writeAndFlush(
-							new TextWebSocketFrame(
-									JsonUtils.objectToJson(dataContentMsg)));
+			if(StringUtils.isNotEmpty(receiverId)) {
+				// 从全局用户Channel关系中获取接受方的channel
+				Channel receiverChannel = UserChannelRel.get(receiverId);
+				
+				if (receiverChannel == null) {
+					// TODO channel为空代表用户离线，推送消息（JPush，个推，小米推送）
 				} else {
-					// 用户离线 TODO 推送消息
+					// 当receiverChannel不为空的时候，从ChannelGroup去查找对应的channel是否存在
+					Channel findChannel = users.find(receiverChannel.id());
+					if (findChannel != null) {
+						// 用户在线
+						receiverChannel.writeAndFlush(
+								new TextWebSocketFrame(
+										JsonUtils.objectToJson(dataContentMsg)));
+					} else {
+						// 用户离线 TODO 推送消息
+					}
 				}
+			}else if(StringUtils.isNotEmpty(groupId)) {
+				
+			}else {
+				
 			}
+
 			
 			//后期优化，判断消息是否有接收人；
 			  //判断消息是否有接收人
-			  if(StringUtils.isNotEmpty(dataContentMsg.getChatMsg().getReceiverId())){
+			  if(StringUtils.isNotEmpty(receiverId)){
 				  /*				  //判断是否发消息给机器人
 				  if(message.getReceiver().equals(Constants.ImserverConfig.REBOT_SESSIONID)){
 					  MessageBodyProto.MessageBody  msg =  MessageBodyProto.MessageBody.parseFrom(message.getContent());
@@ -95,10 +103,6 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 				  }else{
 					  return new MessageWrapper(MessageWrapper.MessageProtocol.REPLY, sessionId,message.getReceiver(), message);
 				  }*/
-			  }else if(StringUtils.isNotEmpty(dataContentMsg.getChatMsg().getGroupId())){//群聊
-				 // return new MessageWrapper(MessageWrapper.MessageProtocol.GROUP, sessionId, null,message);
-			  }else {
-				  //return new MessageWrapper(MessageWrapper.MessageProtocol.SEND, sessionId, null,message);
 			  }
 
 		} else if (action == MsgActionEnum.SIGNED.type) {
