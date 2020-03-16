@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(description = "员工管理")
+@Api(description = "员工管理/销售人员配置")
 @RestController
 @RequestMapping("hrmStaffInfo")
 public class HrmStaffInfoController {
