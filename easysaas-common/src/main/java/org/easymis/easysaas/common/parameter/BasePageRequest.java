@@ -15,11 +15,11 @@ public class BasePageRequest<T> {
     /**
      * 页数 默认1
      */
-    private int page;
+    private int pageNum=1;
     /**
      * 每页条数 默认10
      */
-    private int limit;
+    private int pageSize=10;
     /**
      * 数据对象
      */
@@ -32,10 +32,14 @@ public class BasePageRequest<T> {
     private JSONObject jsonObject;
 
 
-    @Deprecated
-    public BasePageRequest(int page, int limit) {
-        this.page = page;
-        this.limit = limit;
+    public BasePageRequest() {
+		super();
+	}
+
+	@Deprecated
+    public BasePageRequest(int pageNum, int pageSize) {
+        this.pageNum = pageNum;
+        this.pageSize = pageSize;
     }
 
     public BasePageRequest(Kv kv,Class<T> clazz) {
@@ -45,28 +49,28 @@ public class BasePageRequest<T> {
     public BasePageRequest(String rowData,Class<T> clazz) {
         JSONObject jsonObject = JSON.parseObject(rowData);
         this.setJsonObject(jsonObject);
-        this.setPage(getIntAndRemove("page", 1));
-        this.setLimit(getIntAndRemove("limit", 10));
+        this.setPageNum(getIntAndRemove("pageNum", 1));
+        this.setPageSize(getIntAndRemove("pageSize", 10));
         this.setPageType(getIntAndRemove("pageType", 1));
         if(clazz!=null){
             this.setData(jsonObject.toJavaObject(clazz));
         }
     }
 
-    public int getPage() {
-        return page;
+    public int getPageNum() {
+        return pageNum;
     }
 
-    private void setPage(int page) {
-        this.page = page;
+    private void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
     }
 
-    public int getLimit() {
-        return limit;
+    public int getPageSize() {
+        return pageSize;
     }
 
-    private void setLimit(int limit) {
-        this.limit = limit;
+    private void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
     }
 
     public JSONObject getJsonObject() {
