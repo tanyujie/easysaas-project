@@ -3,6 +3,7 @@ package org.easymis.easysaas.imserver.service.impl;
 import java.util.List;
 
 import org.easymis.easysaas.common.result.RestResult;
+import org.easymis.easysaas.imserver.entitys.mybatis.dto.Scheduling;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.Subject;
 import org.easymis.easysaas.imserver.service.SchedulingService;
 import org.springframework.stereotype.Service;
