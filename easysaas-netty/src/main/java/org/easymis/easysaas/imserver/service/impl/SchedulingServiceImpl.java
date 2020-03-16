@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.easymis.easysaas.common.result.RestResult;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.Scheduling;
-import org.easymis.easysaas.imserver.entitys.mybatis.dto.Subject;
 import org.easymis.easysaas.imserver.service.SchedulingService;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +12,13 @@ import com.github.pagehelper.PageInfo;
 public class SchedulingServiceImpl implements SchedulingService {
 
 	@Override
-	public boolean save(Subject bean) {
+	public boolean save(Scheduling bean) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean update(Subject bean) {
+	public boolean update(Scheduling bean) {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 
 import io.swagger.annotations.Api;
 
@@ -57,7 +58,7 @@ public class ApiPushLogController extends IdentityRepository {
 	
 	@RequestMapping("/query")
 	@ResponseBody
-	public Page<ApiPushLog> query(HttpServletRequest request) throws Exception{
+	public PageInfo<ApiPushLog> query(HttpServletRequest request) throws Exception{
 		String companyId = getCompanyId(); 
 		String useId=this.getUserId();
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -80,9 +81,9 @@ public class ApiPushLogController extends IdentityRepository {
 			params.put("phoneNumber", phoneNumber);
 		}
 		this.notifyService.clearNotifyTime(companyId, getUserId());
-		Page<ApiPushLog> page = this.apiPushLogService.pageApiPushVisitorInfo(PageConfig.createPageConfig(request), params);
+		PageInfo<ApiPushLog> pageInfo = this.apiPushLogService.pageApiPushVisitorInfo(new Page(), params);
 
-		return page;
+		return pageInfo;
 	}
 	
 	/*
@@ -94,7 +95,7 @@ public class ApiPushLogController extends IdentityRepository {
 	@ResponseBody
 	public void actionInvoke(HttpServletRequest request) throws Exception{
 		String cardId=request.getParameter("cardId");
-		Card card=this.apiPushLogService.getCard(Integer.valueOf(cardId));
+		Card card=this.apiPushLogService.getCard(cardId);
 		ActionConfig ac = cardExtendService.getActionConfig(card.getCompanyId());
 		if(ac!=null || ac.getStatus() == 1){
 			this.cardExtendService.action(ac,card);
@@ -153,7 +154,7 @@ public class ApiPushLogController extends IdentityRepository {
 			params.put("phoneNumber", phoneNumber);
 		}
 		this.notifyService.clearNotifyTime(companyId, getUserId());
-		List<ApiPushLog> apiPushLog = this.apiPushLogService.downApiPushVisitorInfo(PageConfig.createPageConfig(request), params);
+		List<ApiPushLog> apiPushLog = this.apiPushLogService.downApiPushVisitorInfo(new Page(), params);
 		//List<ApiPushLog> apiPushLog=page.getRows();
 		if(apiPushLog.size()>=1){
 			for(ApiPushLog log : apiPushLog){

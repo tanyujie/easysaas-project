@@ -1,6 +1,7 @@
 package org.easymis.easysaas.imserver.controller;
 
 import org.easymis.easysaas.common.result.RestResult;
+import org.easymis.easysaas.imserver.entitys.mybatis.dto.Scheduling;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.School;
 import org.easymis.easysaas.imserver.service.SchedulingService;
 import org.springframework.beans.factory.annotation.Autowired;
