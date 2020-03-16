@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>org.easymis.easysaas</groupId>
 	<artifactId>easysaas-icc-push-server</artifactId>
-	<name>easysaas-icc-server</name>
+	<name>easysaas-icc-push-server</name>
 	<url>http://www.easymis.org</url>
 	<properties>
 		<java.version>1.8</java.version>
@@ -150,5 +150,5 @@
 		</plugins>
 	</build>
 	<version>1.0.0.RELEASE</version>
-	<description>easysaas-icc</description>
+	<description>推送服务器</description>
 </project>

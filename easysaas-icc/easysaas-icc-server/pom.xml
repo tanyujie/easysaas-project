@@ -150,5 +150,5 @@
 		</plugins>
 	</build>
 	<version>1.0.0.RELEASE</version>
-	<description>easysaas-icc</description>
+	<description>IM server</description>
 </project>

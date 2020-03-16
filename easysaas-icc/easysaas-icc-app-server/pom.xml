@@ -150,5 +150,5 @@
 		</plugins>
 	</build>
 	<version>1.0.0.RELEASE</version>
-	<description>easysaas-icc-app-server</description>
+	<description>应用服务端</description>
 </project>
