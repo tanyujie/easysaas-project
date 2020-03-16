@@ -1,5 +1,8 @@
 package org.easymis.easysaas.imserver.entitys.mybatis.dto;
 
-public class School {
+import lombok.Data;
+
+@Data
+public class SchoolArea {
 
 }

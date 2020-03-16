@@ -21,7 +21,7 @@ import org.easymis.easysaas.imserver.service.CardConfigService;
 import org.easymis.easysaas.imserver.service.CardLogService;
 import org.easymis.easysaas.imserver.service.CardRuleService;
 import org.easymis.easysaas.imserver.service.NotifyService;
-import org.easymis.easysaas.imserver.service.SchoolService;
+import org.easymis.easysaas.imserver.service.SchoolAreaService;
 import org.easymis.easysaas.imserver.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,7 +52,7 @@ public class AllocationCardController extends IdentityRepository{
 	private SubjectService subjectService;
 	
 	@Autowired
-	private SchoolService schoolService;
+	private SchoolAreaService schoolAreaService;
 	
 	@Autowired
 	private NotifyService notifyService;
@@ -71,8 +71,8 @@ public class AllocationCardController extends IdentityRepository{
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("companyId", orgId);
 		model.put("cols", cardConfigService.getShowVisitorCols(orgId));
-		model.put("subjects", subjectService.findList(orgId));
-		model.put("schools", this.schoolService.findList(orgId));
+		model.put("subjects", subjectService.findByOrgId(orgId));
+		model.put("schoolAreaList", this.schoolAreaService.findByOrgId(orgId));
 		model.put("backTypes", this.backTypeService.findByOrgId(orgId));
 		
 		CardRule rule = this.ruleService.findByOrgId(orgId);
@@ -102,11 +102,11 @@ public class AllocationCardController extends IdentityRepository{
 		params.put("orgId", orgId);
 		String startTime = request.getParameter("startTime");
 		if(startTime != null){
-			params.put("startTime", formatter.parse(startTime));//+" 00:00:00"
+			params.put("startTime", formatter.parse(startTime));
 		}
 		String endTime = request.getParameter("endTime");
 		if(endTime != null){
-			params.put("endTime", formatter.parse(endTime));//+" 23:59:59"
+			params.put("endTime", formatter.parse(endTime));
 		}
 		params.put("extColumn8", request.getParameter("subjectId"));
 		params.put("extColumn9", request.getParameter("schoolId"));

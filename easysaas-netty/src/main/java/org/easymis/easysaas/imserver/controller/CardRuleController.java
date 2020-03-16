@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.CardRule;
 import org.easymis.easysaas.imserver.service.CardRuleService;
-import org.easymis.easysaas.imserver.service.SchoolService;
+import org.easymis.easysaas.imserver.service.SchoolAreaService;
 import org.easymis.easysaas.imserver.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,7 @@ public class CardRuleController extends IdentityRepository{
 	private CardRuleService ruleService;
 	
 	@Autowired
-	private SchoolService schoolService;
+	private SchoolAreaService schoolAreaService;
 	
 	@Autowired
 	private SubjectService subjectService;
@@ -34,8 +34,8 @@ public class CardRuleController extends IdentityRepository{
 	public String index(ModelMap model){
 		
 		String orgId=getCompanyId();
-		model.put("schools", schoolService.findList(orgId));
-		model.put("subjects", subjectService.findList(orgId));
+		model.put("schoolAreaList", schoolAreaService.findByOrgId(orgId));
+		model.put("subjects", subjectService.findByOrgId(orgId));
 		return PREFIX + "/index";
 	}
 	

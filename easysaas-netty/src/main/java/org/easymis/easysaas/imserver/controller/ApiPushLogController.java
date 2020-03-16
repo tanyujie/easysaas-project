@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.easymis.easysaas.imserver.entitys.mybatis.dto.ApiPushLog;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.Card;
 import org.easymis.easysaas.imserver.service.CardApiPushLogService;
 import org.easymis.easysaas.imserver.service.CardExtendService;
@@ -78,7 +79,7 @@ public class ApiPushLogController extends IdentityRepository {
 		if(phoneNumber != null && phoneNumber.trim().length() > 0){
 			params.put("phoneNumber", phoneNumber);
 		}
-		this.notifyService.clearNotifyTime(companyId, OnLine.getCurrentUserDetails().getUserId());
+		this.notifyService.clearNotifyTime(companyId, getUserId());
 		Page<ApiPushLog> page = this.apiPushLogService.pageApiPushVisitorInfo(PageConfig.createPageConfig(request), params);
 
 		return page;
@@ -130,8 +131,8 @@ public class ApiPushLogController extends IdentityRepository {
 		heads.add("推送次数");
 		keys.add("responseStr");
 		heads.add("推送结果");
-		int companyId = getCompanyId(); 
-		String useId=OnLine.getCurrentUserDetails().getUserId();
+		String companyId = getCompanyId(); 
+		String useId=getUserId();
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("companyId", companyId);
 		params.put("useId", useId);
@@ -151,7 +152,7 @@ public class ApiPushLogController extends IdentityRepository {
 		if(phoneNumber != null && phoneNumber.trim().length() > 0){
 			params.put("phoneNumber", phoneNumber);
 		}
-		this.notifyService.clearNotifyTime(companyId, OnLine.getCurrentUserDetails().getUserId());
+		this.notifyService.clearNotifyTime(companyId, getUserId());
 		List<ApiPushLog> apiPushLog = this.apiPushLogService.downApiPushVisitorInfo(PageConfig.createPageConfig(request), params);
 		//List<ApiPushLog> apiPushLog=page.getRows();
 		if(apiPushLog.size()>=1){
