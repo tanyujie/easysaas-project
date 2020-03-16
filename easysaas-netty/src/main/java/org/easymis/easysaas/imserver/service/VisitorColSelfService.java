@@ -3,16 +3,16 @@ package org.easymis.easysaas.imserver.service;
 import java.util.List;
 
 import org.easymis.easysaas.common.result.RestResult;
-import org.easymis.easysaas.imserver.entitys.mybatis.dto.Subject;
+import org.easymis.easysaas.imserver.entitys.mybatis.dto.VisitorColSelf;
 
 import com.github.pagehelper.PageInfo;
 
-public interface SchedulingService {
-	public boolean save(Subject bean);
+public interface VisitorColSelfService {
+	public boolean save(VisitorColSelf bean);
 
-	public boolean update(Subject bean);
+	public boolean update(VisitorColSelf bean);
 
-	public Scheduling findById(String id);
+	public VisitorColSelf findById(String id);
 
 	List findByOrgId(String orgId);
 

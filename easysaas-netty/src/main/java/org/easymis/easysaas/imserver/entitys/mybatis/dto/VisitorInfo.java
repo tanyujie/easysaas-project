@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class VisitorInfo {
-	  private Integer id;
+	  private String id;
 	  private String visitorStaticId;
 	  private String globalStaticId = "";
 	  private Integer companyId;

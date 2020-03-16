@@ -17,6 +17,7 @@ import org.easymis.easysaas.imserver.config.cache.entity.SchedulingTime;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.Card;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.CardLog;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.CardRule;
+import org.easymis.easysaas.imserver.entitys.mybatis.dto.VisitorInfo;
 import org.easymis.easysaas.imserver.entitys.mybatis.mapper.CardMapper;
 import org.easymis.easysaas.imserver.entitys.mybatis.mapper.VisitorInfoMapper;
 import org.easymis.easysaas.imserver.entitys.vo.StaffInfoVo;
@@ -46,7 +47,7 @@ public class AllocationCardServiceImpl implements AllocationCardService {
 		return this.filterOnLineSaleUsers(companyId, users);
 	}
 	public List<StaffSalesVo> filterOnLineSaleUsers(String companyId, List<StaffInfoVo> users){
-		List<StaffInfoVo> list = new ArrayList<StaffInfoVo>();
+		List<StaffSalesVo> list = new ArrayList<StaffSalesVo>();
 		try {
 			List<UserSession> sessions = CoreClient.getUserMgr(companyId).getCustomers(companyId);
 			Set<String> onlineIds = new HashSet<String>();
@@ -122,8 +123,9 @@ public class AllocationCardServiceImpl implements AllocationCardService {
 			cacheFactory.checkInit(companyId, this, time);
 			Card c = this.getCard(cardId);
 			if(c != null && c.getCompanyId().equals(companyId) && c.getIsBack() == 1 && c.getAllocationStatus() == Card.STATUS_WAIT_USE_ALLOCATION){
-				String sql = "update js_visitor_info set is_valid = 0, is_expired = 0, is_back=0,  allocation_status = ? where id = ? and modify_identity = ?";
-				int count = this.jdbcTemplate.update(sql, Card.STATUS_FINISHED, cardId, c.getModifyIdentity());
+				VisitorInfo bean= new VisitorInfo();
+				bean.setId(cardId);
+				int count = visitorInfoMapper.updateStatusFinished(bean);
 				if(count > 0){
 					return true;
 				}

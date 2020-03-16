@@ -8,16 +8,21 @@ import org.easymis.easysaas.imserver.entitys.mybatis.dto.Card;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.CardLog;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.VisitorColSelf;
 import org.easymis.easysaas.imserver.entitys.mybatis.mapper.VisitorColSelfMapper;
+import org.easymis.easysaas.imserver.entitys.mybatis.mapper.VisitorInfoMapper;
 import org.easymis.easysaas.imserver.service.CardConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 @Service
 public class CardConfigServiceImpl implements CardConfigService {
 	@Autowired
 	private VisitorColSelfMapper visitorColSelfMapper;
+	
+	@Autowired
+	private VisitorInfoMapper visitorInfoMapper;
 	@Override
 	public List<VisitorColSelf> getShowVisitorCols(String orgId) throws Exception {
 		// TODO Auto-generated method stub
@@ -31,8 +36,15 @@ public class CardConfigServiceImpl implements CardConfigService {
 		return rtnList;
 	}
 	@Override
-	public PageInfo<Card> pageVisitorCard(Page pageConfig, Map<String, Object> map, int status) throws Exception {
+	public PageInfo<Card> pageVisitorCard(Page bean, Map<String, Object> map, int status) throws Exception {
+    	PageHelper.startPage(bean.getPageNum(), bean.getPageSize());
+    	map.put("status", status);
+    	List<Card> cardList = visitorInfoMapper.getList(map);
+		PageInfo<Card> p = new PageInfo<Card>(cardList);
+        return p;
 		StringBuilder hql = new StringBuilder();
+		
+		
 		hql.append("select a.* from visitor_info a where  a.allocation_status > 0 ");
 		List<Object> params = new ArrayList<Object>();
 		if(status == 1){//退回
@@ -70,11 +82,12 @@ public class CardConfigServiceImpl implements CardConfigService {
 			params.add(Card.STATUS_FINISHED);
 			params.add(Card.STATUS_REPEAT);
 		}
-		hql.append("/ and a.company_id = {companyId} /")
-		   .append("/ and a.name like {name} / ")
-		   .append("/ and a.tel like {tel} / ")
-		   .append("/ and a.email like {email} / ")
-		   .append("/ and a.note like {note} / ")
+		
+		
+		
+		
+		
+		hql.append("/ and a.note like {note} / ")
 		   .append("/ and a.reseve_key like {reseveKey} / ")
 		   .append("/ and a.sex = {sex} / ")
 		   .append("/ and a.repName like {repName} / ")

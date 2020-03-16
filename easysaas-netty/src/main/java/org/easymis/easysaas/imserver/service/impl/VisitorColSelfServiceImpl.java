@@ -3,28 +3,31 @@ package org.easymis.easysaas.imserver.service.impl;
 import java.util.List;
 
 import org.easymis.easysaas.common.result.RestResult;
-import org.easymis.easysaas.imserver.entitys.mybatis.dto.Subject;
-import org.easymis.easysaas.imserver.service.SchedulingService;
+import org.easymis.easysaas.imserver.entitys.mybatis.dto.VisitorColSelf;
+import org.easymis.easysaas.imserver.entitys.mybatis.mapper.VisitorColSelfMapper;
+import org.easymis.easysaas.imserver.service.VisitorColSelfService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageInfo;
 @Service
-public class SchedulingServiceImpl implements SchedulingService {
-
+public class VisitorColSelfServiceImpl implements VisitorColSelfService {
+	@Autowired
+	private VisitorColSelfMapper mapper;
 	@Override
-	public boolean save(Subject bean) {
+	public boolean save(VisitorColSelf bean) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean update(Subject bean) {
+	public boolean update(VisitorColSelf bean) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Scheduling findById(String id) {
+	public VisitorColSelf findById(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
