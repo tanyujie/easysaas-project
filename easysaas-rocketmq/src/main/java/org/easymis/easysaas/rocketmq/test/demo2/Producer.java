@@ -15,7 +15,7 @@ public class Producer {
 		 * 因为服务器会回查这个Group下的任意一个Producer
 		 */
 		DefaultMQProducer producer = new DefaultMQProducer("ProducerGroupName");
-		producer.setNamesrvAddr("127.0.0.1:9876");
+		producer.setNamesrvAddr("192.168.1.28:9876");
 		/**
 		 * 默认情况下，一台服务器只能启动一个Producer或Consumer实例，所以如果需要在一台服务器启 动多个实例，需要设置实例的名称
 		 */
@@ -36,7 +36,7 @@ public class Producer {
 		for (int i = 0; i < 1; i++) {
 			try {
 				{
-					Message msg = new Message("TopicTest1", // topic
+					Message msg = new Message("BenchmarkTest", // topic
 							"TagA", // tag
 							"OrderID001", // key
 							("Hello MetaQ").getBytes());// body
