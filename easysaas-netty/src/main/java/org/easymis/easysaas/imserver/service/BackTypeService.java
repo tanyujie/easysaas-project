@@ -1,5 +1,7 @@
 package org.easymis.easysaas.imserver.service;
 
-public interface BackTypeService {
+import java.util.List;
 
+public interface BackTypeService {
+	List findByOrgId(String orgId);
 }
