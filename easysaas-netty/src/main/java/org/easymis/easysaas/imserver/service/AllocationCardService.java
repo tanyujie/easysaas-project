@@ -25,4 +25,21 @@ public interface AllocationCardService extends CacheDataLoader{
 	 * @return
 	 */
 	public boolean setNotValidate(String companyId, String cardId);
+	/**
+	 * 手工分配名片
+	 * @param companyId
+	 * @param cardId
+	 * @param userId
+	 * @param operatorId
+	 */
+	public boolean userAllocationCard(String companyId, String cardId, String userId, String operatorId);
+	public boolean allocation(String cardId);
+	
+	public void clearCache(String companyId,String userId);
+	/**
+	 * 清除轮循算法缓存
+	 * @param companyId
+	 * @param userId
+	 */
+	public void clearAlternateCache(String companyId,String userId);
 }

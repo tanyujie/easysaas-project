@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.http.ParseException;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.Card;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.CardRule;
 import org.easymis.easysaas.imserver.entitys.vo.StaffSalesVo;
@@ -196,7 +195,7 @@ public class AllocationCardController extends IdentityRepository{
 	}
 	
 	@RequestMapping("/allocation/oneKey")
-	public void allocation(@RequestParam("cardId") int cardId, HttpServletResponse response) throws IOException{
+	public void allocation(@RequestParam("cardId") String cardId, HttpServletResponse response) throws IOException{
 		boolean flag = this.allocationCardService.allocation(cardId);
 		if(flag){
 			//RespResult.getSuccess().writeToResponse(response);
@@ -206,7 +205,7 @@ public class AllocationCardController extends IdentityRepository{
 	}
 	
 	@RequestMapping("/notValidate")
-	public void notValidate(@RequestParam("cardId") int cardId, HttpServletResponse response) throws IOException{
+	public void notValidate(@RequestParam("cardId") String cardId, HttpServletResponse response) throws IOException{
 		this.allocationCardService.setNotValidate(getCompanyId(), cardId);
 		//RespResult.getSuccess().writeToResponse(response);
 	}
@@ -236,7 +235,7 @@ public class AllocationCardController extends IdentityRepository{
 	
 	@RequestMapping("/log/query")
 	@ResponseBody
-	public Page<Map<String, Object>> logQuery(HttpServletRequest request) throws ParseException{
+	public PageInfo<Map<String, Object>> logQuery(HttpServletRequest request) throws java.text.ParseException{
 		Map<String, Object> params = new HashMap<String, Object>();
 		String startTime = request.getParameter("startTime");
 		if(startTime != null){
@@ -258,7 +257,7 @@ public class AllocationCardController extends IdentityRepository{
 		if(mobile != null && !mobile.equals("")){
 			params.put("mobile", "%"+mobile+"%");
 		}
-		return this.cardLogService.pageQuery2(getCompanyId(), PageConfig.createPageConfig(request), params);
+		return this.cardLogService.pageQuery2(getCompanyId(), new Page(), params);
 	}
 	
 	/*

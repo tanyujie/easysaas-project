@@ -8,18 +8,21 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.easymis.easysaas.imserver.config.cache.CacheFactory;
 import org.easymis.easysaas.imserver.config.cache.entity.SchedulingTime;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.Card;
+import org.easymis.easysaas.imserver.entitys.mybatis.dto.CardLog;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.CardRule;
 import org.easymis.easysaas.imserver.entitys.mybatis.mapper.CardMapper;
 import org.easymis.easysaas.imserver.entitys.mybatis.mapper.VisitorInfoMapper;
 import org.easymis.easysaas.imserver.entitys.vo.StaffInfoVo;
 import org.easymis.easysaas.imserver.entitys.vo.StaffSalesVo;
 import org.easymis.easysaas.imserver.service.AllocationCardService;
+import org.easymis.easysaas.imserver.service.CardLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
@@ -32,7 +35,8 @@ public class AllocationCardServiceImpl implements AllocationCardService {
 	private CardMapper cardMapper;
 	@Autowired
 	private VisitorInfoMapper visitorInfoMapper;
-	
+	@Autowired
+	private CardLogService cardLogService;
 	@Override
 	public List<StaffSalesVo> getCanAllocationSaleUser(String companyId, String subjectId, String schoolId) {
 		String time = formatter2.format(new Date());
@@ -126,6 +130,60 @@ public class AllocationCardServiceImpl implements AllocationCardService {
 			}
 			return false;
 
+	}
+
+	/**
+	 * 手工分配名片
+	 * @param companyId
+	 * @param cardId
+	 * @param userId
+	 * @param operatorId
+	 */
+	public boolean userAllocationCard(String companyId, String cardId, String userId, String operatorId){
+		//synchronized(this){
+			String time = formatter2.format(new Date());
+			cacheFactory.checkInit(companyId, this, time);
+			Card c = this.getCard(cardId);
+			if(c != null && c.getAllocationStatus() == Card.STATUS_WAIT_USE_ALLOCATION){
+				int i = this.updateCard(cardId, userId, Card.STATUS_USE_ALLOCATIONED, c.getModifyIdentity());
+				if(i>0){
+					this.cacheFactory.getSubjectUserCache().userAllocationCard(companyId, c, userId);
+					this.createCardLog(companyId, cardId, userId, CardLog.ALLOCATION_TYPE_USER, operatorId, new Date());
+					c.setAllocationStatus(Card.STATUS_USE_ALLOCATIONED);
+					c.setUserId(userId);
+					this.allocationListenerService.after(c, true);
+					return true;
+				}
+			}
+			return false;
+		//}		
+	}
+	/**
+	 * 更新名片信息
+	 * @param cardId
+	 * @param userId
+	 * @param status 人工分配3;系统分配1;高意向名片分配6
+	 * @param identity
+	 * @return
+	 */
+	private int updateCard(String cardId, String userId, int status, String identity){
+		if(status == Card.STATUS_USE_ALLOCATIONED || status == Card.STATUS_SYSTEM_ALLOCATIONED || status == Card.STATUS_SALE_ALLOCATIONED){
+			String sql = "update js_visitor_info set allocation_status = ?, user_id = ?, is_back = 0, is_expired = 0, modify_identity = ?, allocation_time = ? where id = ? and modify_identity= ? ";
+			return this.jdbcTemplate.update(sql, status, userId, UUID.randomUUID().toString(), new Date(), cardId, identity);
+		}else{
+			String sql = "update js_visitor_info set allocation_status = ?, user_id = ?, is_back = 0, is_expired = 0, modify_identity = ? where id = ? and modify_identity= ? ";
+			return this.jdbcTemplate.update(sql, status, userId, UUID.randomUUID().toString(), cardId, identity);
+		}
+	}
+	private void createCardLog(String companyId, String cardId, String userId, Integer allocationType, String operatorId, Date time){
+		CardLog log = new CardLog();
+		log.setAllocationType(allocationType);
+		log.setCompanyId(companyId);
+		log.setCardId(cardId);
+		log.setUserId(userId);
+		log.setOperatorUserId(operatorId);
+		log.setAllocationTime(time);
+		this.cardLogService.save(log);
 	}
 	public Card getCard(String cardId){
 
