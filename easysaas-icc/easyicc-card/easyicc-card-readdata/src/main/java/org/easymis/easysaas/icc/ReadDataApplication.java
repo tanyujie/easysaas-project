@@ -21,12 +21,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @MapperScan({"*.easymis.easysaas.**.mapper"})
 @ServletComponentScan
 @EnableSwagger2
-public class IccApplication {
-	protected static final Logger logger = LoggerFactory.getLogger(IccApplication.class);
+public class ReadDataApplication {
+	protected static final Logger logger = LoggerFactory.getLogger(ReadDataApplication.class);
 
 	public static void main(String[] args) {
 		logger.info("web开始加载");
-		SpringApplication.run(IccApplication.class, args);
+		SpringApplication.run(ReadDataApplication.class, args);
 		logger.info("web加载完毕");
 	}
 
