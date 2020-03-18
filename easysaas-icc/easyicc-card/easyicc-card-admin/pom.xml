@@ -9,7 +9,6 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>easyicc-card-admin</artifactId>
-	<packaging>war</packaging>
 	<description>名片综合管理服务</description>
 	<dependencies>
 	</dependencies>
