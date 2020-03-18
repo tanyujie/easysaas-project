@@ -8,12 +8,13 @@
 		<version>1.0.0.RELEASE</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
+	<groupId>org.easymis.easyicc</groupId>
 	<artifactId>easyicc-card-distribution</artifactId>
-	<packaging>war</packaging>
+	<version>1.0.0.RELEASE</version>
 	<description>名片分配服务</description>
 	<dependencies>
 	</dependencies>
 
-	<groupId>org.easymis.easyicc</groupId>
-	<version>1.0.0.RELEASE</version>
+
+
 </project>

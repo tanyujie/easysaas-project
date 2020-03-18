@@ -9,7 +9,6 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>easyicc-card-pushdata</artifactId>
-	<packaging>war</packaging>
 	<description>名片推送服务</description>
 	<dependencies>
 	</dependencies>
