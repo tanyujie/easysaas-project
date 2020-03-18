@@ -9,7 +9,6 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>easyicc-card-readdata</artifactId>
-	<packaging>war</packaging>
 	<description>名片读取服务</description>
 	<dependencies>
 	</dependencies>
