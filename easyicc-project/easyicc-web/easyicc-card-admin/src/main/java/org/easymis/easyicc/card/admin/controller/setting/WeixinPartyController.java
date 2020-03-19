@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.easymis.easyicc.card.admin.controller.IdentityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +37,7 @@ import io.swagger.annotations.Api;
 @Api(value = "/setting/school", description = "微信接口配置")
 @Controller
 @RequestMapping("/weChatParty")
-public class WeixinPartyController {
+public class WeixinPartyController extends IdentityRepository{
 	
 	private final static String PREFIX = "/setting/weixinParty";
 	
