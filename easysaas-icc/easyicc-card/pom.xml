@@ -7,7 +7,6 @@
 		<groupId>org.easymis.easysaas</groupId>
 		<artifactId>easysaas-icc</artifactId>
 		<version>1.0.0.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.easymis.easyicc</groupId>
 	<artifactId>easyicc-card</artifactId>
@@ -37,10 +36,10 @@
 		</plugins>
 	</build>
 	<modules>
-		<module>easyicc-card-admin</module>
-		<module>easyicc-card-distribution</module>
+<!--  		<module>easyicc-card-admin</module> -->
+<!-- 		<module>easyicc-card-distribution</module>
 		<module>easyicc-card-pushdata</module>
-		<module>easyicc-card-readdata</module>
+		<module>easyicc-card-readdata</module> -->
 	</modules>
 	<description>名片管理微服务版本</description>
 	<url>easyicc-card</url>
