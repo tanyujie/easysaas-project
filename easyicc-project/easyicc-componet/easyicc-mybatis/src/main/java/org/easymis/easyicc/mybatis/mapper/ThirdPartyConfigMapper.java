@@ -3,7 +3,7 @@ package org.easymis.easyicc.mybatis.mapper;
 import java.util.List;
 import java.util.Map;
 
-import cn.jesong.webcall.card.domain.entity.ThirdPartyConfig;
+import org.easymis.easyicc.domain.entity.ThirdPartyConfig;
 
 public interface ThirdPartyConfigMapper {
 	int insert(ThirdPartyConfig bean);
