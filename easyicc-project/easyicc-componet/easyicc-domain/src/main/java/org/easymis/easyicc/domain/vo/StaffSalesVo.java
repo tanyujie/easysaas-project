@@ -3,8 +3,8 @@ package org.easymis.easyicc.domain.vo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.easymis.easysaas.imserver.entitys.mybatis.dto.Card;
-import org.easymis.easysaas.imserver.entitys.mybatis.dto.HrmStaffInfo;
+import org.easymis.easyicc.domain.entity.Card;
+import org.easymis.easyicc.domain.entity.HrmStaffInfo;
 
 public class StaffSalesVo extends HrmStaffInfo{
 	private String schoolName;
