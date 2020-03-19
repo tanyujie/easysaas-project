@@ -65,12 +65,12 @@
 		</dependencies>
 	</dependencyManagement>
 	<modules>
- 		<module>easyicc-common</module>
+<!--  		<module>easyicc-common</module>
   		<module>easyicc-core</module>
  		<module>easyicc-eureka</module>
  		<module>easyicc-gateway</module>
-<!-- 		<module>easyicc-crm</module>
-		<module>easyicc-mobile</module> -->
+		<module>easyicc-crm</module> -->
+		<module>easyicc-web</module>
 	</modules>
 
 	 <build>
