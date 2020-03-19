@@ -13,6 +13,15 @@
 	<description>名片综合管理服务</description>
 	<dependencies>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
 			<groupId>org.easymis.easyicc</groupId>
 			<artifactId>easyicc-common</artifactId>
 			<version>1.0.0.RELEASE</version>
