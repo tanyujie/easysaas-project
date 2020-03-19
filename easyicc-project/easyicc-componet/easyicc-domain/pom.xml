@@ -10,16 +10,33 @@
 		<version>1.0.0.RELEASE</version>
 	</parent>
 	<groupId>org.easymis.easyicc</groupId>
-	<artifactId>webcall-card-domain</artifactId>
-	<name>webcall-card-domain</name>
+	<artifactId>easyicc-domain</artifactId>
+	<name>easyicc-domain</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.20</version>
+		</dependency>
 		<dependency>
 			<groupId>org.easymis.easyicc</groupId>
 			<artifactId>easyicc-common</artifactId>
 			<version>1.0.0.RELEASE</version>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
