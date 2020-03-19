@@ -1,0 +1,35 @@
+system:
+    domain: http://dbview.easymis.org
+    email: 535782704@qq.com
+    emailpwd:
+    name: easymis
+    icp: 蜀ICP备17043811号-1
+    auth: www.easymis.org
+#websocket textSize(单位为byte)
+websocket:
+    bufferSize: 1024000
+server:
+    tomcat:
+        access_log_enabled: true
+        basedir: target/tomcat
+spring:
+    thymeleaf:
+        cache: false
+    h2:
+        console:
+            enabled: true
+
+
+#配置日志
+logging:
+  #采用相对路径方式将日志文件输出到
+    file: log\easymis-dbview.log
+    pattern:
+        console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+        file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  #配置日志文件路径
+    level:
+        root: debug
+        org.easymis.dbview: debug #不同目录下的日志可配置不同级别
+        org.springfromework.web: ERROR
+#        org.hibernate: error
