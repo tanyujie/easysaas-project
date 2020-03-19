@@ -141,17 +141,11 @@
 			<version>3.2.0</version>
 		</dependency>
 		<!--二维码生成依赖 end -->
-		<!-- 热部署 -->
-		<dependency>
-			<groupId>org.easymis.easysaas</groupId>
-			<artifactId>easysaas-common</artifactId>
-			<version>1.0.0.RELEASE</version>
-		</dependency>
 	</dependencies>
 
 
 	<build>
-		<finalName>easysaas-crm</finalName>
+		<finalName>easyicc-project</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

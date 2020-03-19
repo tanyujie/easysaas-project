@@ -12,15 +12,25 @@
 	<version>1.0.0.RELEASE</version>
 	<description>名片综合管理服务</description>
 	<dependencies>
+			<dependency>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-common</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 
 	<build>
+		<finalName>easyicc-card-admin</finalName>
 		<!-- 设置项目jdk版本，编码 -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

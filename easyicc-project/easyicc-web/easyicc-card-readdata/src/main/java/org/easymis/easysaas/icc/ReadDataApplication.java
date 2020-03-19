@@ -16,9 +16,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
-@ComponentScan({"*.easymis.easysaas.*"})
+@ComponentScan({"*.easymis.easyicc.*"})
 @EnableTransactionManagement(order = 2) // 设置事务执行顺序(需要在切换数据源之后，否则只走主库)
-@MapperScan({"*.easymis.easysaas.**.mapper"})
+@MapperScan({"*.easymis.easyicc.**.mapper"})
 @ServletComponentScan
 @EnableSwagger2
 public class ReadDataApplication {
