@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.easymis.easyicc.card.admin.controller.IdentityRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,7 @@ import io.swagger.annotations.Api;
 @Api(value = "/setting/school", description = "全局微信推送")
 @Controller
 @RequestMapping("/weChatOverall")
-public class WeixinOverallController {
+public class WeixinOverallController extends IdentityRepository{
 	
 	private final static Log logger = LogFactory.getLog(WeixinOverallController.class);
 	

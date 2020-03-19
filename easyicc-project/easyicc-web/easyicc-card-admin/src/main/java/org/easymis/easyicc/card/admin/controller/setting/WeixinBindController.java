@@ -15,6 +15,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.easymis.easyicc.card.admin.controller.IdentityRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,7 +42,7 @@ import net.kinfe.util.properties.ConfigLoader;
 @Api(value = "/setting/school", description = "绑定 微信用户")
 @Controller
 @RequestMapping("/weChatBind")
-public class WeixinBindController {
+public class WeixinBindController extends IdentityRepository{
 	
 	private final static Log logger = LogFactory.getLog(WeixinBindController.class);
 

@@ -14,7 +14,11 @@
 	<description>名片综合管理服务</description>
 	<dependencies>
 	</dependencies>
-
+	<modules>
+  		<module>easyicc-common</module>
+   		<module>easyicc-domain</module>
+		<module>easyicc-mybatis</module>
+	</modules>
 
 
 	<build>
