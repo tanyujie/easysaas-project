@@ -12,7 +12,7 @@
     <bean id="messageListeners" class="org.easymis.easysaas.mvc.rocketmq.service.MessageListenerImpl"></bean>
 
     <!-- 导入Spring配置文件 -->
-    <bean id="rocketmqConsumer" class="org.apache.rocketmq.client.consumer.DefaultMQPushConsumer" init-method="start" destroy-method="shutdown">
+<!--     <bean id="rocketmqConsumer" class="org.apache.rocketmq.client.consumer.DefaultMQPushConsumer" init-method="start" destroy-method="shutdown">
         <property name="consumerGroup" value="rocketmqConsumer"/>
         <property name="namesrvAddr" value="127.0.0.1:9876"/>
         <property name="messageListener" ref="messageListeners"/>
@@ -23,7 +23,7 @@
                 </entry>
             </map>
         </property>
-    </bean>
+    </bean> -->
     <bean id="rocketmqProduct" class="org.apache.rocketmq.client.producer.DefaultMQProducer" init-method="start" destroy-method="shutdown">
         <property name="producerGroup" value="rocketmqProduct"/>
         <property name="namesrvAddr" value="127.0.0.1:9876"/>

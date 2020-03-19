@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 eclipse.preferences.version=1
 encoding/<project>=UTF-8
+=======
+eclipse.preferences.version=1
+encoding//src/main/java/org/easymis/easysaas/mvc/rocketmq/controller/TestMessageController.java=UTF-8
+encoding/<project>=UTF-8
+>>>>>>> refs/remotes/origin/dev
