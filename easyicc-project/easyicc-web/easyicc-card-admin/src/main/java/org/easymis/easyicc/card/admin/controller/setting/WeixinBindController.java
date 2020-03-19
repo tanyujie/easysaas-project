@@ -132,7 +132,7 @@ public class WeixinBindController extends IdentityRepository{
 	@ResponseBody
 	public Map<String, String> getOpenid(HttpServletRequest request,
 			HttpServletResponse response) {
-		String userId = OnLine.getCurrentUserDetails().getUserId();
+		String userId = this.getUserId();
 		String key = userId + DateUtil.getCurrentDate1();
 		Map<String, String> map = new HashMap<String, String>();
 		String openid = SessionUtil.getOpenId(request, key);

@@ -7,17 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.smartcardio.Card;
 
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
 import org.easymis.easyicc.domain.entity.ApiPushLog;
-import org.easymis.easysaas.imserver.service.CardApiPushLogService;
-import org.easymis.easysaas.imserver.service.CardExtendService;
-import org.easymis.easysaas.imserver.service.NotifyService;
+import org.easymis.easyicc.service.CardApiPushLogService;
+import org.easymis.easyicc.service.NotifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -43,9 +40,6 @@ public class ApiPushLogController extends IdentityRepository {
 	@Autowired
 	private CardApiPushLogService apiPushLogService;
 
-	
-	@Resource(name="sendDataService")
-	private CardExtendService cardExtendService;
 	
 	@RequestMapping("/index")
 	public String index(ModelMap model) throws Exception{		
@@ -94,14 +88,7 @@ public class ApiPushLogController extends IdentityRepository {
 	
 	@RequestMapping("/actionInvoke")
 	@ResponseBody
-	public void actionInvoke(HttpServletRequest request) throws Exception{
-		String cardId=request.getParameter("cardId");
-		Card card=this.apiPushLogService.getCard(cardId);
-		ActionConfig ac = cardExtendService.getActionConfig(card.getCompanyId());
-		if(ac!=null || ac.getStatus() == 1){
-			this.cardExtendService.action(ac,card);
-		}
-	}
+	public void actionInvoke(HttpServletRequest request) throws Exception{}
 	
 	
 	// 名片推送日记的导出
@@ -179,9 +166,9 @@ public class ApiPushLogController extends IdentityRepository {
 		response.setHeader("Content-Disposition", "attachment;filename="
 				+ URLEncoder.encode("名片推送日记导出", "utf-8") + ".xls");
 		String title = "名片推送日记";
-		ExportUtil.export(listMap, title,
+/*		ExportUtil.export(listMap, title,
 				keysFirst.toArray(new String[keys.size()]),
 				headsFirst.toArray(new String[heads.size()]),
-				response.getOutputStream());
+				response.getOutputStream());*/
 	}
 }
