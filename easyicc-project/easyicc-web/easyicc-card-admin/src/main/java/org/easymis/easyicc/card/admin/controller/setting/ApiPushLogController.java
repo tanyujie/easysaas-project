@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import javax.smartcardio.Card;
 
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
-import org.easymis.easysaas.imserver.entitys.mybatis.dto.ApiPushLog;
+import org.easymis.easyicc.domain.entity.ApiPushLog;
 import org.easymis.easysaas.imserver.service.CardApiPushLogService;
 import org.easymis.easysaas.imserver.service.CardExtendService;
 import org.easymis.easysaas.imserver.service.NotifyService;

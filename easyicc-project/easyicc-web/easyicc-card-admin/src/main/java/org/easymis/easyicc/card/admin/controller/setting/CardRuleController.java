@@ -5,10 +5,10 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
+import org.easymis.easyicc.domain.entity.CardRule;
+import org.easymis.easyicc.service.CardRuleService;
 import org.easymis.easyicc.service.SchoolAreaService;
 import org.easymis.easyicc.service.SubjectService;
-import org.easymis.easysaas.imserver.entitys.mybatis.dto.CardRule;
-import org.easymis.easysaas.imserver.service.CardRuleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
