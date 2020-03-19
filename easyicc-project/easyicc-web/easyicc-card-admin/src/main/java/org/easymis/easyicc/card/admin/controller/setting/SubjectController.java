@@ -1,9 +1,9 @@
-package org.easymis.easysaas.imserver.controller;
+package org.easymis.easyicc.card.admin.controller.setting;
 
-import org.easymis.easysaas.common.result.RestResult;
-import org.easymis.easysaas.imserver.entitys.mybatis.dto.School;
-import org.easymis.easysaas.imserver.entitys.mybatis.dto.Subject;
-import org.easymis.easysaas.imserver.service.SubjectService;
+import org.easymis.easyicc.common.result.RestResult;
+import org.easymis.easyicc.domain.entity.School;
+import org.easymis.easyicc.domain.entity.Subject;
+import org.easymis.easyicc.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
