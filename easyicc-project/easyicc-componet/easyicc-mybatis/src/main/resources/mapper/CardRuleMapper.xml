@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jesong.webcall.card.mybatis.mapper.CardRuleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.jesong.webcall.card.domain.entity.CardRule">
+        <result column="COMPANY_ID" property="companyId"/>
+        <result column="USE_ALLOCATION" property="useAllocation"/>
+        <result column="TIME_INTERVAL" property="timeInterval"/>
+        <result column="ALLOCATION_SIZE" property="allocationSize"/>
+        <result column="MAX_ALLOCATION_SIZE" property="maxAllocationSize"/>
+        <result column="EXPIRED_RECOVER" property="expiredRecover"/>
+        <result column="EXPIRED_HOUR" property="expiredHour"/>
+        <result column="RESET_TIME" property="resetTime"/>
+        <result column="MOBILE_HIDE_TIME" property="mobileHideTime"/>
+        <result column="SERVER_NAME" property="serverName"/>
+        <result column="ALLOCATION_DELAY" property="allocationDelay"/>
+        <result column="DEFAULT_SUBJECT_ID" property="defaultSubjectId"/>
+        <result column="DEFAULT_SCHOOL_ID" property="defaultSchoolId"/>
+        <result column="NEED_ONLINE" property="needOnline"/>
+        <result column="NEED_SCHEEDULING" property="needScheeduling"/>
+        <result column="ALLOCATION_MODEL" property="allocationModel"/>
+        <result column="ALGORITHM" property="algorithm"/>
+        <result column="IS_WECHAT_OPEN" property="isWechatOpen"/>
+        <result column="IS_ONLINE_ALLOCTION" property="isOnlineAlloction"/>
+        <result column="NEED_SUMBIT_TOUTIAO" property="needSumbitToutiao"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="selectData">
+        select  COMPANY_ID,
+        USE_ALLOCATION,
+        TIME_INTERVAL,
+        ALLOCATION_SIZE,
+         MAX_ALLOCATION_SIZE,
+         EXPIRED_RECOVER, EXPIRED_HOUR,
+         RESET_TIME, MOBILE_HIDE_TIME, SERVER_NAME,
+         ALLOCATION_DELAY, DEFAULT_SUBJECT_ID,
+         DEFAULT_SCHOOL_ID, NEED_ONLINE, NEED_SCHEEDULING,
+         ALLOCATION_MODEL, ALGORITHM, IS_WECHAT_OPEN,
+         IS_ONLINE_ALLOCTION, NEED_SUMBIT_TOUTIAO FROM JS_CUOUR_CARD_RULE
+    </sql>
+
+
+    <select id="selectById" parameterType="Long" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        where  COMPANY_ID = #{companyId}
+    </select>
+
+
+    <select id="queryListByMap" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="companyId != null">and COMPANY_ID = #{companyId}</if>
+            <if test="useAllocation != null">and USE_ALLOCATION = #{useAllocation}</if>
+            <if test="timeInterval != null ">and TIME_INTERVAL = #{timeInterval}</if>
+            <if test="allocationSize != null">and ALLOCATION_SIZE = #{allocationSize}</if>
+            <if test="maxAllocationSize != null">and MAX_ALLOCATION_SIZE = #{maxAllocationSize}</if>
+            <if test="expiredRecover != null">and EXPIRED_RECOVER = #{expiredRecover}</if>
+
+            <if test="expiredHour != null">and EXPIRED_HOUR = #{expiredHour}</if>
+            <if test="resetTime != null">and RESET_TIME = #{resetTime}</if>
+            <if test="mobileHideTime != null">and MOBILE_HIDE_TIME = #{mobileHideTime}</if>
+            <if test="serverName != null ">and SERVER_NAME = #{serverName}</if>
+            <if test="allocationDelay != null">and ALLOCATION_DELAY = #{allocationDelay}</if>
+            <if test="defaultSubjectId != null">and DEFAULT_SUBJECT_ID = #{defaultSubjectId}</if>
+            <if test="defaultSchoolId != null">and DEFAULT_SCHOOL_ID = #{defaultSchoolId}</if>
+
+            <if test="needOnline != null">and NEED_ONLINE = #{needOnline}</if>
+            <if test="needScheeduling != null">and NEED_SCHEEDULING = #{needScheeduling}</if>
+            <if test="allocationModel != null">and ALLOCATION_MODEL = #{allocationModel}</if>
+            <if test="algorithm != null ">and ALGORITHM = #{algorithm}</if>
+            <if test="isWechatOpen != null">and IS_WECHAT_OPEN = #{isWechatOpen}</if>
+            <if test="isOnlineAlloction != null">and IS_ONLINE_ALLOCTION = #{isOnlineAlloction}</if>
+            <if test="needSumbitToutiao != null">and NEED_SUMBIT_TOUTIAO = #{needSumbitToutiao}</if>
+        </where>
+    </select>
+
+
+    <select id="queryList" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="companyId != null">and COMPANY_ID = #{companyId}</if>
+            <if test="useAllocation != null">and USE_ALLOCATION = #{useAllocation}</if>
+            <if test="timeInterval != null ">and TIME_INTERVAL = #{timeInterval}</if>
+            <if test="allocationSize != null">and ALLOCATION_SIZE = #{allocationSize}</if>
+            <if test="maxAllocationSize != null">and MAX_ALLOCATION_SIZE = #{maxAllocationSize}</if>
+            <if test="expiredRecover != null">and EXPIRED_RECOVER = #{expiredRecover}</if>
+
+            <if test="expiredHour != null">and EXPIRED_HOUR = #{expiredHour}</if>
+            <if test="resetTime != null">and RESET_TIME = #{resetTime}</if>
+            <if test="mobileHideTime != null">and MOBILE_HIDE_TIME = #{mobileHideTime}</if>
+            <if test="serverName != null ">and SERVER_NAME = #{serverName}</if>
+            <if test="allocationDelay != null">and ALLOCATION_DELAY = #{allocationDelay}</if>
+            <if test="defaultSubjectId != null">and DEFAULT_SUBJECT_ID = #{defaultSubjectId}</if>
+            <if test="defaultSchoolId != null">and DEFAULT_SCHOOL_ID = #{defaultSchoolId}</if>
+
+            <if test="needOnline != null">and NEED_ONLINE = #{needOnline}</if>
+            <if test="needScheeduling != null">and NEED_SCHEEDULING = #{needScheeduling}</if>
+            <if test="allocationModel != null">and ALLOCATION_MODEL = #{allocationModel}</if>
+            <if test="algorithm != null ">and ALGORITHM = #{algorithm}</if>
+            <if test="isWechatOpen != null">and IS_WECHAT_OPEN = #{isWechatOpen}</if>
+            <if test="isOnlineAlloction != null">and IS_ONLINE_ALLOCTION = #{isOnlineAlloction}</if>
+            <if test="needSumbitToutiao != null">and NEED_SUMBIT_TOUTIAO = #{needSumbitToutiao}</if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="CardRule" useGeneratedKeys="true" keyProperty="id">
+        insert into JS_CUOUR_CARD_RULE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="companyId != null">COMPANY_ID ,</if>
+            <if test="useAllocation != null">USE_ALLOCATION ,</if>
+            <if test="timeInterval != null ">TIME_INTERVAL,</if>
+            <if test="allocationSize != null">ALLOCATION_SIZE ,</if>
+            <if test="maxAllocationSize != null">MAX_ALLOCATION_SIZE ,</if>
+            <if test="expiredRecover != null">EXPIRED_RECOVER ,</if>
+
+            <if test="expiredHour != null">EXPIRED_HOUR,</if>
+            <if test="resetTime != null">RESET_TIME ,</if>
+            <if test="mobileHideTime != null">MOBILE_HIDE_TIME ,</if>
+            <if test="serverName != null ">SERVER_NAME ,</if>
+            <if test="allocationDelay != null">ALLOCATION_DELAY ,</if>
+            <if test="defaultSubjectId != null">DEFAULT_SUBJECT_ID ,</if>
+            <if test="defaultSchoolId != null">DEFAULT_SCHOOL_ID ,</if>
+
+            <if test="needOnline != null">NEED_ONLINE ,</if>
+            <if test="needScheeduling != null">NEED_SCHEEDULING ,</if>
+            <if test="allocationModel != null">ALLOCATION_MODEL ,</if>
+            <if test="algorithm != null ">ALGORITHM,</if>
+            <if test="isWechatOpen != null">IS_WECHAT_OPEN ,</if>
+            <if test="isOnlineAlloction != null">IS_ONLINE_ALLOCTION ,</if>
+            <if test="needSumbitToutiao != null">NEED_SUMBIT_TOUTIAO ,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="companyId != null">#{companyId},</if>
+            <if test="useAllocation != null">#{useAllocation},</if>
+            <if test="timeInterval != null ">#{timeInterval},</if>
+            <if test="allocationSize != null">#{allocationSize},</if>
+            <if test="maxAllocationSize != null">#{maxAllocationSize},</if>
+            <if test="expiredRecover != null">#{expiredRecover},</if>
+
+            <if test="expiredHour != null">#{expiredHour},</if>
+            <if test="resetTime != null">#{resetTime},</if>
+            <if test="mobileHideTime != null">#{mobileHideTime},</if>
+            <if test="serverName != null ">#{serverName},</if>
+            <if test="allocationDelay != null">#{allocationDelay},</if>
+            <if test="defaultSubjectId != null">#{defaultSubjectId},</if>
+            <if test="defaultSchoolId != null">#{defaultSchoolId},</if>
+
+            <if test="needOnline != null">#{needOnline},</if>
+            <if test="needScheeduling != null">#{needScheeduling},</if>
+            <if test="allocationModel != null">#{allocationModel},</if>
+            <if test="algorithm != null ">#{algorithm},</if>
+            <if test="isWechatOpen != null">#{isWechatOpen},</if>
+            <if test="isOnlineAlloction != null">#{isOnlineAlloction},</if>
+            <if test="needSumbitToutiao != null">#{needSumbitToutiao},</if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="CardRule">
+        update JS_CUOUR_CARD_RULE
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="companyId != null">COMPANY_ID = #{companyId},</if>
+            <if test="useAllocation != null">USE_ALLOCATION = #{useAllocation},</if>
+            <if test="timeInterval != null ">TIME_INTERVAL = #{timeInterval},</if>
+            <if test="allocationSize != null">ALLOCATION_SIZE = #{allocationSize},</if>
+            <if test="maxAllocationSize != null">MAX_ALLOCATION_SIZE = #{maxAllocationSize},</if>
+            <if test="expiredRecover != null">EXPIRED_RECOVER = #{expiredRecover},</if>
+
+            <if test="expiredHour != null">EXPIRED_HOUR = #{expiredHour},</if>
+            <if test="resetTime != null">RESET_TIME = #{resetTime},</if>
+            <if test="mobileHideTime != null">MOBILE_HIDE_TIME = #{mobileHideTime},</if>
+            <if test="serverName != null ">SERVER_NAME = #{serverName},</if>
+            <if test="allocationDelay != null">ALLOCATION_DELAY = #{allocationDelay},</if>
+            <if test="defaultSubjectId != null">DEFAULT_SUBJECT_ID = #{defaultSubjectId},</if>
+            <if test="defaultSchoolId != null">DEFAULT_SCHOOL_ID = #{defaultSchoolId},</if>
+
+            <if test="needOnline != null">NEED_ONLINE = #{needOnline},</if>
+            <if test="needScheeduling != null">NEED_SCHEEDULING = #{needScheeduling},</if>
+            <if test="allocationModel != null">ALLOCATION_MODEL = #{allocationModel},</if>
+            <if test="algorithm != null ">ALGORITHM = #{algorithm},</if>
+            <if test="isWechatOpen != null">IS_WECHAT_OPEN = #{isWechatOpen},</if>
+            <if test="isOnlineAlloction != null">IS_ONLINE_ALLOCTION = #{isOnlineAlloction},</if>
+            <if test="needSumbitToutiao != null">NEED_SUMBIT_TOUTIAO = #{needSumbitToutiao},</if>
+        </trim>
+        where COMPANY_ID= #{companyId}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        delete from JS_CUOUR_CARD_RULE where COMPANY_ID = #{companyId}
+    </delete>
+
+</mapper>

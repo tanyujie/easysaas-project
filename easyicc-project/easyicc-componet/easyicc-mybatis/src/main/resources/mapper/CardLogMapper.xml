@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jesong.webcall.card.mybatis.mapper.CardLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.jesong.webcall.card.domain.entity.CardLog">
+        <result column="ID" property="id" />
+        <result column="COMPANY_ID" property="companyId" />
+        <result column="CARD_ID" property="cardId" />
+        <result column="USER_ID" property="userId" />
+        <result column="ALLOCATION_TYPE" property="allocationType" />
+        <result column="ALLOCATION_TIME" property="allocationTime" />
+        <result column="OPERATOR_USER_ID" property="operatorUserId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="selectData">
+    select
+        ID,
+        COMPANY_ID,
+        CARD_ID,
+        USER_ID,
+        ALLOCATION_TYPE,
+        ALLOCATION_TIME,
+        OPERATOR_USER_ID
+        from JS_CUOUR_CARD_LOG
+    </sql>
+
+
+    <select id="selectById" parameterType="Long" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        where ID = #{id}
+    </select>
+
+
+
+    <select id="queryListByMap" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="id != null"> and ID = #{id}</if>
+            <if test="companyId != null"> and COMPANY_ID = #{companyId}</if>
+            <if test="cardId != null"> and CARD_ID = #{cardId}</if>
+            <if test="userId != null "> and USER_ID = #{userId}</if>
+            <if test="allocationType != null"> and ALLOCATION_TYPE = #{allocationType}</if>
+            <if test="allocationTime != null"> and ALLOCATION_TIME = #{allocationTime}</if>
+            <if test="operatorUserId != null"> and OPERATOR_USER_ID = #{operatorUserId}</if>
+        </where>
+    </select>
+
+
+    <select id="queryList" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="id != null"> and ID = #{id}</if>
+            <if test="companyId != null"> and COMPANY_ID = #{companyId}</if>
+            <if test="cardId != null"> and CARD_ID = #{cardId}</if>
+            <if test="userId != null "> and USER_ID = #{userId}</if>
+            <if test="allocationType != null"> and ALLOCATION_TYPE = #{allocationType}</if>
+            <if test="allocationTime != null"> and ALLOCATION_TIME = #{allocationTime}</if>
+            <if test="operatorUserId != null"> and OPERATOR_USER_ID = #{operatorUserId}</if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="CardLog" useGeneratedKeys="true" keyProperty="id">
+        insert into JS_CUOUR_CARD_LOG
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">  ID ,</if>
+            <if test="companyId != null">  COMPANY_ID ,</if>
+            <if test="cardId != null">  CARD_ID ,</if>
+            <if test="userId != null ">  USER_ID ,</if>
+            <if test="allocationType != null">  ALLOCATION_TYPE ,</if>
+            <if test="allocationTime != null">  ALLOCATION_TIME ,</if>
+            <if test="operatorUserId != null">  OPERATOR_USER_ID ,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">  #{id},</if>
+            <if test="companyId != null">   #{companyId},</if>
+            <if test="cardId != null">  #{cardId},</if>
+            <if test="userId != null ">  #{userId},</if>
+            <if test="allocationType != null">  #{allocationType},</if>
+            <if test="allocationTime != null">  #{allocationTime},</if>
+            <if test="operatorUserId != null">  #{operatorUserId},</if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="CardLog">
+        update JS_CUOUR_CARD_LOG
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="id != null">  ID = #{id},</if>
+            <if test="companyId != null">  COMPANY_ID = #{companyId},</if>
+            <if test="cardId != null">  CARD_ID = #{cardId},</if>
+            <if test="userId != null ">  USER_ID = #{userId},</if>
+            <if test="allocationType != null">  ALLOCATION_TYPE = #{allocationType},</if>
+            <if test="allocationTime != null">  ALLOCATION_TIME = #{allocationTime},</if>
+            <if test="operatorUserId != null">  OPERATOR_USER_ID = #{operatorUserId},</if>
+        </trim>
+        where ID= #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        delete from JS_CUOUR_CARD_LOG where ID = #{id}
+    </delete>
+
+</mapper>

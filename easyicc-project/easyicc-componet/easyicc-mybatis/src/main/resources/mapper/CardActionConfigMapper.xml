@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jesong.webcall.card.mybatis.mapper.CardActionConfigMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.jesong.webcall.card.domain.entity.CardActionConfig">
+        <id column="ID" property="id" />
+        <result column="COMPANY_ID" property="companyId" />
+        <result column="CMD" property="cmd" />
+        <result column="CONFIG" property="config" />
+        <result column="TPL" property="tpl" />
+        <result column="PARAM_TYPE" property="paramType" />
+        <result column="STATUS" property="status" />
+        <result column="INTERFACE_URL" property="interfaceUrl" />
+        <result column="COMPANY_NAME" property="companyName" />
+        <result column="BODY_TYPE" property="bodyType" />
+        <result column="IS_DATA_SIGN" property="isDataSign" />
+        <result column="SIGN_ALGORITHM" property="signAlgorithm" />
+        <result column="SIGN_BODY" property="signBody" />
+        <result column="CONTAIN_TYPE" property="containType" />
+        <result column="CONTAIN_RULE" property="containRule" />
+        <result column="THIRD_PLATFORM" property="thirdPlatform" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="selectData">
+        select  ID, COMPANY_ID, CMD, CONFIG,
+        TPL, PARAM_TYPE, STATUS, INTERFACE_URL,
+        COMPANY_NAME, BODY_TYPE, IS_DATA_SIGN,
+        SIGN_ALGORITHM, SIGN_BODY,
+        CONTAIN_TYPE, CONTAIN_RULE, THIRD_PLATFORM
+
+        from JS_CARD_ACTION_CONFIG
+    </sql>
+
+
+    <select id="selectById" parameterType="Long" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        where ID = #{id}
+    </select>
+
+
+
+    <select id="queryListByMap" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="id != null"> and ID = #{id}</if>
+            <if test="companyId != null"> and COMPANY_ID = #{companyId}</if>
+            <if test="cmd != null"> and CMD = #{cmd}</if>
+            <if test="config != null "> and CONFIG = #{config}</if>
+            <if test="tpl != null"> and TPL = #{tpl}</if>
+
+            <if test="paramType != null"> and PARAM_TYPE = #{paramType}</if>
+            <if test="status != null"> and STATUS = #{status}</if>
+            <if test="interfaceUrl != null"> and INTERFACE_URL = #{interfaceUrl}</if>
+            <if test="companyName != null "> and COMPANY_NAME = #{companyName}</if>
+
+            <if test="bodyType != null"> and BODY_TYPE = #{bodyType}</if>
+            <if test="isDataSign != null"> and IS_DATA_SIGN = #{isDataSign}</if>
+            <if test="signAlgorithm != null"> and SIGN_ALGORITHM = #{signAlgorithm}</if>
+            <if test="signBody != null "> and SIGN_BODY = #{signBody}</if>
+
+
+            <if test="containType != null"> and CONTAIN_TYPE = #{containType}</if>
+            <if test="containRule != null"> and CONTAIN_RULE = #{containRule}</if>
+            <if test="thirdPlatform != null "> and THIRD_PLATFORM = #{thirdPlatform}</if>
+        </where>
+    </select>
+
+
+    <select id="queryList" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="id != null"> and ID = #{id}</if>
+            <if test="companyId != null"> and COMPANY_ID = #{companyId}</if>
+            <if test="cmd != null"> and CMD = #{cmd}</if>
+            <if test="config != null "> and CONFIG = #{config}</if>
+            <if test="tpl != null"> and TPL = #{tpl}</if>
+
+            <if test="paramType != null"> and PARAM_TYPE = #{paramType}</if>
+            <if test="status != null"> and STATUS = #{status}</if>
+            <if test="interfaceUrl != null"> and INTERFACE_URL = #{interfaceUrl}</if>
+            <if test="companyName != null "> and COMPANY_NAME = #{companyName}</if>
+
+            <if test="bodyType != null"> and BODY_TYPE = #{bodyType}</if>
+            <if test="isDataSign != null"> and IS_DATA_SIGN = #{isDataSign}</if>
+            <if test="signAlgorithm != null"> and SIGN_ALGORITHM = #{signAlgorithm}</if>
+            <if test="signBody != null "> and SIGN_BODY = #{signBody}</if>
+
+
+            <if test="containType != null"> and CONTAIN_TYPE = #{containType}</if>
+            <if test="containRule != null"> and CONTAIN_RULE = #{containRule}</if>
+            <if test="thirdPlatform != null "> and THIRD_PLATFORM = #{thirdPlatform}</if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="BusinessGroup" useGeneratedKeys="true" keyProperty="id">
+        insert into JS_CARD_ACTION_CONFIG
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null"> ID ,</if>
+            <if test="companyId != null">  COMPANY_ID ,</if>
+            <if test="cmd != null">  CMD ,</if>
+            <if test="config != null ">  CONFIG ,</if>
+            <if test="tpl != null">  TPL ,</if>
+
+            <if test="paramType != null">  PARAM_TYPE ,</if>
+            <if test="status != null">  STATUS ,</if>
+            <if test="interfaceUrl != null">  INTERFACE_URL ,</if>
+            <if test="companyName != null ">  COMPANY_NAME ,</if>
+
+            <if test="bodyType != null">  BODY_TYPE ,</if>
+            <if test="isDataSign != null">  IS_DATA_SIGN ,</if>
+            <if test="signAlgorithm != null">  SIGN_ALGORITHM ,</if>
+            <if test="signBody != null ">  SIGN_BODY ,</if>
+
+
+            <if test="containType != null">  CONTAIN_TYPE ,</if>
+            <if test="containRule != null">  CONTAIN_RULE ,</if>
+            <if test="thirdPlatform != null ">  THIRD_PLATFORM ,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">  #{id},</if>
+            <if test="companyId != null">   #{companyId},</if>
+            <if test="cmd != null">   #{cmd},</if>
+            <if test="config != null ">   #{config},</if>
+            <if test="tpl != null">   #{tpl},</if>
+
+            <if test="paramType != null">  #{paramType},</if>
+            <if test="status != null">  #{status},</if>
+            <if test="interfaceUrl != null">   #{interfaceUrl},</if>
+            <if test="companyName != null ">  #{companyName},</if>
+
+            <if test="bodyType != null">  #{bodyType},</if>
+            <if test="isDataSign != null">   #{isDataSign},</if>
+            <if test="signAlgorithm != null">  #{signAlgorithm},</if>
+            <if test="signBody != null ">   #{signBody},</if>
+
+
+            <if test="containType != null">  #{containType},</if>
+            <if test="containRule != null">   #{containRule},</if>
+            <if test="thirdPlatform != null ">   #{thirdPlatform},</if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="BusinessGroup">
+        update JS_CARD_ACTION_CONFIG
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="id != null">  ID = #{id},</if>
+            <if test="companyId != null">  COMPANY_ID = #{companyId},</if>
+            <if test="cmd != null">  CMD = #{cmd},</if>
+            <if test="config != null ">  CONFIG = #{config},</if>
+            <if test="tpl != null">  TPL = #{tpl},</if>
+
+            <if test="paramType != null">  PARAM_TYPE = #{paramType},</if>
+            <if test="status != null">  STATUS = #{status},</if>
+            <if test="interfaceUrl != null">  INTERFACE_URL = #{interfaceUrl},</if>
+            <if test="companyName != null ">  COMPANY_NAME = #{companyName},</if>
+
+            <if test="bodyType != null">  BODY_TYPE = #{bodyType},</if>
+            <if test="isDataSign != null">  IS_DATA_SIGN = #{isDataSign},</if>
+            <if test="signAlgorithm != null">  SIGN_ALGORITHM = #{signAlgorithm},</if>
+            <if test="signBody != null ">  SIGN_BODY = #{signBody},</if>
+
+
+            <if test="containType != null">  CONTAIN_TYPE = #{containType},</if>
+            <if test="containRule != null">  CONTAIN_RULE = #{containRule},</if>
+            <if test="thirdPlatform != null ">  THIRD_PLATFORM = #{thirdPlatform},</if>
+        </trim>
+        where ID= #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        delete from JS_CARD_ACTION_CONFIG where ID = #{id}
+    </delete>
+
+</mapper>

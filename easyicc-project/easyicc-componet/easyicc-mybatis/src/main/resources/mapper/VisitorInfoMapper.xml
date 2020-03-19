@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jesong.webcall.card.mybatis.mapper.VisitorInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.jesong.webcall.card.domain.entity.VisitorInfo">
+        <result column="ID" property="id" />
+        <result column="VISITOR_STATIC_ID" property="visitorStaticId" />
+        <result column="COMPANY_ID" property="companyId" />
+        <result column="NAME" property="name" />
+        <result column="TEL" property="tel" />
+        <result column="EMAIL" property="email" />
+        <result column="NOTE" property="note" />
+        <result column="RESEVE_KEY" property="reseveKey" />
+        <result column="SEX" property="sex" />
+        <result column="REPNAME" property="repname" />
+        <result column="MOBILE" property="mobile" />
+        <result column="QQ" property="qq" />
+        <result column="MSN" property="msn" />
+        <result column="URL" property="url" />
+        <result column="COMPANY_NAME" property="companyName" />
+        <result column="AREA" property="area" />
+        <result column="USER_ID" property="userId" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="NOTE1" property="note1" />
+        <result column="NOTE2" property="note2" />
+        <result column="EXT_COLUMN1" property="extColumn1" />
+        <result column="EXT_COLUMN2" property="extColumn2" />
+        <result column="EXT_COLUMN3" property="extColumn3" />
+        <result column="EXT_COLUMN4" property="extColumn4" />
+        <result column="EXT_COLUMN5" property="extColumn5" />
+        <result column="EXT_COLUMN6" property="extColumn6" />
+        <result column="EXT_COLUMN7" property="extColumn7" />
+        <result column="EXT_COLUMN8" property="extColumn8" />
+        <result column="EXT_COLUMN9" property="extColumn9" />
+        <result column="EXT_COLUMN10" property="extColumn10" />
+        <result column="CRM_STATE" property="crmState" />
+        <result column="CRM_REMARK" property="crmRemark" />
+        <result column="SEARCH_ENGINE" property="searchEngine" />
+        <result column="KEYWORD" property="keyword" />
+        <result column="CHAT_URL" property="chatUrl" />
+        <result column="SEARCH_HOST" property="searchHost" />
+        <result column="SPREAD_FLAG" property="spreadFlag" />
+        <result column="FIRST_URL" property="firstUrl" />
+        <result column="PROMOTION_ID" property="promotionId" />
+        <result column="TYPE" property="type" />
+        <result column="BACK_DESP" property="backDesp" />
+        <result column="FINISH_DESP" property="finishDesp" />
+        <result column="IS_VALID" property="isValid" />
+        <result column="IS_BACK" property="isBack" />
+        <result column="ALLOCATION_STATUS" property="allocationStatus" />
+        <result column="MODIFY_IDENTITY" property="modifyIdentity" />
+        <result column="CREATE_USER_ID" property="createUserId" />
+        <result column="BACK_TYPE" property="backType" />
+        <result column="ALLOCATION_TIME" property="allocationTime" />
+        <result column="IS_EXPIRED" property="isExpired" />
+        <result column="GLOBAL_STATIC_ID" property="globalStaticId" />
+        <result column="EDIT_USER_ID" property="editUserId" />
+        <result column="EDIT_TIME" property="editTime" />
+        <result column="BACK_USER_ID" property="backUserId" />
+        <result column="BACK_TIME" property="backTime" />
+        <result column="AUTO" property="auto" />
+        <result column="CHAT_ID" property="chatId" />
+        <result column="REFER" property="refer" />
+        <result column="COUNTRY" property="country" />
+        <result column="PROVINCE" property="province" />
+        <result column="CITY" property="city" />
+        <result column="SITE_ID" property="siteId" />
+        <result column="DEVICE_TYPE" property="deviceType" />
+        <result column="USER_AGENT" property="userAgent" />
+        <result column="CLICK_TEXT" property="clickText" />
+        <result column="BD_USER_ID" property="bdUserId" />
+        <result column="BD_CAMPAIGIN_ID" property="bdCampaiginId" />
+        <result column="BD_ADGROUND_ID" property="bdAdgroundId" />
+        <result column="BD_KEYWORD_ID" property="bdKeywordId" />
+        <result column="BD_CREATIVE_ID" property="bdCreativeId" />
+        <result column="NTAG_ID" property="ntagId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="selectData">
+        select ID, VISITOR_STATIC_ID, COMPANY_ID, NAME, TEL, EMAIL, NOTE,
+        RESEVE_KEY, SEX, REPNAME, MOBILE, QQ, MSN, URL, COMPANY_NAME, AREA,
+        USER_ID, CREATE_TIME, NOTE1, NOTE2, EXT_COLUMN1, EXT_COLUMN2, EXT_COLUMN3,
+        EXT_COLUMN4, EXT_COLUMN5, EXT_COLUMN6, EXT_COLUMN7, EXT_COLUMN8, EXT_COLUMN9,
+         EXT_COLUMN10, CRM_STATE, CRM_REMARK, SEARCH_ENGINE, KEYWORD, CHAT_URL,
+         SEARCH_HOST, SPREAD_FLAG, FIRST_URL, PROMOTION_ID, TYPE, BACK_DESP,
+         FINISH_DESP, IS_VALID, IS_BACK, ALLOCATION_STATUS, MODIFY_IDENTITY,
+         CREATE_USER_ID, BACK_TYPE, ALLOCATION_TIME, IS_EXPIRED, GLOBAL_STATIC_ID,
+         EDIT_USER_ID, EDIT_TIME, BACK_USER_ID, BACK_TIME, AUTO, CHAT_ID, REFER,
+         COUNTRY, PROVINCE, CITY, SITE_ID, DEVICE_TYPE, USER_AGENT, CLICK_TEXT,
+         BD_USER_ID, BD_CAMPAIGIN_ID, BD_ADGROUND_ID, BD_KEYWORD_ID, BD_CREATIVE_ID,
+         NTAG_ID from JS_VISITOR_INFO
+    </sql>
+
+
+
+
+    <select id="selectById" parameterType="Long" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        where ID = #{id}
+    </select>
+
+
+
+    <select id="queryListByMap" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="id != null" > AND ID = #{id}</if>
+            <if test="visitorStaticId != null">VISITOR_STATIC_ID = #{visitorStaticId}</if>
+            <if test="companyId != null" > AND COMPANY_ID = #{companyId}</if>
+            <if test="name != null" > AND NAME = #{name}</if>
+            <if test="tel != null" > AND TEL = #{tel}</if>
+            <if test="email != null" > AND EMAIL = #{email}</if>
+            <if test="note != null" > AND NOTE = #{note}</if>
+            <if test="reseveKey != null" > AND RESEVE_KEY = #{reseveKey}</if>
+            <if test="sex != null" > AND SEX = #{sex}</if>
+            <if test="repname != null" > AND REPNAME = #{repname}</if>
+            <if test="mobile != null" > AND MOBILE = #{mobile}</if>
+            <if test="qq != null" > AND QQ = #{qq}</if>
+            <if test="msn != null" > AND MSN = #{msn}</if>
+            <if test="url != null" > AND URL = #{url}</if>
+            <if test="companyName != null" > AND COMPANY_NAME = #{companyName}</if>
+            <if test="area != null" > AND AREA = #{area}</if>
+            <if test="userId != null" > AND USER_ID = #{userId}</if>
+            <if test="createTime != null" > AND CREATE_TIME = #{createTime}</if>
+            <if test="note1 != null" > AND NOTE1 = #{note1}</if>
+            <if test="note2 != null" > AND NOTE2 = #{note2}</if>
+            <if test="extColumn1 != null" > AND EXT_COLUMN1 = #{extColumn1}</if>
+            <if test="extColumn2 != null" > AND EXT_COLUMN2 = #{extColumn2}</if>
+            <if test="extColumn3 != null" > AND EXT_COLUMN3 = #{extColumn3}</if>
+            <if test="extColumn4 != null" > AND EXT_COLUMN4 = #{extColumn4}</if>
+            <if test="extColumn5 != null" > AND EXT_COLUMN5 = #{extColumn5}</if>
+            <if test="extColumn6 != null" > AND EXT_COLUMN6 = #{extColumn6}</if>
+            <if test="extColumn7 != null" > AND EXT_COLUMN7 = #{extColumn7}</if>
+            <if test="extColumn8 != null" > AND EXT_COLUMN8 = #{extColumn8}</if>
+            <if test="extColumn9 != null" > AND EXT_COLUMN9 = #{extColumn9}</if>
+            <if test="extColumn10 != null" > AND EXT_COLUMN10 = #{extColumn10}</if>
+            <if test="crmState != null" > AND CRM_STATE = #{crmState}</if>
+            <if test="crmRemark != null" > AND CRM_REMARK = #{crmRemark}</if>
+            <if test="searchEngine != null" > AND SEARCH_ENGINE = #{searchEngine}</if>
+            <if test="keyword != null" > AND KEYWORD = #{keyword}</if>
+            <if test="chatUrl != null" > AND CHAT_URL = #{chatUrl}</if>
+            <if test="searchHost != null" > AND SEARCH_HOST = #{searchHost}</if>
+            <if test="spreadFlag != null" > AND SPREAD_FLAG = #{spreadFlag}</if>
+            <if test="firstUrl != null" > AND FIRST_URL = #{firstUrl}</if>
+            <if test="promotionId != null" > AND PROMOTION_ID = #{promotionId}</if>
+            <if test="type != null" > AND TYPE = #{type}</if>
+            <if test="backDesp != null" > AND BACK_DESP = #{backDesp}</if>
+            <if test="finishDesp != null" > AND FINISH_DESP = #{finishDesp}</if>
+            <if test="isValid != null" > AND IS_VALID = #{isValid}</if>
+            <if test="isBack != null" > AND IS_BACK = #{isBack}</if>
+            <if test="allocationStatus != null" > AND ALLOCATION_STATUS = #{allocationStatus}</if>
+            <if test="modifyIdentity != null" > AND MODIFY_IDENTITY = #{modifyIdentity}</if>
+            <if test="createUserId != null" > AND CREATE_USER_ID = #{createUserId}</if>
+            <if test="backType != null" > AND BACK_TYPE = #{backType}</if>
+            <if test="allocationTime != null" > AND ALLOCATION_TIME = #{allocationTime}</if>
+            <if test="isExpired != null" > AND IS_EXPIRED = #{isExpired}</if>
+            <if test="globalStaticId != null" > AND GLOBAL_STATIC_ID = #{globalStaticId}</if>
+            <if test="editUserId != null" > AND EDIT_USER_ID = #{editUserId}</if>
+            <if test="editTime != null" > AND EDIT_TIME = #{editTime}</if>
+            <if test="backUserId != null" > AND BACK_USER_ID = #{backUserId}</if>
+            <if test="backTime != null" > AND BACK_TIME = #{backTime}</if>
+            <if test="auto != null" > AND AUTO = #{auto}</if>
+            <if test="chatId != null" > AND CHAT_ID = #{chatId}</if>
+            <if test="refer != null" > AND REFER = #{refer}</if>
+            <if test="country != null" > AND COUNTRY = #{country}</if>
+            <if test="province != null" > AND PROVINCE = #{province}</if>
+            <if test="city != null" > AND CITY = #{city}</if>
+            <if test="siteId != null" > AND SITE_ID = #{siteId}</if>
+            <if test="deviceType != null" > AND DEVICE_TYPE = #{deviceType}</if>
+            <if test="userAgent != null" > AND USER_AGENT = #{userAgent}</if>
+            <if test="clickText != null" > AND CLICK_TEXT = #{clickText}</if>
+            <if test="bdUserId != null" > AND BD_USER_ID = #{bdUserId}</if>
+            <if test="bdCampaiginId != null" > AND BD_CAMPAIGIN_ID = #{bdCampaiginId}</if>
+            <if test="bdAdgroundId != null" > AND BD_ADGROUND_ID = #{bdAdgroundId}</if>
+            <if test="bdKeywordId != null" > AND BD_KEYWORD_ID = #{bdKeywordId}</if>
+            <if test="bdCreativeId != null" > AND BD_CREATIVE_ID = #{bdCreativeId}</if>
+            <if test="ntagId != null" > AND NTAG_ID = #{ntagId}</if>
+        </where>
+    </select>
+
+
+    <select id="queryList" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="id != null" > AND ID = #{id}</if>
+            <if test="visitorStaticId != null">VISITOR_STATIC_ID = #{visitorStaticId}</if>
+            <if test="companyId != null" > AND COMPANY_ID = #{companyId}</if>
+            <if test="name != null" > AND NAME = #{name}</if>
+            <if test="tel != null" > AND TEL = #{tel}</if>
+            <if test="email != null" > AND EMAIL = #{email}</if>
+            <if test="note != null" > AND NOTE = #{note}</if>
+            <if test="reseveKey != null" > AND RESEVE_KEY = #{reseveKey}</if>
+            <if test="sex != null" > AND SEX = #{sex}</if>
+            <if test="repname != null" > AND REPNAME = #{repname}</if>
+            <if test="mobile != null" > AND MOBILE = #{mobile}</if>
+            <if test="qq != null" > AND QQ = #{qq}</if>
+            <if test="msn != null" > AND MSN = #{msn}</if>
+            <if test="url != null" > AND URL = #{url}</if>
+            <if test="companyName != null" > AND COMPANY_NAME = #{companyName}</if>
+            <if test="area != null" > AND AREA = #{area}</if>
+            <if test="userId != null" > AND USER_ID = #{userId}</if>
+            <if test="createTime != null" > AND CREATE_TIME = #{createTime}</if>
+            <if test="note1 != null" > AND NOTE1 = #{note1}</if>
+            <if test="note2 != null" > AND NOTE2 = #{note2}</if>
+            <if test="extColumn1 != null" > AND EXT_COLUMN1 = #{extColumn1}</if>
+            <if test="extColumn2 != null" > AND EXT_COLUMN2 = #{extColumn2}</if>
+            <if test="extColumn3 != null" > AND EXT_COLUMN3 = #{extColumn3}</if>
+            <if test="extColumn4 != null" > AND EXT_COLUMN4 = #{extColumn4}</if>
+            <if test="extColumn5 != null" > AND EXT_COLUMN5 = #{extColumn5}</if>
+            <if test="extColumn6 != null" > AND EXT_COLUMN6 = #{extColumn6}</if>
+            <if test="extColumn7 != null" > AND EXT_COLUMN7 = #{extColumn7}</if>
+            <if test="extColumn8 != null" > AND EXT_COLUMN8 = #{extColumn8}</if>
+            <if test="extColumn9 != null" > AND EXT_COLUMN9 = #{extColumn9}</if>
+            <if test="extColumn10 != null" > AND EXT_COLUMN10 = #{extColumn10}</if>
+            <if test="crmState != null" > AND CRM_STATE = #{crmState}</if>
+            <if test="crmRemark != null" > AND CRM_REMARK = #{crmRemark}</if>
+            <if test="searchEngine != null" > AND SEARCH_ENGINE = #{searchEngine}</if>
+            <if test="keyword != null" > AND KEYWORD = #{keyword}</if>
+            <if test="chatUrl != null" > AND CHAT_URL = #{chatUrl}</if>
+            <if test="searchHost != null" > AND SEARCH_HOST = #{searchHost}</if>
+            <if test="spreadFlag != null" > AND SPREAD_FLAG = #{spreadFlag}</if>
+            <if test="firstUrl != null" > AND FIRST_URL = #{firstUrl}</if>
+            <if test="promotionId != null" > AND PROMOTION_ID = #{promotionId}</if>
+            <if test="type != null" > AND TYPE = #{type}</if>
+            <if test="backDesp != null" > AND BACK_DESP = #{backDesp}</if>
+            <if test="finishDesp != null" > AND FINISH_DESP = #{finishDesp}</if>
+            <if test="isValid != null" > AND IS_VALID = #{isValid}</if>
+            <if test="isBack != null" > AND IS_BACK = #{isBack}</if>
+            <if test="allocationStatus != null" > AND ALLOCATION_STATUS = #{allocationStatus}</if>
+            <if test="modifyIdentity != null" > AND MODIFY_IDENTITY = #{modifyIdentity}</if>
+            <if test="createUserId != null" > AND CREATE_USER_ID = #{createUserId}</if>
+            <if test="backType != null" > AND BACK_TYPE = #{backType}</if>
+            <if test="allocationTime != null" > AND ALLOCATION_TIME = #{allocationTime}</if>
+            <if test="isExpired != null" > AND IS_EXPIRED = #{isExpired}</if>
+            <if test="globalStaticId != null" > AND GLOBAL_STATIC_ID = #{globalStaticId}</if>
+            <if test="editUserId != null" > AND EDIT_USER_ID = #{editUserId}</if>
+            <if test="editTime != null" > AND EDIT_TIME = #{editTime}</if>
+            <if test="backUserId != null" > AND BACK_USER_ID = #{backUserId}</if>
+            <if test="backTime != null" > AND BACK_TIME = #{backTime}</if>
+            <if test="auto != null" > AND AUTO = #{auto}</if>
+            <if test="chatId != null" > AND CHAT_ID = #{chatId}</if>
+            <if test="refer != null" > AND REFER = #{refer}</if>
+            <if test="country != null" > AND COUNTRY = #{country}</if>
+            <if test="province != null" > AND PROVINCE = #{province}</if>
+            <if test="city != null" > AND CITY = #{city}</if>
+            <if test="siteId != null" > AND SITE_ID = #{siteId}</if>
+            <if test="deviceType != null" > AND DEVICE_TYPE = #{deviceType}</if>
+            <if test="userAgent != null" > AND USER_AGENT = #{userAgent}</if>
+            <if test="clickText != null" > AND CLICK_TEXT = #{clickText}</if>
+            <if test="bdUserId != null" > AND BD_USER_ID = #{bdUserId}</if>
+            <if test="bdCampaiginId != null" > AND BD_CAMPAIGIN_ID = #{bdCampaiginId}</if>
+            <if test="bdAdgroundId != null" > AND BD_ADGROUND_ID = #{bdAdgroundId}</if>
+            <if test="bdKeywordId != null" > AND BD_KEYWORD_ID = #{bdKeywordId}</if>
+            <if test="bdCreativeId != null" > AND BD_CREATIVE_ID = #{bdCreativeId}</if>
+            <if test="ntagId != null" > AND NTAG_ID = #{ntagId}</if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="VisitorInfo" useGeneratedKeys="true" keyProperty="cardId">
+        insert into JS_VISITOR_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null" >ID ,</if>
+            <if test="visitorStaticId != null">VISITOR_STATIC_ID,</if>
+            <if test="companyId != null" >COMPANY_ID ,</if>
+            <if test="name != null" >NAME ,</if>
+            <if test="tel != null" >TEL ,</if>
+            <if test="email != null" >EMAIL ,</if>
+            <if test="note != null" >NOTE ,</if>
+            <if test="reseveKey != null" >RESEVE_KEY ,</if>
+            <if test="sex != null" >SEX ,</if>
+            <if test="repname != null" >REPNAME ,</if>
+            <if test="mobile != null" >MOBILE ,</if>
+            <if test="qq != null" >QQ ,</if>
+            <if test="msn != null" >MSN ,</if>
+            <if test="url != null" >URL ,</if>
+            <if test="companyName != null" >COMPANY_NAME ,</if>
+            <if test="area != null" >AREA ,</if>
+            <if test="userId != null" >USER_ID ,</if>
+            <if test="createTime != null" >CREATE_TIME ,</if>
+            <if test="note1 != null" >NOTE1 ,</if>
+            <if test="note2 != null" >NOTE2 ,</if>
+            <if test="extColumn1 != null" >EXT_COLUMN1 ,</if>
+            <if test="extColumn2 != null" >EXT_COLUMN2 ,</if>
+            <if test="extColumn3 != null" >EXT_COLUMN3 ,</if>
+            <if test="extColumn4 != null" >EXT_COLUMN4 ,</if>
+            <if test="extColumn5 != null" >EXT_COLUMN5 ,</if>
+            <if test="extColumn6 != null" >EXT_COLUMN6 ,</if>
+            <if test="extColumn7 != null" >EXT_COLUMN7 ,</if>
+            <if test="extColumn8 != null" >EXT_COLUMN8 ,</if>
+            <if test="extColumn9 != null" >EXT_COLUMN9 ,</if>
+            <if test="extColumn10 != null" >EXT_COLUMN10 ,</if>
+            <if test="crmState != null" >CRM_STATE ,</if>
+            <if test="crmRemark != null" >CRM_REMARK ,</if>
+            <if test="searchEngine != null" >SEARCH_ENGINE ,</if>
+            <if test="keyword != null" >KEYWORD ,</if>
+            <if test="chatUrl != null" >CHAT_URL ,</if>
+            <if test="searchHost != null" >SEARCH_HOST ,</if>
+            <if test="spreadFlag != null" >SPREAD_FLAG ,</if>
+            <if test="firstUrl != null" >FIRST_URL ,</if>
+            <if test="promotionId != null" >PROMOTION_ID ,</if>
+            <if test="type != null" >TYPE ,</if>
+            <if test="backDesp != null" >BACK_DESP ,</if>
+            <if test="finishDesp != null" >FINISH_DESP ,</if>
+            <if test="isValid != null" >IS_VALID ,</if>
+            <if test="isBack != null" >IS_BACK ,</if>
+            <if test="allocationStatus != null" >ALLOCATION_STATUS ,</if>
+            <if test="modifyIdentity != null" >MODIFY_IDENTITY ,</if>
+            <if test="createUserId != null" >CREATE_USER_ID ,</if>
+            <if test="backType != null" >BACK_TYPE ,</if>
+            <if test="allocationTime != null" >ALLOCATION_TIME ,</if>
+            <if test="isExpired != null" >IS_EXPIRED ,</if>
+            <if test="globalStaticId != null" >GLOBAL_STATIC_ID ,</if>
+            <if test="editUserId != null" >EDIT_USER_ID ,</if>
+            <if test="editTime != null" >EDIT_TIME ,</if>
+            <if test="backUserId != null" >BACK_USER_ID ,</if>
+            <if test="backTime != null" >BACK_TIME ,</if>
+            <if test="auto != null" >AUTO ,</if>
+            <if test="chatId != null" >CHAT_ID ,</if>
+            <if test="refer != null" >REFER ,</if>
+            <if test="country != null" >COUNTRY ,</if>
+            <if test="province != null" >PROVINCE ,</if>
+            <if test="city != null" >CITY ,</if>
+            <if test="siteId != null" >SITE_ID ,</if>
+            <if test="deviceType != null" >DEVICE_TYPE ,</if>
+            <if test="userAgent != null" >USER_AGENT ,</if>
+            <if test="clickText != null" >CLICK_TEXT ,</if>
+            <if test="bdUserId != null" >BD_USER_ID ,</if>
+            <if test="bdCampaiginId != null" >BD_CAMPAIGIN_ID ,</if>
+            <if test="bdAdgroundId != null" >BD_ADGROUND_ID ,</if>
+            <if test="bdKeywordId != null" >BD_KEYWORD_ID ,</if>
+            <if test="bdCreativeId != null" >BD_CREATIVE_ID ,</if>
+            <if test="ntagId != null" >NTAG_ID ,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null" >#{id},</if>
+            <if test="visitorStaticId != null"> #{visitorStaticId},</if>
+            <if test="companyId != null" > #{companyId},</if>
+            <if test="name != null" >#{name},</if>
+            <if test="tel != null" >#{tel},</if>
+            <if test="email != null" >#{email},</if>
+            <if test="note != null" > #{note},</if>
+            <if test="reseveKey != null" > #{reseveKey},</if>
+            <if test="sex != null" > #{sex},</if>
+            <if test="repname != null" > #{repname},</if>
+            <if test="mobile != null" > #{mobile},</if>
+            <if test="qq != null" > #{qq},</if>
+            <if test="msn != null" > #{msn},</if>
+            <if test="url != null" > #{url},</if>
+            <if test="companyName != null" > #{companyName},</if>
+            <if test="area != null" > #{area},</if>
+            <if test="userId != null" > #{userId},</if>
+            <if test="createTime != null" > #{createTime},</if>
+            <if test="note1 != null" > #{note1},</if>
+            <if test="note2 != null" > #{note2},</if>
+            <if test="extColumn1 != null" > #{extColumn1},</if>
+            <if test="extColumn2 != null" > #{extColumn2},</if>
+            <if test="extColumn3 != null" > #{extColumn3},</if>
+            <if test="extColumn4 != null" > #{extColumn4},</if>
+            <if test="extColumn5 != null" > #{extColumn5},</if>
+            <if test="extColumn6 != null" > #{extColumn6},</if>
+            <if test="extColumn7 != null" > #{extColumn7},</if>
+            <if test="extColumn8 != null" > #{extColumn8},</if>
+            <if test="extColumn9 != null" > #{extColumn9},</if>
+            <if test="extColumn10 != null" > #{extColumn10},</if>
+            <if test="crmState != null" > #{crmState},</if>
+            <if test="crmRemark != null" > #{crmRemark},</if>
+            <if test="searchEngine != null" > #{searchEngine},</if>
+            <if test="keyword != null" > #{keyword},</if>
+            <if test="chatUrl != null" > #{chatUrl},</if>
+            <if test="searchHost != null" > #{searchHost},</if>
+            <if test="spreadFlag != null" > #{spreadFlag},</if>
+            <if test="firstUrl != null" > #{firstUrl},</if>
+            <if test="promotionId != null" > #{promotionId},</if>
+            <if test="type != null" > #{type},</if>
+            <if test="backDesp != null" > #{backDesp},</if>
+            <if test="finishDesp != null" > #{finishDesp},</if>
+            <if test="isValid != null" > #{isValid},</if>
+            <if test="isBack != null" > #{isBack},</if>
+            <if test="allocationStatus != null" > #{allocationStatus},</if>
+            <if test="modifyIdentity != null" > #{modifyIdentity},</if>
+            <if test="createUserId != null" > #{createUserId},</if>
+            <if test="backType != null" > #{backType},</if>
+            <if test="allocationTime != null" > #{allocationTime},</if>
+            <if test="isExpired != null" > #{isExpired},</if>
+            <if test="globalStaticId != null" > #{globalStaticId},</if>
+            <if test="editUserId != null" > #{editUserId},</if>
+            <if test="editTime != null" > #{editTime},</if>
+            <if test="backUserId != null" > #{backUserId},</if>
+            <if test="backTime != null" > #{backTime},</if>
+            <if test="auto != null" > #{auto},</if>
+            <if test="chatId != null" > #{chatId},</if>
+            <if test="refer != null" > #{refer},</if>
+            <if test="country != null" > #{country},</if>
+            <if test="province != null" > #{province},</if>
+            <if test="city != null" > #{city},</if>
+            <if test="siteId != null" > #{siteId},</if>
+            <if test="deviceType != null" > #{deviceType},</if>
+            <if test="userAgent != null" > #{userAgent},</if>
+            <if test="clickText != null" > #{clickText},</if>
+            <if test="bdUserId != null" > #{bdUserId},</if>
+            <if test="bdCampaiginId != null" > #{bdCampaiginId},</if>
+            <if test="bdAdgroundId != null" > #{bdAdgroundId},</if>
+            <if test="bdKeywordId != null" > #{bdKeywordId},</if>
+            <if test="bdCreativeId != null" > #{bdCreativeId},</if>
+            <if test="ntagId != null" > #{ntagId},</if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="VisitorInfo">
+        update JS_VISITOR_INFO
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="id != null" >ID = #{id},</if>
+            <if test="visitorStaticId != null">VISITOR_STATIC_ID = #{visitorStaticId},</if>
+            <if test="companyId != null" >COMPANY_ID = #{companyId},</if>
+            <if test="name != null" >NAME = #{name},</if>
+            <if test="tel != null" >TEL = #{tel},</if>
+            <if test="email != null" >EMAIL = #{email},</if>
+            <if test="note != null" >NOTE = #{note},</if>
+            <if test="reseveKey != null" >RESEVE_KEY = #{reseveKey},</if>
+            <if test="sex != null" >SEX = #{sex},</if>
+            <if test="repname != null" >REPNAME = #{repname},</if>
+            <if test="mobile != null" >MOBILE = #{mobile},</if>
+            <if test="qq != null" >QQ = #{qq},</if>
+            <if test="msn != null" >MSN = #{msn},</if>
+            <if test="url != null" >URL = #{url},</if>
+            <if test="companyName != null" >COMPANY_NAME = #{companyName},</if>
+            <if test="area != null" >AREA = #{area},</if>
+            <if test="userId != null" >USER_ID = #{userId},</if>
+            <if test="createTime != null" >CREATE_TIME = #{createTime},</if>
+            <if test="note1 != null" >NOTE1 = #{note1},</if>
+            <if test="note2 != null" >NOTE2 = #{note2},</if>
+            <if test="extColumn1 != null" >EXT_COLUMN1 = #{extColumn1},</if>
+            <if test="extColumn2 != null" >EXT_COLUMN2 = #{extColumn2},</if>
+            <if test="extColumn3 != null" >EXT_COLUMN3 = #{extColumn3},</if>
+            <if test="extColumn4 != null" >EXT_COLUMN4 = #{extColumn4},</if>
+            <if test="extColumn5 != null" >EXT_COLUMN5 = #{extColumn5},</if>
+            <if test="extColumn6 != null" >EXT_COLUMN6 = #{extColumn6},</if>
+            <if test="extColumn7 != null" >EXT_COLUMN7 = #{extColumn7},</if>
+            <if test="extColumn8 != null" >EXT_COLUMN8 = #{extColumn8},</if>
+            <if test="extColumn9 != null" >EXT_COLUMN9 = #{extColumn9},</if>
+            <if test="extColumn10 != null" >EXT_COLUMN10 = #{extColumn10},</if>
+            <if test="crmState != null" >CRM_STATE = #{crmState},</if>
+            <if test="crmRemark != null" >CRM_REMARK = #{crmRemark},</if>
+            <if test="searchEngine != null" >SEARCH_ENGINE = #{searchEngine},</if>
+            <if test="keyword != null" >KEYWORD = #{keyword},</if>
+            <if test="chatUrl != null" >CHAT_URL = #{chatUrl},</if>
+            <if test="searchHost != null" >SEARCH_HOST = #{searchHost},</if>
+            <if test="spreadFlag != null" >SPREAD_FLAG = #{spreadFlag},</if>
+            <if test="firstUrl != null" >FIRST_URL = #{firstUrl},</if>
+            <if test="promotionId != null" >PROMOTION_ID = #{promotionId},</if>
+            <if test="type != null" >TYPE = #{type},</if>
+            <if test="backDesp != null" >BACK_DESP = #{backDesp},</if>
+            <if test="finishDesp != null" >FINISH_DESP = #{finishDesp},</if>
+            <if test="isValid != null" >IS_VALID = #{isValid},</if>
+            <if test="isBack != null" >IS_BACK = #{isBack},</if>
+            <if test="allocationStatus != null" >ALLOCATION_STATUS = #{allocationStatus},</if>
+            <if test="modifyIdentity != null" >MODIFY_IDENTITY = #{modifyIdentity},</if>
+            <if test="createUserId != null" >CREATE_USER_ID = #{createUserId},</if>
+            <if test="backType != null" >BACK_TYPE = #{backType},</if>
+            <if test="allocationTime != null" >ALLOCATION_TIME = #{allocationTime},</if>
+            <if test="isExpired != null" >IS_EXPIRED = #{isExpired},</if>
+            <if test="globalStaticId != null" >GLOBAL_STATIC_ID = #{globalStaticId},</if>
+            <if test="editUserId != null" >EDIT_USER_ID = #{editUserId},</if>
+            <if test="editTime != null" >EDIT_TIME = #{editTime},</if>
+            <if test="backUserId != null" >BACK_USER_ID = #{backUserId},</if>
+            <if test="backTime != null" >BACK_TIME = #{backTime},</if>
+            <if test="auto != null" >AUTO = #{auto},</if>
+            <if test="chatId != null" >CHAT_ID = #{chatId},</if>
+            <if test="refer != null" >REFER = #{refer},</if>
+            <if test="country != null" >COUNTRY = #{country},</if>
+            <if test="province != null" >PROVINCE = #{province},</if>
+            <if test="city != null" >CITY = #{city},</if>
+            <if test="siteId != null" >SITE_ID = #{siteId},</if>
+            <if test="deviceType != null" >DEVICE_TYPE = #{deviceType},</if>
+            <if test="userAgent != null" >USER_AGENT = #{userAgent},</if>
+            <if test="clickText != null" >CLICK_TEXT = #{clickText},</if>
+            <if test="bdUserId != null" >BD_USER_ID = #{bdUserId},</if>
+            <if test="bdCampaiginId != null" >BD_CAMPAIGIN_ID = #{bdCampaiginId},</if>
+            <if test="bdAdgroundId != null" >BD_ADGROUND_ID = #{bdAdgroundId},</if>
+            <if test="bdKeywordId != null" >BD_KEYWORD_ID = #{bdKeywordId},</if>
+            <if test="bdCreativeId != null" >BD_CREATIVE_ID = #{bdCreativeId},</if>
+            <if test="ntagId != null" >NTAG_ID = #{ntagId},</if>
+        </trim>
+        where ID= #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        delete from JS_VISITOR_INFO where ID = #{id}
+    </delete>
+
+</mapper>

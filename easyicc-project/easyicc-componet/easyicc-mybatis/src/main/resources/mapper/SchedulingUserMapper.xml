@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jesong.webcall.card.mybatis.mapper.SchedulingUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.jesong.webcall.card.domain.entity.SchedulingUser">
+        <id column="ID" property="id" />
+        <result column="COMPANY_ID" property="companyId" />
+        <result column="SCHEDULING_TIME" property="schedulingTime" />
+        <result column="SCHEDULING_ID" property="schedulingId" />
+        <result column="USER_ID" property="userId" />
+        <result column="SCHEDULING_TYPE" property="schedulingType" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="selectData">
+        select  ID, COMPANY_ID, SCHEDULING_TIME, SCHEDULING_ID,
+        USER_ID, SCHEDULING_TYPE from JS_SCHEDULING_USER
+    </sql>
+
+
+
+    <select id="selectById" parameterType="Long" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        where ID = #{id}
+    </select>
+
+
+
+    <select id="queryListByMap" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="id != null"> and ID = #{id}</if>
+            <if test="companyId != null"> and COMPANY_ID = #{companyId}</if>
+            <if test="schedulingTime != null"> and SCHEDULING_TIME = #{schedulingTime}</if>
+            <if test="schedulingId != null "> and SCHEDULING_ID = #{schedulingId}</if>
+            <if test="userId != null"> and USER_ID = #{userId}</if>
+            <if test="schedulingType != null "> and SCHEDULING_TYPE = #{schedulingType}</if>
+        </where>
+    </select>
+
+
+    <select id="queryList" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="id != null"> and ID = #{id}</if>
+            <if test="companyId != null"> and COMPANY_ID = #{companyId}</if>
+            <if test="schedulingTime != null"> and SCHEDULING_TIME = #{schedulingTime}</if>
+            <if test="schedulingId != null "> and SCHEDULING_ID = #{schedulingId}</if>
+            <if test="userId != null"> and USER_ID = #{userId}</if>
+            <if test="schedulingType != null "> and SCHEDULING_TYPE = #{schedulingType}</if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="SchedulingUser" useGeneratedKeys="true" keyProperty="id">
+        insert into JS_SCHEDULING_USER
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">  ID ,</if>
+            <if test="companyId != null">  COMPANY_ID ,</if>
+            <if test="schedulingTime != null">  SCHEDULING_TIME ,</if>
+            <if test="schedulingId != null ">  SCHEDULING_ID ,</if>
+            <if test="userId != null">  USER_ID ,</if>
+            <if test="schedulingType != null ">  SCHEDULING_TYPE ,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">   #{id},</if>
+            <if test="companyId != null">  #{companyId},</if>
+            <if test="schedulingTime != null">  #{schedulingTime},</if>
+            <if test="schedulingId != null ">   #{schedulingId},</if>
+            <if test="userId != null">   #{userId},</if>
+            <if test="schedulingType != null ">   #{schedulingType},</if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="SchedulingUser">
+        update JS_SCHEDULING_USER
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="id != null">  ID = #{id},</if>
+            <if test="companyId != null">  COMPANY_ID = #{companyId},</if>
+            <if test="schedulingTime != null">  SCHEDULING_TIME = #{schedulingTime},</if>
+            <if test="schedulingId != null ">  SCHEDULING_ID = #{schedulingId},</if>
+            <if test="userId != null">  USER_ID = #{userId},</if>
+            <if test="schedulingType != null ">  SCHEDULING_TYPE = #{schedulingType},</if>
+        </trim>
+        where id= #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        delete from JS_SCHEDULING_USER where ID = #{id}
+    </delete>
+
+</mapper>

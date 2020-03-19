@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jesong.webcall.card.mybatis.mapper.CardApiPushLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.jesong.webcall.card.domain.entity.CardApiPushLog">
+        <id column="CARD_ID" property="cardId" />
+        <result column="CHAT_ID" property="chatId" />
+        <result column="PUSH_COUNT" property="pushCount" />
+        <result column="STATUS" property="status" />
+        <result column="RESPONSE_STR" property="responseStr" />
+        <result column="FIRST_ERROR_TIME" property="firstErrorTime" />
+        <result column="PUSH_TIME" property="pushTime" />
+        <result column="VISITOR_STATIC_ID" property="visitorStaticId" />
+        <result column="COMPANY_ID" property="companyId" />
+        <result column="LAST_ERROR_TIME" property="lastErrorTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="selectData">
+        select
+        CARD_ID,
+        CHAT_ID,
+        PUSH_COUNT,
+        STATUS,
+        RESPONSE_STR,
+        FIRST_ERROR_TIME,
+         PUSH_TIME, VISITOR_STATIC_ID,
+         COMPANY_ID,
+         LAST_ERROR_TIME from JS_CARD_API_PUSH_LOG
+    </sql>
+
+
+    <select id="selectById" parameterType="Long" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        where where CARD_ID = #{cardId}
+    </select>
+
+
+
+    <select id="queryListByMap" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="cardId != null"> and CARD_ID = #{cardId}</if>
+            <if test="chatId != null"> and CHAT_ID = #{chatId}</if>
+            <if test="pushCount != null"> and PUSH_COUNT = #{pushCount}</if>
+            <if test="status != null "> and STATUS = #{status}</if>
+            <if test="responseStr != null"> and RESPONSE_STR = #{responseStr}</if>
+            <if test="firstErrorTime != null"> and FIRST_ERROR_TIME = #{firstErrorTime}</if>
+            <if test="pushTime != null"> and PUSH_TIME = #{pushTime}</if>
+            <if test="visitorStaticId != null "> and VISITOR_STATIC_ID = #{visitorStaticId}</if>
+            <if test="lastErrorTime != null"> and LAST_ERROR_TIME = #{lastErrorTime}</if>
+            <if test="companyId != null"> and COMPANY_ID = #{companyId}</if>
+        </where>
+    </select>
+
+
+    <select id="queryList" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="id != null"> and id = #{id}</if>
+            <if test="companyId != null"> and COMPANY_ID = #{companyId}</if>
+            <if test="name != null"> and NAME = #{name}</if>
+            <if test="desp != null "> and DESP = #{desp}</if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="CardApiPushLog" useGeneratedKeys="true" keyProperty="cardId">
+        insert into JS_CARD_API_PUSH_LOG
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cardId != null">  CARD_ID,</if>
+            <if test="chatId != null">  CHAT_ID ,</if>
+            <if test="pushCount != null">  PUSH_COUNT,</if>
+            <if test="status != null ">  STATUS ,</if>
+            <if test="responseStr != null">  RESPONSE_STR,</if>
+            <if test="firstErrorTime != null">  FIRST_ERROR_TIME ,</if>
+            <if test="pushTime != null">  PUSH_TIME ,</if>
+            <if test="visitorStaticId != null ">  VISITOR_STATIC_ID ,</if>
+            <if test="lastErrorTime != null">  LAST_ERROR_TIME,</if>
+            <if test="companyId != null">  COMPANY_ID,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cardId != null">   #{cardId},</if>
+            <if test="chatId != null">  #{chatId},</if>
+            <if test="pushCount != null">   #{pushCount},</if>
+            <if test="status != null ">  #{status},</if>
+            <if test="responseStr != null">  #{responseStr},</if>
+            <if test="firstErrorTime != null">  #{firstErrorTime},</if>
+            <if test="pushTime != null">  #{pushTime},</if>
+            <if test="visitorStaticId != null ">   #{visitorStaticId},</if>
+            <if test="lastErrorTime != null">  #{lastErrorTime},</if>
+            <if test="companyId != null">  #{companyId},</if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="CardApiPushLog">
+        update JS_CARD_API_PUSH_LOG
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cardId != null">  CARD_ID = #{cardId},</if>
+            <if test="chatId != null">  CHAT_ID = #{chatId},</if>
+            <if test="pushCount != null">  PUSH_COUNT = #{pushCount},</if>
+            <if test="status != null ">  STATUS = #{status},</if>
+            <if test="responseStr != null">  RESPONSE_STR = #{responseStr},</if>
+            <if test="firstErrorTime != null">  FIRST_ERROR_TIME = #{firstErrorTime},</if>
+            <if test="pushTime != null">  PUSH_TIME = #{pushTime},</if>
+            <if test="visitorStaticId != null ">  VISITOR_STATIC_ID = #{visitorStaticId},</if>
+            <if test="lastErrorTime != null">  LAST_ERROR_TIME = #{lastErrorTime},</if>
+            <if test="companyId != null">  COMPANY_ID = #{companyId},</if>
+        </trim>
+        where CARD_ID= #{cardId}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        delete from JS_CARD_API_PUSH_LOG where CARD_ID = #{cardId}
+    </delete>
+
+</mapper>

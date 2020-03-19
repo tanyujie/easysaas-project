@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jesong.webcall.card.mybatis.mapper.SalesMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.jesong.webcall.card.domain.entity.Sales">
+        <result column="USER_ID" property="userId" />
+        <result column="COMPANY_ID" property="companyId" />
+        <result column="SCHOOL_ID" property="schoolId" />
+        <result column="SUBJECT_ID" property="subjectId" />
+        <result column="BUSINESS_GROUP_ID" property="businessGroupId" />
+        <result column="SALES_TYPE_ID" property="salesTypeId" />
+        <result column="MAX_CARD_SIZE" property="maxCardSize" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="selectData">
+        select  USER_ID, COMPANY_ID, SCHOOL_ID, SUBJECT_ID, BUSINESS_GROUP_ID,
+        SALES_TYPE_ID, MAX_CARD_SIZE from  JS_CUOUR_SALES
+    </sql>
+
+
+    <select id="selectById" parameterType="Long" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        where USER_ID = #{userId}
+    </select>
+
+
+
+    <select id="queryListByMap" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="userId != null"> and USER_ID = #{userId}</if>
+            <if test="companyId != null"> and COMPANY_ID = #{companyId}</if>
+            <if test="schoolId != null"> and SCHOOL_ID = #{schoolId}</if>
+            <if test="subjectId != null "> and SUBJECT_ID = #{subjectId}</if>
+            <if test="businessGroupId != null"> and BUSINESS_GROUP_ID = #{businessGroupId}</if>
+            <if test="salesTypeId != null"> and SALES_TYPE_ID = #{salesTypeId}</if>
+            <if test="maxCardSize != null"> and MAX_CARD_SIZE = #{maxCardSize}</if>
+        </where>
+    </select>
+
+
+    <select id="queryList" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="userId != null"> and USER_ID = #{userId}</if>
+            <if test="companyId != null"> and COMPANY_ID = #{companyId}</if>
+            <if test="schoolId != null"> and SCHOOL_ID = #{schoolId}</if>
+            <if test="subjectId != null "> and SUBJECT_ID = #{subjectId}</if>
+            <if test="businessGroupId != null"> and BUSINESS_GROUP_ID = #{businessGroupId}</if>
+            <if test="salesTypeId != null"> and SALES_TYPE_ID = #{salesTypeId}</if>
+            <if test="maxCardSize != null"> and MAX_CARD_SIZE = #{maxCardSize}</if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="Sales" useGeneratedKeys="true" keyProperty="id">
+        insert into JS_CUOUR_SALES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null"> USER_ID ,</if>
+            <if test="companyId != null"> COMPANY_ID ,</if>
+            <if test="schoolId != null"> SCHOOL_ID ,</if>
+            <if test="subjectId != null "> SUBJECT_ID ,</if>
+            <if test="businessGroupId != null"> BUSINESS_GROUP_ID ,</if>
+            <if test="salesTypeId != null"> SALES_TYPE_ID ,</if>
+            <if test="maxCardSize != null"> MAX_CARD_SIZE ,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null"> #{userId},</if>
+            <if test="companyId != null"> #{companyId},</if>
+            <if test="schoolId != null"> #{schoolId},</if>
+            <if test="subjectId != null "> #{subjectId},</if>
+            <if test="businessGroupId != null">  #{businessGroupId},</if>
+            <if test="salesTypeId != null">  #{salesTypeId},</if>
+            <if test="maxCardSize != null">  #{maxCardSize},</if>
+
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="Sales">
+        update JS_CUOUR_SALES
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null"> USER_ID = #{userId},</if>
+            <if test="companyId != null"> COMPANY_ID = #{companyId},</if>
+            <if test="schoolId != null"> SCHOOL_ID = #{schoolId},</if>
+            <if test="subjectId != null "> SUBJECT_ID = #{subjectId},</if>
+            <if test="businessGroupId != null"> BUSINESS_GROUP_ID = #{businessGroupId},</if>
+            <if test="salesTypeId != null"> SALES_TYPE_ID = #{salesTypeId},</if>
+            <if test="maxCardSize != null"> MAX_CARD_SIZE = #{maxCardSize},</if>
+        </trim>
+        where ID= #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        delete from JS_CUOUR_SALES where USER_ID = #{userId}
+    </delete>
+
+</mapper>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jesong.webcall.card.mybatis.mapper.SchedulingMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.jesong.webcall.card.domain.entity.Scheduling">
+        <id column="ID" property="id" />
+        <result column="COMPANY_ID" property="companyId" />
+        <result column="NAME" property="name" />
+        <result column="DESP" property="desp" />
+        <result column="START_TIME" property="startTime" />
+        <result column="END_TIME" property="endTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="selectData">
+        select  ID, COMPANY_ID, NAME, DESP, START_TIME, END_TIME from JS_SCHEDULING 
+    </sql>
+
+
+
+    <select id="selectById" parameterType="Long" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        where ID = #{id}
+    </select>
+
+
+
+    <select id="queryListByMap" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="id != null"> and ID = #{id}</if>
+            <if test="companyId != null"> and COMPANY_ID = #{companyId}</if>
+            <if test="name != null"> and NAME = #{name}</if>
+            <if test="desp != null "> and DESP = #{desp}</if>
+            <if test="startTime != null"> and START_TIME = #{startTime}</if>
+            <if test="endTime != null "> and END_TIME = #{endTime}</if>
+        </where>
+    </select>
+
+
+    <select id="queryList" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="id != null"> and ID = #{id}</if>
+            <if test="companyId != null"> and COMPANY_ID = #{companyId}</if>
+            <if test="name != null"> and NAME = #{name}</if>
+            <if test="desp != null "> and DESP = #{desp}</if>
+            <if test="startTime != null"> and START_TIME = #{startTime}</if>
+            <if test="endTime != null "> and END_TIME = #{endTime}</if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="Scheduling" useGeneratedKeys="true" keyProperty="id">
+        insert into JS_SCHEDULING
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null"> ID ,</if>
+            <if test="companyId != null"> and COMPANY_ID ,</if>
+            <if test="name != null"> NAME ,</if>
+            <if test="desp != null "> DESP,</if>
+            <if test="startTime != null"> START_TIME ,</if>
+            <if test="endTime != null "> END_TIME,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null"> #{id},</if>
+            <if test="companyId != null"> #{companyId},</if>
+            <if test="name != null"> #{name},</if>
+            <if test="desp != null "> #{desp},</if>
+            <if test="startTime != null"> #{startTime} ,</if>
+            <if test="endTime != null "> #{endTime},</if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="Scheduling">
+        update JS_SCHEDULING
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="id != null"> ID = #{id},</if>
+            <if test="companyId != null"> COMPANY_ID = #{companyId},</if>
+            <if test="name != null"> NAME = #{name},</if>
+            <if test="desp != null "> DESP = #{desp},</if>
+            <if test="startTime != null"> START_TIME = #{startTime},</if>
+            <if test="endTime != null "> END_TIME = #{endTime},</if>
+        </trim>
+        where id= #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        delete from JS_SCHEDULING where ID = #{id}
+    </delete>
+
+</mapper>

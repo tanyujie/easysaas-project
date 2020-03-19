@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jesong.webcall.card.mybatis.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.jesong.webcall.card.domain.entity.User">
+        <id column="USER_ID" property="userId" />
+        <result column="DEPARTMENT_ID" property="departmentId" />
+        <result column="IS_ADMIN" property="isAdmin" />
+        <result column="LAST_ACTIVE_TIME" property="lastActiveTime" />
+        <result column="MAIL" property="mail" />
+        <result column="PASSWORD" property="password" />
+        <result column="PHONE_NUMBER" property="phoneNumber" />
+        <result column="REAL_NAME" property="realName" />
+        <result column="DISPLAY_STATUS" property="displayStatus" />
+        <result column="DISPLAY_PROP" property="displayProp" />
+        <result column="MOBILE_NUMBER" property="mobileNumber" />
+        <result column="USE_PHONE_MESSAGE" property="usePhoneMessage" />
+        <result column="USE_FREE_PHONE" property="useFreePhone" />
+        <result column="FREE_PHONE_ID" property="freePhoneId" />
+        <result column="COMPANY_ID" property="companyId" />
+        <result column="MSG_MAIL_NOTIFY" property="msgMailNotify" />
+        <result column="BUSY_CONNECT_TYPE" property="busyConnectType" />
+        <result column="OFFLINE_CONNECT_TYPE" property="offlineConnectType" />
+        <result column="LINKMAN" property="linkman" />
+        <result column="FAXED" property="faxed" />
+        <result column="START_TIME" property="startTime" />
+        <result column="END_TIME" property="endTime" />
+        <result column="REMARK" property="remark" />
+        <result column="AUTO_REPLY_AT_CONNECTED" property="autoReplyAtConnected" />
+        <result column="REPLY_MSG_AT_CONNECTED" property="replyMsgAtConnected" />
+        <result column="REPLY_MSG_OF_CUSTOMER" property="replyMsgOfCustomer" />
+        <result column="REPLY_MSG_OF_VISITOR" property="replyMsgOfVisitor" />
+        <result column="REPLY_TIMER_OF_CUSTOMER" property="replyTimerOfCustomer" />
+        <result column="REPLY_TIMER_OF_VISITOR" property="replyTimerOfVisitor" />
+        <result column="EXTEND_CONFIGS" property="extendConfigs" />
+        <result column="NICK_NAME" property="nickName" />
+        <result column="TEMP" property="temp" />
+        <result column="LAST_LOGOUT_TIME" property="lastLogoutTime" />
+        <result column="QQ" property="qq" />
+        <result column="RANK" property="rank" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="selectData">
+        select  USER_ID, DEPARTMENT_ID, IS_ADMIN, LAST_ACTIVE_TIME, MAIL,
+        PASSWORD, PHONE_NUMBER, REAL_NAME, DISPLAY_STATUS, DISPLAY_PROP,
+         MOBILE_NUMBER, USE_PHONE_MESSAGE, USE_FREE_PHONE, FREE_PHONE_ID,
+          COMPANY_ID, MSG_MAIL_NOTIFY, BUSY_CONNECT_TYPE, OFFLINE_CONNECT_TYPE,
+           LINKMAN, FAXED, START_TIME, END_TIME, REMARK, AUTO_REPLY_AT_CONNECTED,
+           REPLY_MSG_AT_CONNECTED, REPLY_MSG_OF_CUSTOMER, REPLY_MSG_OF_VISITOR,
+            REPLY_TIMER_OF_CUSTOMER, REPLY_TIMER_OF_VISITOR, EXTEND_CONFIGS,
+             NICK_NAME, TEMP, LAST_LOGOUT_TIME, QQ, RANK from JS_USER 
+    </sql>
+
+
+    <select id="selectById" parameterType="Long" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        where USER_ID = #{userId}
+    </select>
+
+
+
+    <select id="queryListByMap" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="userId != null " > AND USER_ID = #{userId}</if>
+            <if test="departmentId != null " > AND DEPARTMENT_ID = #{departmentId}</if>
+            <if test="isAdmin != null " > AND IS_ADMIN = #{isAdmin}</if>
+            <if test="lastActiveTime  != null " > AND LAST_ACTIVE_TIME = #{lastActiveTime}</if>
+            <if test="mail != null " > AND MAIL = #{mail}</if>
+            <if test="password != null " > AND PASSWORD = #{password}</if>
+            <if test="phoneNumber  != null " > AND PHONE_NUMBER = #{phoneNumber}</if>
+            <if test="realName  != null " > AND REAL_NAME = #{realName}</if>
+            <if test="displayStatus  != null " > AND DISPLAY_STATUS = #{displayStatus}</if>
+            <if test="displayProp  != null " > AND DISPLAY_PROP = #{displayProp}</if>
+            <if test="mobileNumber  != null " > AND MOBILE_NUMBER = #{mobileNumber}</if>
+            <if test="usePhoneMessage  != null " > AND USE_PHONE_MESSAGE = #{usePhoneMessage}</if>
+            <if test="useFreePhone  != null " > AND USE_FREE_PHONE = #{useFreePhone}</if>
+            <if test="freePhoneId  != null " > AND FREE_PHONE_ID = #{freePhoneId}</if>
+            <if test="companyId  != null " > AND COMPANY_ID = #{companyId}</if>
+            <if test="msgMailNotify  != null " > AND MSG_MAIL_NOTIFY = #{msgMailNotify}</if>
+            <if test="busyConnectType  != null " > AND BUSY_CONNECT_TYPE = #{busyConnectType}</if>
+            <if test="offlineConnectType  != null " > AND offlineConnectType = #{offlineConnectType}</if>
+            <if test="linkman  != null " > AND LINKMAN = #{linkman}</if>
+            <if test="faxed  != null " > AND FAXED = #{faxed}</if>
+            <if test="startTime  != null " > AND START_TIME = #{startTime}</if>
+            <if test="endTime  != null " > AND END_TIME = #{endTime}</if>
+            <if test="remark  != null " > AND REMARK = #{remark}</if>
+            <if test="autoReplyAtConnected  != null " > AND AUTO_REPLY_AT_CONNECTED = #{autoReplyAtConnected}</if>
+            <if test="replyMsgAtConnected  != null " > AND REPLY_MSG_AT_CONNECTED = #{replyMsgAtConnected}</if>
+            <if test="replyMsgOfCustomer  != null " > AND REPLY_MSG_OF_CUSTOMER = #{replyMsgOfCustomer}</if>
+            <if test="replyMsgOfVisitor  != null " > AND REPLY_MSG_OF_VISITOR = #{replyMsgOfVisitor}</if>
+            <if test="replyTimerOfCustomer  != null " > AND REPLY_TIMER_OF_CUSTOMER = #{replyTimerOfCustomer}</if>
+            <if test="replyTimerOfVisitor  != null " > AND REPLY_TIMER_OF_VISITOR = #{replyTimerOfVisitor}</if>
+            <if test="extendConfigs  != null " > AND EXTEND_CONFIGS = #{extendConfigs}</if>
+            <if test="nickName  != null " > AND NICK_NAME = #{nickName}</if>
+            <if test="temp  != null " > AND TEMP = #{temp}</if>
+            <if test="lastLogoutTime  != null " > AND LAST_LOGOUT_TIME = #{lastLogoutTime}</if>
+            <if test="qq  != null " > AND QQ = #{qq}</if>
+            <if test="rank  != null " > AND RANK = #{rank}</if>
+        </where>
+    </select>
+
+
+    <select id="queryList" parameterType="map" resultMap="BaseResultMap">
+        <include refid="selectData"/>
+        <where>
+            <if test="userId != null " > AND USER_ID = #{userId}</if>
+            <if test="departmentId != null " > AND DEPARTMENT_ID = #{departmentId}</if>
+            <if test="isAdmin != null " > AND IS_ADMIN = #{isAdmin}</if>
+            <if test="lastActiveTime  != null " > AND LAST_ACTIVE_TIME = #{lastActiveTime}</if>
+            <if test="mail != null " > AND MAIL = #{mail}</if>
+            <if test="password != null " > AND PASSWORD = #{password}</if>
+            <if test="phoneNumber  != null " > AND PHONE_NUMBER = #{phoneNumber}</if>
+            <if test="realName  != null " > AND REAL_NAME = #{realName}</if>
+            <if test="displayStatus  != null " > AND DISPLAY_STATUS = #{displayStatus}</if>
+            <if test="displayProp  != null " > AND DISPLAY_PROP = #{displayProp}</if>
+            <if test="mobileNumber  != null " > AND MOBILE_NUMBER = #{mobileNumber}</if>
+            <if test="usePhoneMessage  != null " > AND USE_PHONE_MESSAGE = #{usePhoneMessage}</if>
+            <if test="useFreePhone  != null " > AND USE_FREE_PHONE = #{useFreePhone}</if>
+            <if test="freePhoneId  != null " > AND FREE_PHONE_ID = #{freePhoneId}</if>
+            <if test="companyId  != null " > AND COMPANY_ID = #{companyId}</if>
+            <if test="msgMailNotify  != null " > AND MSG_MAIL_NOTIFY = #{msgMailNotify}</if>
+            <if test="busyConnectType  != null " > AND BUSY_CONNECT_TYPE = #{busyConnectType}</if>
+            <if test="offlineConnectType  != null " > AND offlineConnectType = #{offlineConnectType}</if>
+            <if test="linkman  != null " > AND LINKMAN = #{linkman}</if>
+            <if test="faxed  != null " > AND FAXED = #{faxed}</if>
+            <if test="startTime  != null " > AND START_TIME = #{startTime}</if>
+            <if test="endTime  != null " > AND END_TIME = #{endTime}</if>
+            <if test="remark  != null " > AND REMARK = #{remark}</if>
+            <if test="autoReplyAtConnected  != null " > AND AUTO_REPLY_AT_CONNECTED = #{autoReplyAtConnected}</if>
+            <if test="replyMsgAtConnected  != null " > AND REPLY_MSG_AT_CONNECTED = #{replyMsgAtConnected}</if>
+            <if test="replyMsgOfCustomer  != null " > AND REPLY_MSG_OF_CUSTOMER = #{replyMsgOfCustomer}</if>
+            <if test="replyMsgOfVisitor  != null " > AND REPLY_MSG_OF_VISITOR = #{replyMsgOfVisitor}</if>
+            <if test="replyTimerOfCustomer  != null " > AND REPLY_TIMER_OF_CUSTOMER = #{replyTimerOfCustomer}</if>
+            <if test="replyTimerOfVisitor  != null " > AND REPLY_TIMER_OF_VISITOR = #{replyTimerOfVisitor}</if>
+            <if test="extendConfigs  != null " > AND EXTEND_CONFIGS = #{extendConfigs}</if>
+            <if test="nickName  != null " > AND NICK_NAME = #{nickName}</if>
+            <if test="temp  != null " > AND TEMP = #{temp}</if>
+            <if test="lastLogoutTime  != null " > AND LAST_LOGOUT_TIME = #{lastLogoutTime}</if>
+            <if test="qq  != null " > AND QQ = #{qq}</if>
+            <if test="rank  != null " > AND RANK = #{rank}</if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="USER" useGeneratedKeys="true" keyProperty="cardId">
+        insert into JS_USER
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null " >USER_ID ,</if>
+            <if test="departmentId != null " >DEPARTMENT_ID ,</if>
+            <if test="isAdmin != null " >IS_ADMIN ,</if>
+            <if test="lastActiveTime  != null " >LAST_ACTIVE_TIME ,</if>
+            <if test="mail != null " >MAIL ,</if>
+            <if test="password != null " >PASSWORD ,</if>
+            <if test="phoneNumber  != null " >PHONE_NUMBER ,</if>
+            <if test="realName  != null " >REAL_NAME ,</if>
+            <if test="displayStatus  != null " >DISPLAY_STATUS ,</if>
+            <if test="displayProp  != null " >DISPLAY_PROP ,</if>
+            <if test="mobileNumber  != null " >MOBILE_NUMBER,</if>
+            <if test="usePhoneMessage  != null " >USE_PHONE_MESSAGE ,</if>
+            <if test="useFreePhone  != null " >USE_FREE_PHONE ,</if>
+            <if test="freePhoneId  != null " >FREE_PHONE_ID ,</if>
+            <if test="companyId  != null " >COMPANY_ID ,</if>
+            <if test="msgMailNotify  != null " >MSG_MAIL_NOTIFY ,</if>
+            <if test="busyConnectType  != null " >BUSY_CONNECT_TYPE ,</if>
+            <if test="offlineConnectType  != null " >offlineConnectType ,</if>
+            <if test="linkman  != null " >LINKMAN ,</if>
+            <if test="faxed  != null " >FAXED ,</if>
+            <if test="startTime  != null " >START_TIME ,</if>
+            <if test="endTime  != null " >END_TIME ,</if>
+            <if test="remark  != null " >REMARK ,</if>
+            <if test="autoReplyAtConnected  != null " >AUTO_REPLY_AT_CONNECTED ,</if>
+            <if test="replyMsgAtConnected  != null " >REPLY_MSG_AT_CONNECTED ,</if>
+            <if test="replyMsgOfCustomer  != null " >REPLY_MSG_OF_CUSTOMER ,</if>
+            <if test="replyMsgOfVisitor  != null " >REPLY_MSG_OF_VISITOR ,</if>
+            <if test="replyTimerOfCustomer  != null " >REPLY_TIMER_OF_CUSTOMER ,</if>
+            <if test="replyTimerOfVisitor  != null " >REPLY_TIMER_OF_VISITOR ,</if>
+            <if test="extendConfigs  != null " >EXTEND_CONFIGS ,</if>
+            <if test="nickName  != null " >NICK_NAME ,</if>
+            <if test="temp  != null " >TEMP ,</if>
+            <if test="lastLogoutTime  != null " >LAST_LOGOUT_TIME ,</if>
+            <if test="qq  != null " >QQ ,</if>
+            <if test="rank  != null " >RANK ,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null " >#{userId},</if>
+            <if test="departmentId != null " > #{departmentId},</if>
+            <if test="isAdmin != null " >#{isAdmin},</if>
+            <if test="lastActiveTime  != null " >#{lastActiveTime},</if>
+            <if test="mail != null " >#{mail},</if>
+            <if test="password != null " > #{password},</if>
+            <if test="phoneNumber  != null " > #{phoneNumber},</if>
+            <if test="realName  != null " > #{realName},</if>
+            <if test="displayStatus  != null " >#{displayStatus},</if>
+            <if test="displayProp  != null " >#{displayProp},</if>
+            <if test="mobileNumber  != null " > #{mobileNumber},</if>
+            <if test="usePhoneMessage  != null " >#{usePhoneMessage},</if>
+            <if test="useFreePhone  != null " > #{useFreePhone},</if>
+            <if test="freePhoneId  != null " > #{freePhoneId},</if>
+            <if test="companyId  != null " > #{companyId},</if>
+            <if test="msgMailNotify  != null " >#{msgMailNotify},</if>
+            <if test="busyConnectType  != null " > #{busyConnectType},</if>
+            <if test="offlineConnectType  != null " >#{offlineConnectType},</if>
+            <if test="linkman  != null " >#{linkman},</if>
+            <if test="faxed  != null " >#{faxed},</if>
+            <if test="startTime  != null " >#{startTime},</if>
+            <if test="endTime  != null " > #{endTime},</if>
+            <if test="remark  != null " > #{remark},</if>
+            <if test="autoReplyAtConnected  != null " >#{autoReplyAtConnected},</if>
+            <if test="replyMsgAtConnected  != null " > #{replyMsgAtConnected},</if>
+            <if test="replyMsgOfCustomer  != null " >#{replyMsgOfCustomer},</if>
+            <if test="replyMsgOfVisitor  != null " >#{replyMsgOfVisitor},</if>
+            <if test="replyTimerOfCustomer  != null " >#{replyTimerOfCustomer},</if>
+            <if test="replyTimerOfVisitor  != null " >#{replyTimerOfVisitor},</if>
+            <if test="extendConfigs  != null " >#{extendConfigs},</if>
+            <if test="nickName  != null " > #{nickName},</if>
+            <if test="temp  != null " >#{temp},</if>
+            <if test="lastLogoutTime  != null " >#{lastLogoutTime},</if>
+            <if test="qq  != null " >#{qq},</if>
+            <if test="rank  != null " >#{rank},</if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="USER">
+        update JS_USER
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null " >USER_ID = #{userId},</if>
+            <if test="departmentId != null " >DEPARTMENT_ID = #{departmentId},</if>
+            <if test="isAdmin != null " >IS_ADMIN = #{isAdmin},</if>
+            <if test="lastActiveTime  != null " >LAST_ACTIVE_TIME = #{lastActiveTime},</if>
+            <if test="mail != null " >MAIL = #{mail},</if>
+            <if test="password != null " >PASSWORD = #{password},</if>
+            <if test="phoneNumber  != null " >PHONE_NUMBER = #{phoneNumber},</if>
+            <if test="realName  != null " >REAL_NAME = #{realName},</if>
+            <if test="displayStatus  != null " >DISPLAY_STATUS = #{displayStatus},</if>
+            <if test="displayProp  != null " >DISPLAY_PROP = #{displayProp},</if>
+            <if test="mobileNumber  != null " >MOBILE_NUMBER = #{mobileNumber},</if>
+            <if test="usePhoneMessage  != null " >USE_PHONE_MESSAGE = #{usePhoneMessage},</if>
+            <if test="useFreePhone  != null " >USE_FREE_PHONE = #{useFreePhone},</if>
+            <if test="freePhoneId  != null " >FREE_PHONE_ID = #{freePhoneId},</if>
+            <if test="companyId  != null " >COMPANY_ID = #{companyId},</if>
+            <if test="msgMailNotify  != null " >MSG_MAIL_NOTIFY = #{msgMailNotify},</if>
+            <if test="busyConnectType  != null " >BUSY_CONNECT_TYPE = #{busyConnectType},</if>
+            <if test="offlineConnectType  != null " >offlineConnectType = #{offlineConnectType},</if>
+            <if test="linkman  != null " >LINKMAN = #{linkman},</if>
+            <if test="faxed  != null " >FAXED = #{faxed},</if>
+            <if test="startTime  != null " >START_TIME = #{startTime},</if>
+            <if test="endTime  != null " >END_TIME = #{endTime},</if>
+            <if test="remark  != null " >REMARK = #{remark},</if>
+            <if test="autoReplyAtConnected  != null " >AUTO_REPLY_AT_CONNECTED = #{autoReplyAtConnected},</if>
+            <if test="replyMsgAtConnected  != null " >REPLY_MSG_AT_CONNECTED = #{replyMsgAtConnected},</if>
+            <if test="replyMsgOfCustomer  != null " >REPLY_MSG_OF_CUSTOMER = #{replyMsgOfCustomer},</if>
+            <if test="replyMsgOfVisitor  != null " >REPLY_MSG_OF_VISITOR = #{replyMsgOfVisitor},</if>
+            <if test="replyTimerOfCustomer  != null " >REPLY_TIMER_OF_CUSTOMER = #{replyTimerOfCustomer},</if>
+            <if test="replyTimerOfVisitor  != null " >REPLY_TIMER_OF_VISITOR = #{replyTimerOfVisitor},</if>
+            <if test="extendConfigs  != null " >EXTEND_CONFIGS = #{extendConfigs},</if>
+            <if test="nickName  != null " >NICK_NAME = #{nickName},</if>
+            <if test="temp  != null " >TEMP = #{temp},</if>
+            <if test="lastLogoutTime  != null " >LAST_LOGOUT_TIME = #{lastLogoutTime},</if>
+            <if test="qq  != null " >QQ = #{qq},</if>
+            <if test="rank  != null " >RANK = #{rank},</if>
+        </trim>
+        where USER_ID= #{userId}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        delete from JS_USER where USER_ID = #{userId}
+    </delete>
+
+</mapper>
