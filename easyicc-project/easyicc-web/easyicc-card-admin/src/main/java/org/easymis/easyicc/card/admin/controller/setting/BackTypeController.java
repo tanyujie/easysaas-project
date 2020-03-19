@@ -1,8 +1,8 @@
 package org.easymis.easyicc.card.admin.controller.setting;
 
-import org.easymis.easysaas.common.result.RestResult;
+import org.easymis.easyicc.common.result.RestResult;
+import org.easymis.easyicc.domain.entity.School;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.BackType;
-import org.easymis.easysaas.imserver.entitys.mybatis.dto.School;
 import org.easymis.easysaas.imserver.service.BackTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

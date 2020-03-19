@@ -11,8 +11,11 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.smartcardio.Card;
 
-import org.easymis.easysaas.imserver.entitys.mybatis.dto.Card;
+import org.easymis.easyicc.card.admin.controller.IdentityRepository;
+import org.easymis.easyicc.service.SchoolAreaService;
+import org.easymis.easyicc.service.SubjectService;
 import org.easymis.easysaas.imserver.entitys.mybatis.dto.CardRule;
 import org.easymis.easysaas.imserver.entitys.vo.StaffSalesVo;
 import org.easymis.easysaas.imserver.service.AllocationCardService;
@@ -21,8 +24,6 @@ import org.easymis.easysaas.imserver.service.CardConfigService;
 import org.easymis.easysaas.imserver.service.CardLogService;
 import org.easymis.easysaas.imserver.service.CardRuleService;
 import org.easymis.easysaas.imserver.service.NotifyService;
-import org.easymis.easysaas.imserver.service.SchoolAreaService;
-import org.easymis.easysaas.imserver.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

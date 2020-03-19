@@ -1,5 +1,6 @@
 package org.easymis.easyicc.card.admin.controller.setting;
 
+import org.easymis.easyicc.card.admin.controller.IdentityRepository;
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.School;
 import org.easymis.easyicc.service.SchoolService;
