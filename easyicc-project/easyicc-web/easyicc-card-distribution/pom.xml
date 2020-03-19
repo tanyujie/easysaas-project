@@ -10,14 +10,16 @@
 	<groupId>org.easymis.easyicc</groupId>
 	<artifactId>easyicc-card-distribution</artifactId>
 	<version>1.0.0.RELEASE</version>
-	<description>名片分配服务</description>
+	<description>名片综合管理服务</description>
 	<dependencies>
-		<dependency>
+			<dependency>
 			<groupId>org.easymis.easyicc</groupId>
 			<artifactId>easyicc-common</artifactId>
 			<version>1.0.0.RELEASE</version>
 		</dependency>
 	</dependencies>
+
+
 	<build>
 		<finalName>easyicc-card-distribution</finalName>
 		<!-- 设置项目jdk版本，编码 -->
@@ -32,6 +34,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
