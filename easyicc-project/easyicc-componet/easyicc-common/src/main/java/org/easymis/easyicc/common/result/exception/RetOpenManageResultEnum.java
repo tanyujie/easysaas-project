@@ -34,7 +34,6 @@ public enum RetOpenManageResultEnum implements ResultEnum {
 	/**
 	 * @return the code
 	 */
-	@Override
 	public String getCode() {
 		return this.code;
 	}
@@ -42,7 +41,6 @@ public enum RetOpenManageResultEnum implements ResultEnum {
 	/**
 	 * @return the msg
 	 */
-	@Override
 	public String getMsg() {
 		return this.msg;
 	}

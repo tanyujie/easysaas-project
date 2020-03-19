@@ -43,7 +43,6 @@ public enum RestResultExceptionEnum implements ResultEnum {
 	/**
 	 * @return the code
 	 */
-	@Override
 	public String getCode() {
 		return this.code;
 	}

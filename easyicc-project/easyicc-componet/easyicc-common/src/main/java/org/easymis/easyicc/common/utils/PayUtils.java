@@ -1,11 +1,15 @@
 package org.easymis.easyicc.common.utils;
 
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Random;
 import java.util.stream.Collectors;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 微信 ,支付宝  工具类
@@ -122,6 +126,7 @@ public class PayUtils {
         //String originalSign = builder.substring(0, builder.length() - 1);
         log.info("original sign ->{}", originalSign);
         return MD5Util.MD5Encode(originalSign, "utf-8").toUpperCase();
+    
     }
 
     /**
