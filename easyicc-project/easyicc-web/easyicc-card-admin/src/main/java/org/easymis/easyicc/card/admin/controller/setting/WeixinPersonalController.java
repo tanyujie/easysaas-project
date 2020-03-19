@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.easymis.easyicc.card.admin.controller.IdentityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,7 +34,7 @@ import net.kinfe.util.StringUtils;
 @Api(value = "/setting/school", description = "全局微信推送")
 @Controller
 @RequestMapping("/weChatPersonal")
-public class WeixinPersonalController {
+public class WeixinPersonalController extends IdentityRepository{
 	
 	private final static Log logger = LogFactory.getLog(WeixinPersonalController.class);
 	
