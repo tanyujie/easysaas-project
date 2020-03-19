@@ -9,10 +9,10 @@
 		<version>2.1.5.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>org.easymis.easysaas</groupId>
-	<artifactId>easysaas-project</artifactId>
+	<groupId>org.easymis.easyicc</groupId>
+	<artifactId>easyicc-project</artifactId>
 		<packaging>pom</packaging>
-	<name>easysaas-project</name>
+	<name>easyicc-project</name>
 	<url>http://www.easymis.org</url>
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -65,12 +65,12 @@
 		</dependencies>
 	</dependencyManagement>
 	<modules>
- 		<module>easysaas-common</module>
-  		<module>easysaas-core</module>
- 		<module>easysaas-eureka</module>
- 		<module>easysaas-gateway</module>
-<!-- 		<module>easysaas-crm</module>
-		<module>easysaas-mobile</module> -->
+ 		<module>easyicc-common</module>
+  		<module>easyicc-core</module>
+ 		<module>easyicc-eureka</module>
+ 		<module>easyicc-gateway</module>
+<!-- 		<module>easyicc-crm</module>
+		<module>easyicc-mobile</module> -->
 	</modules>
 
 	 <build>
@@ -86,6 +86,6 @@
             </plugin>
         </plugins>
     </build>
-	<description>easysaas-project</description>
+	<description>easyicc-project</description>
 	<version>1.0.0.RELEASE</version>
 </project>
