@@ -4,16 +4,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.easymis.easyicc</groupId>
-		<artifactId>easyicc-card</artifactId>
+		<artifactId>easyicc-project</artifactId>
 		<version>1.0.0.RELEASE</version>
-<!-- 		<relativePath>../pom.xml</relativePath> -->
 	</parent>
-	<artifactId>easyicc-card-admin</artifactId>
+	<groupId>org.easymis.easyicc</groupId>
+	<artifactId>easyicc-componet</artifactId>
 	<description>名片综合管理服务</description>
 	<dependencies>
 	</dependencies>
 
-	<groupId>org.easymis.easyicc</groupId>
+
 	<version>1.0.0.RELEASE</version>
 	<build>
 		<!-- 设置项目jdk版本，编码 -->

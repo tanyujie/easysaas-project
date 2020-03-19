@@ -4,29 +4,31 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.easymis.easyicc</groupId>
-		<artifactId>easyicc-card</artifactId>
+		<artifactId>easyicc-project</artifactId>
 		<version>1.0.0.RELEASE</version>
-<!-- 		<relativePath>../pom.xml</relativePath> -->
 	</parent>
+	<groupId>org.easymis.easyicc</groupId>
 	<artifactId>easyicc-card-admin</artifactId>
+	<version>1.0.0.RELEASE</version>
 	<description>名片综合管理服务</description>
+	<packaging>pom</packaging>
 	<dependencies>
 	</dependencies>
 
-	<groupId>org.easymis.easyicc</groupId>
-	<version>1.0.0.RELEASE</version>
+
 	<build>
 		<!-- 设置项目jdk版本，编码 -->
 		<plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
 					<source>11</source>
 					<target>11</target>
-                </configuration>
-            </plugin>
-        </plugins>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
+
 </project>

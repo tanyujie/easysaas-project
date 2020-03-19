@@ -65,11 +65,9 @@
 		</dependencies>
 	</dependencyManagement>
 	<modules>
-<!--  		<module>easyicc-common</module>
-  		<module>easyicc-core</module>
- 		<module>easyicc-eureka</module>
- 		<module>easyicc-gateway</module>
-		<module>easyicc-crm</module> -->
+  		<module>easyicc-componet</module>
+   		<module>easyicc-componet-scheduler</module>
+		<module>easyicc-service</module>
 		<module>easyicc-web</module>
 	</modules>
 
