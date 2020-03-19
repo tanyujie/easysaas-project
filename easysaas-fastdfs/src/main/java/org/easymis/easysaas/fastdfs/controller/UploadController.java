@@ -1,7 +1,10 @@
 package org.easymis.easysaas.fastdfs.controller;
 
-import com.neo.fastdfs.FastDFSClient;
-import com.neo.fastdfs.FastDFSFile;
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.easymis.easysaas.fastdfs.util.FastDFSClient;
+import org.easymis.easysaas.fastdfs.util.FastDFSFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -10,9 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 @Controller
 public class UploadController {

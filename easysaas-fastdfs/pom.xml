@@ -44,7 +44,7 @@
 
 
 	<build>
-		<finalName>easysaas-rocketmq</finalName>
+		<finalName>easysaas-fastdfs</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
