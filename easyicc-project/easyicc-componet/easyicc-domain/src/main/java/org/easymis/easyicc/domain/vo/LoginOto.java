@@ -1,4 +1,4 @@
-package cn.jesong.webcall.card.domain.vo;
+package org.easymis.easyicc.domain.vo;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
