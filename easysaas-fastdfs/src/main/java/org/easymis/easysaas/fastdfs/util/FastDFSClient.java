@@ -1,12 +1,20 @@
 package org.easymis.easysaas.fastdfs.util;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.csource.common.MyException;
 import org.csource.common.NameValuePair;
-import org.csource.fastdfs.*;
+import org.csource.fastdfs.ClientGlobal;
+import org.csource.fastdfs.FileInfo;
+import org.csource.fastdfs.ServerInfo;
+import org.csource.fastdfs.StorageClient;
+import org.csource.fastdfs.StorageServer;
+import org.csource.fastdfs.TrackerClient;
+import org.csource.fastdfs.TrackerServer;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-
-import java.io.*;
 
 public class FastDFSClient {
 	private static org.slf4j.Logger logger = LoggerFactory.getLogger(FastDFSClient.class);
@@ -83,16 +91,16 @@ public class FastDFSClient {
 	}
 
 	public static StorageServer[] getStoreStorages(String groupName)
-			throws IOException {
+			throws IOException, Exception {
 		TrackerClient trackerClient = new TrackerClient();
-		TrackerServer trackerServer = trackerClient.getConnection();
+		TrackerServer trackerServer = trackerClient.getTrackerServer();		
 		return trackerClient.getStoreStorages(trackerServer, groupName);
 	}
 
 	public static ServerInfo[] getFetchStorages(String groupName,
-												String remoteFileName) throws IOException {
+												String remoteFileName) throws IOException, MyException {
 		TrackerClient trackerClient = new TrackerClient();
-		TrackerServer trackerServer = trackerClient.getConnection();
+		TrackerServer trackerServer = trackerClient.getTrackerServer();
 		return trackerClient.getFetchStorages(trackerServer, groupName, remoteFileName);
 	}
 
@@ -108,7 +116,7 @@ public class FastDFSClient {
 
 	private static TrackerServer getTrackerServer() throws IOException {
 		TrackerClient trackerClient = new TrackerClient();
-		TrackerServer trackerServer = trackerClient.getConnection();
+		TrackerServer trackerServer = trackerClient.getTrackerServer();
 		return  trackerServer;
 	}
 }
