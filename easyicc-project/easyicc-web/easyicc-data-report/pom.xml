@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.easymis.easyicc</groupId>
+		<artifactId>easyicc-web</artifactId>
+		<version>1.0.0.RELEASE</version>
+	</parent>
+	<artifactId>easyicc-card-readdata</artifactId>
+	<dependencies>
+	</dependencies>
+	<groupId>org.easymis.easyicc</groupId>
+	<version>1.0.0.RELEASE</version>
+	<build>
+		<finalName>easyicc-card-readdata</finalName>
+		<!-- 设置项目jdk版本，编码 -->
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<description>数据报表</description>
+</project>
